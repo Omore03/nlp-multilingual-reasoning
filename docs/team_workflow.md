@@ -41,7 +41,7 @@ For Saad: give him the raw schema, mock outputs and literal `FINAL_ANSWER:` cont
 
 ## Before merging and before the real pilot
 
-Required for every merge: `python -m pytest -q` passes offline, updated member tests pass, schemas remain compatible, and no secrets or unrelated assets are staged. CI runs the offline suite on Python 3.12 and makes no model calls. A teammate reviews changed prompt/data/selector behavior. Retest the CLI's preview, four-condition mock coverage and 80-record matrix after integration changes.
+Required for every merge: `python -m pytest -q` passes offline, updated member tests pass, schemas remain compatible, and no secrets or unrelated assets are staged. CI is configured to run the offline suite on Python 3.12 with no model calls. Hosted execution currently fails before jobs start; see docs/verification.md and use the verified local checks until that startup issue is resolved. A teammate reviews changed prompt/data/selector behavior. Retest the CLI's preview, four-condition mock coverage and 80-record matrix after integration changes.
 
 Before real inference: establish 20 verified demos/10 reviewed dev records, disjoint IDs, two genuine selectors, current model access and four successful live smoke conditions. Run preview, review prompts and returned ID order, then run the one-question real smoke and full/resumed pilot using the commands in README. Freeze data, source, software, selector version and model settings for that pilot. No merges into a running checkout. Fingerprint rejection requires preserving prior output and starting a separate reviewed experiment, not bypassing compatibility checks.
 
