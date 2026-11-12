@@ -2,7 +2,7 @@
 data_kind: synthetic
 demo_path: tests/fixtures/demo.jsonl
 dev_path: tests/fixtures/dev.jsonl
-output_path: results/live_smoke/smoke.jsonl
+output_path: results/live_smoke/gemma_free_smoke.jsonl
 conditions: [U-U-U, U-U-E, U-E-E, E-E-E]
 strategies: [random]
 shot_count: 2
@@ -12,15 +12,19 @@ selector_version: fixture-table-v1
 verification_receipt: null
 model:
   backend: openrouter
-  model_id: qwen/qwen3-235b-a22b-2507
+  model_id: google/gemma-4-31b-it:free
   endpoint: https://openrouter.ai/api/v1/chat/completions
   credential_env: OPENROUTER_API_KEY
-  route: deepinfra/fp8
+  route: google-ai-studio
+  free_only: true
+  max_requests_per_invocation: 40
+  min_request_interval_seconds: 3.1
   decoding:
     temperature: 0
     top_p: 1
     max_tokens: 2048
     seed: 42
+    reasoning: {enabled: false}
   timeout_seconds: 120
   max_attempts: 3
   max_retry_wait_seconds: 30

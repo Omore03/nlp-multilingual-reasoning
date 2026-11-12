@@ -3,11 +3,14 @@ import hashlib
 import os
 import math
 import time
+from copy import deepcopy
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
 
 import httpx
+
+from src.inference.free_policy import CATALOG_URL, ZERO_PRICE_CAP, require_free_model, verify_catalog
 
 
 class BackendError(Exception):
@@ -47,17 +50,45 @@ def retry_delay(value):
 
 
 class OpenRouterBackend:
-    def __init__(self, model, client=None):
+    def __init__(self, model, client=None, sleep=time.sleep, monotonic=time.monotonic):
+        require_free_model(model)
+        self.model = deepcopy(model)
+        self.sleep, self.monotonic = sleep, monotonic
+        self.requests_sent, self.last_request = 0, None
+        self.catalog_evidence = None
         key = os.environ.get(model['credential_env'], '')
         if not key or key == 'replace_with_your_openrouter_key':
             raise ValueError('Set OPENROUTER_API_KEY in the environment or ignored .env before live inference')
         self.key = key
         self.client = client or httpx.Client(timeout=model['timeout_seconds'], follow_redirects=False)
 
+    @property
+    def requests_remaining(self):
+        return self.model['max_requests_per_invocation'] - self.requests_sent
+
     def generate(self, prompt, model):
+        if model != self.model:
+            raise BackendError('free_policy_model_changed')
+        if not self.requests_remaining:
+            raise BackendError('free_request_budget_exhausted')
+        if self.catalog_evidence is None:
+            try:
+                catalog = self.client.get(CATALOG_URL)
+                if catalog.status_code != 200:
+                    raise ValueError
+                self.catalog_evidence = verify_catalog(catalog.json(), model)
+            except (httpx.HTTPError, ValueError):
+                raise BackendError('free_catalog_preflight_failed') from None
+        if self.last_request is not None:
+            delay = model['min_request_interval_seconds'] - (self.monotonic() - self.last_request)
+            if delay > 0:
+                self.sleep(delay)
+        self.last_request = self.monotonic()
+        self.requests_sent += 1  # Include transient/failed attempts in the local quota budget.
         body = {'model': model['model_id'], 'messages': [{'role': 'user', 'content': prompt}],
                 **model['decoding'], 'stream': False,
-                'provider': {'only': [model['route']], 'allow_fallbacks': False, 'require_parameters': True}}
+                'provider': {'only': [model['route']], 'allow_fallbacks': False, 'require_parameters': True,
+                             'max_price': ZERO_PRICE_CAP.copy()}}
         try:
             response = self.client.post(model['endpoint'], json=body,
                                         headers={'Authorization': 'Bearer ' + self.key})
@@ -68,7 +99,9 @@ class OpenRouterBackend:
         if response.status_code != 200:
             status = response.status_code
             wait = retry_delay(response.headers.get('retry-after'))
-            transient = status in (408, 429, 500, 502, 503, 504) or (status == 402 and wait is not None)
+            if status == 429 and response.headers.get('x-ratelimit-remaining') == '0' and response.headers.get('x-ratelimit-limit') == '50':
+                raise BackendError('free_daily_quota_exhausted')
+            transient = status in (408, 429, 500, 502, 503, 504)
             raise BackendError(f'http_{status}', transient, wait)
         try:
             data = response.json()
@@ -86,6 +119,8 @@ class OpenRouterBackend:
             usage = {k: v for k, v in data.get('usage', {}).items()
                      if k in ('prompt_tokens', 'completion_tokens', 'total_tokens', 'cost')
                      and type(v) in (int, float)}
+            if 'cost' in usage and (not math.isfinite(usage['cost']) or usage['cost'] != 0):
+                raise BackendError('unexpected_nonzero_cost')
             return Completion(text.replace(self.key, '[REDACTED]'), data.get('id'), usage,
                               data.get('model'), data.get('provider'), choice.get('finish_reason'))
         except (KeyError, IndexError, TypeError, ValueError):

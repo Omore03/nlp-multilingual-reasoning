@@ -1,50 +1,59 @@
-# Model decision - 12 November 2026 (PKT)
+# Free-only model decision - 12 November 2026 (PKT)
 
-## Decision and evidence
+## Hard budget and selected model
 
-Proposed API gateway: OpenRouter. Exact requested model ID: `qwen/qwen3-235b-a22b-2507`, corresponding to Qwen's `Qwen3-235B-A22B-Instruct-2507` release. Pin routing to `deepinfra/fp8` with `provider.only`, `allow_fallbacks: false` and `require_parameters: true`. This prevents silent routing to an engine that ignores experimental settings. Use one route and one model throughout the pilot.
+The user requires **zero additional project spending**. No credit purchases, paid API requests, paid fallbacks, trials requiring payment, rented GPUs or subscriptions are part of this project. The earlier paid Qwen configuration is superseded and rejected by current code. Local tests and mock runs use existing hardware. Hosted Actions automation has been removed; verification is local so it cannot consume billable runner time.
 
-[Qwen's model card](https://huggingface.co/Qwen/Qwen3-235B-A22B-Instruct-2507) describes a multilingual instruction-tuned release with 235B total/22B active parameters and non-thinking generation. It is suitable for few-shot mathematical reasoning without downloading weights. [Qwen's family announcement](https://qwenlm.github.io/blog/qwen3/) explicitly lists Urdu among 119 supported languages/dialects. This is family-level suitability evidence, not evidence of accuracy on this project's Urdu data; human smoke review remains necessary.
+Proposed live model: **`google/gemma-4-31b-it:free`**, via OpenRouter, restricted to **`google-ai-studio`**. [The official endpoint catalog](https://openrouter.ai/api/v1/models/google/gemma-4-31b-it:free/endpoints), checked 12 November 2026, lists zero input/output pricing, a 262,144-token context and 32,768 max completion tokens. Its endpoint name references `google/gemma-4-31b-it-20260402:free`; this is descriptive provider metadata, not an immutable serving revision. The committed `docs/model_catalog_snapshot.json` records selected public metadata and the upstream repository revision, which does not prove the hosted weights match it.
 
-[OpenRouter's model page](https://openrouter.ai/qwen/qwen3-235b-a22b-2507) and its [public endpoint catalog](https://openrouter.ai/api/v1/models/qwen/qwen3-235b-a22b-2507/endpoints) were checked on 12 November 2026. The catalog lists DeepInfra FP8 with 262,144 context tokens, max completion 16,384, and support for temperature, top-p, max tokens and seed. A small selected-field catalog snapshot is committed alongside this document. Availability can change independently of the model page.
+[Google's model card](https://ai.google.dev/gemma/docs/core/model_card_4) describes Gemma 4's instruction-tuned variants, mathematical/reasoning use and broad multilingual coverage (pretraining in over 140 languages). This supports trying the model for this pilot, but the cited material does not establish Urdu-specific mathematical accuracy or translation quality. Those remain explicitly unverified until actual Urdu/English smoke review. No final model-quality claim follows from a free endpoint being listed.
 
-The release suffix is dated July 2025; the API offers no immutable weight SHA or serving-engine revision guarantee. A public model-card repository revision can identify source weights, but cannot prove what the hosted endpoint serves. Record requested and returned model/provider identifiers per response and preserve the catalog snapshot, route, configuration and date. An API alias, quantization implementation, engine or server can change. Temperature zero and a fixed seed reduce variation but cannot guarantee bitwise reproducibility.
+Use a single named model, not `openrouter/free`, which may choose different models per request. Preserve model/provider and settings across conditions and quota days. Availability, weights, chat-template implementation and engine revisions can change; the requested identifier is not a reproducible weight SHA. Record returned model/provider identifiers and timestamps. No weights are downloaded.
 
-## Request and decoding contract
+## Enforced zero-price request policy
 
-Use HTTPS `POST https://openrouter.ai/api/v1/chat/completions`, one user message containing the complete prompt, nonstreaming response. Authentication variable: **OPENROUTER_API_KEY**. Configure in an ignored `.env` or exported environment. No resource provisioning or weights download is needed. The key must have available credit/permission for this route.
+`src/inference/free_policy.py` centralizes the model, provider and endpoint allowlist. Both config validation and direct adapter construction reject paid/wrong models or `free_only: false`. Before the first inference, the adapter fetches public endpoint metadata and refuses missing/nonzero pricing, a missing provider, insufficient output limits or unsupported requested parameters. A changed catalog therefore stops inference instead of selecting another model.
 
-Fixed proposed request settings:
+Every text-only request sends one user message with the full bilingual prompt to `https://openrouter.ai/api/v1/chat/completions`, with no plugins, tools, paid transformations or fallback models. Provider preferences are:
 
-| Setting | Value |
+```json
+{"only":["google-ai-studio"],"allow_fallbacks":false,"require_parameters":true,"max_price":{"prompt":0,"completion":0,"request":0}}
+```
+
+[Official provider routing](https://openrouter.ai/docs/guides/routing/provider-selection) documents price ceilings and support enforcement. Combined with the explicit `:free` ID and live zero-price preflight, these are the request-level spending safeguards; no paid route is an option. If the provider unexpectedly reports positive cost, the runner records a policy failure and halts rather than continuing. A missing cost field is not fabricated as a measured zero; the request remains constrained to a free route.
+
+## Decoding and access
+
+| Setting | Proposed value |
 | --- | --- |
 | temperature | 0 |
 | top_p | 1 |
 | max_tokens | 2048 |
 | generation seed | 42 |
 | selection seed | 42, independently recorded |
+| reasoning | `{"enabled": false}` |
 | stream | false |
-| route | deepinfra/fp8 only |
-| parameter support enforcement | true |
+| minimum interval | 3.1 seconds between request starts |
+| max API attempts per invocation | 40, including failed/transient attempts |
 
-[OpenRouter parameters](https://openrouter.ai/docs/api/reference/parameters) and [provider routing](https://openrouter.ai/docs/guides/routing/provider-selection) document these controls. We send only the supported subset. No `enable_thinking`, reasoning budget, reasoning effort or reasoning-token parameter is sent: this Instruct release has no thinking mode. The [Qwen quickstart](https://github.com/QwenLM/Qwen3/blob/main/docs/source/getting_started/quickstart.md) states that `enable_thinking=False` is not supported for this release. Qwen recommends sampling for general use; zero temperature is an experimental-control choice here, to be reviewed in the smoke test.
+The current endpoint advertises support for these decoding keys. [OpenRouter reasoning controls](https://openrouter.ai/docs/guides/best-practices/reasoning-tokens) document disabling reasoning; [Google's thinking guidance](https://ai.google.dev/gemma/docs/capabilities/thinking) distinguishes hidden thinking from final response generation and notes provider/template handling. The prompt still requests a complete visible worked solution. Inspect actual outputs for hidden thought leakage, truncation, Urdu fluency and final-marker adherence. Temperature zero is an experimental-control choice; it does not guarantee bitwise reproducibility across engines or days. Google recommends sampling for general use; that differs from this controlled pilot choice.
 
-The 2048-token output cap bounds cost; Urdu text can use more tokens than English. The 262,144-token context limit applies to prompt plus completion. Two short demonstrations should fit easily; the runner does not implement a provider tokenizer or claim exact preflight token counts. Inspect token usage and increase the cap only after a new smoke test and before freezing the experiment. Any non-`stop` finish reason is a terminal `incomplete_response` failure rather than a complete answer. Empty output is retried within the same bounded policy, then recorded as failure.
+Authentication variable: **OPENROUTER_API_KEY**, in an ignored `.env` or exported environment. Create a free account/key; no card, funded balance, credit purchase or upgrade is required for a `:free` variant. If an account/region is denied access, stop and document it; do not fund the account or use a paid model as a workaround. [OpenRouter's free-model documentation](https://openrouter.ai/collections/free-models/) explicitly states that free variants require no purchase and currently allow 20 requests/minute and 50/day on an unfunded account; failed attempts count and usage is shared across free models.
 
-## Timeouts, retries and costs
+## Quotas, failures and resumption
 
-HTTP timeout: 120 seconds per HTTPX operation, not an absolute total wall-clock deadline. At most three attempts per record. Retry transport timeout/network errors and HTTP 408/429/500/502/503/504, with 1/2-second fallback waits. Respect numeric or HTTP-date `Retry-After`; a wait above 30 seconds becomes `retry_after_exceeds_wait_budget` for a later resume, with no early retry. HTTP 402 is retried only when accompanied by a valid retry header. Invalid parameters/credentials/permissions are not repeatedly retried. Provider errors inside HTTP 200 bodies are also recognized. See [official error documentation](https://openrouter.ai/docs/api/reference/errors-and-debugging).
+The 80-record real pilot plus four-condition live verification needs **at least two daily quota windows**, assuming enough free capacity and no excessive failures/other account usage. Leave the API key unfunded and wait for quota resets. Do not create additional accounts/keys to evade limits. Capacity can make completion take longer. No promised same-day deadline or provider SLA is assumed.
 
-Catalog price checked **12 November 2026** for this specific DeepInfra route: **$0.09 per million input tokens; $0.55 per million output tokens**. These are dated quoted prices, not a guarantee or an account billing verification. For illustration, 80 calls at 2,000 input tokens and 2,048 output tokens would cost about $0.105 before retries/other fees: (160,000 × 0.09 + 163,840 × 0.55) / 1,000,000. Actual tokenization, response length, retries, billing and rates determine the cost. No paid resources were created. Sequential execution and rate limits can dominate runtime; there is no guaranteed completion-time estimate.
+The adapter paces all attempts, including retries. At most 40 API attempts are permitted per invocation; when exhausted, the runner saves completed records, reports deferred work and exits 3. Resume the same output after quota resets. A recognized exhausted daily quota stops immediately without retries; other exhausted 429/retry-wait errors also halt the remaining matrix. The per-invocation budget is a conservative local cap, not a replacement for the provider's shared daily counter. Repeated invocations do not reset the account's quota.
 
-## Verification status and freeze procedure
+HTTP timeout remains 120 seconds per operation. At most three attempts per record, within the invocation budget; fallback waits 1/2 seconds, provider Retry-After respected. Waits above 30 seconds are deferred with a failure record. HTTP 400/401/402/403/404/422 are terminal; **402 never triggers a payment or a retry-to-purchase path**. Blank/malformed/incomplete completions are not successful records. An interruption after a remote call but before durable append can consume an extra free request on resume.
 
-Public documentation and unauthenticated endpoint metadata: checked. Adapter payload, normal response, sanitized failures and retry behavior: tested offline with HTTPX MockTransport. **Authenticated live inference: not verified.** No relevant credential variable was present and no local model runtime was available in the workspace. No real development data was present.
+## Actual verification status
 
-Provide `OPENROUTER_API_KEY` and access/credits on OpenRouter, then run:
+Public catalog/documentation: checked. Payload, zero-price gates, quota/pacing, retries and resume: tested offline. **Authenticated inference, account access, provider-reported usage and Urdu quality remain unverified.** The existing local `.env` has only a placeholder. No paid or live inference was performed.
 
 ```bash
 python -m src.inference.runner run --config configs/live_smoke.yaml --question-limit 1 --resume
 ```
 
-Four successful synthetic condition records create a secret-free `results/live_smoke/model_verification.json` receipt with model settings hash, successful IDs and journal hash. Inspect actual Urdu and English outputs. The real runner requires a matching receipt, so configuration remains explicitly proposed/unverified until live success. Do not edit frozen model settings mid-pilot. Commit the reviewed settings and, after secret/provenance checks, the small live verification receipt/results if useful for reproducibility (they are ignored by default). Revalidate availability before spending on the real pilot.
+After four successful free synthetic conditions, inspect outputs and retain the automatic `results/live_smoke/model_verification.json` receipt. It links model settings and successful output IDs by hashes. Only then use the matching model for real data. Current live output is `results/live_smoke/gemma_free_smoke.jsonl`, so the earlier blocked preflight manifest is preserved separately. Changing model/settings/source requires a new run identity; never relabel mock data as live verification.

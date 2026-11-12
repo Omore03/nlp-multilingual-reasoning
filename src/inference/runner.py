@@ -19,11 +19,12 @@ from dotenv import load_dotenv
 import yaml
 
 from src.inference.backends import BackendError, MockBackend, OpenRouterBackend, call_with_retries
+from src.inference.free_policy import require_free_model
 from src.inference.contracts import import_selector, load_records, resolve_ids, selector_query
 from src.prompting.templates import CONDITIONS, TEMPLATE_VERSION, build_prompt
 
 ROOT = Path(__file__).resolve().parents[2]
-RUNNER_VERSION = '1.0.0'
+RUNNER_VERSION = '1.1.0-free-only'
 
 
 def canonical(value):
@@ -89,10 +90,15 @@ def validate_config(c):
         if set(c['conditions']) != set(CONDITIONS) or set(c['strategies']) != {'random', 'similarity'}:
             raise ValueError('Real pilot requires all four conditions and both strategies')
     m = c['model']
-    exact_keys(m, 'backend model_id endpoint credential_env route decoding timeout_seconds max_attempts max_retry_wait_seconds', 'model')
+    exact_keys(m, 'backend model_id endpoint credential_env route decoding timeout_seconds max_attempts max_retry_wait_seconds free_only max_requests_per_invocation min_request_interval_seconds', 'model')
     if m['backend'] not in ('mock', 'openrouter'):
         raise ValueError('Supported backends: mock, openrouter')
-    exact_keys(m['decoding'], 'temperature top_p max_tokens seed', 'decoding')
+    if m['free_only'] is not True:
+        raise ValueError('Zero-cost policy requires free_only=true')
+    decoding_keys = 'temperature top_p max_tokens seed' + (' reasoning' if m['backend'] == 'openrouter' else '')
+    exact_keys(m['decoding'], decoding_keys, 'decoding')
+    if m['backend'] == 'openrouter' and m['decoding']['reasoning'] != {'enabled': False}:
+        raise ValueError('Free Gemma pilot requires reasoning.enabled=false')
     for k, lo, hi in [('temperature', 0, 2), ('top_p', 0.000001, 1)]:
         v = m['decoding'][k]
         if type(v) not in (int, float) or not math.isfinite(v) or not lo <= v <= hi:
@@ -107,16 +113,20 @@ def validate_config(c):
     if type(m['max_attempts']) is not int or not 1 <= m['max_attempts'] <= 5:
         raise ValueError('max_attempts must be 1..5')
     if m['backend'] == 'openrouter':
-        if (m['model_id'] != 'qwen/qwen3-235b-a22b-2507' or m['route'] != 'deepinfra/fp8'
-                or m['endpoint'] != 'https://openrouter.ai/api/v1/chat/completions'
-                or m['credential_env'] != 'OPENROUTER_API_KEY'):
-            raise ValueError('This adapter is verified offline for the documented OpenRouter Qwen/DeepInfra route only')
+        require_free_model(m)
+        if type(m['max_requests_per_invocation']) is not int or not 1 <= m['max_requests_per_invocation'] <= 40:
+            raise ValueError('Free API invocation budget must be between 1 and 40 requests, including retries')
+        interval = m['min_request_interval_seconds']
+        if type(interval) not in (int, float) or not math.isfinite(interval) or not 3.1 <= interval <= 60:
+            raise ValueError('Free API pacing must be at least 3.1 seconds per request')
         if not c['output_path'].startswith('results/live_smoke/') and c['data_kind'] == 'synthetic':
             raise ValueError('Live synthetic calls must write under results/live_smoke/')
     elif c['data_kind'] != 'synthetic' or not c['output_path'].startswith('results/mock/'):
         raise ValueError('Mock backend is restricted to synthetic inputs and results/mock/')
     elif (m['model_id'], m['endpoint'], m['credential_env'], m['route']) != ('deterministic-mock-v1', None, None, 'mock'):
         raise ValueError('Mock configuration must explicitly identify the mock model and route')
+    if m['backend'] == 'mock' and (m['max_requests_per_invocation'] is not None or m['min_request_interval_seconds'] != 0):
+        raise ValueError('Mock backend does not use API request quotas or pacing')
     return c
 
 
@@ -306,7 +316,11 @@ def run(c, resume=False, question_limit=None, repair_tail=False, backend=None):
         if pending and backend is None:
             backend = MockBackend() if c['model']['backend'] == 'mock' else OpenRouterBackend(c['model'])
         count, failed = 0, 0
+        stop_reason = None
         for item in pending:
+            if getattr(backend, 'requests_remaining', None) == 0:
+                stop_reason = 'free_request_budget_exhausted'
+                break
             record = {**item, 'run_id': manifest['run_id'], 'model_id': c['model']['model_id'],
                       'backend': c['model']['backend'], 'provider': c['model']['route'],
                       'inference_settings': c['model'], 'template_version': TEMPLATE_VERSION,
@@ -335,7 +349,7 @@ def run(c, resume=False, question_limit=None, repair_tail=False, backend=None):
                 record = json.loads(canonical(record).replace(key, '[REDACTED]'))
             append_json(output, record)
             # Stop global auth/configuration errors; do not waste the remaining matrix calls.
-            if record['status'] == 'failure' and record['error']['code'] in ('http_400', 'http_401', 'http_402', 'http_403', 'http_404', 'http_422', 'provider_error_400', 'provider_error_401', 'provider_error_402', 'provider_error_403', 'provider_error_404', 'provider_error_422'):
+            if record['status'] == 'failure' and record['error']['code'] in ('http_400', 'http_401', 'http_402', 'http_403', 'http_404', 'http_422', 'http_429', 'free_daily_quota_exhausted', 'free_catalog_preflight_failed', 'unexpected_nonzero_cost', 'free_policy_model_changed', 'free_request_budget_exhausted', 'retry_after_exceeds_wait_budget', 'provider_error_429', 'provider_error_400', 'provider_error_401', 'provider_error_402', 'provider_error_403', 'provider_error_404', 'provider_error_422'):
                 break
         rows = read_journal(output)
         done = validate_journal(rows, manifest)
@@ -348,8 +362,12 @@ def run(c, resume=False, question_limit=None, repair_tail=False, backend=None):
                             'model_hash': digest(c['model']), 'model': c['model'],
                             'output_path': c['output_path'], 'output_hash': file_digest(output),
                             'record_ids': [p['record_id'] for p in smoke]})
-        return {'new_successes': count, 'new_failures': failed, 'total_successes': len(done),
-                'expected_records': len(manifest['plan']), 'output': c['output_path']}
+        summary = {'new_successes': count, 'new_failures': failed, 'total_successes': len(done),
+                   'expected_records': len(manifest['plan']), 'output': c['output_path']}
+        if c['model']['backend'] == 'openrouter':
+            summary.update(requests_sent=getattr(backend, 'requests_sent', 0), stop_reason=stop_reason,
+                           deferred_records=sum(p['record_id'] not in done for p in pending))
+        return summary
 
 
 def main(argv=None):
@@ -380,7 +398,7 @@ def main(argv=None):
             return 0
         summary = run(c, args.resume, args.question_limit, args.repair_tail)
         print(json.dumps(summary))
-        return 1 if summary['new_failures'] else 0
+        return 1 if summary['new_failures'] else (3 if summary.get('deferred_records', 0) else 0)
     except (ValueError, OSError) as exc:
         # OSError may include local paths; never print arbitrary external exception text.
         print('Error: ' + (str(exc) if isinstance(exc, ValueError) else 'Local file operation failed'), file=sys.stderr)

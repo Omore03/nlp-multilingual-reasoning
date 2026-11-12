@@ -15,6 +15,22 @@ from src.prompting.templates import CONDITIONS, FINAL_MARKER, LABELS, TEMPLATE_V
 REPO = Path(__file__).resolve().parents[1]
 
 
+def free_catalog():
+    from src.inference.free_policy import FREE_MODEL_ID, FREE_ROUTE
+    return {'data': {'id': FREE_MODEL_ID, 'endpoints': [{
+        'tag': FREE_ROUTE, 'pricing': {'prompt': '0', 'completion': '0'},
+        'supported_parameters': ['temperature', 'top_p', 'max_tokens', 'seed', 'reasoning'],
+        'context_length': 262144, 'max_completion_tokens': 32768}]}}
+
+
+def free_client(handler):
+    def dispatch(request):
+        if request.method == 'GET':
+            return httpx.Response(200, json=free_catalog())
+        return handler(request)
+    return httpx.Client(transport=httpx.MockTransport(dispatch))
+
+
 @pytest.fixture
 def project(tmp_path, monkeypatch):
     for folder in ('configs', 'src', 'tests/fixtures'):
@@ -287,13 +303,14 @@ def test_openrouter_payload_response_and_redaction(project, monkeypatch):
     monkeypatch.setenv('OPENROUTER_API_KEY', 'secret-test-value')
     def handler(request):
         payload = json.loads(request.content)
-        assert payload['provider'] == {'only': ['deepinfra/fp8'], 'allow_fallbacks': False, 'require_parameters': True}
+        assert payload['provider'] == {'only': ['google-ai-studio'], 'allow_fallbacks': False, 'require_parameters': True,
+                                       'max_price': {'prompt': 0, 'completion': 0, 'request': 0}}
         assert payload['temperature'] == 0 and payload['max_tokens'] == 2048
-        assert 'enable_thinking' not in payload and 'reasoning' not in payload
-        return httpx.Response(200, json={'id': 'req-1', 'model': c['model']['model_id'], 'provider': 'DeepInfra',
+        assert 'enable_thinking' not in payload and payload['reasoning'] == {'enabled': False}
+        return httpx.Response(200, json={'id': 'req-1', 'model': c['model']['model_id'], 'provider': 'Google AI Studio',
             'choices': [{'message': {'content': 'hello secret-test-value'}, 'finish_reason': 'stop'}],
             'usage': {'prompt_tokens': 5, 'completion_tokens': 3, 'arbitrary_header': 'secret-test-value'}})
-    backend = OpenRouterBackend(c['model'], httpx.Client(transport=httpx.MockTransport(handler)))
+    backend = OpenRouterBackend(c['model'], free_client(handler))
     result = backend.generate('اردو', c['model'])
     assert result.text == 'hello [REDACTED]' and result.usage == {'prompt_tokens': 5, 'completion_tokens': 3}
 
@@ -303,8 +320,8 @@ def test_http_error_sanitization(project, monkeypatch, status, transient):
     _, _ = project
     c = r.load_config('configs/live_smoke.yaml')
     monkeypatch.setenv('OPENROUTER_API_KEY', 'secret-test-value')
-    client = httpx.Client(transport=httpx.MockTransport(lambda _: httpx.Response(status, text='secret-test-value', headers={'Retry-After': '2'})))
-    backend = OpenRouterBackend(c['model'], client)
+    client = free_client(lambda _: httpx.Response(status, text='secret-test-value', headers={'Retry-After': '2'}))
+    backend = OpenRouterBackend(c['model'], client, sleep=lambda _: None)
     with pytest.raises(BackendError) as exc:
         backend.generate('prompt', c['model'])
     assert exc.value.transient == transient and exc.value.retry_after == 2
@@ -341,19 +358,19 @@ def test_provider_edge_responses(project, monkeypatch, body, code):
     _, _ = project
     c = r.load_config('configs/live_smoke.yaml')
     monkeypatch.setenv('OPENROUTER_API_KEY', 'secret-test-value')
-    client = httpx.Client(transport=httpx.MockTransport(lambda _: httpx.Response(200, json=body)))
+    client = free_client(lambda _: httpx.Response(200, json=body))
     with pytest.raises(BackendError, match=code):
-        OpenRouterBackend(c['model'], client).generate('p', c['model'])
+        OpenRouterBackend(c['model'], client, sleep=lambda _: None).generate('p', c['model'])
 
 
 def test_live_smoke_receipt_offline_simulation(project, monkeypatch):
     root, _ = project
     c = r.load_config('configs/live_smoke.yaml')
     monkeypatch.setenv('OPENROUTER_API_KEY', 'secret-test-value')
-    body = {'id': 'fake-request-secret-test-value', 'model': c['model']['model_id'], 'provider': 'DeepInfra',
+    body = {'id': 'fake-request-secret-test-value', 'model': c['model']['model_id'], 'provider': 'Google AI Studio',
             'choices': [{'message': {'content': 'SIMULATED TEST OUTPUT'}, 'finish_reason': 'stop'}]}
-    client = httpx.Client(transport=httpx.MockTransport(lambda _: httpx.Response(200, json=body)))
-    backend = OpenRouterBackend(c['model'], client)
+    client = free_client(lambda _: httpx.Response(200, json=body))
+    backend = OpenRouterBackend(c['model'], client, sleep=lambda _: None)
     assert r.run(c, question_limit=1, backend=backend)['total_successes'] == 4
     assert b'secret-test-value' not in (root / c['output_path']).read_bytes()
     pilot = r.load_config('configs/pilot.yaml')
@@ -377,3 +394,98 @@ def test_lock_rejects_concurrent_writer(project):
     with r.exclusive_output(root / c['output_path']):
         with pytest.raises(ValueError, match='Another process'):
             r.run(c)
+
+
+@pytest.mark.parametrize('change', ['paid_id', 'wrong_route', 'disabled_policy', 'unpaced', 'oversized_budget'])
+def test_free_policy_rejects_unsafe_config(project, change):
+    _, _ = project
+    c = r.load_config('configs/live_smoke.yaml')
+    if change == 'paid_id': c['model']['model_id'] = 'google/gemma-4-31b-it'
+    if change == 'wrong_route': c['model']['route'] = 'deepinfra/fp8'
+    if change == 'disabled_policy': c['model']['free_only'] = False
+    if change == 'unpaced': c['model']['min_request_interval_seconds'] = 0
+    if change == 'oversized_budget': c['model']['max_requests_per_invocation'] = 50
+    with pytest.raises(ValueError):
+        r.validate_config(c)
+
+
+def test_direct_backend_rejects_paid_model_before_network(project):
+    _, _ = project
+    c = r.load_config('configs/live_smoke.yaml')
+    c['model']['model_id'] = 'qwen/qwen3-235b-a22b-2507'
+    with pytest.raises(ValueError, match='Zero-cost policy'):
+        OpenRouterBackend(c['model'])
+
+
+@pytest.mark.parametrize('change', ['price', 'request_fee', 'missing_price', 'missing_route', 'unsupported', 'malformed'])
+def test_free_catalog_fail_closed_before_any_inference(project, monkeypatch, change):
+    _, _ = project
+    c = r.load_config('configs/live_smoke.yaml')
+    monkeypatch.setenv('OPENROUTER_API_KEY', 'secret-test-value')
+    body = free_catalog()
+    endpoint = body['data']['endpoints'][0]
+    if change == 'price': endpoint['pricing']['prompt'] = '0.000001'
+    if change == 'request_fee': endpoint['pricing']['request'] = '0.01'
+    if change == 'missing_price': del endpoint['pricing']['completion']
+    if change == 'missing_route': endpoint['tag'] = 'other-provider'
+    if change == 'unsupported': endpoint['supported_parameters'].remove('seed')
+    if change == 'malformed': body = {}
+    calls = []
+    def handler(request):
+        calls.append(request.method)
+        return httpx.Response(200, json=body)
+    backend = OpenRouterBackend(c['model'], httpx.Client(transport=httpx.MockTransport(handler)))
+    with pytest.raises(BackendError, match='free_catalog_preflight_failed'):
+        backend.generate('p', c['model'])
+    assert calls == ['GET']
+
+
+def test_unexpected_reported_cost_stops_invocation(project, monkeypatch):
+    root, _ = project
+    c = r.load_config('configs/live_smoke.yaml')
+    monkeypatch.setenv('OPENROUTER_API_KEY', 'secret-test-value')
+    body = {'choices': [{'message': {'content': 'reply'}, 'finish_reason': 'stop'}], 'usage': {'cost': 0.01}}
+    backend = OpenRouterBackend(c['model'], free_client(lambda _: httpx.Response(200, json=body)))
+    summary = r.run(c, question_limit=1, backend=backend)
+    assert summary['new_failures'] == 1 and backend.requests_sent == 1
+    assert read(root / c['output_path'])[0]['error']['code'] == 'unexpected_nonzero_cost'
+    assert not (root / 'results/live_smoke/model_verification.json').exists()
+
+
+def test_free_budget_pacing_and_resume(project, monkeypatch):
+    root, _ = project
+    c = r.load_config('configs/live_smoke.yaml')
+    c['model']['max_requests_per_invocation'] = 2
+    monkeypatch.setenv('OPENROUTER_API_KEY', 'secret-test-value')
+    clock, waits, requests = [0.0], [], []
+    def sleep(seconds):
+        waits.append(seconds)
+        clock[0] += seconds
+    def handler(request):
+        requests.append(json.loads(request.content))
+        return httpx.Response(200, json={'model': c['model']['model_id'], 'provider': 'Google AI Studio',
+            'choices': [{'message': {'content': 'SIMULATED FREE RESPONSE'}, 'finish_reason': 'stop'}],
+            'usage': {'cost': 0}})
+    backend = OpenRouterBackend(c['model'], free_client(handler), sleep=sleep, monotonic=lambda: clock[0])
+    first = r.run(c, question_limit=1, backend=backend)
+    assert first['total_successes'] == 2 and first['deferred_records'] == 2
+    assert first['stop_reason'] == 'free_request_budget_exhausted' and first['new_failures'] == 0
+    assert len(requests) == 2 and waits == [3.1]
+    with pytest.raises(BackendError, match='free_request_budget_exhausted'):
+        backend.generate('p', c['model'])
+    resumed_backend = OpenRouterBackend(c['model'], free_client(handler), sleep=lambda _: None)
+    second = r.run(c, question_limit=1, resume=True, backend=resumed_backend)
+    assert second['new_successes'] == 2 and second['total_successes'] == 4
+    assert len(read(root / c['output_path'])) == 4
+    assert all(p['model'].endswith(':free') and p['provider']['max_price']['request'] == 0 for p in requests)
+
+
+def test_daily_free_quota_exhaustion_no_retry_or_matrix_waste(project, monkeypatch):
+    root, _ = project
+    c = r.load_config('configs/live_smoke.yaml')
+    monkeypatch.setenv('OPENROUTER_API_KEY', 'secret-test-value')
+    client = free_client(lambda _: httpx.Response(429, headers={'X-RateLimit-Remaining': '0', 'X-RateLimit-Limit': '50'}))
+    backend = OpenRouterBackend(c['model'], client, sleep=lambda _: pytest.fail('Do not retry exhausted daily quota'))
+    summary = r.run(c, question_limit=1, backend=backend)
+    assert summary['new_failures'] == 1 and backend.requests_sent == 1
+    assert read(root / c['output_path'])[0]['error']['code'] == 'free_daily_quota_exhausted'

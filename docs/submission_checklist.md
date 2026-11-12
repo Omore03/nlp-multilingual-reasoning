@@ -8,7 +8,7 @@
 - [x] Separate synthetic fixtures and mock outputs; no synthetic production inputs/results.
 - [x] Reproducible setup, integration contract, ownership/team workflow, model evidence.
 - [x] Final verification report and private GitHub push verified (see docs/verification.md).
-- [ ] Authenticated real-model smoke and final model freeze (blocked on API credential/access).
+- [ ] Authenticated real-model smoke and final model freeze (blocked on free API credential/access; no payment required).
 
 Ammar's code and offline handoff can be complete while live integration is pending. The selected live configuration remains explicitly unverified until the credentialed smoke succeeds.
 
@@ -36,3 +36,12 @@ Ammar's code and offline handoff can be complete while live integration is pendi
 - [ ] Confirm all team modules, authentic results and final report are present before declaring submission ready.
 
 No fixture result, mock response, passing engineering test or private GitHub repository is evidence that the real pilot or final research submission is complete.
+
+## Free-only acceptance
+
+- [x] Paid model IDs rejected; fixed `:free` route and zero request price ceilings.
+- [x] Live catalog zero-price/support preflight and unexpected cost halt.
+- [x] Pacing, bounded API-attempt budget and quota-aware resumption.
+- [x] Hosted CI automation removed; tests run locally.
+- [ ] Obtain a free API key without purchasing credits, then verify actual Urdu/English outputs.
+- [ ] Complete the real pilot across available free quota days, preserving configuration and provenance.

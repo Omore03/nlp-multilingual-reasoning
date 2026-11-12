@@ -70,7 +70,15 @@ python -m src.inference.runner preview --config configs/pilot.yaml --question-li
 python -m src.inference.runner run --config configs/live_smoke.yaml --question-limit 1 --resume
 # Real one-question smoke (both selectors, eight records), then complete/resume:
 python -m src.inference.runner run --config configs/pilot.yaml --question-limit 1 --resume
+python -m src.inference.runner run --config configs/pilot.yaml --question-limit 5 --resume
+# After daily quota reset:
 python -m src.inference.runner run --config configs/pilot.yaml --resume
 ```
 
 Actual integration requires Hussain's 20 checked demos and 10 separate reviewed dev questions plus validator/notes; Rayyan's two tested selectors, dependencies and retrieval review; matching live model verification receipt; and exactly 80 successful experiment combinations or an explicit failure inventory. Saad's scoring/reconciliation/report is a separate team completion requirement. These remain pending. The fixture 80-record matrix proves engineering coverage only.
+
+## Free-only integration constraint
+
+Only `google/gemma-4-31b-it:free` on `google-ai-studio` is permitted. `free_only: true` is part of the fingerprinted model configuration. The adapter verifies catalog zero pricing and parameter support, sends zero prompt/completion/request price caps, and disables fallback. No paid replacement, credit purchase, top-up, subscription or hosted runner is authorized. Record any unavailable capacity/access as pending. Urdu model quality is unverified until actual smoke review.
+
+Live requests are spaced by at least 3.1 seconds and limited to 40 actual attempts per invocation, including retries; exhausted quota halts the matrix. Exit 3 means budget-deferred work remains, not completion. At least two quota windows are needed for the genuine 80-record pilot, plus more if failures/other account usage consume allowance. Resume using the same frozen model/data/selector configuration after quota resets. `max_requests_per_invocation` is not a daily quota bypass; creating additional accounts/keys is not part of this workflow.

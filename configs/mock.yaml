@@ -1,7 +1,7 @@
 data_kind: synthetic
 demo_path: tests/fixtures/demo.jsonl
 dev_path: tests/fixtures/dev.jsonl
-output_path: results/mock/matrix.jsonl
+output_path: results/mock/free_matrix.jsonl
 conditions: [U-U-U, U-U-E, U-E-E, E-E-E]
 strategies: [random, similarity]
 shot_count: 2
@@ -15,6 +15,9 @@ model:
   endpoint: null
   credential_env: null
   route: mock
+  free_only: true
+  max_requests_per_invocation: null
+  min_request_interval_seconds: 0
   decoding:
     temperature: 0
     top_p: 1
