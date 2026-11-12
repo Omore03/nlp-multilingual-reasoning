@@ -1,64 +1,48 @@
 # Team workflow
 
-The initial repository is private at `https://github.com/Omore03/nlp-multilingual-reasoning`. Collaborator invitations and instructor access must be handled by the repository owner when agreed; no invitations or visibility changes are part of this delivery.
+Clone the private repository with an authorized GitHub account and follow the [README setup](../README.md#quick-start). Each developer keeps credentials in their own ignored `.env`.
 
-Clone with your authorized GitHub account, then follow the README's Python 3.12 virtual environment and dependency commands. Keep `.env` local and use `.env.example` as the variable-name contract. Never send keys through commits or PR comments. Each developer obtains their own credential; offline tests need none.
+## Ownership
 
-## File ownership and branches
-
-| Owner | Files | Suggested branch |
+| Member | Owned work | Suggested branch |
 | --- | --- | --- |
-| Ammar Anees | `src/prompting/`, `src/inference/`, `configs/`, shared setup/testing and integration documentation | `ammar/inference` |
-| Hussain Baqar | `data/processed/`, future `src/data/validate.py`, `docs/dataset_notes.md`, dataset tests | `hussain/data-pilot` |
-| Rayyan Hasib | future `src/selection/`, selector tests, `docs/selection_notes.md`, encoder dependency additions | `rayyan/selectors` |
-| Saad ur Rehman | future `src/evaluation/`, evaluation tests, evaluation plan and actual pilot summaries | `saad/evaluation` |
+| Ammar Anees | Prompting, inference, configs, shared setup and integration | `ammar/inference` |
+| Hussain Baqar | Data, complete validator, provenance and review notes | `hussain/data-pilot` |
+| Rayyan Hasib | Selectors, encoder dependencies, tests and retrieval notes | `rayyan/selectors` |
+| Saad ur Rehman | Parser, evaluation, tests and research reporting | `saad/evaluation` |
 
-Suggested workflow:
+Ownership includes planned modules; see [handoff status](handoff_status.md) for what has actually arrived and been integrated.
+
+## Make a change
 
 ```bash
 git switch main
 git pull --ff-only
-git switch -c hussain/data-pilot
-# Add the member's actual reviewed submission, then run checks.
+git switch -c your-name/short-change
+# Make changes, then run the local tests.
 python -m pytest -q
-git add <reviewed-files>
-git diff --cached
-git commit -m "Integrate reviewed bilingual pilot data"
-git push -u origin hussain/data-pilot
 ```
 
-Open a pull request to `main` and have another teammate review the actual files. Do not force-push, rewrite shared history or merge generated code without tests. Keep scope to the initial pilot. Before every commit inspect status and staged changes for credentials, personal files, downloads, weights and generated artifacts.
+Inspect `git diff` and stage only the intended files. Commit, push the branch and open a pull request. Have another teammate review changes to data, prompts or selection. Do not force-push shared history.
 
-## Integrate submissions from WhatsApp
+Before merging, run the member's own checks and the project tests. If behavior changes, also run the mock smoke, full matrix and resume commands in the README. Hosted CI is disabled under the zero-spending requirement.
 
-Hussain's and Rayyan's completed submissions have not yet been supplied to this workspace. Preserve their originals and provenance when received; do not silently rewrite them to fit the runner.
+## Integrate teammate files
 
-For Hussain: add reviewed real JSONL to the reserved production paths, his full validator and dataset notes (sources, licenses/versions, translation/review evidence, split membership and no overlap). Run his validator and tests. The runner accepts optional dev `verified`, but real demo verification must be true based on actual review. Record uncertainties instead of inventing review.
+- **Hussain:** preserve his original schema, license and provenance. Use a small field adapter for the runner. Require actual review evidence before setting `verified: true` or placing data in production paths.
+- **Rayyan:** use his existing selectors and tests. Pin the encoder revision, dependencies and seed policy; update `selector_version`. Keep Urdu retrieval and ordered IDs. Review his retrieval examples. Do not download large model weights automatically.
+- **Saad:** provide the raw records and manifests. He adds evaluation in a separate artifact, leaving raw inference files unchanged.
 
-For Rayyan: bring his existing random and similarity modules, tests and notes into his owned paths; add his dependencies to requirements and refresh the dependency snapshot if necessary. Connect the configured callable via a thin wrapper if needed. Use Urdu retrieval for every condition. Record encoder revision, cache identity, deterministic tie-breaking and seed policy in `selector_version` and selection notes. Run his deterministic/ranking/ID checks and manually inspect his three retrieval examples.
+The [integration contract](integration_contract.md) gives exact interfaces. The [handoff status](handoff_status.md) lists the outstanding questions.
 
-For Saad: give him the raw schema, mock outputs and literal `FINAL_ANSWER:` contract. He supplies parser, metrics, reporting tests and final evaluation plan. He must read only successful unique experiments and join the actual dev answer keys without altering raw inference files. Mock placeholders are for parser/engineering checks only and must never enter a research accuracy table.
+## What belongs in Git
 
-## Before merging and before the real pilot
+Track source, configs, docs, small synthetic fixtures and reviewed example outputs. Add the small real dataset only with its review and provenance notes. Preserve the GSM8K license if its data is redistributed.
 
-Required for every merge: `python -m pytest -q` passes offline, updated member tests pass, schemas remain compatible, and no secrets or unrelated assets are staged. Hosted CI automation has been removed to avoid any billable runner usage; local tests are the required merge check. A teammate reviews changed prompt/data/selector behavior. Retest the CLI's preview, four-condition mock coverage and 80-record matrix after integration changes.
+Keep keys, `.env`, environments, bulk datasets, model weights, embedding caches, temporary files and recovery backups out of Git. Review live/pilot outputs for secrets and provenance before explicitly staging individual ignored files. Never force-add an entire results directory.
 
-Before real inference: establish 20 verified demos/10 reviewed dev records, disjoint IDs, two genuine selectors, current free-model access and four successful live smoke conditions. Run preview, review prompts and returned ID order, then run the one-question real smoke and full/resumed pilot using the commands in README. Freeze data, source, software, selector version and model settings for that pilot. No merges into a running checkout. Fingerprint rejection requires preserving prior output and starting a separate reviewed experiment, not bypassing compatibility checks.
+## Run and submit
 
-## Tracking policy
+Freeze source, data, dependencies, selectors and model settings before the real pilot. Avoid merging into a checkout with a running or unfinished pilot. Resume the same output only with matching fingerprints; use a new run for changed experiments.
 
-Track reviewed source, configuration, documentation, small synthetic fixtures, representative mock journals/manifests and local test configuration. Track the 30 reviewed real records and provenance notes after checking dataset permissions and team review. Do not commit bulk downloaded datasets, original PDFs, embedding caches, model weights, environments, temporary renders or secrets.
-
-Live and real result directories are ignored initially to prevent accidental publication. After the team reviews provenance/secrets, explicitly stage the small authentic pilot journal and manifest with `git add -f results/pilot_raw.jsonl results/pilot_raw.manifest.json`; similarly select actual live-smoke receipts/outputs or Saad's summaries. Do not blanket-force-add all results. Keep failed attempts and manifests for traceability. Backups ending `.corrupt-*`, output locks and temporary files stay local. Restore/resume a damaged tail only after inspecting the backup policy in README.
-
-## Handoff and submission
-
-Use `docs/submission_checklist.md` to distinguish Ammar's implementation from integrated pilot and final submission. Current blockers are the actual WhatsApp data/selector packages and Saad's evaluation. Direct Google free-project confirmation, synthetic live smoke and model freeze are complete. Repository publication alone does not complete the team project. Resolve instructor access or repository visibility before final submission, with an explicit owner decision.
-
-## Zero project spending
-
-Use existing local hardware and the fixed free model route only. No payment method, credit purchase, top-up, paid fallback, subscription or rented compute is required. Use Google AI Studio's actual per-project/model free quota; the 80 records may require multiple quota windows. Resume only when quota permits. Keep the model/settings fixed between days. Do not restore hosted Actions or purchase extra capacity as a workaround; local `python -m pytest -q` is the verification gate.
-
-## Google project/key handoff
-
-In Google AI Studio Projects, verify the key's project shows Free tier and Set up billing (no billing account attached). Save `GOOGLE_API_KEY` and `GOOGLE_AI_STUDIO_FREE_TIER_CONFIRMED=true` locally after that check. Do not share the key in chat or commits. The direct native backend is the active pilot route; the preserved OpenRouter adapter is historical and never an automatic fallback. Native smoke and receipt live under `results/live_smoke/google_direct/`.
+Use only the free API route and existing local hardware. Wait for quota instead of purchasing capacity. Follow the [run guide](running.md), then the [submission checklist](submission_checklist.md). The owner must arrange instructor access to the private repository; visibility changes and invitations need a separate decision.

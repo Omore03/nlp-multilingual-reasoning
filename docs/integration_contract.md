@@ -1,86 +1,81 @@
 # Integration contract
 
-## Ownership and production inputs
+Hussain owns data validation and review, Rayyan owns selection, Ammar owns prompting/inference, and Saad owns evaluation. The [handoff status](handoff_status.md) records current integration gaps.
 
-Hussain owns acquisition, translations, dataset provenance, complete validation and human review. Ammar's loader performs only structural boundary checks. Rayyan owns both production selectors and embedding dependencies/caches. Saad owns parsing, grading, statistics and reports. No pending teammate module is recreated here.
+## Real input files
 
-`data/processed/demo_pool.jsonl`: exactly 20 UTF-8 JSON objects, one per line:
-
-```json
-{"id":"gsm8k-train-demo-001","question_en":"...","question_ur":"...","reasoning_en":"complete worked solution","reasoning_ur":"مکمل حل","answer":"1200","verified":true}
-```
-
-This is a schema illustration, not supplied data. `verified` must be boolean true for real demos and must reflect actual human review. Both reasoning fields must contain full solutions, including operations and units. The template appends a consistent final answer line; Hussain should avoid duplicating the literal final marker within reasoning text.
-
-`data/processed/dev.jsonl`: exactly 10 distinct training development questions:
+`data/processed/demo_pool.jsonl` must contain 20 reviewed bilingual demonstrations. Each UTF-8 JSONL row has:
 
 ```json
-{"id":"gsm8k-train-dev-001","question_en":"...","question_ur":"...","answer":"1200"}
+{"id":"demo-001","question_en":"...","question_ur":"...","reasoning_en":"full worked solution","reasoning_ur":"مکمل حل","answer":"1200","verified":true}
 ```
 
-Development translations must be reviewed, but the agreed schema does not require `verified`. An optional boolean `verified` is accepted; its absence is not a claim of verification. Human review evidence belongs in Hussain's dataset notes. Do not automatically insert true. IDs are strings and unique within files, with no overlap between pool/dev. Answers are strings matching `-?(0|[1-9][0-9]*)(\.[0-9]+)?`, without commas, units or exponent notation. This is input checking, not Saad's response normalization/parser.
+`data/processed/dev.jsonl` must contain 10 separate, reviewed GSM8K training questions:
 
-The loader rejects missing fields, wrong primitive types, duplicate/overlapping IDs and wrong counts. Mathematical equivalence, source split, translation accuracy and review evidence remain Hussain's checks. Do not use MGSM for this initial pilot.
+```json
+{"id":"dev-001","question_en":"...","question_ur":"...","answer":"1200"}
+```
 
-## Selector boundary
+These examples illustrate fields only. IDs must be unique and disjoint across files. Answers are plain numeric strings: no units, commas or exponent notation. The accepted pattern is `-?(0|[1-9][0-9]*)(\.[0-9]+)?`.
+
+Demo reasoning must include complete operations and units. The template appends the final-answer marker, so reasoning should not duplicate `FINAL_ANSWER:`. Real demos require boolean `verified: true` based on actual review. Dev accepts an optional boolean `verified`; its absence does not establish review. Keep reviewer evidence and uncertainties in the dataset notes.
+
+The loader checks structure, counts and IDs. Hussain's validator and human review establish source membership, arithmetic and translation quality. Do not use MGSM evaluation data in this pilot.
+
+Hussain's supplied generator uses different names: map `solution_en`/`solution_ur` to `reasoning_en`/`reasoning_ur`, and `answer_number` to numeric-string `answer`. Preserve provenance and derive verification only from confirmed review. This adapter is still pending.
+
+## Selector interface
 
 ```python
 select_examples(query, pool, k, strategy, seed) -> list[str]
 ```
 
-- `query` is exactly `{"id": <development ID>, "question_ur": <Urdu question string>}`. No English question, development answer or evaluation metadata is sent.
-- `pool` is a copied list of bilingual demonstration dictionaries; demo answers/reasoning are legitimate solved examples.
-- `k` is exactly 2. `strategy` is `random` or `similarity`. `seed` is the configured unsigned integer, initially 42.
-- Return exactly two unique existing demo IDs in intended prompt order. The runner validates membership/uniqueness and preserves that order.
+| Argument | Contract |
+| --- | --- |
+| `query` | Exactly `{"id": "...", "question_ur": "..."}`; no dev answer or English text |
+| `pool` | A copied list of bilingual demonstration records |
+| `k` | 2 |
+| `strategy` | `random` or `similarity` |
+| `seed` | Configured unsigned integer, initially 42 |
+| Return | Two unique existing demo IDs in intended prompt order |
 
-Retrieval always uses Urdu, including E-E-E. Rendering language never changes retrieval language. Select once per query/strategy before the four-condition loop. Selection receives the same seed across queries, with stable input order; the query ID is available to Rayyan if his implementation uses a documented per-query derivation. No built-in Python `hash()` is used. If an adapter derives a seed, use SHA-256 of a documented canonical `(base_seed, query_id, strategy, k)` representation and version that policy. No such derivation is necessary in this runner.
+Use Urdu retrieval for every condition, including E-E-E. The runner selects once per question/strategy and reuses the same ordered IDs across conditions.
 
-The configured callable defaults to `src.selection.select:select_examples`. If Rayyan expects a bare Urdu string, a small wrapper can pass `query['question_ur']` to his function. If he expects another dictionary schema, adapt only those fields. Preserve Urdu retrieval and never copy development gold into the adapter. Set `selector_version` to include his code/encoder revision and relevant cache identity, and pin his dependencies. The manifest also hashes Python files under the selector's directory and all `src/` files; an external encoder or cache revision must be represented explicitly by `selector_version`.
+Configure the real callable in `configs/pilot.yaml`; the reserved default is `src.selection.select:select_examples`. Use a thin adapter if needed, without exposing dev answers. Set `selector_version` to identify the code, encoder revision, cache identity and seed policy. Pin dependencies. Document any stable per-query seed derivation; never use Python's randomized `hash()`.
 
-Do not change pool order or seed policy mid-run. On resume selection is recomputed and checked against the frozen full plan; a nondeterministic selector is rejected as incompatible. `tests/fixtures/selector.py` returns fixed ID pairs and is only test infrastructure. Production mode rejects selectors from `tests.*` and cannot use a mock backend.
+The manifest hashes the source and checks the full selection plan on resume. Changing external encoder/cache identity requires a version update. `tests/fixtures/selector.py` is only a fixed test table, and production mode rejects it.
 
 ## Prompt convention
 
-Template version: `bilingual-math-2shot-v1`, centralized in `src/prompting/templates.py`. Conditions list question/demo/instruction languages respectively: U-U-U, U-U-E, U-E-E, E-E-E. Exactly two complete demonstrations are followed by one target. Labels follow instruction language. Solutions are requested in the target question language. Target gold is never read by template construction.
+Template version: `bilingual-math-2shot-v1`. Condition letters mean target question / demonstrations / instructions. U means Urdu; E means English. Exactly two solved demonstrations precede one target question. The requested solution follows the target language; labels follow instruction language. Target gold is excluded.
 
-Across every language condition the final terminal line uses the literal ASCII marker and a numerical value:
+All conditions use the same final line:
 
 ```text
 FINAL_ANSWER: 1200
 ```
 
-Urdu instructions explain that same literal marker naturally in Urdu. Demonstrations also show it. Saad should parse the response's final numerical answer according to this convention, with his own documented ambiguity and numeral policies. The runner does not parse or grade it. A request succeeding does not establish marker adherence or accuracy.
+A successful API call does not establish answer correctness or format compliance. Saad owns parsing and grading.
 
-## Raw output contract for Saad
+## Raw outputs for Saad
 
-`results/pilot_raw.jsonl` contains success and failure attempts. Filter `status == "success"`; reconcile **80 distinct record IDs** across 10 questions × 2 strategies × 4 conditions. A failure later followed by success is retained; never count journal lines as completed experiments.
+The real journal is `results/pilot_raw.jsonl`. Keep its adjacent manifest and all attempt history. Reconcile **80 unique successful record IDs**: 10 questions × 2 strategies × 4 conditions.
 
-Success fields: `question_id`, `condition`, `strategy`, `shot_count`, `seed`, `model_id`, ordered `demo_ids`, full `prompt`, `raw_response`. Additional provenance: `run_id`, `record_id`, `backend`, route `provider`, actual requested `inference_settings`, `template_version`, `configuration_hash`, dataset SHA-256 `data_fingerprints`, UTC `timestamp`, `mode` (mock/live), `data_kind`, `request_id`, numeric `usage`, `served_model`, `served_provider`, `finish_reason`, `attempts`, `latency_seconds`, `prompt_hash`.
+| Group | Fields |
+| --- | --- |
+| Experiment | `question_id`, `condition`, `strategy`, `shot_count`, `seed`, ordered `demo_ids` |
+| Content | `prompt`, `raw_response`, `prompt_hash` |
+| Identity | `run_id`, `record_id`, `configuration_hash`, `data_fingerprints`, `template_version` |
+| Model | `backend`, `provider`, `model_id`, `inference_settings`, `served_model`, `served_provider` |
+| Execution | `status`, UTC `timestamp`, `attempts`, `latency_seconds`, `mode`, `data_kind` |
+| Provider metadata | Available `request_id`, `usage`, `finish_reason`, `model_access_metadata` |
 
-Failure records retain the same experiment identity and prompt with `status: failure`, sanitized error code/transient flag, attempts and latency; no fake response is written. Bad credentials/parameters stop global execution after recording the failure. Retry budgets are documented in model_decision.md. No key, authorization header or provider error-body text is persisted. A locally absent key is reported before calls.
+The native Google path also records `free_project_tier_confirmed_by_user`. This is user confirmation, not a billing audit. Token usage is retained; measured dollar cost is omitted when unavailable. Visible text excludes separate thought parts.
 
-Saad later adds `prediction`, `gold_answer`, `correct`, `parse_status` in a separate evaluated artifact. Join gold from Hussain's dev data by ID, preserve raw files/manifests and do not edit raw inference journals in place. No such evaluation fields, metrics or research report are implemented by Ammar.
+Failures retain the experiment identity, prompt and sanitized error details, with no fabricated response. Filter `status == "success"` and deduplicate by record ID before evaluation. A failed attempt followed by success counts once.
 
-## Commands and real acceptance
+Saad joins dev gold by question ID and writes `prediction`, `gold_answer`, `correct` and `parse_status` into a separate evaluated artifact. Leave raw journals unchanged. Never include synthetic or mock records in research metrics.
 
-```bash
-# Preflight without model calls, after integrating real data/selectors:
-python -m src.inference.runner preview --config configs/pilot.yaml --question-limit 1
-# Four-condition live synthetic access verification:
-python -m src.inference.runner run --config configs/live_smoke.yaml --question-limit 1 --resume
-# Real one-question smoke (both selectors, eight records), then complete/resume:
-python -m src.inference.runner run --config configs/pilot.yaml --question-limit 1 --resume
-python -m src.inference.runner run --config configs/pilot.yaml --question-limit 5 --resume
-# After daily quota reset:
-python -m src.inference.runner run --config configs/pilot.yaml --resume
-```
+## Acceptance
 
-Actual integration requires Hussain's 20 checked demos and 10 separate reviewed dev questions plus validator/notes; Rayyan's two tested selectors, dependencies and retrieval review; matching live model verification receipt; and exactly 80 successful experiment combinations or an explicit failure inventory. Saad's scoring/reconciliation/report is a separate team completion requirement. These remain pending. The fixture 80-record matrix proves engineering coverage only.
-
-## Direct Google free-only integration constraint
-
-Active model: `gemma-4-31b-it` on native Google AI Studio REST. Set `GOOGLE_API_KEY` and, only after verifying an unbilled Free tier project, `GOOGLE_AI_STUDIO_FREE_TIER_CONFIRMED=true` in ignored `.env`. Paid/Gemini models, tools and fallback are rejected or omitted. The native adapter checks live model metadata; Google does not expose an OpenRouter-style request price ceiling. The fixed free-only model and confirmed unbilled project are the spending safeguards.
-
-The pilot receipt is `results/live_smoke/google_direct/model_verification.json`, referencing four successful native smoke records. Earlier OpenRouter failures or receipts cannot satisfy the changed model/configuration identity. Direct raw responses contain visible text parts only; separate thoughts are excluded. Additional direct provenance fields are `free_project_tier_confirmed_by_user` (explicit local confirmation, not a billing API audit) and `model_access_metadata` (returned name/version/token limits/support). Native `modelVersion`, `responseId` and token usage are retained; no measured dollar cost is fabricated.
-
-Live requests retain 3.1-second minimum pacing and a local 40-attempt invocation budget. Google quotas are project/model specific and shown in AI Studio; no 50/day assumption carries over from OpenRouter. Exit 3 signals budget-deferred work. Resume the identical plan when free quota permits and keep all settings/model fixed across days. Do not purchase capacity or create projects/keys to evade quota. The current four-condition native synthetic smoke succeeded and its receipt matches pilot settings. Formal Urdu-quality evaluation and the real integrated pilot still depend on the team data/selectors/evaluation.
+Before the real pilot: reviewed 20/10 data, disjoint IDs, two tested real selectors, reviewed prompts and a matching four-condition live model receipt. Then run the [pilot commands](running.md). Completion needs 80 real successes or an explicit account of unresolved failures. Evaluation and final submission remain separate requirements.

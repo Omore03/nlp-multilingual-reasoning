@@ -1,3 +1,7 @@
-# Reserved real pilot inputs
+# Reviewed pilot data
 
-Awaiting Hussain's actual submission: `demo_pool.jsonl` (20 human-checked bilingual demonstrations) and `dev.jsonl` (10 distinct reviewed development questions). See `docs/integration_contract.md`. No synthetic data is stored here. Commit the small reviewed real package with provenance/permission notes once supplied; keep bulk downloads/caches ignored.
+Reserved for Hussain's reviewed `demo_pool.jsonl` (20 demos) and `dev.jsonl` (10 separate questions).
+
+His generator, validator, source notes and license have arrived locally. Generated translations are marked draft; human review is awaiting confirmation. No dataset has been promoted here.
+
+See the [input contract](../../docs/integration_contract.md) and [handoff status](../../docs/handoff_status.md). Add the small reviewed dataset with provenance and license notes. Keep bulk downloads and caches outside Git.

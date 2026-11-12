@@ -1,5 +1,10 @@
-# Synthetic engineering fixtures
+# Synthetic test fixtures
 
-AI-authored, intentionally simple bilingual pencil-addition examples. Not GSM8K, not translated acquired data, not reviewed research data. Demo verification flags are false; dev records omit the optional verification field. IDs differ between sets; content may repeat because these are boundary/matrix fixtures, not a valid research split.
+These simple bilingual pencil-addition examples were authored for engineering checks. They are not GSM8K data or reviewed research translations.
 
-20 demo and 10 dev rows exercise the 80-cell pipeline. `selector.py` returns predetermined pairs for the two strategy labels; it contains no random sampling, embedding or similarity implementation. Mock outputs are fixed placeholders and never evaluated as accuracy evidence.
+- 20 demo rows and 10 dev rows exercise the 80-record matrix.
+- Demo verification flags are false; dev omits the optional flag.
+- IDs are disjoint, but content may repeat. This is not a research split.
+- `selector.py` returns fixed ID pairs, not real random or similarity selections.
+
+Keep fixtures and mock outputs separate from production data and research metrics.

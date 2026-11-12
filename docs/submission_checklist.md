@@ -1,50 +1,36 @@
 # Submission checklist
 
-## Ammar implementation and repository delivery
+Updated 12 November 2026. Ready for a progress review; final project submission is pending.
 
-- [x] Modular prompting/inference package and YAML configs.
-- [x] Four two-shot prompt conditions, fixed demo identity/order and Urdu retrieval boundary.
-- [x] Real API adapter, deterministic mock, incremental logging, retry and resume safeguards.
-- [x] Separate synthetic fixtures and mock outputs; no synthetic production inputs/results.
-- [x] Reproducible setup, integration contract, ownership/team workflow, model evidence.
-- [x] Final verification report and private GitHub push verified (see docs/verification.md).
-- [x] Four-condition authenticated direct Google synthetic smoke and model freeze completed; no paid route used.
+## Shared implementation — complete
 
-Ammar's code and offline handoff can be complete while live integration is pending. The selected live configuration remains explicitly unverified until the credentialed smoke succeeds.
+- [x] Four two-shot prompt conditions and consistent final-answer marker.
+- [x] Free API configuration, mock backend, logging, retries and safe resume.
+- [x] Offline tests, prompt preview, four-condition mock smoke and 80-record mock matrix.
+- [x] Four-condition live API smoke on synthetic questions and matching model receipt.
+- [x] Private GitHub repository, reproducible setup and individual contribution summary.
 
-## Real integrated initial pilot - pending
+## Team integration and real pilot — pending
 
-- [ ] Receive Hussain's 20 checked demonstrations and 10 separate development questions.
-- [ ] Receive complete validator, source/version/license/translation notes and human review evidence.
-- [ ] Receive Rayyan's real random/similarity selectors, tests, exact encoder revision and cache identity.
-- [ ] Validate disjoint IDs, schema, valid unique ordered two-demo returns and Urdu retrieval for all conditions.
-- [x] Complete four-condition live smoke; inspect output and freeze model settings (direct Google, synthetic fixture).
-- [ ] Run one real dev question through both selectors and all conditions (8 records).
-- [ ] Complete/reconcile 80 unique successful real records, or document terminal failures and compute/access blockers.
-- [ ] Preserve `results/pilot_raw.jsonl` and its manifest, prompts, selected IDs and provenance.
-- [ ] Integrate Saad's parser, metrics, reporting and their passing tests.
-- [ ] Reconcile evaluation totals/parse failures and label pilot metrics as diagnostics only.
+- [x] Receive Hussain's generator, validator, source notes and license.
+- [x] Receive Rayyan's selector ZIP and handover reports.
+- [ ] Confirm human review of all 30 data items and obtain reviewer/date evidence.
+- [ ] Integrate 20 reviewed demos and 10 separate reviewed dev questions; run Hussain's checks.
+- [ ] Obtain Rayyan's updated code, selections, cache and retrieval notes.
+- [ ] Integrate and test both real selectors with a pinned encoder revision.
+- [ ] Check disjoint IDs, Urdu retrieval and two valid ordered demo IDs per selection.
+- [ ] Review real prompts and run one question across both selectors and four conditions.
+- [ ] Complete 80 unique successful real records, or document unresolved failures.
+- [ ] Preserve the actual pilot journal, manifest and provenance.
+- [ ] Integrate Saad's parser, evaluation and reporting; reconcile totals and parse failures.
 
-## Final semester submission - pending
+## Final semester submission — pending
 
-- [ ] Complete the team's later approved work: larger demonstration pool, four-shot, diversity/complexity and final paired MGSM evaluation.
-- [ ] Complete paired comparisons, qualitative error analysis and dataset/translation checks through the assigned owners.
-- [ ] Review actual research tables/figures and distinguish pilot diagnostics from final evidence.
-- [ ] Reproduce commands from a clean clone and preserve exact experiment provenance.
-- [ ] Review dataset/result sharing permissions, citations, limitations and university requirements.
-- [ ] Resolve instructor access or decide repository visibility explicitly; the repository is initially private.
-- [ ] Confirm all team modules, authentic results and final report are present before declaring submission ready.
+- [ ] Complete the team's later approved experiments and final MGSM evaluation.
+- [ ] Finish comparisons, error analysis, limitations and the final report.
+- [ ] Reproduce the integrated project from a clean clone.
+- [ ] Check dataset permissions, citations and university submission requirements.
+- [ ] Arrange instructor access to the private repository.
+- [ ] Confirm all team deliverables and authentic results are included.
 
-No fixture result, mock response, passing engineering test or private GitHub repository is evidence that the real pilot or final research submission is complete.
-
-## Direct Google free-only acceptance
-
-- [x] Fixed native Gemma model/endpoint; no paid or Gemini fallback, tools or billing changes.
-- [x] Google API key and explicit unbilled Free tier project confirmation required before calls.
-- [x] Native payload/metadata/visible-response handling, retries, pacing/budget and resumability tested offline.
-- [x] Hosted CI automation remains removed; tests run locally.
-- [x] Direct Google key/project configured and explicitly confirmed Free tier; key excluded from Git.
-- [x] Four genuine direct Urdu/English synthetic smoke outputs inspected; matching receipt preserved.
-- [ ] Complete the real pilot using actual project quota, preserving model/settings across quota windows.
-
-The earlier OpenRouter key was authenticated, but six attempts returned upstream shared-pool HTTP 429. That history is not successful direct Google verification.
+Passing tests and synthetic smoke runs establish engineering readiness. They do not establish research accuracy or completion of the real pilot.

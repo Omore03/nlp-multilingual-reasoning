@@ -1,7 +1,11 @@
-# Output separation
+# Results
 
-`mock/` contains deterministic synthetic engineering evidence only. `live_smoke/` is reserved for authenticated model calls on synthetic questions and is ignored initially. `pilot_raw.jsonl` and `pilot_raw.manifest.json` are reserved for the actual integrated pilot, pending real data, selectors and verified access. No actual pilot has been run. Live/pilot outputs require explicit provenance/secret review before selective Git tracking. Saad owns evaluated outputs and research reporting.
+| Path | Status |
+| --- | --- |
+| `mock/` | Recorded synthetic mock checks; fixed placeholder responses |
+| `live_smoke/google_direct/` | Four verified API responses to synthetic questions, plus manifest and receipt |
+| `pilot_raw.jsonl` | Reserved for the real 80-record pilot; not created yet |
 
-Current live verification path is `live_smoke/gemma_free_smoke.jsonl` for the fixed free Gemma model. The earlier blocked paid-model preflight manifest is historical, contains no inference response and cannot authorize the current pilot. No live result is claimed.
+Mock and live synthetic smoke outputs are engineering evidence, not research results. Earlier OpenRouter files are historical; Google is the active route.
 
-The active direct Google route writes synthetic smoke to `live_smoke/google_direct/smoke.jsonl` and its receipt to `live_smoke/google_direct/model_verification.json`. Earlier OpenRouter smoke paths are historical and remain separate.
+Most live/pilot outputs are ignored. Review individual files for secrets and provenance before explicitly tracking them. Saad's evaluated outputs belong separately from raw journals. See [verification](../docs/verification.md).
