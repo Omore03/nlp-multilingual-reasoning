@@ -6,7 +6,7 @@ The workspace was initially empty, without Git history, remotes or teammate file
 
 | Check | Actual outcome |
 | --- | --- |
-| Isolated Python 3.12 environment and requirements installation | Succeeded |
+| Isolated Python 3.12 environment and requirements installation | Succeeded; `pip check` found no broken requirements |
 | `python -m pytest -q` | 51 passed, offline; no model calls or credentials required |
 | Python compilation of `src` and `tests` | Passed |
 | Mock prompt preview, one question | 8 UTF-8 prompt records, two fixture labels × four conditions |
@@ -14,6 +14,7 @@ The workspace was initially empty, without Git history, remotes or teammate file
 | Full `configs/mock.yaml` matrix | 80 unique successful mock records, zero failures |
 | Full matrix resume | 0 new successes; all 80 prior rows byte-for-byte unchanged |
 | Different `PYTHONHASHSEED` processes (1 and 999) | Preview files identical |
+| Clean local clone, standard `venv`/pip setup, activation, tests, preview, smoke, full matrix and resume | 51 tests passed; 4/80 mock successes; resume added 0 |
 | Live synthetic preview | Succeeded without an API call |
 | Live synthetic inference attempt | Blocked before model calls: `Set OPENROUTER_API_KEY in the environment or ignored .env before live inference` |
 | Production preview/run preflight | Blocked as intended: Hussain's actual input files are absent |
@@ -33,7 +34,9 @@ The live receipt test uses HTTPX MockTransport within pytest's temporary directo
 
 ## Publication
 
-Local implementation and verification completed. Private repository creation, pushed commit and remote verification are recorded after publication. No reference PDFs, credentials, environments, model weights, real input placeholders or fabricated research results are staged.
+Created and verified **private** repository: https://github.com/Omore03/nlp-multilingual-reasoning, default branch `main`. Initial implementation commit `f94cf4ae85443d2c2c3dcaa5824f7b7e107052b8` was pushed successfully; `git ls-remote origin refs/heads/main` matched the local commit. No reference PDFs, credentials, environments, model weights, real input placeholders or fabricated research results were published.
+
+The initial GitHub Actions run returned `startup_failure` before any jobs/check runs were created, with no downloadable logs: https://github.com/Omore03/nlp-multilingual-reasoning/actions/runs/43266675790. The CLI's generic workflow-file suggestion does not establish a cause. Repository Actions were enabled and all actions allowed. Workflow dependencies were subsequently updated to official current [checkout v7.0.1](https://github.com/actions/checkout/releases/tag/v7.0.1) and [setup-python v7.1.0](https://github.com/actions/setup-python/releases/tag/v7.1.0); the event mapping is explicit, token permissions read-only, and timeout five minutes. The subsequent CI outcome is recorded below. Local checks are passing independently of hosted CI.
 
 ## Remaining dependencies
 
