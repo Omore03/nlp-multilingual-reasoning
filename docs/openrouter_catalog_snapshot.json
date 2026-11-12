@@ -1,0 +1,33 @@
+{
+  "checked_date_pkt": "2026-11-12",
+  "source": "https://openrouter.ai/api/v1/models/google/gemma-4-31b-it:free/endpoints",
+  "model_id": "google/gemma-4-31b-it:free",
+  "endpoint": {
+    "name": "Google AI Studio | google/gemma-4-31b-it-20260402:free",
+    "provider_name": "Google AI Studio",
+    "tag": "google-ai-studio",
+    "quantization": "unknown",
+    "context_length": 262144,
+    "max_completion_tokens": 32768,
+    "pricing": {
+      "prompt": "0",
+      "completion": "0",
+      "discount": 0
+    },
+    "supported_parameters": [
+      "reasoning",
+      "include_reasoning",
+      "max_tokens",
+      "temperature",
+      "top_p",
+      "seed",
+      "response_format",
+      "tools",
+      "tool_choice"
+    ]
+  },
+  "upstream_weights_repository": "google/gemma-4-31B-it",
+  "upstream_repository_revision": "842da3794eaa0b77d5f08bae87a17459d91ff475",
+  "cost_policy": "Free variants only; zero price caps; no fallback or purchase",
+  "warning": "Public catalog check only; authenticated inference and Urdu quality remain unverified."
+}

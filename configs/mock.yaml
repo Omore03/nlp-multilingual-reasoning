@@ -1,7 +1,7 @@
 data_kind: synthetic
 demo_path: tests/fixtures/demo.jsonl
 dev_path: tests/fixtures/dev.jsonl
-output_path: results/mock/free_matrix.jsonl
+output_path: results/mock/google_direct_matrix.jsonl
 conditions: [U-U-U, U-U-E, U-E-E, E-E-E]
 strategies: [random, similarity]
 shot_count: 2

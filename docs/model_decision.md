@@ -1,59 +1,61 @@
-# Free-only model decision - 12 November 2026 (PKT)
+# Model decision - direct Google AI Studio, free tier
 
-## Hard budget and selected model
+Date checked: 12 November 2026 (PKT). The user selected direct Google AI Studio after OpenRouter's shared free route returned HTTP 429. The requirement remains zero additional project spending.
 
-The user requires **zero additional project spending**. No credit purchases, paid API requests, paid fallbacks, trials requiring payment, rented GPUs or subscriptions are part of this project. The earlier paid Qwen configuration is superseded and rejected by current code. Local tests and mock runs use existing hardware. Hosted Actions automation has been removed; verification is local so it cannot consume billable runner time.
+## Active provider, model and evidence
 
-Proposed live model: **`google/gemma-4-31b-it:free`**, via OpenRouter, restricted to **`google-ai-studio`**. [The official endpoint catalog](https://openrouter.ai/api/v1/models/google/gemma-4-31b-it:free/endpoints), checked 12 November 2026, lists zero input/output pricing, a 262,144-token context and 32,768 max completion tokens. Its endpoint name references `google/gemma-4-31b-it-20260402:free`; this is descriptive provider metadata, not an immutable serving revision. The committed `docs/model_catalog_snapshot.json` records selected public metadata and the upstream repository revision, which does not prove the hosted weights match it.
+Provider: **Google AI Studio / Gemini Developer API**, using native REST. Requested model: **`gemma-4-31b-it`**, not a Gemini model. Endpoint: `https://generativelanguage.googleapis.com/v1beta/models/gemma-4-31b-it:generateContent`. Route identity: `google-ai-studio-direct`.
 
-[Google's model card](https://ai.google.dev/gemma/docs/core/model_card_4) describes Gemma 4's instruction-tuned variants, mathematical/reasoning use and broad multilingual coverage (pretraining in over 140 languages). This supports trying the model for this pilot, but the cited material does not establish Urdu-specific mathematical accuracy or translation quality. Those remain explicitly unverified until actual Urdu/English smoke review. No final model-quality claim follows from a free endpoint being listed.
+[Google's Gemma API guide](https://ai.google.dev/gemma/docs/core/gemma_on_gemini_api) explicitly lists this model and the native endpoint. [Google's pricing table](https://ai.google.dev/gemini-api/docs/pricing#gemma-4) lists Gemma 4 input/output as free of charge, with no paid tier available. Only text generation is used; no tools, grounding, caches, batch jobs, paid models, billing changes or fallback services are requested.
 
-Use a single named model, not `openrouter/free`, which may choose different models per request. Preserve model/provider and settings across conditions and quota days. Availability, weights, chat-template implementation and engine revisions can change; the requested identifier is not a reproducible weight SHA. Record returned model/provider identifiers and timestamps. No weights are downloaded.
+[The official Gemma 4 card](https://ai.google.dev/gemma/docs/core/model_card_4) documents instruction-tuned variants and broad multilingual/reasoning capabilities. This is suitability evidence, not proof of Urdu mathematical accuracy. Urdu fluency, preserved mathematics and response format require actual smoke review. No production research data is available yet.
 
-## Enforced zero-price request policy
+The model name is a hosted alias, not an immutable weight SHA. Authenticated preflight reads `models/gemma-4-31b-it` metadata and checks exact identity, `generateContent` support and output capacity. Each direct result retains returned `modelVersion`, request ID and model-access metadata, including its version/token limits when supplied. Neither an upstream repository revision nor a dated OpenRouter alias proves the direct API's serving revision. Source/software fingerprints and returned versions improve traceability without guaranteeing bitwise repeatability.
 
-`src/inference/free_policy.py` centralizes the model, provider and endpoint allowlist. Both config validation and direct adapter construction reject paid/wrong models or `free_only: false`. Before the first inference, the adapter fetches public endpoint metadata and refuses missing/nonzero pricing, a missing provider, insufficient output limits or unsupported requested parameters. A changed catalog therefore stops inference instead of selecting another model.
+## Free-only guard and account setup
 
-Every text-only request sends one user message with the full bilingual prompt to `https://openrouter.ai/api/v1/chat/completions`, with no plugins, tools, paid transformations or fallback models. Provider preferences are:
+`require_google_free_model` rejects wrong models, endpoints, route names, credential variable names or `free_only: false`. The native request schema is explicitly mapped; OpenRouter price/routing fields are never sent to Google. There is no native per-request dollar-cap parameter, so the safeguards are the fixed Gemma-only allowlist, documented free-only model pricing, no optional paid features and a project without billing attached. Do not claim that an OpenRouter-style price ceiling exists on this API.
 
-```json
-{"only":["google-ai-studio"],"allow_fallbacks":false,"require_parameters":true,"max_price":{"prompt":0,"completion":0,"request":0}}
+Create a key at [Google AI Studio](https://aistudio.google.com/apikey) in a Free tier project. On [Projects](https://aistudio.google.com/projects), identify the project associated with the key and check **Billing Tier**. **Free** with **Set up billing** is the intended state. [Google's billing guide](https://ai.google.dev/gemini-api/docs/billing#verify-billing) states that “Set up billing” means no billing account is attached. Do not click it, attach a card/account, prepay, upgrade or activate a paid trial for this project. If an existing project is billed, use a separate unbilled project instead of modifying unrelated projects.
+
+Save locally in ignored `.env`:
+
+```dotenv
+GOOGLE_API_KEY=your_google_ai_studio_key
+GOOGLE_AI_STUDIO_FREE_TIER_CONFIRMED=true
 ```
 
-[Official provider routing](https://openrouter.ai/docs/guides/routing/provider-selection) documents price ceilings and support enforcement. Combined with the explicit `:free` ID and live zero-price preflight, these are the request-level spending safeguards; no paid route is an option. If the provider unexpectedly reports positive cost, the runner records a policy failure and halts rather than continuing. A missing cost field is not fabricated as a measured zero; the request remains constrained to a free route.
+Set the confirmation true only after checking the key's associated project. The adapter refuses any request until both settings are present. This records **user-confirmed project status**; an API key alone does not let this implementation independently audit Cloud Billing. It does not treat the confirmation as a measured account-billing result. Secrets are passed in `x-goog-api-key`, never in a URL/query or logs. The earlier OpenRouter key is not used by active commands.
 
-## Decoding and access
+## Frozen decoding and runtime policy
 
-| Setting | Proposed value |
+| Configuration | Native request |
 | --- | --- |
-| temperature | 0 |
-| top_p | 1 |
-| max_tokens | 2048 |
-| generation seed | 42 |
-| selection seed | 42, independently recorded |
-| reasoning | `{"enabled": false}` |
-| stream | false |
-| minimum interval | 3.1 seconds between request starts |
-| max API attempts per invocation | 40, including failed/transient attempts |
+| temperature 0 | `temperature: 0` |
+| top_p 1 | `topP: 1` |
+| max_tokens 2048 | `maxOutputTokens: 2048` |
+| generation seed 42 | `seed: 42` |
+| thinking_level minimal | `thinkingConfig: {thinkingLevel: minimal}` |
+| one response | `candidateCount: 1` |
 
-The current endpoint advertises support for these decoding keys. [OpenRouter reasoning controls](https://openrouter.ai/docs/guides/best-practices/reasoning-tokens) document disabling reasoning; [Google's thinking guidance](https://ai.google.dev/gemma/docs/capabilities/thinking) distinguishes hidden thinking from final response generation and notes provider/template handling. The prompt still requests a complete visible worked solution. Inspect actual outputs for hidden thought leakage, truncation, Urdu fluency and final-marker adherence. Temperature zero is an experimental-control choice; it does not guarantee bitwise reproducibility across engines or days. Google recommends sampling for general use; that differs from this controlled pilot choice.
+[GenerateContent reference](https://ai.google.dev/api/generate-content) documents native fields, finish reasons and usage metadata. [The Gemma-specific guide](https://ai.google.dev/gemma/docs/core/gemma_on_gemini_api#thinking) documents `minimal` to disable Gemma hidden thinking. The visible response still includes a requested worked solution. Separate thought parts are excluded from `raw_response`; reported reasoning-token counts are retained. Empty, blocked, malformed or non-STOP outputs are not successful records. No prediction/parser/grading fields are invented.
 
-Authentication variable: **OPENROUTER_API_KEY**, in an ignored `.env` or exported environment. Create a free account/key; no card, funded balance, credit purchase or upgrade is required for a `:free` variant. If an account/region is denied access, stop and document it; do not fund the account or use a paid model as a workaround. [OpenRouter's free-model documentation](https://openrouter.ai/collections/free-models/) explicitly states that free variants require no purchase and currently allow 20 requests/minute and 50/day on an unfunded account; failed attempts count and usage is shared across free models.
+These parameters succeeded in the four-condition authenticated synthetic smoke and are frozen as of 12 November 2026. Returned model metadata reported version `001`; the response model identifier was `gemma-4-31b-it`. Zero temperature and a seed reduce variation; they do not promise deterministic hosted results. Google recommends sampling for general use; zero temperature is this experiment's control choice. Native preflight checks actual output limits; prompt-context sizing still needs review on the real two-demo prompts.
 
-## Quotas, failures and resumption
+Timeout: 120 seconds per HTTPX operation. At most three attempts per record. The runner paces starts by at least 3.1 seconds and caps generation attempts at 40 per invocation, including failures/retries. Those are conservative local controls, not a statement of Google's actual quotas. Retry transient transport/408/429/500/502/503/504 errors with bounded waits, honoring Retry-After or structured Google RetryInfo. A wait above 30 seconds defers work. Structured daily-quota exhaustion stops immediately; other exhausted 429 errors halt the remaining matrix. Auth/permission/invalid settings/payment errors are terminal; none trigger an upgrade.
 
-The 80-record real pilot plus four-condition live verification needs **at least two daily quota windows**, assuming enough free capacity and no excessive failures/other account usage. Leave the API key unfunded and wait for quota resets. Do not create additional accounts/keys to evade limits. Capacity can make completion take longer. No promised same-day deadline or provider SLA is assumed.
+[Current Google rate limits](https://ai.google.dev/gemini-api/docs/rate-limits) are project/model specific and shown in AI Studio; the earlier OpenRouter 50/day limit **does not apply** to this route. Read the active free limits before the real pilot. Eighty calls may require multiple quota windows. Exit 3 means the local request budget left work deferred; resume the same frozen plan after quota permits. No extra keys/projects should be created to evade limits. Direct access avoids OpenRouter's shared routing, but does not guarantee Google capacity.
 
-The adapter paces all attempts, including retries. At most 40 API attempts are permitted per invocation; when exhausted, the runner saves completed records, reports deferred work and exits 3. Resume the same output after quota resets. A recognized exhausted daily quota stops immediately without retries; other exhausted 429/retry-wait errors also halt the remaining matrix. The per-invocation budget is a conservative local cap, not a replacement for the provider's shared daily counter. Repeated invocations do not reset the account's quota.
+The API reports token usage, not a measured USD cost. `usage.cost` is omitted rather than fabricated as zero. Free pricing is based on the official table checked on the stated date and the unbilled-project requirement. No payment or paid resource is created.
 
-HTTP timeout remains 120 seconds per operation. At most three attempts per record, within the invocation budget; fallback waits 1/2 seconds, provider Retry-After respected. Waits above 30 seconds are deferred with a failure record. HTTP 400/401/402/403/404/422 are terminal; **402 never triggers a payment or a retry-to-purchase path**. Blank/malformed/incomplete completions are not successful records. An interruption after a remote call but before durable append can consume an extra free request on resume.
+## Verification and historical route
 
-## Actual verification status
-
-Public catalog/documentation: checked. Payload, zero-price gates, quota/pacing, retries and resume: tested offline. **API-key authentication is verified** (HTTP 200 from the key endpoint), with an unfunded free-tier account, a zero spending limit and zero reported usage. Six inference attempts returned HTTP 429 from Google AI Studio with `limit_source: upstream_provider_shared_pool`, while the account reported all 50 daily free requests remaining. **No successful completion or Urdu-quality verification was obtained**, and no freeze receipt was issued. The real key is held only in ignored `.env`; no credential value is recorded in Git. See `docs/live_access_check.json` for the sanitized access evidence. No paid fallback or purchase was used. Retry the identical smoke after upstream free capacity becomes available; this is not an account-credit blocker.
+Native payload/response, metadata checks, key/project gates, sanitization, quotas/pacing, retries and receipt/resume behavior are tested offline with HTTPX MockTransport. Authenticated direct inference is **verified**: all four synthetic conditions succeeded in five generation attempts, with no terminal failures. The user confirmed Free tier and no attached billing account. Resume made zero new requests and left outputs unchanged; the receipt matches the pilot settings. Responses were inspected for visible worked solutions, UTF-8 Urdu and the terminal final marker. This small engineering smoke does not certify Urdu translation quality or measure research accuracy. See `docs/google_live_access_check.json` and the committed live journal. Reproduce using your own key and confirmed free project:
 
 ```bash
 python -m src.inference.runner run --config configs/live_smoke.yaml --question-limit 1 --resume
 ```
 
-After four successful free synthetic conditions, inspect outputs and retain the automatic `results/live_smoke/model_verification.json` receipt. It links model settings and successful output IDs by hashes. Only then use the matching model for real data. Current live output is `results/live_smoke/gemma_free_smoke.jsonl`, so the earlier blocked preflight manifest is preserved separately. Changing model/settings/source requires a new run identity; never relabel mock data as live verification.
+Direct smoke output: `results/live_smoke/google_direct/smoke.jsonl`; receipt: `results/live_smoke/google_direct/model_verification.json`. The pilot requires that matching receipt. The current receipt is verified and settings are frozen; keep them unchanged for the real pilot. Successful outputs used 922 prompt tokens and 192 completion tokens (1114 total). The API did not report a measured dollar cost; none is invented. No paid fallback or billing change occurred.
+
+OpenRouter's six failed attempts and authenticated zero-spend account check remain in `docs/live_access_check.json`. `configs/openrouter_live_smoke.yaml`, the old adapter and its tests are preserved explicitly for traceability, never as an automatic fallback. Current pilot/live-smoke configs use Google directly. Historical mock journals and manifests are kept without relabeling or overwriting them.

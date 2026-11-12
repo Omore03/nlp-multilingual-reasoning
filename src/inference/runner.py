@@ -19,12 +19,13 @@ from dotenv import load_dotenv
 import yaml
 
 from src.inference.backends import BackendError, MockBackend, OpenRouterBackend, call_with_retries
-from src.inference.free_policy import require_free_model
+from src.inference.google_backend import GoogleAIStudioBackend
+from src.inference.free_policy import require_free_model, require_google_free_model
 from src.inference.contracts import import_selector, load_records, resolve_ids, selector_query
 from src.prompting.templates import CONDITIONS, TEMPLATE_VERSION, build_prompt
 
 ROOT = Path(__file__).resolve().parents[2]
-RUNNER_VERSION = '1.1.0-free-only'
+RUNNER_VERSION = '1.2.0-google-direct-free'
 
 
 def canonical(value):
@@ -91,12 +92,16 @@ def validate_config(c):
             raise ValueError('Real pilot requires all four conditions and both strategies')
     m = c['model']
     exact_keys(m, 'backend model_id endpoint credential_env route decoding timeout_seconds max_attempts max_retry_wait_seconds free_only max_requests_per_invocation min_request_interval_seconds', 'model')
-    if m['backend'] not in ('mock', 'openrouter'):
-        raise ValueError('Supported backends: mock, openrouter')
+    if m['backend'] not in ('mock', 'openrouter', 'google_ai_studio'):
+        raise ValueError('Supported backends: mock, google_ai_studio, openrouter (legacy)')
     if m['free_only'] is not True:
         raise ValueError('Zero-cost policy requires free_only=true')
     decoding_keys = 'temperature top_p max_tokens seed' + (' reasoning' if m['backend'] == 'openrouter' else '')
+    if m['backend'] == 'google_ai_studio':
+        decoding_keys += ' thinking_level'
     exact_keys(m['decoding'], decoding_keys, 'decoding')
+    if m['backend'] == 'google_ai_studio' and m['decoding']['thinking_level'] != 'minimal':
+        raise ValueError('Direct Google Gemma requires thinking_level=minimal')
     if m['backend'] == 'openrouter' and m['decoding']['reasoning'] != {'enabled': False}:
         raise ValueError('Free Gemma pilot requires reasoning.enabled=false')
     for k, lo, hi in [('temperature', 0, 2), ('top_p', 0.000001, 1)]:
@@ -112,8 +117,11 @@ def validate_config(c):
             raise ValueError(f'Invalid {k}')
     if type(m['max_attempts']) is not int or not 1 <= m['max_attempts'] <= 5:
         raise ValueError('max_attempts must be 1..5')
-    if m['backend'] == 'openrouter':
-        require_free_model(m)
+    if m['backend'] in ('openrouter', 'google_ai_studio'):
+        if m['backend'] == 'openrouter':
+            require_free_model(m)
+        else:
+            require_google_free_model(m)
         if type(m['max_requests_per_invocation']) is not int or not 1 <= m['max_requests_per_invocation'] <= 40:
             raise ValueError('Free API invocation budget must be between 1 and 40 requests, including retries')
         interval = m['min_request_interval_seconds']
@@ -314,7 +322,9 @@ def run(c, resume=False, question_limit=None, repair_tail=False, backend=None):
         selected_questions = set(question_ids[:question_limit]) if question_limit else set(question_ids)
         pending = [p for p in manifest['plan'] if p['question_id'] in selected_questions and p['record_id'] not in done]
         if pending and backend is None:
-            backend = MockBackend() if c['model']['backend'] == 'mock' else OpenRouterBackend(c['model'])
+            backend = (MockBackend() if c['model']['backend'] == 'mock' else
+                       GoogleAIStudioBackend(c['model']) if c['model']['backend'] == 'google_ai_studio' else
+                       OpenRouterBackend(c['model']))
         count, failed = 0, 0
         stop_reason = None
         for item in pending:
@@ -342,6 +352,9 @@ def run(c, resume=False, question_limit=None, repair_tail=False, backend=None):
                 # Avoid persisting arbitrary plugin/client exception strings containing secrets.
                 record.update(status='failure', error={'code': 'unexpected_backend_error', 'transient': False}, attempts=1)
                 failed += 1
+            if c['model']['backend'] == 'google_ai_studio':
+                record['free_project_tier_confirmed_by_user'] = getattr(backend, 'free_tier_confirmed', False)
+                record['model_access_metadata'] = getattr(backend, 'catalog_evidence', None)
             record['latency_seconds'] = round(time.monotonic() - start, 6)
             # Defense in depth for any known credential appearing in returned metadata.
             key = os.environ.get(c['model']['credential_env'] or '', '')
@@ -349,12 +362,12 @@ def run(c, resume=False, question_limit=None, repair_tail=False, backend=None):
                 record = json.loads(canonical(record).replace(key, '[REDACTED]'))
             append_json(output, record)
             # Stop global auth/configuration errors; do not waste the remaining matrix calls.
-            if record['status'] == 'failure' and record['error']['code'] in ('http_400', 'http_401', 'http_402', 'http_403', 'http_404', 'http_422', 'http_429', 'free_daily_quota_exhausted', 'free_catalog_preflight_failed', 'unexpected_nonzero_cost', 'free_policy_model_changed', 'free_request_budget_exhausted', 'retry_after_exceeds_wait_budget', 'provider_error_429', 'provider_error_400', 'provider_error_401', 'provider_error_402', 'provider_error_403', 'provider_error_404', 'provider_error_422'):
+            if record['status'] == 'failure' and record['error']['code'] in ('http_400', 'http_401', 'http_402', 'http_403', 'http_404', 'http_422', 'http_429', 'free_daily_quota_exhausted', 'free_catalog_preflight_failed', 'google_model_preflight_failed', 'google_daily_quota_exhausted', 'unexpected_nonzero_cost', 'free_policy_model_changed', 'free_request_budget_exhausted', 'retry_after_exceeds_wait_budget', 'provider_error_429', 'provider_error_400', 'provider_error_401', 'provider_error_402', 'provider_error_403', 'provider_error_404', 'provider_error_422'):
                 break
         rows = read_journal(output)
         done = validate_journal(rows, manifest)
         # A live fixture smoke freezes model settings in an auditable secret-free receipt.
-        if c['model']['backend'] == 'openrouter' and c['data_kind'] == 'synthetic':
+        if c['model']['backend'] != 'mock' and c['data_kind'] == 'synthetic':
             qid = question_ids[0]
             smoke = [p for p in manifest['plan'] if p['question_id'] == qid and p['strategy'] == c['strategies'][0]]
             if len(smoke) == 4 and all(p['record_id'] in done for p in smoke):
@@ -364,7 +377,7 @@ def run(c, resume=False, question_limit=None, repair_tail=False, backend=None):
                             'record_ids': [p['record_id'] for p in smoke]})
         summary = {'new_successes': count, 'new_failures': failed, 'total_successes': len(done),
                    'expected_records': len(manifest['plan']), 'output': c['output_path']}
-        if c['model']['backend'] == 'openrouter':
+        if c['model']['backend'] != 'mock':
             summary.update(requests_sent=getattr(backend, 'requests_sent', 0), stop_reason=stop_reason,
                            deferred_records=sum(p['record_id'] not in done for p in pending))
         return summary

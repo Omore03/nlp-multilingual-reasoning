@@ -1,0 +1,32 @@
+{
+  "verified_at": "2026-11-12T17:44:11.983847+00:00",
+  "model_hash": "ef2b04a7c28fa1f95500630f3fea4c8e6d4736869d761436d4c6e5982ff099da",
+  "model": {
+    "backend": "google_ai_studio",
+    "model_id": "gemma-4-31b-it",
+    "endpoint": "https://generativelanguage.googleapis.com/v1beta/models/gemma-4-31b-it:generateContent",
+    "credential_env": "GOOGLE_API_KEY",
+    "route": "google-ai-studio-direct",
+    "free_only": true,
+    "max_requests_per_invocation": 40,
+    "min_request_interval_seconds": 3.1,
+    "decoding": {
+      "temperature": 0,
+      "top_p": 1,
+      "max_tokens": 2048,
+      "seed": 42,
+      "thinking_level": "minimal"
+    },
+    "timeout_seconds": 120,
+    "max_attempts": 3,
+    "max_retry_wait_seconds": 30
+  },
+  "output_path": "results/live_smoke/google_direct/smoke.jsonl",
+  "output_hash": "61495daddeb16955910167c95e74a1806193d2522e8e7ae3f8a654691b04e5ec",
+  "record_ids": [
+    "00403db9a377ffee62fe1f83fe006aac50aaee9f34e9744b5bb79b3fa304810e",
+    "0c2c232f78e00bb2a440ca9ffdb1917d4b7d1971aedb0a1b1b47babddefa3b3f",
+    "4bf37432c445c8937fe85101e9517f109b66a6ab2c334809bf82005b19b1397f",
+    "dcf5f4dc5d65504961f917b34343e0cb1d066fc35cc8c9c9ab50ddb52ef0fcda"
+  ]
+}

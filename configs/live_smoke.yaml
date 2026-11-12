@@ -1,8 +1,8 @@
-# PROPOSED, UNVERIFIED: needs OPENROUTER_API_KEY. Synthetic inputs only.
+# VERIFIED direct Google synthetic smoke, 12 Nov 2026; settings frozen. Real pilot data/selectors pending.
 data_kind: synthetic
 demo_path: tests/fixtures/demo.jsonl
 dev_path: tests/fixtures/dev.jsonl
-output_path: results/live_smoke/gemma_free_smoke.jsonl
+output_path: results/live_smoke/google_direct/smoke.jsonl
 conditions: [U-U-U, U-U-E, U-E-E, E-E-E]
 strategies: [random]
 shot_count: 2
@@ -11,11 +11,11 @@ selector: tests.fixtures.selector:select_examples
 selector_version: fixture-table-v1
 verification_receipt: null
 model:
-  backend: openrouter
-  model_id: google/gemma-4-31b-it:free
-  endpoint: https://openrouter.ai/api/v1/chat/completions
-  credential_env: OPENROUTER_API_KEY
-  route: google-ai-studio
+  backend: google_ai_studio
+  model_id: gemma-4-31b-it
+  endpoint: https://generativelanguage.googleapis.com/v1beta/models/gemma-4-31b-it:generateContent
+  credential_env: GOOGLE_API_KEY
+  route: google-ai-studio-direct
   free_only: true
   max_requests_per_invocation: 40
   min_request_interval_seconds: 3.1
@@ -24,7 +24,7 @@ model:
     top_p: 1
     max_tokens: 2048
     seed: 42
-    reasoning: {enabled: false}
+    thinking_level: minimal
   timeout_seconds: 120
   max_attempts: 3
   max_retry_wait_seconds: 30

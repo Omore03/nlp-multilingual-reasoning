@@ -1,0 +1,41 @@
+{
+  "checked_at_utc": "2026-11-12T17:45:20.422376+00:00",
+  "provider": "Google AI Studio direct",
+  "model_id": "gemma-4-31b-it",
+  "status": "four-condition synthetic live smoke verified",
+  "model_access_metadata": {
+    "inputTokenLimit": 262144,
+    "name": "models/gemma-4-31b-it",
+    "outputTokenLimit": 32768,
+    "supportedGenerationMethods": [
+      "generateContent",
+      "countTokens"
+    ],
+    "version": "001"
+  },
+  "conditions": [
+    "U-U-U",
+    "U-U-E",
+    "U-E-E",
+    "E-E-E"
+  ],
+  "successful_conditions": 4,
+  "generation_attempts": 5,
+  "terminal_failures": 0,
+  "successful_token_usage": {
+    "prompt_tokens": 922,
+    "completion_tokens": 192,
+    "total_tokens": 1114
+  },
+  "free_project_tier_confirmed_by_user": true,
+  "independent_cloud_billing_audit": false,
+  "pricing_source": "https://ai.google.dev/gemini-api/docs/pricing#gemma-4",
+  "measured_cost_usd": null,
+  "paid_fallback_used": false,
+  "output_path": "results/live_smoke/google_direct/smoke.jsonl",
+  "output_sha256": "61495daddeb16955910167c95e74a1806193d2522e8e7ae3f8a654691b04e5ec",
+  "receipt_path": "results/live_smoke/google_direct/model_verification.json",
+  "model_hash": "ef2b04a7c28fa1f95500630f3fea4c8e6d4736869d761436d4c6e5982ff099da",
+  "resume_verification": "zero new requests and byte-for-byte unchanged output; pilot receipt matched",
+  "review": "Visible worked solutions, UTF-8 Urdu and literal final marker inspected; synthetic engineering smoke only, not research evaluation."
+}

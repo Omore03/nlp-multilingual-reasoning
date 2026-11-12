@@ -8,7 +8,7 @@
 - [x] Separate synthetic fixtures and mock outputs; no synthetic production inputs/results.
 - [x] Reproducible setup, integration contract, ownership/team workflow, model evidence.
 - [x] Final verification report and private GitHub push verified (see docs/verification.md).
-- [ ] Authenticated real-model smoke and final model freeze (blocked on free API credential/access; no payment required).
+- [x] Four-condition authenticated direct Google synthetic smoke and model freeze completed; no paid route used.
 
 Ammar's code and offline handoff can be complete while live integration is pending. The selected live configuration remains explicitly unverified until the credentialed smoke succeeds.
 
@@ -18,7 +18,7 @@ Ammar's code and offline handoff can be complete while live integration is pendi
 - [ ] Receive complete validator, source/version/license/translation notes and human review evidence.
 - [ ] Receive Rayyan's real random/similarity selectors, tests, exact encoder revision and cache identity.
 - [ ] Validate disjoint IDs, schema, valid unique ordered two-demo returns and Urdu retrieval for all conditions.
-- [ ] Complete four-condition live smoke; inspect output and freeze model settings.
+- [x] Complete four-condition live smoke; inspect output and freeze model settings (direct Google, synthetic fixture).
 - [ ] Run one real dev question through both selectors and all conditions (8 records).
 - [ ] Complete/reconcile 80 unique successful real records, or document terminal failures and compute/access blockers.
 - [ ] Preserve `results/pilot_raw.jsonl` and its manifest, prompts, selected IDs and provenance.
@@ -37,12 +37,14 @@ Ammar's code and offline handoff can be complete while live integration is pendi
 
 No fixture result, mock response, passing engineering test or private GitHub repository is evidence that the real pilot or final research submission is complete.
 
-## Free-only acceptance
+## Direct Google free-only acceptance
 
-- [x] Paid model IDs rejected; fixed `:free` route and zero request price ceilings.
-- [x] Live catalog zero-price/support preflight and unexpected cost halt.
-- [x] Pacing, bounded API-attempt budget and quota-aware resumption.
-- [x] Hosted CI automation removed; tests run locally.
-- [x] Free API key configured and authenticated without purchasing credits.
-- [ ] Obtain and inspect four actual Urdu/English completions; currently blocked by upstream shared-pool HTTP 429.
-- [ ] Complete the real pilot across available free quota days, preserving configuration and provenance.
+- [x] Fixed native Gemma model/endpoint; no paid or Gemini fallback, tools or billing changes.
+- [x] Google API key and explicit unbilled Free tier project confirmation required before calls.
+- [x] Native payload/metadata/visible-response handling, retries, pacing/budget and resumability tested offline.
+- [x] Hosted CI automation remains removed; tests run locally.
+- [x] Direct Google key/project configured and explicitly confirmed Free tier; key excluded from Git.
+- [x] Four genuine direct Urdu/English synthetic smoke outputs inspected; matching receipt preserved.
+- [ ] Complete the real pilot using actual project quota, preserving model/settings across quota windows.
+
+The earlier OpenRouter key was authenticated, but six attempts returned upstream shared-pool HTTP 429. That history is not successful direct Google verification.

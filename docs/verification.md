@@ -1,46 +1,54 @@
-# Executed engineering verification - free-only revision
+# Executed engineering verification - direct Google revision
 
-Date: 12 November 2026 (PKT). The user requires zero additional project spending. Six free-model inference requests were attempted and all returned HTTP 429; no model completion succeeded. No credit purchase, paid service, compute rental or subscription was made; the account reports zero usage.
+Date: 12 November 2026 (PKT). The user selected direct Google AI Studio and requires zero additional project spending. No billing changes, paid services, compute rental or subscription were made.
 
 ## Current executed checks
 
 | Check | Actual outcome |
 | --- | --- |
-| `python -m pytest -q` | **66 passed**, fully offline |
-| Mock preview, one question/two labels | 8 UTF-8 prompt records |
-| Four-condition mock smoke | 4 successful mock records |
-| Full mock matrix | 80 unique successful records, zero failures |
-| Resume | 0 new successes; prior matrix byte-for-byte unchanged |
-| Free live prompt preview | Succeeded without inference |
-| Free live authentication and smoke | Key authentication succeeded; six inference attempts returned upstream shared-pool HTTP 429, zero successful conditions, zero reported usage |
-| Public free endpoint catalog and Google model documentation | Checked; catalog reports zero pricing and required parameter support |
-| Paid-ID/config/direct-adapter rejection | Passed offline |
-| Missing/nonzero catalog pricing and wrong/unsupported route rejection | Passed; no inference POST sent |
-| Zero request price ceilings, fixed provider and fallback disabled | Verified in captured HTTPX mock payloads |
-| Unexpected provider-reported cost | Stops the invocation with a policy failure |
-| API-attempt budget, 3.1-second pacing and partial resume | Passed using an injected clock and simulated responses |
-| Recognized exhausted daily quota | Stops after one failed attempt without retries or remaining-matrix calls |
+| `python -m pytest -q` | **90 passed**, fully offline |
+| Native Google REST payload | Correct model/endpoint, user text parts, generationConfig, key in header; no query key, tools, OpenRouter fields or fallback |
+| Native visible response/token/version metadata | Passed; separate thought parts excluded; no dollar cost fabricated |
+| Wrong model/endpoint/credentials/paid fallback | Rejected by configuration/policy checks |
+| Missing key or free-project confirmation | Blocks backend creation before any network operation |
+| Model metadata preflight | Wrong identity/method/output capacity stops before inference |
+| Native HTTP errors and structured retries | Sanitized terminal/transient behavior and RetryInfo honored |
+| Google daily quota | Stops without repeat attempts or the remaining matrix calls |
+| Direct receipt simulation, pacing, budget and resume | Passed offline using HTTPX MockTransport and injected clocks |
+| Mock preview | 8 UTF-8 prompt records, one question/two fixture labels/four conditions |
+| Four-condition mock smoke | 4 successful deterministic mock records |
+| Full mock matrix | 80 unique successful mock records; no failures |
+| Matrix resume | 0 new successes; existing matrix byte-for-byte unchanged |
+| Authenticated direct Google live smoke | Four successful conditions in five generation attempts; zero terminal failures |
+| Live resume and pilot receipt | Zero new requests, unchanged output bytes, receipt matches pilot settings |
 
-The suite also retains prompt language/order/completeness, target-gold exclusion, selector boundary, ID/schema separation, UTF-8, required metadata, retry/failure, locking, incompatible-run and explicit tail-recovery tests. `pytest.ini` restricts discovery to `tests/` so local ignored reproduction checkouts do not cause duplicate test-module discovery.
+The remaining suite retains prompt language/order/completeness, target-gold exclusion, selector boundary, ID/schema separation, UTF-8, required metadata, retry/failure, locks, incompatible-run and explicit tail-recovery checks. Historical OpenRouter free-only tests remain, but that adapter is not the active pilot route or an automatic fallback.
 
-Current reviewable artifacts: `results/mock/free_preview.jsonl`, `results/mock/free_smoke.jsonl`, `results/mock/free_matrix.jsonl` and adjacent smoke/matrix manifests. All are synthetic/mock engineering artifacts. No mathematical accuracy, Urdu model quality or selector research result is claimed.
+Current synthetic/mock artifacts: `results/mock/google_direct_preview.jsonl`, `results/mock/google_direct_smoke.jsonl`, `results/mock/google_direct_matrix.jsonl` and adjacent smoke/matrix manifests. The filenames identify the implementation revision; **the backend is still mock**, and these are not actual Google responses or research results.
 
 Current matrix SHA-256, unchanged after no-op resume:
 
 ```text
-370355b7c209525b653afcbe2a92fe57e7930abcbd8e68566aab8a0def04029f
+6a7723b4bd51f826bcc1520b9cf21d37667ad1d7f953a78f23b812fcc9ff3fc2
 ```
 
-Earlier `preview.jsonl`, `smoke.jsonl`, `matrix.jsonl` and their manifests are preserved historical mock evidence from the initial implementation. Their source/settings fingerprints intentionally differ. The initial revision had 51 passing offline tests and passed a clean local clone with standard venv/pip setup, prompt preview, mock smoke, full matrix and resume. That historical clean-clone check does not imply the new free live route was tested with credentials.
+Earlier mock runs/manifests remain untouched under their original names. The initial implementation had 51 passing tests and passed a clean local clone with standard venv/pip setup and mock matrix/resume. The OpenRouter free-only revision had 66 passing tests. Those historical checks do not establish authenticated native Google access.
 
-HTTPX tests that simulate live receipts run only in pytest temporary directories. They are protocol simulations, not authenticated access evidence. The current ignored live-smoke journal contains two terminal failure rows covering six attempts, with no successful responses or verification receipt. Sanitized key/quota and shared-pool evidence is in `docs/live_access_check.json`. The earlier blocked paid-model preflight is also preserved separately and cannot satisfy the new model hash.
+## Live status
 
-## Repository and zero-cost workflow
+Direct Google credentials are stored only in ignored `.env`. The user confirmed Free tier and no attached billing account before calls. **All four direct conditions succeeded** on the synthetic fixture: U-U-U, U-U-E, U-E-E and E-E-E. Five generation attempts were used; all four final rows succeeded. Returned model `gemma-4-31b-it`, model metadata version `001`, input limit 262144, output limit 32768. Successful usage totals: 922 prompt + 192 completion = 1114 tokens. Google does not report measured dollar cost here, so none is fabricated; the model is documented free-only and no paid fallback/billing change was used.
 
-Private repository: https://github.com/Omore03/nlp-multilingual-reasoning, branch `main`. The initial implementation and handoff commits were pushed and remote hashes verified. The free-only revision updates configuration, adapter safeguards, tests and documentation; publication is checked in the delivery response. No secrets, environment, PDFs, weights, temporary renders or fabricated production data/results are published.
+The responses were inspected for worked solutions, Urdu UTF-8 and terminal `FINAL_ANSWER:` formatting, without adding Saad's parser/metrics or research grading fields. They are real hosted outputs to **synthetic** questions, not an integrated research pilot or Urdu quality certification. The genuine journal, manifest and freeze receipt are committed selectively after secret/provenance review under `results/live_smoke/google_direct/`. The receipt matches the active pilot model hash.
 
-Historical hosted Actions runs returned `startup_failure` before jobs existed, with no logs (runs 43266675790 and 43266979025). **Hosted automation is now removed**, so this project does not depend on paid runner time or a CI repair. Local tests are the required merge check. Repository visibility and account billing settings were not changed.
+A live resume added zero records, made zero new requests, and left the four-row journal byte-for-byte unchanged. Live journal SHA-256: `61495daddeb16955910167c95e74a1806193d2522e8e7ae3f8a654691b04e5ec`. Sanitized evidence is in `docs/google_live_access_check.json`. The local project confirmation is explicitly user-provided, not an independent Cloud Billing audit.
+The earlier OpenRouter account/key was authenticated and reported zero usage, a zero spending limit and all 50 daily free requests remaining. Six inference attempts returned upstream shared-pool HTTP 429, with no successful completion. Its sanitized historical evidence remains in `docs/live_access_check.json`; no credential value is recorded. Active direct Google output/receipt live under `results/live_smoke/google_direct/`, separate from those prior attempts.
+
+## Publication and workflow
+
+Private repository: https://github.com/Omore03/nlp-multilingual-reasoning, branch `main`. Earlier implementation/free-only handoff commits were pushed with matching remote hashes. Direct-route publication is checked in the delivery response. No secrets, environments, PDFs, weights, temporary renders or fabricated production data/results are published.
+
+Hosted Actions automation remains removed under the zero-cost requirement; local tests are the merge check. Historical startup-failed CI runs are not an active dependency. Repository visibility and account billing settings are unchanged.
 
 ## Remaining real integration
 
-The free API key is configured and authenticated. Retry the four-condition free smoke after Google AI Studio shared-pool capacity becomes available; then inspect Urdu/English outputs before freezing the model. No purchase or upgrade is needed or authorized. Obtain Hussain's reviewed 20-demo/10-dev data, validator and provenance; Rayyan's real selectors/tests/encoder and cache identity; and Saad's evaluation implementation. Complete the genuine pilot across available free daily quota windows, preserving configuration between days. Instructor access, later full-study deliverables and final submission remain pending.
+Direct key/project confirmation, four-condition smoke and model freeze are complete. Integrate Hussain's reviewed 20-demo/10-dev package, validator and provenance; Rayyan's real selectors/tests/encoder/cache identity; and Saad's evaluation. Complete the genuine 80-record pilot using actual Google project quota, preserving settings across quota windows. Instructor access, later full-study deliverables and final submission remain pending.

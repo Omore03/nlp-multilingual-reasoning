@@ -53,8 +53,12 @@ Live and real result directories are ignored initially to prevent accidental pub
 
 ## Handoff and submission
 
-Use `docs/submission_checklist.md` to distinguish Ammar's implementation from integrated pilot and final submission. Current blockers are the actual WhatsApp data/selector packages, a free OpenRouter API credential/access and Saad's evaluation. Repository publication alone does not complete the team project. Resolve instructor access or repository visibility before final submission, with an explicit owner decision.
+Use `docs/submission_checklist.md` to distinguish Ammar's implementation from integrated pilot and final submission. Current blockers are the actual WhatsApp data/selector packages and Saad's evaluation. Direct Google free-project confirmation, synthetic live smoke and model freeze are complete. Repository publication alone does not complete the team project. Resolve instructor access or repository visibility before final submission, with an explicit owner decision.
 
 ## Zero project spending
 
-Use existing local hardware and the fixed free model route only. No payment method, credit purchase, top-up, paid fallback, subscription or rented compute is required. At the unfunded free tier, plan at least two quota days for 80 records and resume after quota resets. Keep the model/settings fixed between days. Do not restore hosted Actions or purchase extra capacity as a workaround; local `python -m pytest -q` is the verification gate.
+Use existing local hardware and the fixed free model route only. No payment method, credit purchase, top-up, paid fallback, subscription or rented compute is required. Use Google AI Studio's actual per-project/model free quota; the 80 records may require multiple quota windows. Resume only when quota permits. Keep the model/settings fixed between days. Do not restore hosted Actions or purchase extra capacity as a workaround; local `python -m pytest -q` is the verification gate.
+
+## Google project/key handoff
+
+In Google AI Studio Projects, verify the key's project shows Free tier and Set up billing (no billing account attached). Save `GOOGLE_API_KEY` and `GOOGLE_AI_STUDIO_FREE_TIER_CONFIRMED=true` locally after that check. Do not share the key in chat or commits. The direct native backend is the active pilot route; the preserved OpenRouter adapter is historical and never an automatic fallback. Native smoke and receipt live under `results/live_smoke/google_direct/`.

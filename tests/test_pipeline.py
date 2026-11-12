@@ -299,7 +299,7 @@ def test_mock_is_deterministic():
 
 def test_openrouter_payload_response_and_redaction(project, monkeypatch):
     _, _ = project
-    c = r.load_config('configs/live_smoke.yaml')
+    c = r.load_config('configs/openrouter_live_smoke.yaml')
     monkeypatch.setenv('OPENROUTER_API_KEY', 'secret-test-value')
     def handler(request):
         payload = json.loads(request.content)
@@ -318,7 +318,7 @@ def test_openrouter_payload_response_and_redaction(project, monkeypatch):
 @pytest.mark.parametrize('status,transient', [(400, False), (401, False), (403, False), (429, True), (503, True)])
 def test_http_error_sanitization(project, monkeypatch, status, transient):
     _, _ = project
-    c = r.load_config('configs/live_smoke.yaml')
+    c = r.load_config('configs/openrouter_live_smoke.yaml')
     monkeypatch.setenv('OPENROUTER_API_KEY', 'secret-test-value')
     client = free_client(lambda _: httpx.Response(status, text='secret-test-value', headers={'Retry-After': '2'}))
     backend = OpenRouterBackend(c['model'], client, sleep=lambda _: None)
@@ -356,7 +356,7 @@ def test_retry_after_http_date():
 ])
 def test_provider_edge_responses(project, monkeypatch, body, code):
     _, _ = project
-    c = r.load_config('configs/live_smoke.yaml')
+    c = r.load_config('configs/openrouter_live_smoke.yaml')
     monkeypatch.setenv('OPENROUTER_API_KEY', 'secret-test-value')
     client = free_client(lambda _: httpx.Response(200, json=body))
     with pytest.raises(BackendError, match=code):
@@ -365,7 +365,7 @@ def test_provider_edge_responses(project, monkeypatch, body, code):
 
 def test_live_smoke_receipt_offline_simulation(project, monkeypatch):
     root, _ = project
-    c = r.load_config('configs/live_smoke.yaml')
+    c = r.load_config('configs/openrouter_live_smoke.yaml')
     monkeypatch.setenv('OPENROUTER_API_KEY', 'secret-test-value')
     body = {'id': 'fake-request-secret-test-value', 'model': c['model']['model_id'], 'provider': 'Google AI Studio',
             'choices': [{'message': {'content': 'SIMULATED TEST OUTPUT'}, 'finish_reason': 'stop'}]}
@@ -373,7 +373,8 @@ def test_live_smoke_receipt_offline_simulation(project, monkeypatch):
     backend = OpenRouterBackend(c['model'], client, sleep=lambda _: None)
     assert r.run(c, question_limit=1, backend=backend)['total_successes'] == 4
     assert b'secret-test-value' not in (root / c['output_path']).read_bytes()
-    pilot = r.load_config('configs/pilot.yaml')
+    pilot = deepcopy(c)
+    pilot['verification_receipt'] = 'results/live_smoke/model_verification.json'
     r.require_live_receipt(pilot)
     pilot['model']['decoding']['temperature'] = 0.1
     with pytest.raises(ValueError, match='incompatible live verification'):
@@ -399,7 +400,7 @@ def test_lock_rejects_concurrent_writer(project):
 @pytest.mark.parametrize('change', ['paid_id', 'wrong_route', 'disabled_policy', 'unpaced', 'oversized_budget'])
 def test_free_policy_rejects_unsafe_config(project, change):
     _, _ = project
-    c = r.load_config('configs/live_smoke.yaml')
+    c = r.load_config('configs/openrouter_live_smoke.yaml')
     if change == 'paid_id': c['model']['model_id'] = 'google/gemma-4-31b-it'
     if change == 'wrong_route': c['model']['route'] = 'deepinfra/fp8'
     if change == 'disabled_policy': c['model']['free_only'] = False
@@ -411,7 +412,7 @@ def test_free_policy_rejects_unsafe_config(project, change):
 
 def test_direct_backend_rejects_paid_model_before_network(project):
     _, _ = project
-    c = r.load_config('configs/live_smoke.yaml')
+    c = r.load_config('configs/openrouter_live_smoke.yaml')
     c['model']['model_id'] = 'qwen/qwen3-235b-a22b-2507'
     with pytest.raises(ValueError, match='Zero-cost policy'):
         OpenRouterBackend(c['model'])
@@ -420,7 +421,7 @@ def test_direct_backend_rejects_paid_model_before_network(project):
 @pytest.mark.parametrize('change', ['price', 'request_fee', 'missing_price', 'missing_route', 'unsupported', 'malformed'])
 def test_free_catalog_fail_closed_before_any_inference(project, monkeypatch, change):
     _, _ = project
-    c = r.load_config('configs/live_smoke.yaml')
+    c = r.load_config('configs/openrouter_live_smoke.yaml')
     monkeypatch.setenv('OPENROUTER_API_KEY', 'secret-test-value')
     body = free_catalog()
     endpoint = body['data']['endpoints'][0]
@@ -442,7 +443,7 @@ def test_free_catalog_fail_closed_before_any_inference(project, monkeypatch, cha
 
 def test_unexpected_reported_cost_stops_invocation(project, monkeypatch):
     root, _ = project
-    c = r.load_config('configs/live_smoke.yaml')
+    c = r.load_config('configs/openrouter_live_smoke.yaml')
     monkeypatch.setenv('OPENROUTER_API_KEY', 'secret-test-value')
     body = {'choices': [{'message': {'content': 'reply'}, 'finish_reason': 'stop'}], 'usage': {'cost': 0.01}}
     backend = OpenRouterBackend(c['model'], free_client(lambda _: httpx.Response(200, json=body)))
@@ -454,7 +455,7 @@ def test_unexpected_reported_cost_stops_invocation(project, monkeypatch):
 
 def test_free_budget_pacing_and_resume(project, monkeypatch):
     root, _ = project
-    c = r.load_config('configs/live_smoke.yaml')
+    c = r.load_config('configs/openrouter_live_smoke.yaml')
     c['model']['max_requests_per_invocation'] = 2
     monkeypatch.setenv('OPENROUTER_API_KEY', 'secret-test-value')
     clock, waits, requests = [0.0], [], []
@@ -482,7 +483,7 @@ def test_free_budget_pacing_and_resume(project, monkeypatch):
 
 def test_daily_free_quota_exhaustion_no_retry_or_matrix_waste(project, monkeypatch):
     root, _ = project
-    c = r.load_config('configs/live_smoke.yaml')
+    c = r.load_config('configs/openrouter_live_smoke.yaml')
     monkeypatch.setenv('OPENROUTER_API_KEY', 'secret-test-value')
     client = free_client(lambda _: httpx.Response(429, headers={'X-RateLimit-Remaining': '0', 'X-RateLimit-Limit': '50'}))
     backend = OpenRouterBackend(c['model'], client, sleep=lambda _: pytest.fail('Do not retry exhausted daily quota'))
