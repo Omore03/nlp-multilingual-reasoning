@@ -4,6 +4,8 @@ University NLP semester project on how demonstration selection and Urdu/English 
 
 **Status · 12 November 2026:** prompting and inference are implemented, 90 offline tests pass, and a live API smoke test passed all four language conditions on synthetic questions. Teammate files have arrived for review. The real pilot and final project submission are pending.
 
+**Next deadline: 23 November 2026 — Progress Meeting and Intermediate Report, with no further extensions.** We still need measured baseline results and an IEEE double-column report of at most three pages, including references. See the [intermediate deliverable plan](docs/intermediate_report_plan.md).
+
 ## Team contributions
 
 | Member | Responsibility | Current contribution |
@@ -88,5 +90,6 @@ The [run guide](docs/running.md) covers the live smoke test, team-module integra
 - [Received files and pending handoffs](docs/handoff_status.md)
 - [Checks and live verification](docs/verification.md)
 - [Submission checklist](docs/submission_checklist.md)
+- [23 November deliverable and report plan](docs/intermediate_report_plan.md)
 
-This repository is ready to review as work in progress. Final submission still needs the real pilot, Saad's evaluation and the remaining team deliverables. The repository is private; instructor access must be arranged before submission.
+The code is available for review. The intermediate deliverable still needs baseline results and its report; final submission also needs the remaining team experiments and evaluation. The repository is private; instructor access must be arranged before submission.

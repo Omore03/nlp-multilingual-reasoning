@@ -1,6 +1,19 @@
 # Submission checklist
 
-Updated 12 November 2026. Ready for a progress review; final project submission is pending.
+Updated 12 November 2026. Code is available for review. The intermediate deliverable and final project submission are pending.
+
+## Intermediate deliverable — due 23 November 2026
+
+The TA requires baseline implementation and results, an initial novelty implementation or clear plan, and a concise report. No further extensions. The meeting schedule is still to be announced.
+
+- [ ] Obtain and score real baseline outputs; synthetic smoke and mock outputs do not qualify.
+- [ ] Describe the proposed contribution and distinguish implemented methods from planned methods.
+- [ ] Write Abstract, Introduction, Methodology, Results and References.
+- [ ] Use the IEEE double-column template; keep the entire report within three pages, including references.
+- [ ] Check tables against the actual raw outputs, report limitations and prepare the progress demonstration.
+- [ ] Submit by 23 November and attend the meeting at the announced time.
+
+See the [report plan and suggested milestones](intermediate_report_plan.md). The planned 10-question pilot is preliminary evidence, not the full benchmark. Confirm its sufficiency with the TA if the team is relying on it for this deliverable.
 
 ## Shared implementation — complete
 
