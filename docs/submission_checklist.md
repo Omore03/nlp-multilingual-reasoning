@@ -43,5 +43,6 @@ No fixture result, mock response, passing engineering test or private GitHub rep
 - [x] Live catalog zero-price/support preflight and unexpected cost halt.
 - [x] Pacing, bounded API-attempt budget and quota-aware resumption.
 - [x] Hosted CI automation removed; tests run locally.
-- [ ] Obtain a free API key without purchasing credits, then verify actual Urdu/English outputs.
+- [x] Free API key configured and authenticated without purchasing credits.
+- [ ] Obtain and inspect four actual Urdu/English completions; currently blocked by upstream shared-pool HTTP 429.
 - [ ] Complete the real pilot across available free quota days, preserving configuration and provenance.

@@ -1,6 +1,6 @@
 # Executed engineering verification - free-only revision
 
-Date: 12 November 2026 (PKT). The user requires zero additional project spending. No model API call, credit purchase, paid service, compute rental or subscription was made.
+Date: 12 November 2026 (PKT). The user requires zero additional project spending. Six free-model inference requests were attempted and all returned HTTP 429; no model completion succeeded. No credit purchase, paid service, compute rental or subscription was made; the account reports zero usage.
 
 ## Current executed checks
 
@@ -12,7 +12,7 @@ Date: 12 November 2026 (PKT). The user requires zero additional project spending
 | Full mock matrix | 80 unique successful records, zero failures |
 | Resume | 0 new successes; prior matrix byte-for-byte unchanged |
 | Free live prompt preview | Succeeded without inference |
-| Free live inference attempt | Blocked before any model call: `OPENROUTER_API_KEY` is still a placeholder |
+| Free live authentication and smoke | Key authentication succeeded; six inference attempts returned upstream shared-pool HTTP 429, zero successful conditions, zero reported usage |
 | Public free endpoint catalog and Google model documentation | Checked; catalog reports zero pricing and required parameter support |
 | Paid-ID/config/direct-adapter rejection | Passed offline |
 | Missing/nonzero catalog pricing and wrong/unsupported route rejection | Passed; no inference POST sent |
@@ -33,7 +33,7 @@ Current matrix SHA-256, unchanged after no-op resume:
 
 Earlier `preview.jsonl`, `smoke.jsonl`, `matrix.jsonl` and their manifests are preserved historical mock evidence from the initial implementation. Their source/settings fingerprints intentionally differ. The initial revision had 51 passing offline tests and passed a clean local clone with standard venv/pip setup, prompt preview, mock smoke, full matrix and resume. That historical clean-clone check does not imply the new free live route was tested with credentials.
 
-HTTPX tests that simulate live receipts run only in pytest temporary directories. They are protocol simulations, not authenticated access evidence. The current ignored live-smoke preflight manifest contains no responses or verification receipt. The earlier blocked paid-model preflight is also preserved separately and cannot satisfy the new model hash.
+HTTPX tests that simulate live receipts run only in pytest temporary directories. They are protocol simulations, not authenticated access evidence. The current ignored live-smoke journal contains two terminal failure rows covering six attempts, with no successful responses or verification receipt. Sanitized key/quota and shared-pool evidence is in `docs/live_access_check.json`. The earlier blocked paid-model preflight is also preserved separately and cannot satisfy the new model hash.
 
 ## Repository and zero-cost workflow
 
@@ -43,4 +43,4 @@ Historical hosted Actions runs returned `startup_failure` before jobs existed, w
 
 ## Remaining real integration
 
-Supply a free OpenRouter API key without buying credits; run four-condition free smoke and inspect Urdu/English outputs before freezing the model. Obtain Hussain's reviewed 20-demo/10-dev data, validator and provenance; Rayyan's real selectors/tests/encoder and cache identity; and Saad's evaluation implementation. Complete the genuine pilot across available free daily quota windows, preserving configuration between days. Instructor access, later full-study deliverables and final submission remain pending.
+The free API key is configured and authenticated. Retry the four-condition free smoke after Google AI Studio shared-pool capacity becomes available; then inspect Urdu/English outputs before freezing the model. No purchase or upgrade is needed or authorized. Obtain Hussain's reviewed 20-demo/10-dev data, validator and provenance; Rayyan's real selectors/tests/encoder and cache identity; and Saad's evaluation implementation. Complete the genuine pilot across available free daily quota windows, preserving configuration between days. Instructor access, later full-study deliverables and final submission remain pending.

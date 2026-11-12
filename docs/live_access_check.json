@@ -1,0 +1,27 @@
+{
+  "checked_at_utc": "2026-11-12T17:32:08.552723+00:00",
+  "model_id": "google/gemma-4-31b-it:free",
+  "provider": "google-ai-studio",
+  "credential_status": "authenticated (HTTP 200 from key endpoint)",
+  "account": {
+    "is_free_tier": true,
+    "limit": 0,
+    "limit_remaining": 0,
+    "usage": 0,
+    "free_model_daily_requests": {
+      "used": 0,
+      "limit": 50,
+      "remaining": 50
+    }
+  },
+  "smoke_status": "blocked by upstream shared free pool; no successful completion",
+  "successful_conditions": 0,
+  "attempts": 6,
+  "last_error": "http_429",
+  "observed_limit_source": "upstream_provider_shared_pool",
+  "observed_provider_name": "Google AI Studio",
+  "retry_after_header": null,
+  "paid_fallback_used": false,
+  "local_journal": "results/live_smoke/gemma_free_smoke.jsonl",
+  "next_action": "Retry the identical free-model smoke after shared capacity becomes available; do not purchase credits or use paid fallback."
+}

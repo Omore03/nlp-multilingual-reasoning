@@ -50,7 +50,7 @@ HTTP timeout remains 120 seconds per operation. At most three attempts per recor
 
 ## Actual verification status
 
-Public catalog/documentation: checked. Payload, zero-price gates, quota/pacing, retries and resume: tested offline. **Authenticated inference, account access, provider-reported usage and Urdu quality remain unverified.** The existing local `.env` has only a placeholder. No paid or live inference was performed.
+Public catalog/documentation: checked. Payload, zero-price gates, quota/pacing, retries and resume: tested offline. **API-key authentication is verified** (HTTP 200 from the key endpoint), with an unfunded free-tier account, a zero spending limit and zero reported usage. Six inference attempts returned HTTP 429 from Google AI Studio with `limit_source: upstream_provider_shared_pool`, while the account reported all 50 daily free requests remaining. **No successful completion or Urdu-quality verification was obtained**, and no freeze receipt was issued. The real key is held only in ignored `.env`; no credential value is recorded in Git. See `docs/live_access_check.json` for the sanitized access evidence. No paid fallback or purchase was used. Retry the identical smoke after upstream free capacity becomes available; this is not an account-credit blocker.
 
 ```bash
 python -m src.inference.runner run --config configs/live_smoke.yaml --question-limit 1 --resume

@@ -50,9 +50,9 @@ The mock emits a prompt hash and fixed placeholder number; it does not solve or 
 
 ## Proposed real model and live smoke
 
-`configs/pilot.yaml` and `configs/live_smoke.yaml` now specify **`google/gemma-4-31b-it:free`**, restricted to `google-ai-studio`. The adapter checks live catalog pricing, sends zero price ceilings, disables fallbacks and rejects paid IDs. Settings: temperature 0, top-p 1, seed 42, max output 2048, hidden reasoning disabled. **Authenticated access and Urdu quality remain unverified.** See [model decision](docs/model_decision.md) and its official sources.
+`configs/pilot.yaml` and `configs/live_smoke.yaml` now specify **`google/gemma-4-31b-it:free`**, restricted to `google-ai-studio`. The adapter checks live catalog pricing, sends zero price ceilings, disables fallbacks and rejects paid IDs. Settings: temperature 0, top-p 1, seed 42, max output 2048, hidden reasoning disabled. **Key authentication is verified; live completions and Urdu quality remain unverified because the provider shared free pool returned HTTP 429.** See [model decision](docs/model_decision.md) and its official sources.
 
-Create an unfunded free OpenRouter account/key, save it in `.env`, then run:
+For a fresh clone, create an unfunded free OpenRouter account/key and save it in `.env`. The current local key is already configured; retry after upstream free capacity becomes available:
 
 ```bash
 python -m src.inference.runner preview --config configs/live_smoke.yaml --question-limit 1
