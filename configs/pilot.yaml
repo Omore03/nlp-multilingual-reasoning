@@ -1,0 +1,26 @@
+# PROPOSED, UNVERIFIED: real data, selectors, and live smoke receipt required.
+data_kind: real
+demo_path: data/processed/demo_pool.jsonl
+dev_path: data/processed/dev.jsonl
+output_path: results/pilot_raw.jsonl
+conditions: [U-U-U, U-U-E, U-E-E, E-E-E]
+strategies: [random, similarity]
+shot_count: 2
+seed: 42
+selector: src.selection.select:select_examples
+selector_version: pending-rayyan-version
+verification_receipt: results/live_smoke/model_verification.json
+model:
+  backend: openrouter
+  model_id: qwen/qwen3-235b-a22b-2507
+  endpoint: https://openrouter.ai/api/v1/chat/completions
+  credential_env: OPENROUTER_API_KEY
+  route: deepinfra/fp8
+  decoding:
+    temperature: 0
+    top_p: 1
+    max_tokens: 2048
+    seed: 42
+  timeout_seconds: 120
+  max_attempts: 3
+  max_retry_wait_seconds: 30

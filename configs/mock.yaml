@@ -1,0 +1,25 @@
+data_kind: synthetic
+demo_path: tests/fixtures/demo.jsonl
+dev_path: tests/fixtures/dev.jsonl
+output_path: results/mock/matrix.jsonl
+conditions: [U-U-U, U-U-E, U-E-E, E-E-E]
+strategies: [random, similarity]
+shot_count: 2
+seed: 42
+selector: tests.fixtures.selector:select_examples
+selector_version: fixture-table-v1
+verification_receipt: null
+model:
+  backend: mock
+  model_id: deterministic-mock-v1
+  endpoint: null
+  credential_env: null
+  route: mock
+  decoding:
+    temperature: 0
+    top_p: 1
+    max_tokens: 2048
+    seed: 42
+  timeout_seconds: 120
+  max_attempts: 3
+  max_retry_wait_seconds: 30

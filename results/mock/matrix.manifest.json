@@ -1,0 +1,1227 @@
+{
+  "run_id": "3a73d85a6dfd34f514e47cc56c4ac59144643532321cef6e75ce354fb06ff885",
+  "identity": {
+    "configuration": {
+      "data_kind": "synthetic",
+      "demo_path": "tests/fixtures/demo.jsonl",
+      "dev_path": "tests/fixtures/dev.jsonl",
+      "conditions": [
+        "U-U-U",
+        "U-U-E",
+        "U-E-E",
+        "E-E-E"
+      ],
+      "strategies": [
+        "random",
+        "similarity"
+      ],
+      "shot_count": 2,
+      "seed": 42,
+      "selector": "tests.fixtures.selector:select_examples",
+      "selector_version": "fixture-table-v1",
+      "model": {
+        "backend": "mock",
+        "model_id": "deterministic-mock-v1",
+        "endpoint": null,
+        "credential_env": null,
+        "route": "mock",
+        "decoding": {
+          "temperature": 0,
+          "top_p": 1,
+          "max_tokens": 2048,
+          "seed": 42
+        },
+        "timeout_seconds": 120,
+        "max_attempts": 3,
+        "max_retry_wait_seconds": 30
+      }
+    },
+    "data": {
+      "demo_path": "34ae6b02e47747dee1cffb4ea554873f4453976684d8b58fb34d5b8297c46ef2",
+      "dev_path": "6cd5a6945274ffed789fa9288eb11756212e2eb98b3203001f874b8b30bf372d"
+    },
+    "sources": {
+      "src/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/inference/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/inference/backends.py": "a622c163cbce115553c7861ad62a876cb3c0ac76e6b35dd1d36cd6b82d8ad956",
+      "src/inference/contracts.py": "3d68881821ea45173482df8b255a95bc6f41624a1d90c64405e2d8b01066e602",
+      "src/inference/runner.py": "38068e6daffdf1815ffa1800906b41b9d5b68971a79747f0c8c17788dbccfb2e",
+      "src/prompting/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/prompting/templates.py": "87fe0bb61b2d296ce352182c71f541fb7a1d07b9113969312d1ac86bd00a85c4",
+      "tests/fixtures/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tests/fixtures/selector.py": "33bf54a496f28f3d6de0e24b41faf99f83c2445d659c44dbb9ff11da5cf84eab"
+    },
+    "software": {
+      "python": "3.12.12",
+      "PyYAML": "6.0.3",
+      "httpx": "0.28.1",
+      "python-dotenv": "1.2.1"
+    },
+    "template_version": "bilingual-math-2shot-v1",
+    "runner_version": "1.0.0",
+    "plan_hash": "d18db689fc872805c5cc08271ce94d89e82f32b4a196c4692795798a1c21940d"
+  },
+  "resolved_configuration": {
+    "data_kind": "synthetic",
+    "demo_path": "tests/fixtures/demo.jsonl",
+    "dev_path": "tests/fixtures/dev.jsonl",
+    "output_path": "results/mock/matrix.jsonl",
+    "conditions": [
+      "U-U-U",
+      "U-U-E",
+      "U-E-E",
+      "E-E-E"
+    ],
+    "strategies": [
+      "random",
+      "similarity"
+    ],
+    "shot_count": 2,
+    "seed": 42,
+    "selector": "tests.fixtures.selector:select_examples",
+    "selector_version": "fixture-table-v1",
+    "verification_receipt": null,
+    "model": {
+      "backend": "mock",
+      "model_id": "deterministic-mock-v1",
+      "endpoint": null,
+      "credential_env": null,
+      "route": "mock",
+      "decoding": {
+        "temperature": 0,
+        "top_p": 1,
+        "max_tokens": 2048,
+        "seed": 42
+      },
+      "timeout_seconds": 120,
+      "max_attempts": 3,
+      "max_retry_wait_seconds": 30
+    }
+  },
+  "created_at": "2026-11-12T17:09:04.770688+00:00",
+  "expected_records": 80,
+  "plan": [
+    {
+      "question_id": "synthetic-dev-01",
+      "strategy": "random",
+      "condition": "U-U-U",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-02",
+        "synthetic-demo-01"
+      ],
+      "prompt": "ہدف سوال کی زبان میں مکمل مرحلہ وار حل لکھیں۔ حل شدہ مثالوں کی پیروی کریں۔ آخری سطر میں صرف حتمی عددی جواب لکھیں۔ اس سطر کے شروع میں یہی نشان FINAL_ANSWER: لکھیں اور اس کے بعد جواب کا عدد لکھیں۔\n\nمثال 1\nسوال: ایک ڈبے میں 4 سرخ پنسلیں اور 5 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nمکمل حل: سرخ اور نیلی پنسلیں جمع کریں: 4 + 5 = 9۔ کل 9 پنسلیں ہیں۔\nFINAL_ANSWER: 9\n\nمثال 2\nسوال: ایک ڈبے میں 3 سرخ پنسلیں اور 4 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nمکمل حل: سرخ اور نیلی پنسلیں جمع کریں: 3 + 4 = 7۔ کل 7 پنسلیں ہیں۔\nFINAL_ANSWER: 7\n\nہدف سوال\nسوال: ایک ڈبے میں 3 سرخ پنسلیں اور 4 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "b7418626a9ff55b1200a35b2d3e94ceaf365a03be1df3b57b4629dcdd4a23112",
+      "record_id": "98bbaa3481bdcc00111be6896f836aedf960031a21e8419dce35fafab283f716"
+    },
+    {
+      "question_id": "synthetic-dev-01",
+      "strategy": "random",
+      "condition": "U-U-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-02",
+        "synthetic-demo-01"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: ایک ڈبے میں 4 سرخ پنسلیں اور 5 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nWorked solution: سرخ اور نیلی پنسلیں جمع کریں: 4 + 5 = 9۔ کل 9 پنسلیں ہیں۔\nFINAL_ANSWER: 9\n\nDemonstration 2\nQuestion: ایک ڈبے میں 3 سرخ پنسلیں اور 4 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nWorked solution: سرخ اور نیلی پنسلیں جمع کریں: 3 + 4 = 7۔ کل 7 پنسلیں ہیں۔\nFINAL_ANSWER: 7\n\nTarget question\nQuestion: ایک ڈبے میں 3 سرخ پنسلیں اور 4 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "dd10a6cae5bcb5e9b87eda6a3cb979f7e9a8463b9e88b94737b43e31a7bd8e89",
+      "record_id": "cf929e97d5e4106cd61117b5d31120c73379f5f8a5216b61844b07428d220bab"
+    },
+    {
+      "question_id": "synthetic-dev-01",
+      "strategy": "random",
+      "condition": "U-E-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-02",
+        "synthetic-demo-01"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: A box has 4 red pencils and 5 blue pencils. How many pencils are in the box?\nWorked solution: Add the 4 red and 5 blue pencils: 4 + 5 = 9. There are 9 pencils.\nFINAL_ANSWER: 9\n\nDemonstration 2\nQuestion: A box has 3 red pencils and 4 blue pencils. How many pencils are in the box?\nWorked solution: Add the 3 red and 4 blue pencils: 3 + 4 = 7. There are 7 pencils.\nFINAL_ANSWER: 7\n\nTarget question\nQuestion: ایک ڈبے میں 3 سرخ پنسلیں اور 4 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "f0d6cf572c08a6b10fe52f6ded9daeab35e62424a7cd0fc61d6869f5ca930706",
+      "record_id": "99d61a06b98cbce77b9ab5ce91b9c612421e82afefde2336667fb4262ddb3ac9"
+    },
+    {
+      "question_id": "synthetic-dev-01",
+      "strategy": "random",
+      "condition": "E-E-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-02",
+        "synthetic-demo-01"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: A box has 4 red pencils and 5 blue pencils. How many pencils are in the box?\nWorked solution: Add the 4 red and 5 blue pencils: 4 + 5 = 9. There are 9 pencils.\nFINAL_ANSWER: 9\n\nDemonstration 2\nQuestion: A box has 3 red pencils and 4 blue pencils. How many pencils are in the box?\nWorked solution: Add the 3 red and 4 blue pencils: 3 + 4 = 7. There are 7 pencils.\nFINAL_ANSWER: 7\n\nTarget question\nQuestion: A box has 3 red pencils and 4 blue pencils. How many pencils are in the box?",
+      "prompt_hash": "37c7fba82d7beafe3e89b49fbf56ad7fb63a285d9c040f20ff7d18af676e10a6",
+      "record_id": "eda95016c696a39e93cdd443671f92ca63ff6cf4b7e2d4b2e3108a5b154ca3d7"
+    },
+    {
+      "question_id": "synthetic-dev-01",
+      "strategy": "similarity",
+      "condition": "U-U-U",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-04",
+        "synthetic-demo-03"
+      ],
+      "prompt": "ہدف سوال کی زبان میں مکمل مرحلہ وار حل لکھیں۔ حل شدہ مثالوں کی پیروی کریں۔ آخری سطر میں صرف حتمی عددی جواب لکھیں۔ اس سطر کے شروع میں یہی نشان FINAL_ANSWER: لکھیں اور اس کے بعد جواب کا عدد لکھیں۔\n\nمثال 1\nسوال: ایک ڈبے میں 6 سرخ پنسلیں اور 7 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nمکمل حل: سرخ اور نیلی پنسلیں جمع کریں: 6 + 7 = 13۔ کل 13 پنسلیں ہیں۔\nFINAL_ANSWER: 13\n\nمثال 2\nسوال: ایک ڈبے میں 5 سرخ پنسلیں اور 6 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nمکمل حل: سرخ اور نیلی پنسلیں جمع کریں: 5 + 6 = 11۔ کل 11 پنسلیں ہیں۔\nFINAL_ANSWER: 11\n\nہدف سوال\nسوال: ایک ڈبے میں 3 سرخ پنسلیں اور 4 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "6faffeb056f09024c5475869b6fe66d73b9c7f1a3f92278171e91169a61f1671",
+      "record_id": "c8f8284545f84904a65be3066a6f93dca28c6f638366cac8dfc7d45298891c16"
+    },
+    {
+      "question_id": "synthetic-dev-01",
+      "strategy": "similarity",
+      "condition": "U-U-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-04",
+        "synthetic-demo-03"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: ایک ڈبے میں 6 سرخ پنسلیں اور 7 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nWorked solution: سرخ اور نیلی پنسلیں جمع کریں: 6 + 7 = 13۔ کل 13 پنسلیں ہیں۔\nFINAL_ANSWER: 13\n\nDemonstration 2\nQuestion: ایک ڈبے میں 5 سرخ پنسلیں اور 6 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nWorked solution: سرخ اور نیلی پنسلیں جمع کریں: 5 + 6 = 11۔ کل 11 پنسلیں ہیں۔\nFINAL_ANSWER: 11\n\nTarget question\nQuestion: ایک ڈبے میں 3 سرخ پنسلیں اور 4 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "5d9032692b31832b508d6700ef0493b2261d8cb608dc386db34629e7b090b05a",
+      "record_id": "e507f1638f1182798c1afc2856f5d96bdb02770978d8c031a9b635da2edd8c6a"
+    },
+    {
+      "question_id": "synthetic-dev-01",
+      "strategy": "similarity",
+      "condition": "U-E-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-04",
+        "synthetic-demo-03"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: A box has 6 red pencils and 7 blue pencils. How many pencils are in the box?\nWorked solution: Add the 6 red and 7 blue pencils: 6 + 7 = 13. There are 13 pencils.\nFINAL_ANSWER: 13\n\nDemonstration 2\nQuestion: A box has 5 red pencils and 6 blue pencils. How many pencils are in the box?\nWorked solution: Add the 5 red and 6 blue pencils: 5 + 6 = 11. There are 11 pencils.\nFINAL_ANSWER: 11\n\nTarget question\nQuestion: ایک ڈبے میں 3 سرخ پنسلیں اور 4 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "cfaa2cd4fe2f3c89b945e658544655df9ae7156d05e4ea91e93ecbefc91ea7d2",
+      "record_id": "f8f3f1e80fe80604cf4802de8addd012c3813ea1b5504eb2f0c17ecac9b18a53"
+    },
+    {
+      "question_id": "synthetic-dev-01",
+      "strategy": "similarity",
+      "condition": "E-E-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-04",
+        "synthetic-demo-03"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: A box has 6 red pencils and 7 blue pencils. How many pencils are in the box?\nWorked solution: Add the 6 red and 7 blue pencils: 6 + 7 = 13. There are 13 pencils.\nFINAL_ANSWER: 13\n\nDemonstration 2\nQuestion: A box has 5 red pencils and 6 blue pencils. How many pencils are in the box?\nWorked solution: Add the 5 red and 6 blue pencils: 5 + 6 = 11. There are 11 pencils.\nFINAL_ANSWER: 11\n\nTarget question\nQuestion: A box has 3 red pencils and 4 blue pencils. How many pencils are in the box?",
+      "prompt_hash": "fd4a02812e0e674d0c3e1bd268eccce859b4692ab67b7a880958921b21054d69",
+      "record_id": "7dec6df802a97d3bf94c073b1f0bf52d43f1af73aa51845c5322b922408ec66f"
+    },
+    {
+      "question_id": "synthetic-dev-02",
+      "strategy": "random",
+      "condition": "U-U-U",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-02",
+        "synthetic-demo-01"
+      ],
+      "prompt": "ہدف سوال کی زبان میں مکمل مرحلہ وار حل لکھیں۔ حل شدہ مثالوں کی پیروی کریں۔ آخری سطر میں صرف حتمی عددی جواب لکھیں۔ اس سطر کے شروع میں یہی نشان FINAL_ANSWER: لکھیں اور اس کے بعد جواب کا عدد لکھیں۔\n\nمثال 1\nسوال: ایک ڈبے میں 4 سرخ پنسلیں اور 5 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nمکمل حل: سرخ اور نیلی پنسلیں جمع کریں: 4 + 5 = 9۔ کل 9 پنسلیں ہیں۔\nFINAL_ANSWER: 9\n\nمثال 2\nسوال: ایک ڈبے میں 3 سرخ پنسلیں اور 4 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nمکمل حل: سرخ اور نیلی پنسلیں جمع کریں: 3 + 4 = 7۔ کل 7 پنسلیں ہیں۔\nFINAL_ANSWER: 7\n\nہدف سوال\nسوال: ایک ڈبے میں 4 سرخ پنسلیں اور 5 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "03b0c500450f788174fa8ffc853ba5dd963b298615246f451f793310c04921c0",
+      "record_id": "3ddc127269e2f7e1588981aad5ca24f8affd832c8e9bdf8a958a95187351e494"
+    },
+    {
+      "question_id": "synthetic-dev-02",
+      "strategy": "random",
+      "condition": "U-U-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-02",
+        "synthetic-demo-01"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: ایک ڈبے میں 4 سرخ پنسلیں اور 5 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nWorked solution: سرخ اور نیلی پنسلیں جمع کریں: 4 + 5 = 9۔ کل 9 پنسلیں ہیں۔\nFINAL_ANSWER: 9\n\nDemonstration 2\nQuestion: ایک ڈبے میں 3 سرخ پنسلیں اور 4 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nWorked solution: سرخ اور نیلی پنسلیں جمع کریں: 3 + 4 = 7۔ کل 7 پنسلیں ہیں۔\nFINAL_ANSWER: 7\n\nTarget question\nQuestion: ایک ڈبے میں 4 سرخ پنسلیں اور 5 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "451c89c4fd034dfa3fc6f9faba8f27d0fa0ee2eb56a1414b1f01ff784951c4c9",
+      "record_id": "78055f6711e8096cddc00c2d0cfccaa6c2a34c41a6097b3bbb73bd540e369572"
+    },
+    {
+      "question_id": "synthetic-dev-02",
+      "strategy": "random",
+      "condition": "U-E-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-02",
+        "synthetic-demo-01"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: A box has 4 red pencils and 5 blue pencils. How many pencils are in the box?\nWorked solution: Add the 4 red and 5 blue pencils: 4 + 5 = 9. There are 9 pencils.\nFINAL_ANSWER: 9\n\nDemonstration 2\nQuestion: A box has 3 red pencils and 4 blue pencils. How many pencils are in the box?\nWorked solution: Add the 3 red and 4 blue pencils: 3 + 4 = 7. There are 7 pencils.\nFINAL_ANSWER: 7\n\nTarget question\nQuestion: ایک ڈبے میں 4 سرخ پنسلیں اور 5 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "0ce245ee489ed6fa3969f745901aa56bdb30c77e2e1b8701d31a1a971e830cc2",
+      "record_id": "3a5cd88ef5055e5b1e7145671a71459c2d72e365a9e116c7eb4d6940fac92636"
+    },
+    {
+      "question_id": "synthetic-dev-02",
+      "strategy": "random",
+      "condition": "E-E-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-02",
+        "synthetic-demo-01"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: A box has 4 red pencils and 5 blue pencils. How many pencils are in the box?\nWorked solution: Add the 4 red and 5 blue pencils: 4 + 5 = 9. There are 9 pencils.\nFINAL_ANSWER: 9\n\nDemonstration 2\nQuestion: A box has 3 red pencils and 4 blue pencils. How many pencils are in the box?\nWorked solution: Add the 3 red and 4 blue pencils: 3 + 4 = 7. There are 7 pencils.\nFINAL_ANSWER: 7\n\nTarget question\nQuestion: A box has 4 red pencils and 5 blue pencils. How many pencils are in the box?",
+      "prompt_hash": "2712b998603e0ee0d80567af507dae6562d7a786142efcdc1465f05bfe1c34f6",
+      "record_id": "e6bc364d7316139e823f57ff9d9fa69c48ea3e6658228ed0fba283a914b4defc"
+    },
+    {
+      "question_id": "synthetic-dev-02",
+      "strategy": "similarity",
+      "condition": "U-U-U",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-04",
+        "synthetic-demo-03"
+      ],
+      "prompt": "ہدف سوال کی زبان میں مکمل مرحلہ وار حل لکھیں۔ حل شدہ مثالوں کی پیروی کریں۔ آخری سطر میں صرف حتمی عددی جواب لکھیں۔ اس سطر کے شروع میں یہی نشان FINAL_ANSWER: لکھیں اور اس کے بعد جواب کا عدد لکھیں۔\n\nمثال 1\nسوال: ایک ڈبے میں 6 سرخ پنسلیں اور 7 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nمکمل حل: سرخ اور نیلی پنسلیں جمع کریں: 6 + 7 = 13۔ کل 13 پنسلیں ہیں۔\nFINAL_ANSWER: 13\n\nمثال 2\nسوال: ایک ڈبے میں 5 سرخ پنسلیں اور 6 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nمکمل حل: سرخ اور نیلی پنسلیں جمع کریں: 5 + 6 = 11۔ کل 11 پنسلیں ہیں۔\nFINAL_ANSWER: 11\n\nہدف سوال\nسوال: ایک ڈبے میں 4 سرخ پنسلیں اور 5 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "7f3e02bbc0f222b7fefb8eddf15850c37d8e5b4f639c5c13d269887d2baa495a",
+      "record_id": "6f2a47815c8ea8c8bef6d9af6e3376a684d244df78012fbe54aedcb1e4031553"
+    },
+    {
+      "question_id": "synthetic-dev-02",
+      "strategy": "similarity",
+      "condition": "U-U-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-04",
+        "synthetic-demo-03"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: ایک ڈبے میں 6 سرخ پنسلیں اور 7 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nWorked solution: سرخ اور نیلی پنسلیں جمع کریں: 6 + 7 = 13۔ کل 13 پنسلیں ہیں۔\nFINAL_ANSWER: 13\n\nDemonstration 2\nQuestion: ایک ڈبے میں 5 سرخ پنسلیں اور 6 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nWorked solution: سرخ اور نیلی پنسلیں جمع کریں: 5 + 6 = 11۔ کل 11 پنسلیں ہیں۔\nFINAL_ANSWER: 11\n\nTarget question\nQuestion: ایک ڈبے میں 4 سرخ پنسلیں اور 5 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "a763ac0267164ad822db803de5aac1dcb56ee925d198e2d03c3bc969ec322e8f",
+      "record_id": "46483bbf971b22c4e426ebb65548a2f6f56ebbabc6b31ed7688f7fcd9848be41"
+    },
+    {
+      "question_id": "synthetic-dev-02",
+      "strategy": "similarity",
+      "condition": "U-E-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-04",
+        "synthetic-demo-03"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: A box has 6 red pencils and 7 blue pencils. How many pencils are in the box?\nWorked solution: Add the 6 red and 7 blue pencils: 6 + 7 = 13. There are 13 pencils.\nFINAL_ANSWER: 13\n\nDemonstration 2\nQuestion: A box has 5 red pencils and 6 blue pencils. How many pencils are in the box?\nWorked solution: Add the 5 red and 6 blue pencils: 5 + 6 = 11. There are 11 pencils.\nFINAL_ANSWER: 11\n\nTarget question\nQuestion: ایک ڈبے میں 4 سرخ پنسلیں اور 5 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "c6b0d1837c8857dab2ab5e794443b3ce9af95648f6fecc41d1407a39bef872f2",
+      "record_id": "3ed3336e7f5b1274b64028ed85fba81c26ce6b61741c184a37c01c549c9cb5a2"
+    },
+    {
+      "question_id": "synthetic-dev-02",
+      "strategy": "similarity",
+      "condition": "E-E-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-04",
+        "synthetic-demo-03"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: A box has 6 red pencils and 7 blue pencils. How many pencils are in the box?\nWorked solution: Add the 6 red and 7 blue pencils: 6 + 7 = 13. There are 13 pencils.\nFINAL_ANSWER: 13\n\nDemonstration 2\nQuestion: A box has 5 red pencils and 6 blue pencils. How many pencils are in the box?\nWorked solution: Add the 5 red and 6 blue pencils: 5 + 6 = 11. There are 11 pencils.\nFINAL_ANSWER: 11\n\nTarget question\nQuestion: A box has 4 red pencils and 5 blue pencils. How many pencils are in the box?",
+      "prompt_hash": "c15cab6f57f663df1ab4936ef0cedf471a3e2f0d232348a1f37cbb953ff1a100",
+      "record_id": "627794920ecd616d82f1de892d0fc19fc8c55cc6d5085585ec59bb6bbfb83698"
+    },
+    {
+      "question_id": "synthetic-dev-03",
+      "strategy": "random",
+      "condition": "U-U-U",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-02",
+        "synthetic-demo-01"
+      ],
+      "prompt": "ہدف سوال کی زبان میں مکمل مرحلہ وار حل لکھیں۔ حل شدہ مثالوں کی پیروی کریں۔ آخری سطر میں صرف حتمی عددی جواب لکھیں۔ اس سطر کے شروع میں یہی نشان FINAL_ANSWER: لکھیں اور اس کے بعد جواب کا عدد لکھیں۔\n\nمثال 1\nسوال: ایک ڈبے میں 4 سرخ پنسلیں اور 5 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nمکمل حل: سرخ اور نیلی پنسلیں جمع کریں: 4 + 5 = 9۔ کل 9 پنسلیں ہیں۔\nFINAL_ANSWER: 9\n\nمثال 2\nسوال: ایک ڈبے میں 3 سرخ پنسلیں اور 4 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nمکمل حل: سرخ اور نیلی پنسلیں جمع کریں: 3 + 4 = 7۔ کل 7 پنسلیں ہیں۔\nFINAL_ANSWER: 7\n\nہدف سوال\nسوال: ایک ڈبے میں 5 سرخ پنسلیں اور 6 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "d32033f1bf14cb71f3d95c0ded319b6323d35302f0da8698c1259c5a247255c8",
+      "record_id": "e64960d1da754fdd9fe380f9bb3e2299e808ea5d6369e113e5f980b26230517b"
+    },
+    {
+      "question_id": "synthetic-dev-03",
+      "strategy": "random",
+      "condition": "U-U-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-02",
+        "synthetic-demo-01"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: ایک ڈبے میں 4 سرخ پنسلیں اور 5 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nWorked solution: سرخ اور نیلی پنسلیں جمع کریں: 4 + 5 = 9۔ کل 9 پنسلیں ہیں۔\nFINAL_ANSWER: 9\n\nDemonstration 2\nQuestion: ایک ڈبے میں 3 سرخ پنسلیں اور 4 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nWorked solution: سرخ اور نیلی پنسلیں جمع کریں: 3 + 4 = 7۔ کل 7 پنسلیں ہیں۔\nFINAL_ANSWER: 7\n\nTarget question\nQuestion: ایک ڈبے میں 5 سرخ پنسلیں اور 6 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "0210016e0388fd6d23508d4694fb949bc3c3d34f6c2234ba18dd7d489c487263",
+      "record_id": "1e3ae592528a70f412054e91f5c7d3a135911fa26d5d1c6aa158040b1f438ff1"
+    },
+    {
+      "question_id": "synthetic-dev-03",
+      "strategy": "random",
+      "condition": "U-E-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-02",
+        "synthetic-demo-01"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: A box has 4 red pencils and 5 blue pencils. How many pencils are in the box?\nWorked solution: Add the 4 red and 5 blue pencils: 4 + 5 = 9. There are 9 pencils.\nFINAL_ANSWER: 9\n\nDemonstration 2\nQuestion: A box has 3 red pencils and 4 blue pencils. How many pencils are in the box?\nWorked solution: Add the 3 red and 4 blue pencils: 3 + 4 = 7. There are 7 pencils.\nFINAL_ANSWER: 7\n\nTarget question\nQuestion: ایک ڈبے میں 5 سرخ پنسلیں اور 6 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "5fbc120b1a75962bea8d9b2c6ca84a150c4da20b6d888114d1ce692b14f7f382",
+      "record_id": "db46e8955363764b986fd749a997c9711530a044b5aebe64c8315c4628c1384f"
+    },
+    {
+      "question_id": "synthetic-dev-03",
+      "strategy": "random",
+      "condition": "E-E-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-02",
+        "synthetic-demo-01"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: A box has 4 red pencils and 5 blue pencils. How many pencils are in the box?\nWorked solution: Add the 4 red and 5 blue pencils: 4 + 5 = 9. There are 9 pencils.\nFINAL_ANSWER: 9\n\nDemonstration 2\nQuestion: A box has 3 red pencils and 4 blue pencils. How many pencils are in the box?\nWorked solution: Add the 3 red and 4 blue pencils: 3 + 4 = 7. There are 7 pencils.\nFINAL_ANSWER: 7\n\nTarget question\nQuestion: A box has 5 red pencils and 6 blue pencils. How many pencils are in the box?",
+      "prompt_hash": "7451d295271aab0a8ab17c9e9a241b653344289a715b7e0d8d8f4ec0d1ae0938",
+      "record_id": "451a82d68bb916c5f8dde7523fa46d81dbae340b2cb8c1aeb506fd1bdbebd828"
+    },
+    {
+      "question_id": "synthetic-dev-03",
+      "strategy": "similarity",
+      "condition": "U-U-U",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-04",
+        "synthetic-demo-03"
+      ],
+      "prompt": "ہدف سوال کی زبان میں مکمل مرحلہ وار حل لکھیں۔ حل شدہ مثالوں کی پیروی کریں۔ آخری سطر میں صرف حتمی عددی جواب لکھیں۔ اس سطر کے شروع میں یہی نشان FINAL_ANSWER: لکھیں اور اس کے بعد جواب کا عدد لکھیں۔\n\nمثال 1\nسوال: ایک ڈبے میں 6 سرخ پنسلیں اور 7 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nمکمل حل: سرخ اور نیلی پنسلیں جمع کریں: 6 + 7 = 13۔ کل 13 پنسلیں ہیں۔\nFINAL_ANSWER: 13\n\nمثال 2\nسوال: ایک ڈبے میں 5 سرخ پنسلیں اور 6 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nمکمل حل: سرخ اور نیلی پنسلیں جمع کریں: 5 + 6 = 11۔ کل 11 پنسلیں ہیں۔\nFINAL_ANSWER: 11\n\nہدف سوال\nسوال: ایک ڈبے میں 5 سرخ پنسلیں اور 6 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "ef088f4f2d6628cf2d3c43bbe9ccc28d5f19e8b1b6fdd47c7f258b1cd81aa416",
+      "record_id": "7c7b25b213df05d8bf02706764cd6ca37e324ed7feeeec8c0fed5a5d6693b88e"
+    },
+    {
+      "question_id": "synthetic-dev-03",
+      "strategy": "similarity",
+      "condition": "U-U-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-04",
+        "synthetic-demo-03"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: ایک ڈبے میں 6 سرخ پنسلیں اور 7 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nWorked solution: سرخ اور نیلی پنسلیں جمع کریں: 6 + 7 = 13۔ کل 13 پنسلیں ہیں۔\nFINAL_ANSWER: 13\n\nDemonstration 2\nQuestion: ایک ڈبے میں 5 سرخ پنسلیں اور 6 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nWorked solution: سرخ اور نیلی پنسلیں جمع کریں: 5 + 6 = 11۔ کل 11 پنسلیں ہیں۔\nFINAL_ANSWER: 11\n\nTarget question\nQuestion: ایک ڈبے میں 5 سرخ پنسلیں اور 6 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "192d0f2c45abfdd1f3e52c70e0af6f25dcd9c064bce0023eae9a4ebdbe5a770b",
+      "record_id": "639dfe8439de4af2e9fabbe1d688735741267598f9421a3ef81ad24502bf1aa4"
+    },
+    {
+      "question_id": "synthetic-dev-03",
+      "strategy": "similarity",
+      "condition": "U-E-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-04",
+        "synthetic-demo-03"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: A box has 6 red pencils and 7 blue pencils. How many pencils are in the box?\nWorked solution: Add the 6 red and 7 blue pencils: 6 + 7 = 13. There are 13 pencils.\nFINAL_ANSWER: 13\n\nDemonstration 2\nQuestion: A box has 5 red pencils and 6 blue pencils. How many pencils are in the box?\nWorked solution: Add the 5 red and 6 blue pencils: 5 + 6 = 11. There are 11 pencils.\nFINAL_ANSWER: 11\n\nTarget question\nQuestion: ایک ڈبے میں 5 سرخ پنسلیں اور 6 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "06223234aa46133ce796e738927cc1611a2e90e40b4241db263e3746eda2d341",
+      "record_id": "8daedf5d8911a49c82c3ddc3f8f29bf17668f1a847bc081a71765db3ea4248c9"
+    },
+    {
+      "question_id": "synthetic-dev-03",
+      "strategy": "similarity",
+      "condition": "E-E-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-04",
+        "synthetic-demo-03"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: A box has 6 red pencils and 7 blue pencils. How many pencils are in the box?\nWorked solution: Add the 6 red and 7 blue pencils: 6 + 7 = 13. There are 13 pencils.\nFINAL_ANSWER: 13\n\nDemonstration 2\nQuestion: A box has 5 red pencils and 6 blue pencils. How many pencils are in the box?\nWorked solution: Add the 5 red and 6 blue pencils: 5 + 6 = 11. There are 11 pencils.\nFINAL_ANSWER: 11\n\nTarget question\nQuestion: A box has 5 red pencils and 6 blue pencils. How many pencils are in the box?",
+      "prompt_hash": "6267613c6c8cb404860279399ccdbf3864a4e629a1a1d19ba6a1d0e9717281f6",
+      "record_id": "ffae0ed3ea54de69f9380cae127e33551aa322ad43639f865d501dcee63a79ae"
+    },
+    {
+      "question_id": "synthetic-dev-04",
+      "strategy": "random",
+      "condition": "U-U-U",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-02",
+        "synthetic-demo-01"
+      ],
+      "prompt": "ہدف سوال کی زبان میں مکمل مرحلہ وار حل لکھیں۔ حل شدہ مثالوں کی پیروی کریں۔ آخری سطر میں صرف حتمی عددی جواب لکھیں۔ اس سطر کے شروع میں یہی نشان FINAL_ANSWER: لکھیں اور اس کے بعد جواب کا عدد لکھیں۔\n\nمثال 1\nسوال: ایک ڈبے میں 4 سرخ پنسلیں اور 5 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nمکمل حل: سرخ اور نیلی پنسلیں جمع کریں: 4 + 5 = 9۔ کل 9 پنسلیں ہیں۔\nFINAL_ANSWER: 9\n\nمثال 2\nسوال: ایک ڈبے میں 3 سرخ پنسلیں اور 4 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nمکمل حل: سرخ اور نیلی پنسلیں جمع کریں: 3 + 4 = 7۔ کل 7 پنسلیں ہیں۔\nFINAL_ANSWER: 7\n\nہدف سوال\nسوال: ایک ڈبے میں 6 سرخ پنسلیں اور 7 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "73cdc7a210c3e40ae6c6755732abdad58623f154463eb089f59688d06206c662",
+      "record_id": "062ad5fb66d7d0a05f65f001a6c401b9ce8105f5e8f63b75dbbcde7597ed31aa"
+    },
+    {
+      "question_id": "synthetic-dev-04",
+      "strategy": "random",
+      "condition": "U-U-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-02",
+        "synthetic-demo-01"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: ایک ڈبے میں 4 سرخ پنسلیں اور 5 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nWorked solution: سرخ اور نیلی پنسلیں جمع کریں: 4 + 5 = 9۔ کل 9 پنسلیں ہیں۔\nFINAL_ANSWER: 9\n\nDemonstration 2\nQuestion: ایک ڈبے میں 3 سرخ پنسلیں اور 4 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nWorked solution: سرخ اور نیلی پنسلیں جمع کریں: 3 + 4 = 7۔ کل 7 پنسلیں ہیں۔\nFINAL_ANSWER: 7\n\nTarget question\nQuestion: ایک ڈبے میں 6 سرخ پنسلیں اور 7 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "81537709fe6264c93b76480909e7f4106318132aa2dc6aec9fb31bb02377907e",
+      "record_id": "f5112ecbfc7f9228229aa0f5e24db2f6af967f992286143097224807de4a08e6"
+    },
+    {
+      "question_id": "synthetic-dev-04",
+      "strategy": "random",
+      "condition": "U-E-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-02",
+        "synthetic-demo-01"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: A box has 4 red pencils and 5 blue pencils. How many pencils are in the box?\nWorked solution: Add the 4 red and 5 blue pencils: 4 + 5 = 9. There are 9 pencils.\nFINAL_ANSWER: 9\n\nDemonstration 2\nQuestion: A box has 3 red pencils and 4 blue pencils. How many pencils are in the box?\nWorked solution: Add the 3 red and 4 blue pencils: 3 + 4 = 7. There are 7 pencils.\nFINAL_ANSWER: 7\n\nTarget question\nQuestion: ایک ڈبے میں 6 سرخ پنسلیں اور 7 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "02f73bee30abb8e50ae9ceb53210d03aaee0361d1ceebc9c8549984e147683e3",
+      "record_id": "3a6747ee2addca850760410d56f8a170d03a40810fe32591797cdf19d8d830b2"
+    },
+    {
+      "question_id": "synthetic-dev-04",
+      "strategy": "random",
+      "condition": "E-E-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-02",
+        "synthetic-demo-01"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: A box has 4 red pencils and 5 blue pencils. How many pencils are in the box?\nWorked solution: Add the 4 red and 5 blue pencils: 4 + 5 = 9. There are 9 pencils.\nFINAL_ANSWER: 9\n\nDemonstration 2\nQuestion: A box has 3 red pencils and 4 blue pencils. How many pencils are in the box?\nWorked solution: Add the 3 red and 4 blue pencils: 3 + 4 = 7. There are 7 pencils.\nFINAL_ANSWER: 7\n\nTarget question\nQuestion: A box has 6 red pencils and 7 blue pencils. How many pencils are in the box?",
+      "prompt_hash": "bbbc71d310566f47339ee8cd2e025c8d32d9d316ea47c3013f9f4ed4eb1c02e0",
+      "record_id": "91dc9e55848ef6d448667130b2cd8ba16e99ec241cb34afc5c68a6f375b48acd"
+    },
+    {
+      "question_id": "synthetic-dev-04",
+      "strategy": "similarity",
+      "condition": "U-U-U",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-04",
+        "synthetic-demo-03"
+      ],
+      "prompt": "ہدف سوال کی زبان میں مکمل مرحلہ وار حل لکھیں۔ حل شدہ مثالوں کی پیروی کریں۔ آخری سطر میں صرف حتمی عددی جواب لکھیں۔ اس سطر کے شروع میں یہی نشان FINAL_ANSWER: لکھیں اور اس کے بعد جواب کا عدد لکھیں۔\n\nمثال 1\nسوال: ایک ڈبے میں 6 سرخ پنسلیں اور 7 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nمکمل حل: سرخ اور نیلی پنسلیں جمع کریں: 6 + 7 = 13۔ کل 13 پنسلیں ہیں۔\nFINAL_ANSWER: 13\n\nمثال 2\nسوال: ایک ڈبے میں 5 سرخ پنسلیں اور 6 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nمکمل حل: سرخ اور نیلی پنسلیں جمع کریں: 5 + 6 = 11۔ کل 11 پنسلیں ہیں۔\nFINAL_ANSWER: 11\n\nہدف سوال\nسوال: ایک ڈبے میں 6 سرخ پنسلیں اور 7 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "71b36999747f9e994d574e6d7698747b4a5e15aec7b7bb1ac5f7a28bd16fc6a5",
+      "record_id": "d79bb0a5f7b383f9b170971dac504f17f1b5dbd771d81bf44e723ebcfde5c50e"
+    },
+    {
+      "question_id": "synthetic-dev-04",
+      "strategy": "similarity",
+      "condition": "U-U-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-04",
+        "synthetic-demo-03"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: ایک ڈبے میں 6 سرخ پنسلیں اور 7 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nWorked solution: سرخ اور نیلی پنسلیں جمع کریں: 6 + 7 = 13۔ کل 13 پنسلیں ہیں۔\nFINAL_ANSWER: 13\n\nDemonstration 2\nQuestion: ایک ڈبے میں 5 سرخ پنسلیں اور 6 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nWorked solution: سرخ اور نیلی پنسلیں جمع کریں: 5 + 6 = 11۔ کل 11 پنسلیں ہیں۔\nFINAL_ANSWER: 11\n\nTarget question\nQuestion: ایک ڈبے میں 6 سرخ پنسلیں اور 7 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "6dbd56432a16ef912a8d644343a517ca02fdbefd13bf7c3df6c5358f98d2e5f4",
+      "record_id": "0007840fbbeac71b5594c759d5ba3a156f74980097e946bca57e9846a4650255"
+    },
+    {
+      "question_id": "synthetic-dev-04",
+      "strategy": "similarity",
+      "condition": "U-E-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-04",
+        "synthetic-demo-03"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: A box has 6 red pencils and 7 blue pencils. How many pencils are in the box?\nWorked solution: Add the 6 red and 7 blue pencils: 6 + 7 = 13. There are 13 pencils.\nFINAL_ANSWER: 13\n\nDemonstration 2\nQuestion: A box has 5 red pencils and 6 blue pencils. How many pencils are in the box?\nWorked solution: Add the 5 red and 6 blue pencils: 5 + 6 = 11. There are 11 pencils.\nFINAL_ANSWER: 11\n\nTarget question\nQuestion: ایک ڈبے میں 6 سرخ پنسلیں اور 7 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "8d37ded4fba40e33636b36495a25a27a43df4107ac3234c8ed1e15c93f6ec782",
+      "record_id": "c493995681aa43bd06af7051205e7ec04e35c31cd39c7ec976feb1eb2aefbf0a"
+    },
+    {
+      "question_id": "synthetic-dev-04",
+      "strategy": "similarity",
+      "condition": "E-E-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-04",
+        "synthetic-demo-03"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: A box has 6 red pencils and 7 blue pencils. How many pencils are in the box?\nWorked solution: Add the 6 red and 7 blue pencils: 6 + 7 = 13. There are 13 pencils.\nFINAL_ANSWER: 13\n\nDemonstration 2\nQuestion: A box has 5 red pencils and 6 blue pencils. How many pencils are in the box?\nWorked solution: Add the 5 red and 6 blue pencils: 5 + 6 = 11. There are 11 pencils.\nFINAL_ANSWER: 11\n\nTarget question\nQuestion: A box has 6 red pencils and 7 blue pencils. How many pencils are in the box?",
+      "prompt_hash": "d9cc5c01a338fad998cf31759976d21d78ff75f8bd2ecbb3b0b2ffcaede0dd20",
+      "record_id": "eda7a8f4db06e1eba1c4add07ca6ac059fae5e45921d0343811e94c11823ed80"
+    },
+    {
+      "question_id": "synthetic-dev-05",
+      "strategy": "random",
+      "condition": "U-U-U",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-02",
+        "synthetic-demo-01"
+      ],
+      "prompt": "ہدف سوال کی زبان میں مکمل مرحلہ وار حل لکھیں۔ حل شدہ مثالوں کی پیروی کریں۔ آخری سطر میں صرف حتمی عددی جواب لکھیں۔ اس سطر کے شروع میں یہی نشان FINAL_ANSWER: لکھیں اور اس کے بعد جواب کا عدد لکھیں۔\n\nمثال 1\nسوال: ایک ڈبے میں 4 سرخ پنسلیں اور 5 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nمکمل حل: سرخ اور نیلی پنسلیں جمع کریں: 4 + 5 = 9۔ کل 9 پنسلیں ہیں۔\nFINAL_ANSWER: 9\n\nمثال 2\nسوال: ایک ڈبے میں 3 سرخ پنسلیں اور 4 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nمکمل حل: سرخ اور نیلی پنسلیں جمع کریں: 3 + 4 = 7۔ کل 7 پنسلیں ہیں۔\nFINAL_ANSWER: 7\n\nہدف سوال\nسوال: ایک ڈبے میں 7 سرخ پنسلیں اور 8 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "7215cf1a0df05c03b048e4f38da8104bc3c688a5295c78f390127abe9f45f7bc",
+      "record_id": "c7d84ea2f3a0098798dd6bf6a9a656350768633b54c314f12e26f6b901b5595e"
+    },
+    {
+      "question_id": "synthetic-dev-05",
+      "strategy": "random",
+      "condition": "U-U-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-02",
+        "synthetic-demo-01"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: ایک ڈبے میں 4 سرخ پنسلیں اور 5 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nWorked solution: سرخ اور نیلی پنسلیں جمع کریں: 4 + 5 = 9۔ کل 9 پنسلیں ہیں۔\nFINAL_ANSWER: 9\n\nDemonstration 2\nQuestion: ایک ڈبے میں 3 سرخ پنسلیں اور 4 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nWorked solution: سرخ اور نیلی پنسلیں جمع کریں: 3 + 4 = 7۔ کل 7 پنسلیں ہیں۔\nFINAL_ANSWER: 7\n\nTarget question\nQuestion: ایک ڈبے میں 7 سرخ پنسلیں اور 8 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "8db83406959a0135836a001f95d52284cab784318c396e0faa4203b2d76dd5b7",
+      "record_id": "8fe5d8c50d7aa931f0e88b76eff1709486e15ae040f7720f0dae22e635dedde6"
+    },
+    {
+      "question_id": "synthetic-dev-05",
+      "strategy": "random",
+      "condition": "U-E-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-02",
+        "synthetic-demo-01"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: A box has 4 red pencils and 5 blue pencils. How many pencils are in the box?\nWorked solution: Add the 4 red and 5 blue pencils: 4 + 5 = 9. There are 9 pencils.\nFINAL_ANSWER: 9\n\nDemonstration 2\nQuestion: A box has 3 red pencils and 4 blue pencils. How many pencils are in the box?\nWorked solution: Add the 3 red and 4 blue pencils: 3 + 4 = 7. There are 7 pencils.\nFINAL_ANSWER: 7\n\nTarget question\nQuestion: ایک ڈبے میں 7 سرخ پنسلیں اور 8 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "5873cddb755f6c9b164b3576ac4d7085bb1d42afec4993f9d6d5e13826b6db32",
+      "record_id": "5d21eb0c89426db91762f9fbf9ee64b556b526480b2c3f27e252b23b54edf594"
+    },
+    {
+      "question_id": "synthetic-dev-05",
+      "strategy": "random",
+      "condition": "E-E-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-02",
+        "synthetic-demo-01"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: A box has 4 red pencils and 5 blue pencils. How many pencils are in the box?\nWorked solution: Add the 4 red and 5 blue pencils: 4 + 5 = 9. There are 9 pencils.\nFINAL_ANSWER: 9\n\nDemonstration 2\nQuestion: A box has 3 red pencils and 4 blue pencils. How many pencils are in the box?\nWorked solution: Add the 3 red and 4 blue pencils: 3 + 4 = 7. There are 7 pencils.\nFINAL_ANSWER: 7\n\nTarget question\nQuestion: A box has 7 red pencils and 8 blue pencils. How many pencils are in the box?",
+      "prompt_hash": "413aaee5b54880105f2daf56eccfe1b9042354ab92fe100b4f75fcb3bd7bebda",
+      "record_id": "bc5f3d82b5b500abb8e1a483e60e8f612bc2b28d676b0f0836370b17b9e35ce2"
+    },
+    {
+      "question_id": "synthetic-dev-05",
+      "strategy": "similarity",
+      "condition": "U-U-U",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-04",
+        "synthetic-demo-03"
+      ],
+      "prompt": "ہدف سوال کی زبان میں مکمل مرحلہ وار حل لکھیں۔ حل شدہ مثالوں کی پیروی کریں۔ آخری سطر میں صرف حتمی عددی جواب لکھیں۔ اس سطر کے شروع میں یہی نشان FINAL_ANSWER: لکھیں اور اس کے بعد جواب کا عدد لکھیں۔\n\nمثال 1\nسوال: ایک ڈبے میں 6 سرخ پنسلیں اور 7 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nمکمل حل: سرخ اور نیلی پنسلیں جمع کریں: 6 + 7 = 13۔ کل 13 پنسلیں ہیں۔\nFINAL_ANSWER: 13\n\nمثال 2\nسوال: ایک ڈبے میں 5 سرخ پنسلیں اور 6 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nمکمل حل: سرخ اور نیلی پنسلیں جمع کریں: 5 + 6 = 11۔ کل 11 پنسلیں ہیں۔\nFINAL_ANSWER: 11\n\nہدف سوال\nسوال: ایک ڈبے میں 7 سرخ پنسلیں اور 8 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "3b2270d300d7bdea9b9828136adf44c1dafab74f94a3bab6bbced78ed18e3f9f",
+      "record_id": "dc444041847f9195198ec4049ea9818f9525b394a277c1462e9cc75853ed4565"
+    },
+    {
+      "question_id": "synthetic-dev-05",
+      "strategy": "similarity",
+      "condition": "U-U-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-04",
+        "synthetic-demo-03"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: ایک ڈبے میں 6 سرخ پنسلیں اور 7 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nWorked solution: سرخ اور نیلی پنسلیں جمع کریں: 6 + 7 = 13۔ کل 13 پنسلیں ہیں۔\nFINAL_ANSWER: 13\n\nDemonstration 2\nQuestion: ایک ڈبے میں 5 سرخ پنسلیں اور 6 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nWorked solution: سرخ اور نیلی پنسلیں جمع کریں: 5 + 6 = 11۔ کل 11 پنسلیں ہیں۔\nFINAL_ANSWER: 11\n\nTarget question\nQuestion: ایک ڈبے میں 7 سرخ پنسلیں اور 8 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "988c6469268f4c896d759f85a5f9efcf2d5a23914a74f1e13a9d78a6594bff9f",
+      "record_id": "86fa6300dacc1e363c3bad6b5d0dc02613e851ff9139af6128ed5a82bf043166"
+    },
+    {
+      "question_id": "synthetic-dev-05",
+      "strategy": "similarity",
+      "condition": "U-E-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-04",
+        "synthetic-demo-03"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: A box has 6 red pencils and 7 blue pencils. How many pencils are in the box?\nWorked solution: Add the 6 red and 7 blue pencils: 6 + 7 = 13. There are 13 pencils.\nFINAL_ANSWER: 13\n\nDemonstration 2\nQuestion: A box has 5 red pencils and 6 blue pencils. How many pencils are in the box?\nWorked solution: Add the 5 red and 6 blue pencils: 5 + 6 = 11. There are 11 pencils.\nFINAL_ANSWER: 11\n\nTarget question\nQuestion: ایک ڈبے میں 7 سرخ پنسلیں اور 8 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "ab5297acaf5ab02824fa774f37d127c28f30cdd15aff2d70daad74cac545d362",
+      "record_id": "e5578381dae88d2afa3dd9c0f4f97bd134b0554950b34b8198071347f07416df"
+    },
+    {
+      "question_id": "synthetic-dev-05",
+      "strategy": "similarity",
+      "condition": "E-E-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-04",
+        "synthetic-demo-03"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: A box has 6 red pencils and 7 blue pencils. How many pencils are in the box?\nWorked solution: Add the 6 red and 7 blue pencils: 6 + 7 = 13. There are 13 pencils.\nFINAL_ANSWER: 13\n\nDemonstration 2\nQuestion: A box has 5 red pencils and 6 blue pencils. How many pencils are in the box?\nWorked solution: Add the 5 red and 6 blue pencils: 5 + 6 = 11. There are 11 pencils.\nFINAL_ANSWER: 11\n\nTarget question\nQuestion: A box has 7 red pencils and 8 blue pencils. How many pencils are in the box?",
+      "prompt_hash": "5a0881b3b0e04fc9f3b4551dba046ec84b60bdeb049ff3f3ead17030d24d1142",
+      "record_id": "defc9fd1bf180b34f2c8545c5177526a61e5bdc5119a89a3004d0a4d22b8e56b"
+    },
+    {
+      "question_id": "synthetic-dev-06",
+      "strategy": "random",
+      "condition": "U-U-U",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-02",
+        "synthetic-demo-01"
+      ],
+      "prompt": "ہدف سوال کی زبان میں مکمل مرحلہ وار حل لکھیں۔ حل شدہ مثالوں کی پیروی کریں۔ آخری سطر میں صرف حتمی عددی جواب لکھیں۔ اس سطر کے شروع میں یہی نشان FINAL_ANSWER: لکھیں اور اس کے بعد جواب کا عدد لکھیں۔\n\nمثال 1\nسوال: ایک ڈبے میں 4 سرخ پنسلیں اور 5 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nمکمل حل: سرخ اور نیلی پنسلیں جمع کریں: 4 + 5 = 9۔ کل 9 پنسلیں ہیں۔\nFINAL_ANSWER: 9\n\nمثال 2\nسوال: ایک ڈبے میں 3 سرخ پنسلیں اور 4 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nمکمل حل: سرخ اور نیلی پنسلیں جمع کریں: 3 + 4 = 7۔ کل 7 پنسلیں ہیں۔\nFINAL_ANSWER: 7\n\nہدف سوال\nسوال: ایک ڈبے میں 8 سرخ پنسلیں اور 9 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "38a7e4c247c0bc2f8412af8c6bd7f75b11d81de6e65935309e043c2abe1682a2",
+      "record_id": "56fb0f96325bab77b918dd6b44b432c5d25a1e342862a2dafe346d51fc6d743d"
+    },
+    {
+      "question_id": "synthetic-dev-06",
+      "strategy": "random",
+      "condition": "U-U-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-02",
+        "synthetic-demo-01"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: ایک ڈبے میں 4 سرخ پنسلیں اور 5 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nWorked solution: سرخ اور نیلی پنسلیں جمع کریں: 4 + 5 = 9۔ کل 9 پنسلیں ہیں۔\nFINAL_ANSWER: 9\n\nDemonstration 2\nQuestion: ایک ڈبے میں 3 سرخ پنسلیں اور 4 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nWorked solution: سرخ اور نیلی پنسلیں جمع کریں: 3 + 4 = 7۔ کل 7 پنسلیں ہیں۔\nFINAL_ANSWER: 7\n\nTarget question\nQuestion: ایک ڈبے میں 8 سرخ پنسلیں اور 9 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "becdc70340b4299899ac655745ca8a3f9f51531d7ebea366d00a53a92a2c570c",
+      "record_id": "5eb8cbd02e1797de2986bf74b16bc835dbe1bd6e77f4c074a1a05f417dc12f6f"
+    },
+    {
+      "question_id": "synthetic-dev-06",
+      "strategy": "random",
+      "condition": "U-E-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-02",
+        "synthetic-demo-01"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: A box has 4 red pencils and 5 blue pencils. How many pencils are in the box?\nWorked solution: Add the 4 red and 5 blue pencils: 4 + 5 = 9. There are 9 pencils.\nFINAL_ANSWER: 9\n\nDemonstration 2\nQuestion: A box has 3 red pencils and 4 blue pencils. How many pencils are in the box?\nWorked solution: Add the 3 red and 4 blue pencils: 3 + 4 = 7. There are 7 pencils.\nFINAL_ANSWER: 7\n\nTarget question\nQuestion: ایک ڈبے میں 8 سرخ پنسلیں اور 9 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "c36916b69fa2f1d4cbe0eb06baa073226477a265dfb17bb0d600cf2092dfdbf5",
+      "record_id": "f46d05f52a992f9920797c7cd70f3824ee4e9b14db11ea7bc15063daf9be780f"
+    },
+    {
+      "question_id": "synthetic-dev-06",
+      "strategy": "random",
+      "condition": "E-E-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-02",
+        "synthetic-demo-01"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: A box has 4 red pencils and 5 blue pencils. How many pencils are in the box?\nWorked solution: Add the 4 red and 5 blue pencils: 4 + 5 = 9. There are 9 pencils.\nFINAL_ANSWER: 9\n\nDemonstration 2\nQuestion: A box has 3 red pencils and 4 blue pencils. How many pencils are in the box?\nWorked solution: Add the 3 red and 4 blue pencils: 3 + 4 = 7. There are 7 pencils.\nFINAL_ANSWER: 7\n\nTarget question\nQuestion: A box has 8 red pencils and 9 blue pencils. How many pencils are in the box?",
+      "prompt_hash": "8b12f90ea51af3e170cefb75bb43bed2300d5a0ac1923b579fe937820b01866b",
+      "record_id": "d01aba8268fbc270961c7145ba0fe55a09baecc4319093c748f569012a84abc1"
+    },
+    {
+      "question_id": "synthetic-dev-06",
+      "strategy": "similarity",
+      "condition": "U-U-U",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-04",
+        "synthetic-demo-03"
+      ],
+      "prompt": "ہدف سوال کی زبان میں مکمل مرحلہ وار حل لکھیں۔ حل شدہ مثالوں کی پیروی کریں۔ آخری سطر میں صرف حتمی عددی جواب لکھیں۔ اس سطر کے شروع میں یہی نشان FINAL_ANSWER: لکھیں اور اس کے بعد جواب کا عدد لکھیں۔\n\nمثال 1\nسوال: ایک ڈبے میں 6 سرخ پنسلیں اور 7 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nمکمل حل: سرخ اور نیلی پنسلیں جمع کریں: 6 + 7 = 13۔ کل 13 پنسلیں ہیں۔\nFINAL_ANSWER: 13\n\nمثال 2\nسوال: ایک ڈبے میں 5 سرخ پنسلیں اور 6 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nمکمل حل: سرخ اور نیلی پنسلیں جمع کریں: 5 + 6 = 11۔ کل 11 پنسلیں ہیں۔\nFINAL_ANSWER: 11\n\nہدف سوال\nسوال: ایک ڈبے میں 8 سرخ پنسلیں اور 9 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "09bfc4a034e08c17a388caea88ca899dc86ff3d131b12eb82520e5590614b825",
+      "record_id": "94afb6de90f77cc850e7e0908b824ea4da378c8541f8cf054806cc3b9cc1ccc7"
+    },
+    {
+      "question_id": "synthetic-dev-06",
+      "strategy": "similarity",
+      "condition": "U-U-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-04",
+        "synthetic-demo-03"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: ایک ڈبے میں 6 سرخ پنسلیں اور 7 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nWorked solution: سرخ اور نیلی پنسلیں جمع کریں: 6 + 7 = 13۔ کل 13 پنسلیں ہیں۔\nFINAL_ANSWER: 13\n\nDemonstration 2\nQuestion: ایک ڈبے میں 5 سرخ پنسلیں اور 6 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nWorked solution: سرخ اور نیلی پنسلیں جمع کریں: 5 + 6 = 11۔ کل 11 پنسلیں ہیں۔\nFINAL_ANSWER: 11\n\nTarget question\nQuestion: ایک ڈبے میں 8 سرخ پنسلیں اور 9 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "fa30354a718778b3309bdd56255119bc3aa8061671dd104ad99721f1997465a2",
+      "record_id": "9c5437897a1cd362fbcc94e9367d34b85f70d6b3eb00bae07e3e4eb86371130d"
+    },
+    {
+      "question_id": "synthetic-dev-06",
+      "strategy": "similarity",
+      "condition": "U-E-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-04",
+        "synthetic-demo-03"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: A box has 6 red pencils and 7 blue pencils. How many pencils are in the box?\nWorked solution: Add the 6 red and 7 blue pencils: 6 + 7 = 13. There are 13 pencils.\nFINAL_ANSWER: 13\n\nDemonstration 2\nQuestion: A box has 5 red pencils and 6 blue pencils. How many pencils are in the box?\nWorked solution: Add the 5 red and 6 blue pencils: 5 + 6 = 11. There are 11 pencils.\nFINAL_ANSWER: 11\n\nTarget question\nQuestion: ایک ڈبے میں 8 سرخ پنسلیں اور 9 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "bb721a1dfb27e156341f213fe3c0c695697e8db40cda5203d5ddc319210228dc",
+      "record_id": "9e20a5f20939c549c5bc73e6fc26cf1ec115dc5cc1acf78d5aba8142f2b37176"
+    },
+    {
+      "question_id": "synthetic-dev-06",
+      "strategy": "similarity",
+      "condition": "E-E-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-04",
+        "synthetic-demo-03"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: A box has 6 red pencils and 7 blue pencils. How many pencils are in the box?\nWorked solution: Add the 6 red and 7 blue pencils: 6 + 7 = 13. There are 13 pencils.\nFINAL_ANSWER: 13\n\nDemonstration 2\nQuestion: A box has 5 red pencils and 6 blue pencils. How many pencils are in the box?\nWorked solution: Add the 5 red and 6 blue pencils: 5 + 6 = 11. There are 11 pencils.\nFINAL_ANSWER: 11\n\nTarget question\nQuestion: A box has 8 red pencils and 9 blue pencils. How many pencils are in the box?",
+      "prompt_hash": "7a95503847b1ddb573e3a1427d3c15f35761e2313f1b0f5c9a5b6b5f629026b8",
+      "record_id": "6a2587ec7f1da52beeec67cfca5d6d048e4c1261cd116f1617085b3f6e5c8449"
+    },
+    {
+      "question_id": "synthetic-dev-07",
+      "strategy": "random",
+      "condition": "U-U-U",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-02",
+        "synthetic-demo-01"
+      ],
+      "prompt": "ہدف سوال کی زبان میں مکمل مرحلہ وار حل لکھیں۔ حل شدہ مثالوں کی پیروی کریں۔ آخری سطر میں صرف حتمی عددی جواب لکھیں۔ اس سطر کے شروع میں یہی نشان FINAL_ANSWER: لکھیں اور اس کے بعد جواب کا عدد لکھیں۔\n\nمثال 1\nسوال: ایک ڈبے میں 4 سرخ پنسلیں اور 5 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nمکمل حل: سرخ اور نیلی پنسلیں جمع کریں: 4 + 5 = 9۔ کل 9 پنسلیں ہیں۔\nFINAL_ANSWER: 9\n\nمثال 2\nسوال: ایک ڈبے میں 3 سرخ پنسلیں اور 4 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nمکمل حل: سرخ اور نیلی پنسلیں جمع کریں: 3 + 4 = 7۔ کل 7 پنسلیں ہیں۔\nFINAL_ANSWER: 7\n\nہدف سوال\nسوال: ایک ڈبے میں 9 سرخ پنسلیں اور 10 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "ea706d60569c0a8aaad1bcacf0e95a1cf4324bd62b0570ccfa857100a81a78f7",
+      "record_id": "0733fe4bd92a966fa0de456b1183a9c08669554bda73d7e6e8297f98b1e85ffd"
+    },
+    {
+      "question_id": "synthetic-dev-07",
+      "strategy": "random",
+      "condition": "U-U-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-02",
+        "synthetic-demo-01"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: ایک ڈبے میں 4 سرخ پنسلیں اور 5 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nWorked solution: سرخ اور نیلی پنسلیں جمع کریں: 4 + 5 = 9۔ کل 9 پنسلیں ہیں۔\nFINAL_ANSWER: 9\n\nDemonstration 2\nQuestion: ایک ڈبے میں 3 سرخ پنسلیں اور 4 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nWorked solution: سرخ اور نیلی پنسلیں جمع کریں: 3 + 4 = 7۔ کل 7 پنسلیں ہیں۔\nFINAL_ANSWER: 7\n\nTarget question\nQuestion: ایک ڈبے میں 9 سرخ پنسلیں اور 10 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "e3aee2210456b491993a71a2b6ae3eb77833db476c135358eef63f5d4b50f43c",
+      "record_id": "2ab4526415a524d2f652242b145de6080734f8fd36c5b7ea019df8134e78761a"
+    },
+    {
+      "question_id": "synthetic-dev-07",
+      "strategy": "random",
+      "condition": "U-E-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-02",
+        "synthetic-demo-01"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: A box has 4 red pencils and 5 blue pencils. How many pencils are in the box?\nWorked solution: Add the 4 red and 5 blue pencils: 4 + 5 = 9. There are 9 pencils.\nFINAL_ANSWER: 9\n\nDemonstration 2\nQuestion: A box has 3 red pencils and 4 blue pencils. How many pencils are in the box?\nWorked solution: Add the 3 red and 4 blue pencils: 3 + 4 = 7. There are 7 pencils.\nFINAL_ANSWER: 7\n\nTarget question\nQuestion: ایک ڈبے میں 9 سرخ پنسلیں اور 10 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "5270367846d8a8dac187f3533235120c02117d4f1cd1d10f3fdefe0c30316d11",
+      "record_id": "0ed2c699f8ebea9d9aa60a5a2fcf64fcd6dd4359df148f9c35883aeaccf0550a"
+    },
+    {
+      "question_id": "synthetic-dev-07",
+      "strategy": "random",
+      "condition": "E-E-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-02",
+        "synthetic-demo-01"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: A box has 4 red pencils and 5 blue pencils. How many pencils are in the box?\nWorked solution: Add the 4 red and 5 blue pencils: 4 + 5 = 9. There are 9 pencils.\nFINAL_ANSWER: 9\n\nDemonstration 2\nQuestion: A box has 3 red pencils and 4 blue pencils. How many pencils are in the box?\nWorked solution: Add the 3 red and 4 blue pencils: 3 + 4 = 7. There are 7 pencils.\nFINAL_ANSWER: 7\n\nTarget question\nQuestion: A box has 9 red pencils and 10 blue pencils. How many pencils are in the box?",
+      "prompt_hash": "9c5876180b1efca069212bc8d4d19819b2377741f71931868b129806f2e6a737",
+      "record_id": "a6d94212f1a67da7edb86caa5a9a1b0d3dbf8bc291f90b707350eddccae8dc80"
+    },
+    {
+      "question_id": "synthetic-dev-07",
+      "strategy": "similarity",
+      "condition": "U-U-U",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-04",
+        "synthetic-demo-03"
+      ],
+      "prompt": "ہدف سوال کی زبان میں مکمل مرحلہ وار حل لکھیں۔ حل شدہ مثالوں کی پیروی کریں۔ آخری سطر میں صرف حتمی عددی جواب لکھیں۔ اس سطر کے شروع میں یہی نشان FINAL_ANSWER: لکھیں اور اس کے بعد جواب کا عدد لکھیں۔\n\nمثال 1\nسوال: ایک ڈبے میں 6 سرخ پنسلیں اور 7 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nمکمل حل: سرخ اور نیلی پنسلیں جمع کریں: 6 + 7 = 13۔ کل 13 پنسلیں ہیں۔\nFINAL_ANSWER: 13\n\nمثال 2\nسوال: ایک ڈبے میں 5 سرخ پنسلیں اور 6 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nمکمل حل: سرخ اور نیلی پنسلیں جمع کریں: 5 + 6 = 11۔ کل 11 پنسلیں ہیں۔\nFINAL_ANSWER: 11\n\nہدف سوال\nسوال: ایک ڈبے میں 9 سرخ پنسلیں اور 10 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "57cd012f9ef3628173a4ba5007fa834605976e8a523389d6c827fbdc18998d65",
+      "record_id": "25fb8d402b54fafba1ef268f447a1eb231b4e51e238b31516454a4df64c1ad93"
+    },
+    {
+      "question_id": "synthetic-dev-07",
+      "strategy": "similarity",
+      "condition": "U-U-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-04",
+        "synthetic-demo-03"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: ایک ڈبے میں 6 سرخ پنسلیں اور 7 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nWorked solution: سرخ اور نیلی پنسلیں جمع کریں: 6 + 7 = 13۔ کل 13 پنسلیں ہیں۔\nFINAL_ANSWER: 13\n\nDemonstration 2\nQuestion: ایک ڈبے میں 5 سرخ پنسلیں اور 6 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nWorked solution: سرخ اور نیلی پنسلیں جمع کریں: 5 + 6 = 11۔ کل 11 پنسلیں ہیں۔\nFINAL_ANSWER: 11\n\nTarget question\nQuestion: ایک ڈبے میں 9 سرخ پنسلیں اور 10 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "bb71e4b5f1c63bd64ad67bf82261b1a1d2147a02cc6b35fc131e1a1a36f157ec",
+      "record_id": "633087b5500efa4a99bcff518066ec46a1945712b0e1f806c5c37a14d20f97e5"
+    },
+    {
+      "question_id": "synthetic-dev-07",
+      "strategy": "similarity",
+      "condition": "U-E-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-04",
+        "synthetic-demo-03"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: A box has 6 red pencils and 7 blue pencils. How many pencils are in the box?\nWorked solution: Add the 6 red and 7 blue pencils: 6 + 7 = 13. There are 13 pencils.\nFINAL_ANSWER: 13\n\nDemonstration 2\nQuestion: A box has 5 red pencils and 6 blue pencils. How many pencils are in the box?\nWorked solution: Add the 5 red and 6 blue pencils: 5 + 6 = 11. There are 11 pencils.\nFINAL_ANSWER: 11\n\nTarget question\nQuestion: ایک ڈبے میں 9 سرخ پنسلیں اور 10 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "581b28ea2599dcf56e3655689542f15d9549ef063daf5bc94a692cb72226d8ed",
+      "record_id": "c500be245d39951fad29dec83a77bd754adf6b8c9b203b6ae43e10743944fcf0"
+    },
+    {
+      "question_id": "synthetic-dev-07",
+      "strategy": "similarity",
+      "condition": "E-E-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-04",
+        "synthetic-demo-03"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: A box has 6 red pencils and 7 blue pencils. How many pencils are in the box?\nWorked solution: Add the 6 red and 7 blue pencils: 6 + 7 = 13. There are 13 pencils.\nFINAL_ANSWER: 13\n\nDemonstration 2\nQuestion: A box has 5 red pencils and 6 blue pencils. How many pencils are in the box?\nWorked solution: Add the 5 red and 6 blue pencils: 5 + 6 = 11. There are 11 pencils.\nFINAL_ANSWER: 11\n\nTarget question\nQuestion: A box has 9 red pencils and 10 blue pencils. How many pencils are in the box?",
+      "prompt_hash": "3823128b784a19c8c907fb9579942a6fd3fa73e7d0da347c2ac304147acf90ed",
+      "record_id": "9a6602174e990110183e61d469776fe3bbbdff75ad02888314e42892f803556e"
+    },
+    {
+      "question_id": "synthetic-dev-08",
+      "strategy": "random",
+      "condition": "U-U-U",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-02",
+        "synthetic-demo-01"
+      ],
+      "prompt": "ہدف سوال کی زبان میں مکمل مرحلہ وار حل لکھیں۔ حل شدہ مثالوں کی پیروی کریں۔ آخری سطر میں صرف حتمی عددی جواب لکھیں۔ اس سطر کے شروع میں یہی نشان FINAL_ANSWER: لکھیں اور اس کے بعد جواب کا عدد لکھیں۔\n\nمثال 1\nسوال: ایک ڈبے میں 4 سرخ پنسلیں اور 5 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nمکمل حل: سرخ اور نیلی پنسلیں جمع کریں: 4 + 5 = 9۔ کل 9 پنسلیں ہیں۔\nFINAL_ANSWER: 9\n\nمثال 2\nسوال: ایک ڈبے میں 3 سرخ پنسلیں اور 4 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nمکمل حل: سرخ اور نیلی پنسلیں جمع کریں: 3 + 4 = 7۔ کل 7 پنسلیں ہیں۔\nFINAL_ANSWER: 7\n\nہدف سوال\nسوال: ایک ڈبے میں 10 سرخ پنسلیں اور 11 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "f066d6669eb923337b579ff1e51bd82cbcb643480f73aa0d76fdabf8452ccdd0",
+      "record_id": "3ca8f47b42ac3fa9a01fc0b4c1da963093d1fed8867aac650c6c47de45730fe2"
+    },
+    {
+      "question_id": "synthetic-dev-08",
+      "strategy": "random",
+      "condition": "U-U-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-02",
+        "synthetic-demo-01"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: ایک ڈبے میں 4 سرخ پنسلیں اور 5 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nWorked solution: سرخ اور نیلی پنسلیں جمع کریں: 4 + 5 = 9۔ کل 9 پنسلیں ہیں۔\nFINAL_ANSWER: 9\n\nDemonstration 2\nQuestion: ایک ڈبے میں 3 سرخ پنسلیں اور 4 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nWorked solution: سرخ اور نیلی پنسلیں جمع کریں: 3 + 4 = 7۔ کل 7 پنسلیں ہیں۔\nFINAL_ANSWER: 7\n\nTarget question\nQuestion: ایک ڈبے میں 10 سرخ پنسلیں اور 11 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "9ce21166f7c0efe300585b9507895e56900d3156c247e786a9f6b95498d73033",
+      "record_id": "52f28a93ce68ae889f311bf60cd58fb1ce009f8a4624835a1e291b7a2b70d1ae"
+    },
+    {
+      "question_id": "synthetic-dev-08",
+      "strategy": "random",
+      "condition": "U-E-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-02",
+        "synthetic-demo-01"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: A box has 4 red pencils and 5 blue pencils. How many pencils are in the box?\nWorked solution: Add the 4 red and 5 blue pencils: 4 + 5 = 9. There are 9 pencils.\nFINAL_ANSWER: 9\n\nDemonstration 2\nQuestion: A box has 3 red pencils and 4 blue pencils. How many pencils are in the box?\nWorked solution: Add the 3 red and 4 blue pencils: 3 + 4 = 7. There are 7 pencils.\nFINAL_ANSWER: 7\n\nTarget question\nQuestion: ایک ڈبے میں 10 سرخ پنسلیں اور 11 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "b99a29f16c86699b97026a18546a6b13b3b622de8750d858d1209b3830e8eb8f",
+      "record_id": "ac75ab562d5043665d7605ef4f4aa03e454fd46cbaab1ebfa1ac8038f33b85a8"
+    },
+    {
+      "question_id": "synthetic-dev-08",
+      "strategy": "random",
+      "condition": "E-E-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-02",
+        "synthetic-demo-01"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: A box has 4 red pencils and 5 blue pencils. How many pencils are in the box?\nWorked solution: Add the 4 red and 5 blue pencils: 4 + 5 = 9. There are 9 pencils.\nFINAL_ANSWER: 9\n\nDemonstration 2\nQuestion: A box has 3 red pencils and 4 blue pencils. How many pencils are in the box?\nWorked solution: Add the 3 red and 4 blue pencils: 3 + 4 = 7. There are 7 pencils.\nFINAL_ANSWER: 7\n\nTarget question\nQuestion: A box has 10 red pencils and 11 blue pencils. How many pencils are in the box?",
+      "prompt_hash": "7bd5d4619d9b8573804f297e05b8d9950a04967a5a60610bee99720c273ba1f8",
+      "record_id": "a1f177f74355ecd0ba5766a7dae3857ac62eb3f012be6ef5ddc19cb32db9fac6"
+    },
+    {
+      "question_id": "synthetic-dev-08",
+      "strategy": "similarity",
+      "condition": "U-U-U",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-04",
+        "synthetic-demo-03"
+      ],
+      "prompt": "ہدف سوال کی زبان میں مکمل مرحلہ وار حل لکھیں۔ حل شدہ مثالوں کی پیروی کریں۔ آخری سطر میں صرف حتمی عددی جواب لکھیں۔ اس سطر کے شروع میں یہی نشان FINAL_ANSWER: لکھیں اور اس کے بعد جواب کا عدد لکھیں۔\n\nمثال 1\nسوال: ایک ڈبے میں 6 سرخ پنسلیں اور 7 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nمکمل حل: سرخ اور نیلی پنسلیں جمع کریں: 6 + 7 = 13۔ کل 13 پنسلیں ہیں۔\nFINAL_ANSWER: 13\n\nمثال 2\nسوال: ایک ڈبے میں 5 سرخ پنسلیں اور 6 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nمکمل حل: سرخ اور نیلی پنسلیں جمع کریں: 5 + 6 = 11۔ کل 11 پنسلیں ہیں۔\nFINAL_ANSWER: 11\n\nہدف سوال\nسوال: ایک ڈبے میں 10 سرخ پنسلیں اور 11 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "4785baca4cefc91fc8fa1d8b0ca4bb54615a921ffa0ad130320ff018f204efa2",
+      "record_id": "4d0c56988c7442a1edeac78b5ad17cec021309438a7e6e5163d2b37a8ddb62dc"
+    },
+    {
+      "question_id": "synthetic-dev-08",
+      "strategy": "similarity",
+      "condition": "U-U-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-04",
+        "synthetic-demo-03"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: ایک ڈبے میں 6 سرخ پنسلیں اور 7 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nWorked solution: سرخ اور نیلی پنسلیں جمع کریں: 6 + 7 = 13۔ کل 13 پنسلیں ہیں۔\nFINAL_ANSWER: 13\n\nDemonstration 2\nQuestion: ایک ڈبے میں 5 سرخ پنسلیں اور 6 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nWorked solution: سرخ اور نیلی پنسلیں جمع کریں: 5 + 6 = 11۔ کل 11 پنسلیں ہیں۔\nFINAL_ANSWER: 11\n\nTarget question\nQuestion: ایک ڈبے میں 10 سرخ پنسلیں اور 11 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "95e56362934442d2891e698457f77ba228605e3a833b27ea8e2e80479a767810",
+      "record_id": "4978adff1ccbc45f82276def16c30dbdfa4e334350966cc229694479e3f8c569"
+    },
+    {
+      "question_id": "synthetic-dev-08",
+      "strategy": "similarity",
+      "condition": "U-E-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-04",
+        "synthetic-demo-03"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: A box has 6 red pencils and 7 blue pencils. How many pencils are in the box?\nWorked solution: Add the 6 red and 7 blue pencils: 6 + 7 = 13. There are 13 pencils.\nFINAL_ANSWER: 13\n\nDemonstration 2\nQuestion: A box has 5 red pencils and 6 blue pencils. How many pencils are in the box?\nWorked solution: Add the 5 red and 6 blue pencils: 5 + 6 = 11. There are 11 pencils.\nFINAL_ANSWER: 11\n\nTarget question\nQuestion: ایک ڈبے میں 10 سرخ پنسلیں اور 11 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "1c8be6e05bb279000c8a19b1461715b746db283a5051afbe9f4809fad4bd30ed",
+      "record_id": "96d98ec853fc5362794ae7735f0cc839eb50c9655bb6389069af0eb312e4cdb3"
+    },
+    {
+      "question_id": "synthetic-dev-08",
+      "strategy": "similarity",
+      "condition": "E-E-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-04",
+        "synthetic-demo-03"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: A box has 6 red pencils and 7 blue pencils. How many pencils are in the box?\nWorked solution: Add the 6 red and 7 blue pencils: 6 + 7 = 13. There are 13 pencils.\nFINAL_ANSWER: 13\n\nDemonstration 2\nQuestion: A box has 5 red pencils and 6 blue pencils. How many pencils are in the box?\nWorked solution: Add the 5 red and 6 blue pencils: 5 + 6 = 11. There are 11 pencils.\nFINAL_ANSWER: 11\n\nTarget question\nQuestion: A box has 10 red pencils and 11 blue pencils. How many pencils are in the box?",
+      "prompt_hash": "0736b73befa2bdec0adf9d4e387f3f57dc769c911585b97c3de047ce802d1299",
+      "record_id": "6228d3709dc17ba6c274576ba2d0f81b7bac8dc150105518c8ea57c367168e2b"
+    },
+    {
+      "question_id": "synthetic-dev-09",
+      "strategy": "random",
+      "condition": "U-U-U",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-02",
+        "synthetic-demo-01"
+      ],
+      "prompt": "ہدف سوال کی زبان میں مکمل مرحلہ وار حل لکھیں۔ حل شدہ مثالوں کی پیروی کریں۔ آخری سطر میں صرف حتمی عددی جواب لکھیں۔ اس سطر کے شروع میں یہی نشان FINAL_ANSWER: لکھیں اور اس کے بعد جواب کا عدد لکھیں۔\n\nمثال 1\nسوال: ایک ڈبے میں 4 سرخ پنسلیں اور 5 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nمکمل حل: سرخ اور نیلی پنسلیں جمع کریں: 4 + 5 = 9۔ کل 9 پنسلیں ہیں۔\nFINAL_ANSWER: 9\n\nمثال 2\nسوال: ایک ڈبے میں 3 سرخ پنسلیں اور 4 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nمکمل حل: سرخ اور نیلی پنسلیں جمع کریں: 3 + 4 = 7۔ کل 7 پنسلیں ہیں۔\nFINAL_ANSWER: 7\n\nہدف سوال\nسوال: ایک ڈبے میں 11 سرخ پنسلیں اور 12 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "d5fa4e1e716534b0162d6ed17be287cfc9accd473e76cd207bdf1cc3e553402b",
+      "record_id": "3af6b08109321a9963eeabccabea242da72c23ce394de7687bc167487006bf66"
+    },
+    {
+      "question_id": "synthetic-dev-09",
+      "strategy": "random",
+      "condition": "U-U-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-02",
+        "synthetic-demo-01"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: ایک ڈبے میں 4 سرخ پنسلیں اور 5 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nWorked solution: سرخ اور نیلی پنسلیں جمع کریں: 4 + 5 = 9۔ کل 9 پنسلیں ہیں۔\nFINAL_ANSWER: 9\n\nDemonstration 2\nQuestion: ایک ڈبے میں 3 سرخ پنسلیں اور 4 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nWorked solution: سرخ اور نیلی پنسلیں جمع کریں: 3 + 4 = 7۔ کل 7 پنسلیں ہیں۔\nFINAL_ANSWER: 7\n\nTarget question\nQuestion: ایک ڈبے میں 11 سرخ پنسلیں اور 12 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "1c6a703888802681ead46c0b78e5c14d8ea443acfc2d2a9af13fee1643afceea",
+      "record_id": "9053098183bba0b515e78af54871339304b172fdc47d331ac626b8edfdf49d16"
+    },
+    {
+      "question_id": "synthetic-dev-09",
+      "strategy": "random",
+      "condition": "U-E-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-02",
+        "synthetic-demo-01"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: A box has 4 red pencils and 5 blue pencils. How many pencils are in the box?\nWorked solution: Add the 4 red and 5 blue pencils: 4 + 5 = 9. There are 9 pencils.\nFINAL_ANSWER: 9\n\nDemonstration 2\nQuestion: A box has 3 red pencils and 4 blue pencils. How many pencils are in the box?\nWorked solution: Add the 3 red and 4 blue pencils: 3 + 4 = 7. There are 7 pencils.\nFINAL_ANSWER: 7\n\nTarget question\nQuestion: ایک ڈبے میں 11 سرخ پنسلیں اور 12 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "fec9b7c0adb0f66111e2ab4f0e5d096b45b4697183e7f64cf715c788a42f9ebc",
+      "record_id": "c3e4433039b4b3521262bcb2499b5f363cb3a3cf196fa5f591aa9b4168b6898b"
+    },
+    {
+      "question_id": "synthetic-dev-09",
+      "strategy": "random",
+      "condition": "E-E-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-02",
+        "synthetic-demo-01"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: A box has 4 red pencils and 5 blue pencils. How many pencils are in the box?\nWorked solution: Add the 4 red and 5 blue pencils: 4 + 5 = 9. There are 9 pencils.\nFINAL_ANSWER: 9\n\nDemonstration 2\nQuestion: A box has 3 red pencils and 4 blue pencils. How many pencils are in the box?\nWorked solution: Add the 3 red and 4 blue pencils: 3 + 4 = 7. There are 7 pencils.\nFINAL_ANSWER: 7\n\nTarget question\nQuestion: A box has 11 red pencils and 12 blue pencils. How many pencils are in the box?",
+      "prompt_hash": "db371147ab3f5e9d0480f177b2d473a0cbcf725e2059815999863647b6dd38a5",
+      "record_id": "a4734911c27aebe3d3ef34c3020d906a728483a842ff4db004f88e7fda9b8601"
+    },
+    {
+      "question_id": "synthetic-dev-09",
+      "strategy": "similarity",
+      "condition": "U-U-U",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-04",
+        "synthetic-demo-03"
+      ],
+      "prompt": "ہدف سوال کی زبان میں مکمل مرحلہ وار حل لکھیں۔ حل شدہ مثالوں کی پیروی کریں۔ آخری سطر میں صرف حتمی عددی جواب لکھیں۔ اس سطر کے شروع میں یہی نشان FINAL_ANSWER: لکھیں اور اس کے بعد جواب کا عدد لکھیں۔\n\nمثال 1\nسوال: ایک ڈبے میں 6 سرخ پنسلیں اور 7 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nمکمل حل: سرخ اور نیلی پنسلیں جمع کریں: 6 + 7 = 13۔ کل 13 پنسلیں ہیں۔\nFINAL_ANSWER: 13\n\nمثال 2\nسوال: ایک ڈبے میں 5 سرخ پنسلیں اور 6 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nمکمل حل: سرخ اور نیلی پنسلیں جمع کریں: 5 + 6 = 11۔ کل 11 پنسلیں ہیں۔\nFINAL_ANSWER: 11\n\nہدف سوال\nسوال: ایک ڈبے میں 11 سرخ پنسلیں اور 12 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "ec0509f14547810047cce20f829788ce681abd5ab602c1cb2b3c71c15a7f6c54",
+      "record_id": "64182f8ba57e1da5b00769424fc6bcb8592fd1ce23918ba99ecd1334e165f722"
+    },
+    {
+      "question_id": "synthetic-dev-09",
+      "strategy": "similarity",
+      "condition": "U-U-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-04",
+        "synthetic-demo-03"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: ایک ڈبے میں 6 سرخ پنسلیں اور 7 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nWorked solution: سرخ اور نیلی پنسلیں جمع کریں: 6 + 7 = 13۔ کل 13 پنسلیں ہیں۔\nFINAL_ANSWER: 13\n\nDemonstration 2\nQuestion: ایک ڈبے میں 5 سرخ پنسلیں اور 6 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nWorked solution: سرخ اور نیلی پنسلیں جمع کریں: 5 + 6 = 11۔ کل 11 پنسلیں ہیں۔\nFINAL_ANSWER: 11\n\nTarget question\nQuestion: ایک ڈبے میں 11 سرخ پنسلیں اور 12 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "2035aa1758461748a0c8556f96f67bcc8f4e5322a54959462c9e65fe02aca9af",
+      "record_id": "b3233a5d84eff4c7574d5b4a4c17e0866e8d737cc11a65d4a5a193cf6c878eed"
+    },
+    {
+      "question_id": "synthetic-dev-09",
+      "strategy": "similarity",
+      "condition": "U-E-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-04",
+        "synthetic-demo-03"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: A box has 6 red pencils and 7 blue pencils. How many pencils are in the box?\nWorked solution: Add the 6 red and 7 blue pencils: 6 + 7 = 13. There are 13 pencils.\nFINAL_ANSWER: 13\n\nDemonstration 2\nQuestion: A box has 5 red pencils and 6 blue pencils. How many pencils are in the box?\nWorked solution: Add the 5 red and 6 blue pencils: 5 + 6 = 11. There are 11 pencils.\nFINAL_ANSWER: 11\n\nTarget question\nQuestion: ایک ڈبے میں 11 سرخ پنسلیں اور 12 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "57720f46a9886848bf73c2286490fb64a9f3ce6f1288d6c570ae60d29584e698",
+      "record_id": "8085c8fe0697463c4e5860676481f4796199d67e507f7f19f4ebfe8410ed5fbc"
+    },
+    {
+      "question_id": "synthetic-dev-09",
+      "strategy": "similarity",
+      "condition": "E-E-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-04",
+        "synthetic-demo-03"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: A box has 6 red pencils and 7 blue pencils. How many pencils are in the box?\nWorked solution: Add the 6 red and 7 blue pencils: 6 + 7 = 13. There are 13 pencils.\nFINAL_ANSWER: 13\n\nDemonstration 2\nQuestion: A box has 5 red pencils and 6 blue pencils. How many pencils are in the box?\nWorked solution: Add the 5 red and 6 blue pencils: 5 + 6 = 11. There are 11 pencils.\nFINAL_ANSWER: 11\n\nTarget question\nQuestion: A box has 11 red pencils and 12 blue pencils. How many pencils are in the box?",
+      "prompt_hash": "bcba6ba386b3398d07e21f2c139edc273b8f2ba16a516bd51b4c91234e9461bc",
+      "record_id": "e5654bae5e78a9fadf1114e90dab9dba5ae5568d48b5d955951a3cce1f011162"
+    },
+    {
+      "question_id": "synthetic-dev-10",
+      "strategy": "random",
+      "condition": "U-U-U",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-02",
+        "synthetic-demo-01"
+      ],
+      "prompt": "ہدف سوال کی زبان میں مکمل مرحلہ وار حل لکھیں۔ حل شدہ مثالوں کی پیروی کریں۔ آخری سطر میں صرف حتمی عددی جواب لکھیں۔ اس سطر کے شروع میں یہی نشان FINAL_ANSWER: لکھیں اور اس کے بعد جواب کا عدد لکھیں۔\n\nمثال 1\nسوال: ایک ڈبے میں 4 سرخ پنسلیں اور 5 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nمکمل حل: سرخ اور نیلی پنسلیں جمع کریں: 4 + 5 = 9۔ کل 9 پنسلیں ہیں۔\nFINAL_ANSWER: 9\n\nمثال 2\nسوال: ایک ڈبے میں 3 سرخ پنسلیں اور 4 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nمکمل حل: سرخ اور نیلی پنسلیں جمع کریں: 3 + 4 = 7۔ کل 7 پنسلیں ہیں۔\nFINAL_ANSWER: 7\n\nہدف سوال\nسوال: ایک ڈبے میں 12 سرخ پنسلیں اور 13 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "7abceb654f2ebf616559dc2dc7589cfb3f91468f1125a6722561bb931a845db1",
+      "record_id": "4401b4024e6b6acf68a6a7d93426f0d273a3cea9b7dbf727553a5260bb8d231a"
+    },
+    {
+      "question_id": "synthetic-dev-10",
+      "strategy": "random",
+      "condition": "U-U-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-02",
+        "synthetic-demo-01"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: ایک ڈبے میں 4 سرخ پنسلیں اور 5 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nWorked solution: سرخ اور نیلی پنسلیں جمع کریں: 4 + 5 = 9۔ کل 9 پنسلیں ہیں۔\nFINAL_ANSWER: 9\n\nDemonstration 2\nQuestion: ایک ڈبے میں 3 سرخ پنسلیں اور 4 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nWorked solution: سرخ اور نیلی پنسلیں جمع کریں: 3 + 4 = 7۔ کل 7 پنسلیں ہیں۔\nFINAL_ANSWER: 7\n\nTarget question\nQuestion: ایک ڈبے میں 12 سرخ پنسلیں اور 13 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "c97c5d7ca8414f85f26e3932cf84432cb9870473bf94406595fcae7ff3e5fdbb",
+      "record_id": "0b981a77620ae327dd51c57295c0b412d8bab9cd41243f096a50e8ca8796f7d1"
+    },
+    {
+      "question_id": "synthetic-dev-10",
+      "strategy": "random",
+      "condition": "U-E-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-02",
+        "synthetic-demo-01"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: A box has 4 red pencils and 5 blue pencils. How many pencils are in the box?\nWorked solution: Add the 4 red and 5 blue pencils: 4 + 5 = 9. There are 9 pencils.\nFINAL_ANSWER: 9\n\nDemonstration 2\nQuestion: A box has 3 red pencils and 4 blue pencils. How many pencils are in the box?\nWorked solution: Add the 3 red and 4 blue pencils: 3 + 4 = 7. There are 7 pencils.\nFINAL_ANSWER: 7\n\nTarget question\nQuestion: ایک ڈبے میں 12 سرخ پنسلیں اور 13 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "60f73d0945c331b4357e062a308852223d25ba5c601ba3bdbbbba10e169c3562",
+      "record_id": "de71234f548b037d2033f811c227ae8a5418599b6b714d823f0c5118d55c07f3"
+    },
+    {
+      "question_id": "synthetic-dev-10",
+      "strategy": "random",
+      "condition": "E-E-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-02",
+        "synthetic-demo-01"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: A box has 4 red pencils and 5 blue pencils. How many pencils are in the box?\nWorked solution: Add the 4 red and 5 blue pencils: 4 + 5 = 9. There are 9 pencils.\nFINAL_ANSWER: 9\n\nDemonstration 2\nQuestion: A box has 3 red pencils and 4 blue pencils. How many pencils are in the box?\nWorked solution: Add the 3 red and 4 blue pencils: 3 + 4 = 7. There are 7 pencils.\nFINAL_ANSWER: 7\n\nTarget question\nQuestion: A box has 12 red pencils and 13 blue pencils. How many pencils are in the box?",
+      "prompt_hash": "c7c8a354e9bbcd9652d7a7578b286eb24ed3c72b2018bf05c5252d48bfe5a0d6",
+      "record_id": "cfdac651cc5870691525664c3ad0c9195c3231301657df7991f515e5b3bd0939"
+    },
+    {
+      "question_id": "synthetic-dev-10",
+      "strategy": "similarity",
+      "condition": "U-U-U",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-04",
+        "synthetic-demo-03"
+      ],
+      "prompt": "ہدف سوال کی زبان میں مکمل مرحلہ وار حل لکھیں۔ حل شدہ مثالوں کی پیروی کریں۔ آخری سطر میں صرف حتمی عددی جواب لکھیں۔ اس سطر کے شروع میں یہی نشان FINAL_ANSWER: لکھیں اور اس کے بعد جواب کا عدد لکھیں۔\n\nمثال 1\nسوال: ایک ڈبے میں 6 سرخ پنسلیں اور 7 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nمکمل حل: سرخ اور نیلی پنسلیں جمع کریں: 6 + 7 = 13۔ کل 13 پنسلیں ہیں۔\nFINAL_ANSWER: 13\n\nمثال 2\nسوال: ایک ڈبے میں 5 سرخ پنسلیں اور 6 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nمکمل حل: سرخ اور نیلی پنسلیں جمع کریں: 5 + 6 = 11۔ کل 11 پنسلیں ہیں۔\nFINAL_ANSWER: 11\n\nہدف سوال\nسوال: ایک ڈبے میں 12 سرخ پنسلیں اور 13 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "032c4cfa81ae7387833da0b4767ba5f98cfac736443654bed9e57df25b1aad2c",
+      "record_id": "582c25b7a15026410c3c0e37c6a92205790fba914e2d32b29094fe80953e305b"
+    },
+    {
+      "question_id": "synthetic-dev-10",
+      "strategy": "similarity",
+      "condition": "U-U-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-04",
+        "synthetic-demo-03"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: ایک ڈبے میں 6 سرخ پنسلیں اور 7 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nWorked solution: سرخ اور نیلی پنسلیں جمع کریں: 6 + 7 = 13۔ کل 13 پنسلیں ہیں۔\nFINAL_ANSWER: 13\n\nDemonstration 2\nQuestion: ایک ڈبے میں 5 سرخ پنسلیں اور 6 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟\nWorked solution: سرخ اور نیلی پنسلیں جمع کریں: 5 + 6 = 11۔ کل 11 پنسلیں ہیں۔\nFINAL_ANSWER: 11\n\nTarget question\nQuestion: ایک ڈبے میں 12 سرخ پنسلیں اور 13 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "f980995a31ae8159fbb9e6a1cfa535ff93caeb2b37b705aba594bf1abd23ae05",
+      "record_id": "0f33ba3a316b31171ba3d0085af116ff92771dfcf7ba28631072f866b9767f9c"
+    },
+    {
+      "question_id": "synthetic-dev-10",
+      "strategy": "similarity",
+      "condition": "U-E-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-04",
+        "synthetic-demo-03"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: A box has 6 red pencils and 7 blue pencils. How many pencils are in the box?\nWorked solution: Add the 6 red and 7 blue pencils: 6 + 7 = 13. There are 13 pencils.\nFINAL_ANSWER: 13\n\nDemonstration 2\nQuestion: A box has 5 red pencils and 6 blue pencils. How many pencils are in the box?\nWorked solution: Add the 5 red and 6 blue pencils: 5 + 6 = 11. There are 11 pencils.\nFINAL_ANSWER: 11\n\nTarget question\nQuestion: ایک ڈبے میں 12 سرخ پنسلیں اور 13 نیلی پنسلیں ہیں۔ ڈبے میں کل کتنی پنسلیں ہیں؟",
+      "prompt_hash": "28d112cd66656d4f44e0c11f6c54e235041796323e21e54929154806db5968ef",
+      "record_id": "82c33e2fda53848c54a97d3515a532b30d7d4a5ef8d67bc3111e5e42a51b8f77"
+    },
+    {
+      "question_id": "synthetic-dev-10",
+      "strategy": "similarity",
+      "condition": "E-E-E",
+      "shot_count": 2,
+      "seed": 42,
+      "demo_ids": [
+        "synthetic-demo-04",
+        "synthetic-demo-03"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: A box has 6 red pencils and 7 blue pencils. How many pencils are in the box?\nWorked solution: Add the 6 red and 7 blue pencils: 6 + 7 = 13. There are 13 pencils.\nFINAL_ANSWER: 13\n\nDemonstration 2\nQuestion: A box has 5 red pencils and 6 blue pencils. How many pencils are in the box?\nWorked solution: Add the 5 red and 6 blue pencils: 5 + 6 = 11. There are 11 pencils.\nFINAL_ANSWER: 11\n\nTarget question\nQuestion: A box has 12 red pencils and 13 blue pencils. How many pencils are in the box?",
+      "prompt_hash": "4a091d64e5f1d34c3dab2f905d93c8e9357412dfca2985107ce00604a8202cc7",
+      "record_id": "b610ab7b53f8b28c91d39f179e4970829dc54b91126093331244efd1a43a7c5c"
+    }
+  ],
+  "mode": "mock",
+  "data_kind": "synthetic"
+}
