@@ -1,8 +1,9 @@
 \documentclass[conference]{IEEEtran}
+\usepackage[T1]{fontenc}
 \usepackage{amsmath}
 \usepackage{booktabs}
 \usepackage{url}
-\title{Data-Efficient Multilingual Mathematical Reasoning:\\An Urdu--English Development Pilot}
+\title{Urdu--English Mathematical Reasoning:\\A Pilot Study of Demonstration Selection}
 \author{\IEEEauthorblockN{Ammar Anees, Hussain Baqar, Rayyan Hasib, and Saad ur Rehman}}
 \begin{document}
 \maketitle
@@ -27,7 +28,7 @@ The integration preserves original records, review decisions, source notes, and 
 \subsection{Baseline and semantic selection}
 Random selection samples two distinct pool IDs without replacement. Pool IDs are sorted, and a per-query seed is derived from SHA-256 of the base seed 42 and query ID. This provides a reproducible random baseline while allowing different questions to receive different pairs.
 
-Similarity selection embeds only Urdu question text using \texttt{paraphrase-multilingual-mpnet-base-v2}~\cite{encoder}, pinned to revision \texttt{4328cf26...}. Candidates are ranked by
+Similarity selection embeds only Urdu question text using \texttt{paraphrase-multilingual-}\allowbreak\texttt{mpnet-base-v2}~\cite{encoder}, pinned to revision \texttt{4328cf26...}. Candidates are ranked by
 \begin{equation}
  s_i = \frac{e(q_{ur})^\top e(d_{i,ur})}{\|e(q_{ur})\|\,\|e(d_{i,ur})\|}.
 \end{equation}
@@ -47,7 +48,7 @@ The full approach will additionally compare query-anchored greedy farthest-first
 \input{generated_results.tex}
 
 \subsection{Interpretation and limitations}
-Each strategy/condition cell contains only 10 distinct development problems; one problem changes its accuracy by 10 percentage points. The 80 configuration responses do not represent 80 independent problems. We use one selection seed and one hosted model, so this pilot cannot characterize seed variance or establish statistical superiority. Repeated evaluation of development questions also limits generalization. Model pretraining overlap with public mathematical datasets cannot be ruled out.
+Each strategy/condition cell contains only 10 distinct development problems; one problem changes its accuracy by 10 percentage points. The 80 configuration responses do not represent 80 independent problems. We use one selection seed and one hosted model, so this pilot cannot characterize seed variance or establish statistical superiority. Repeated evaluation of development questions also limits generalization. Numerical exact match does not validate solution logic, units, or translation quality. Model pretraining overlap with public mathematical datasets cannot be ruled out.
 
 The pilot's practical contribution is an auditable end-to-end comparison with matched examples across language conditions. The next stage should review observed parse failures and errors, expand reviewed data only under an agreed scope, implement the deferred selectors, and evaluate the frozen approach on a separate benchmark. Any claimed improvement must be supported by those larger paired results.
 

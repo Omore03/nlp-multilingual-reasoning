@@ -6,7 +6,7 @@ Updated 25 November 2026 (PKT). Real results and engineering checks are separate
 
 | Check | Outcome |
 | --- | --- |
-| Offline suite, including clean indexed checkout | 229 passed |
+| Offline suite, including a fresh GitHub clone | 229 passed |
 | Approved data | 18 demos, 10 dev, two excluded demos; 30 disjoint IDs |
 | Arithmetic and review ledger | Passed |
 | Pinned GSM8K source | All 30 questions and keys match; five questions use normalized whitespace |
@@ -19,20 +19,20 @@ The mock matrix and manifest are preserved in `results/mock/integrated_matrix.*`
 
 ## Real pilot
 
-**Incomplete: 22/80 unique successful responses.** The data consist of 10 questions, two strategies and four language conditions, with two examples per prompt.
+**Incomplete: 38/80 unique successful responses.** The data consist of 10 questions, two strategies and four language conditions, with two examples per prompt.
 
-- Correct numerical answers among scored responses: 22/22.
+- Correct numerical answers among scored responses: 38/38.
 - Parse failures: 0.
-- Failed record attempts retained in history: 12.
-- Missing configurations: 58.
+- Failed record attempts retained in history: 15.
+- Missing configurations: 42.
 - Reconciliation balanced: true; matching real manifest required.
 - Run identity: `a6a5824eab93553910ed95576e6853d85096195cbdae4fab4e9d9bede68246dc`.
-- Journal SHA-256: `64f86f2c155f8eb7e85d16bff0b356b92642a08669b7193fdf4075fd881f5ea5`.
+- Journal SHA-256: `d7ae42e8f1de8e068dad37a2f230bc45168da4614d7433a1670ab06304cdd665`.
 - Manifest SHA-256: `2820d4c167c2dc3a830382dded0ec11ec08e9795d782ada9865716e347fa3aab`.
 
 The final table is [pilot_summary.md](../results/pilot_summary.md). The full journal, manifest, evaluated responses and reconciliation are tracked separately. Failures followed by success count once; failed calls are not model answers.
 
-Recorded terminal error codes: `free_request_budget_exhausted`: 1, `http_503`: 11.
+Recorded terminal error codes: `free_request_budget_exhausted`: 1, `http_503`: 14.
 
 Collection is dated 25 November, after the TA's 23 November deadline. Partial coverage does not establish a complete baseline; even complete coverage is only a small development pilot, not final benchmark performance.
 
@@ -40,7 +40,7 @@ Collection is dated 25 November, after the TA's 23 November deadline. Partial co
 
 The configured native Google model is `gemma-4-31b-it`, with the frozen settings in `configs/pilot.yaml`. Requests use the existing project that the user confirmed as Free tier with no billing attached. No paid fallback or billing change was made. The API does not provide measured dollar cost, so no billing measurement is claimed.
 
-Successful-response token metadata: `{"completion_tokens": 2610, "prompt_tokens": 8560, "total_tokens": 11170}`. Failed requests may not report usage; these totals are not a complete account of all provider-side computation.
+Successful-response token metadata: `{"completion_tokens": 4432, "prompt_tokens": 14747, "total_tokens": 19179}`. Failed requests may not report usage; these totals are not a complete account of all provider-side computation.
 
 The four-condition synthetic live smoke from 12 November remains historical access evidence under `results/live_smoke/google_direct/`. Its journal SHA-256 is `61495daddeb16955910167c95e74a1806193d2522e8e7ae3f8a654691b04e5ec`. It is not included in research metrics. The dated model-catalog snapshot also remains historical.
 

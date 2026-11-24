@@ -7,10 +7,13 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = 'https://raw.githubusercontent.com/openai/grade-school-math/3101c7d5072418e28b9008a6636bde82a006892c/grade_school_math/data/train.jsonl'
+SOURCE_SHA256 = '17f347dc51477c50d4efb83959dbb7c56297aba886e5544ee2aaed3024813465'
 
 
 def main(path):
     raw = Path(path).read_bytes()
+    if hashlib.sha256(raw).hexdigest() != SOURCE_SHA256:
+        raise ValueError('Input is not the pinned original GSM8K training file')
     source = [json.loads(l) for l in raw.decode().splitlines()]
     normalize = lambda text: ' '.join(text.split())
     indexed = {normalize(r['question']): r for r in source}

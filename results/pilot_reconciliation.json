@@ -1,11 +1,11 @@
 {
-  "raw_records": 34,
+  "raw_records": 53,
   "unusable_records": 0,
-  "failed_calls": 12,
+  "failed_calls": 15,
   "duplicates_dropped": 0,
   "conflicting_duplicates": 0,
   "unknown_question_records": 0,
-  "unique_successful_scored": 22,
+  "unique_successful_scored": 38,
   "expected_configurations": 80,
   "seeds_seen": [
     42
@@ -56,48 +56,6 @@
     {
       "question_id": "gsm8k-train-111d72db39e6",
       "condition": "U-U-U",
-      "strategy": "random",
-      "shot_count": 2,
-      "seed": 42
-    },
-    {
-      "question_id": "gsm8k-train-111d72db39e6",
-      "condition": "U-U-U",
-      "strategy": "similarity",
-      "shot_count": 2,
-      "seed": 42
-    },
-    {
-      "question_id": "gsm8k-train-19b0d3572fbe",
-      "condition": "E-E-E",
-      "strategy": "random",
-      "shot_count": 2,
-      "seed": 42
-    },
-    {
-      "question_id": "gsm8k-train-19b0d3572fbe",
-      "condition": "E-E-E",
-      "strategy": "similarity",
-      "shot_count": 2,
-      "seed": 42
-    },
-    {
-      "question_id": "gsm8k-train-19b0d3572fbe",
-      "condition": "U-E-E",
-      "strategy": "similarity",
-      "shot_count": 2,
-      "seed": 42
-    },
-    {
-      "question_id": "gsm8k-train-19b0d3572fbe",
-      "condition": "U-U-E",
-      "strategy": "similarity",
-      "shot_count": 2,
-      "seed": 42
-    },
-    {
-      "question_id": "gsm8k-train-19b0d3572fbe",
-      "condition": "U-U-U",
       "strategy": "similarity",
       "shot_count": 2,
       "seed": 42
@@ -166,20 +124,6 @@
       "seed": 42
     },
     {
-      "question_id": "gsm8k-train-4c46af17e4af",
-      "condition": "U-E-E",
-      "strategy": "similarity",
-      "shot_count": 2,
-      "seed": 42
-    },
-    {
-      "question_id": "gsm8k-train-4c46af17e4af",
-      "condition": "U-U-E",
-      "strategy": "random",
-      "shot_count": 2,
-      "seed": 42
-    },
-    {
       "question_id": "gsm8k-train-4e78856e0b87",
       "condition": "E-E-E",
       "strategy": "random",
@@ -294,13 +238,6 @@
     {
       "question_id": "gsm8k-train-c7b34b999ba8",
       "condition": "E-E-E",
-      "strategy": "random",
-      "shot_count": 2,
-      "seed": 42
-    },
-    {
-      "question_id": "gsm8k-train-c7b34b999ba8",
-      "condition": "E-E-E",
       "strategy": "similarity",
       "shot_count": 2,
       "seed": 42
@@ -309,41 +246,6 @@
       "question_id": "gsm8k-train-c7b34b999ba8",
       "condition": "U-E-E",
       "strategy": "random",
-      "shot_count": 2,
-      "seed": 42
-    },
-    {
-      "question_id": "gsm8k-train-c7b34b999ba8",
-      "condition": "U-E-E",
-      "strategy": "similarity",
-      "shot_count": 2,
-      "seed": 42
-    },
-    {
-      "question_id": "gsm8k-train-c7b34b999ba8",
-      "condition": "U-U-E",
-      "strategy": "random",
-      "shot_count": 2,
-      "seed": 42
-    },
-    {
-      "question_id": "gsm8k-train-c7b34b999ba8",
-      "condition": "U-U-E",
-      "strategy": "similarity",
-      "shot_count": 2,
-      "seed": 42
-    },
-    {
-      "question_id": "gsm8k-train-c7b34b999ba8",
-      "condition": "U-U-U",
-      "strategy": "random",
-      "shot_count": 2,
-      "seed": 42
-    },
-    {
-      "question_id": "gsm8k-train-c7b34b999ba8",
-      "condition": "U-U-U",
-      "strategy": "similarity",
       "shot_count": 2,
       "seed": 42
     },
@@ -400,20 +302,6 @@
       "question_id": "gsm8k-train-c7da26a5fbd9",
       "condition": "U-U-U",
       "strategy": "similarity",
-      "shot_count": 2,
-      "seed": 42
-    },
-    {
-      "question_id": "gsm8k-train-f8ac079613e1",
-      "condition": "U-U-E",
-      "strategy": "similarity",
-      "shot_count": 2,
-      "seed": 42
-    },
-    {
-      "question_id": "gsm8k-train-f8ac079613e1",
-      "condition": "U-U-U",
-      "strategy": "random",
       "shot_count": 2,
       "seed": 42
     }
@@ -430,7 +318,7 @@
   ],
   "research_eligible": true,
   "evaluation_kind": "real_pilot",
-  "raw_sha256": "64f86f2c155f8eb7e85d16bff0b356b92642a08669b7193fdf4075fd881f5ea5",
+  "raw_sha256": "d7ae42e8f1de8e068dad37a2f230bc45168da4614d7433a1670ab06304cdd665",
   "manifest_sha256": "2820d4c167c2dc3a830382dded0ec11ec08e9795d782ada9865716e347fa3aab",
   "run_id": "a6a5824eab93553910ed95576e6853d85096195cbdae4fab4e9d9bede68246dc",
   "malformed_raw_lines": [],

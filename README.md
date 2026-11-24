@@ -2,7 +2,7 @@
 
 University NLP project on how demonstration selection and Urdu/English prompt language affect mathematical reasoning. We use few-shot in-context learning, with no fine-tuning.
 
-**Status: 25 November 2026.** The reviewed dataset, real selectors and evaluator are integrated. **229 offline tests pass.** The real pilot has **22/80 successful configurations**; collection is incomplete because free-provider capacity is intermittent. See [results](results/pilot_summary.md), [verification](docs/verification.md) and the [IEEE report](reports/intermediate/intermediate_report.pdf).
+**Status: 25 November 2026.** The reviewed dataset, real selectors and evaluator are integrated. **229 offline tests pass.** The real pilot has **38/80 successful configurations**; collection is incomplete because free-provider capacity is intermittent. See [results](results/pilot_summary.md), [verification](docs/verification.md) and the [IEEE report](reports/intermediate/intermediate_report.pdf).
 
 The intermediate deliverable was due **23 November**. Work and results collected later are dated accurately; submission and meeting arrangements must be confirmed with the TA.
 
