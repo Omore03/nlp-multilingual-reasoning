@@ -12,7 +12,7 @@ Model access verified 12 November; official model/pricing pages checked again 25
 | Endpoint | `https://generativelanguage.googleapis.com/v1beta/models/gemma-4-31b-it:generateContent` |
 | Observed model metadata version | `001` |
 | Observed input / output limits | 262144 / 32768 tokens |
-| Verification | Four successful live conditions on synthetic questions |
+| Verification | Four-condition synthetic access smoke; 80 reviewed-data pilot responses completed 25 November |
 
 The [Gemma API guide](https://gemma.ai/deployment/gemini-api/) documents the model and endpoint. The [model card](https://ai.google.dev/gemma/docs/core/model_card_4) describes multilingual reasoning capabilities. The real reviewed-data collection is recorded in [verification](verification.md).
 

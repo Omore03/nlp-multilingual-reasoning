@@ -23,7 +23,7 @@ Our research question is: how do Urdu demonstration-selection strategies affect 
 \subsection{Data and review}
 GSM8K supplies English mathematical word problems with worked solutions~\cite{cobbe}. Hussain prepared 20 bilingual training demonstrations and 10 separate training development questions. The supplied Word review and subsequent confirmation reported by Ammar approve 28 items. Demonstration items 4 and 5 require Urdu wording corrections and remain unapproved. We exclude them, yielding an 18-item candidate pool and 10 development questions with disjoint IDs. No MGSM evaluation questions are used in this pilot.
 
-The integration preserves original records, review decisions, source notes, and the GSM8K license. Six unticked review entries are supported by the later confirmation, without inventing earlier signature dates. Automated checks verify structure, content-based IDs, paired question numbers, Unicode normalization, and arithmetic using Hussain's restricted expression evaluator. These checks complement the recorded human review; they do not independently certify translation quality. All 30 English questions and numeric keys were checked against the pinned original GSM8K training file: 25 questions match exactly and five differ only in whitespace.
+The integration preserves original records, review decisions, source notes, and the GSM8K license. Automated checks verify structure, content-based IDs, paired question numbers, Unicode normalization, and arithmetic using Hussain's restricted expression evaluator. These checks complement the recorded human review; they do not independently certify translation quality. All 30 English questions and numeric keys were checked against the pinned original GSM8K training file: 25 questions match exactly and five differ only in whitespace.
 
 \subsection{Baseline and semantic selection}
 Random selection samples two distinct pool IDs without replacement. Pool IDs are sorted, and a per-query seed is derived from SHA-256 of the base seed 42 and query ID. This provides a reproducible random baseline while allowing different questions to receive different pairs.
@@ -50,15 +50,15 @@ The full approach will additionally compare query-anchored greedy farthest-first
 \subsection{Interpretation and limitations}
 Each strategy/condition cell contains only 10 distinct development problems; one problem changes its accuracy by 10 percentage points. The 80 configuration responses do not represent 80 independent problems. We use one selection seed and one hosted model, so this pilot cannot characterize seed variance or establish statistical superiority. Repeated evaluation of development questions also limits generalization. Numerical exact match does not validate solution logic, units, or translation quality. Model pretraining overlap with public mathematical datasets cannot be ruled out.
 
-The pilot's practical contribution is an auditable end-to-end comparison with matched examples across language conditions. The next stage should review observed parse failures and errors, expand reviewed data only under an agreed scope, implement the deferred selectors, and evaluate the frozen approach on a separate benchmark. Any claimed improvement must be supported by those larger paired results.
+The pilot's practical contribution is an auditable end-to-end comparison with matched examples across language conditions. The next stage should expand reviewed data under an agreed scope, audit worked-solution quality, implement the deferred selectors, and evaluate the frozen approach on a separate benchmark. Any claimed improvement must be supported by those larger paired results.
 
 \begin{thebibliography}{7}
-\bibitem{cobbe} K. Cobbe \emph{et al.}, ``Training verifiers to solve math word problems,'' arXiv:2110.14168, 2021.
+\bibitem{wei} J. Wei \emph{et al.}, ``Chain-of-thought prompting elicits reasoning in large language models,'' arXiv:2201.11903, 2022.
 \bibitem{shi} F. Shi \emph{et al.}, ``Language models are multilingual chain-of-thought reasoners,'' arXiv:2210.03057, 2022.
 \bibitem{liu} J. Liu \emph{et al.}, ``What makes good in-context examples for GPT-3?'' arXiv:2101.06804, 2021.
-\bibitem{wei} J. Wei \emph{et al.}, ``Chain-of-thought prompting elicits reasoning in large language models,'' arXiv:2201.11903, 2022.
-\bibitem{fu} Y. Fu \emph{et al.}, ``Complexity-based prompting for multi-step reasoning,'' arXiv:2210.00720, 2022.
+\bibitem{cobbe} K. Cobbe \emph{et al.}, ``Training verifiers to solve math word problems,'' arXiv:2110.14168, 2021.
 \bibitem{encoder} Sentence Transformers, ``paraphrase-multilingual-mpnet-base-v2,'' model card, revision 4328cf26390c98c5e3c738b4460a05b95f4911f5. [Online]. Available: \url{https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2}
 \bibitem{gemma} Google, ``Gemma on the Gemini API'' and ``Gemini Developer API pricing,'' accessed Nov. 25, 2026. [Online]. Available: \url{https://gemma.ai/deployment/gemini-api/}; \url{https://aistudio.google.com/docs/pricing}
+\bibitem{fu} Y. Fu \emph{et al.}, ``Complexity-based prompting for multi-step reasoning,'' arXiv:2210.00720, 2022.
 \end{thebibliography}
 \end{document}

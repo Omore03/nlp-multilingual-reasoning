@@ -2,7 +2,7 @@
 
 University NLP project on how demonstration selection and Urdu/English prompt language affect mathematical reasoning. We use few-shot in-context learning, with no fine-tuning.
 
-**Status: 25 November 2026.** The reviewed dataset, real selectors and evaluator are integrated. **229 offline tests pass.** The real pilot has **61/80 successful configurations**; collection is incomplete because free-provider capacity is intermittent. See [results](results/pilot_summary.md), [verification](docs/verification.md) and the [IEEE report](reports/intermediate/intermediate_report.pdf).
+**Status: 25 November 2026.** The reviewed dataset, real selectors and evaluator are integrated. **229 offline tests pass.** The real pilot has **80/80 successful configurations** and is complete. See [results](results/pilot_summary.md), [verification](docs/verification.md) and the [IEEE report](reports/intermediate/intermediate_report.pdf).
 
 The intermediate deliverable was due **23 November**. Work and results collected later are dated accurately; submission and meeting arrangements must be confirmed with the TA.
 
@@ -22,6 +22,8 @@ The intermediate deliverable was due **23 November**. Work and results collected
 - **Random and Urdu semantic similarity** selection, seed 42.
 - **U-U-U, U-U-E, U-E-E, E-E-E**: target question / demonstrations / instructions.
 - **80 expected successful records**: 10 questions x 2 strategies x 4 conditions.
+
+**Pilot results:** random 40/40 and similarity 40/40 numerical matches, with zero parse failures. Each language condition scores 10/10 for both selectors. These are ten distinct development questions, not 80 independent problems.
 
 Retrieval stays Urdu in every condition. Demos 4 and 5 remain false and are excluded. This is a small development pilot, not the final MGSM evaluation.
 

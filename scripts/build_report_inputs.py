@@ -82,6 +82,10 @@ def build():
                      'Attributing an error to translation, arithmetic, or retrieval requires review of the saved solution.')
     elif scored:
         lines.append('All scored responses match their numeric keys. This small-sample ceiling limits any conclusion about selection effectiveness.')
+    lines.append('A qualitative inspection of three queries shows that semantic neighbours can share topics without matching operations. '
+                 'For the soda-price query, the two nearest approved examples total purchase costs or pizza portions; '
+                 'the query instead subtracts change and divides by a unit price. '
+                 'This retrieval observation does not establish a downstream accuracy loss.')
     lines.append('The combined offline suite passes 229 tests, including the inherited selector and evaluation tests plus integration regressions. '
                  'The 80-record deterministic mock matrix and no-op resume also pass. These engineering checks are reported separately from the real model results.')
     abstract = (f'The real run returned {n} of 80 planned responses; {sum(r["correct"] for r in scored)} were numerically correct, '

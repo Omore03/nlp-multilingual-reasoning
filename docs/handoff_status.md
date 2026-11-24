@@ -27,4 +27,4 @@ The parser now accepts `FINAL_ANSWER:`. Real scoring requires a matching manifes
 
 ## Remaining research work
 
-Finish/reconcile the 80 real records and generate the baseline/comparison table. Final MGSM evaluation, larger data, additional selectors and four-shot prompting remain later work. See the verification record for the actual collection status.
+The 80-configuration real pilot is complete and scored: both selectors reach 40/40 numerical matches, with zero parse failures. The report and baseline table are ready for team review. This ten-question pilot cannot establish strategy superiority. Final MGSM evaluation, larger data, additional selectors and four-shot prompting remain later work. See the [verification record](verification.md).

@@ -1,4 +1,4 @@
-\textbf{The real pilot is incomplete: 61/80 configurations have successful responses.} The journal contains 29 unsuccessful entries. Table~\ref{tab:pilot} reports only the returned responses; its denominators are the numbers scored, and the completion column shows coverage of the planned 10 questions per cell. These partial figures do not satisfy a complete baseline evaluation and should not be used to rank methods.
+The real pilot completed all 80 unique configurations on 25 November 2026. The journal retains 36 unsuccessful entries before successful resumption. Table~\ref{tab:pilot} reports numerical exact-match accuracy and parse failures. All denominators are 10 development questions.
 
 \begin{table}[t]
 
@@ -18,21 +18,21 @@ Method & Condition & Correct & Acc. & PF & n/10 \\
 
 \midrule
 
-Random & U-U-U & 9/9 & 100\% & 0 & 9/10 \\
+Random & U-U-U & 10/10 & 100\% & 0 & 10/10 \\
 
-Random & U-U-E & 8/8 & 100\% & 0 & 8/10 \\
+Random & U-U-E & 10/10 & 100\% & 0 & 10/10 \\
 
-Random & U-E-E & 9/9 & 100\% & 0 & 9/10 \\
+Random & U-E-E & 10/10 & 100\% & 0 & 10/10 \\
 
-Random & E-E-E & 7/7 & 100\% & 0 & 7/10 \\
+Random & E-E-E & 10/10 & 100\% & 0 & 10/10 \\
 
-Similarity & U-U-U & 7/7 & 100\% & 0 & 7/10 \\
+Similarity & U-U-U & 10/10 & 100\% & 0 & 10/10 \\
 
-Similarity & U-U-E & 7/7 & 100\% & 0 & 7/10 \\
+Similarity & U-U-E & 10/10 & 100\% & 0 & 10/10 \\
 
-Similarity & U-E-E & 7/7 & 100\% & 0 & 7/10 \\
+Similarity & U-E-E & 10/10 & 100\% & 0 & 10/10 \\
 
-Similarity & E-E-E & 7/7 & 100\% & 0 & 7/10 \\
+Similarity & E-E-E & 10/10 & 100\% & 0 & 10/10 \\
 
 \bottomrule
 
@@ -40,8 +40,14 @@ Similarity & E-E-E & 7/7 & 100\% & 0 & 7/10 \\
 
 \end{table}
 
-Execution history contains local attempt-budget deferrals: 1, provider-capacity failures (HTTP 503): 28. These entries are retained separately from successful model answers.
+Similarity minus random accuracy differences, in percentage points, are U-U-U: +0; U-U-E: +0; U-E-E: +0; E-E-E: +0. These descriptive differences are not evidence of significance at this sample size.
+
+The E-E-E minus U-U-U accuracy gaps, in percentage points, are random: +0; similarity: +0.
+
+Execution history contains local attempt-budget deferrals: 1, provider-capacity failures (HTTP 503): 35. These entries are retained separately from successful model answers.
 
 All scored responses match their numeric keys. This small-sample ceiling limits any conclusion about selection effectiveness.
+
+A qualitative inspection of three queries shows that semantic neighbours can share topics without matching operations. For the soda-price query, the two nearest approved examples total purchase costs or pizza portions; the query instead subtracts change and divides by a unit price. This retrieval observation does not establish a downstream accuracy loss.
 
 The combined offline suite passes 229 tests, including the inherited selector and evaluation tests plus integration regressions. The 80-record deterministic mock matrix and no-op resume also pass. These engineering checks are reported separately from the real model results.

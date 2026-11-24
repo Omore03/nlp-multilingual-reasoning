@@ -1,0 +1,16 @@
+{
+  "verified_date_pkt": "2026-11-25",
+  "run_id": "a6a5824eab93553910ed95576e6853d85096195cbdae4fab4e9d9bede68246dc",
+  "before_sha256": "a7fcb406554be392a464eccd5b184d6e27c3fcff82e5cd50bbf9ba4768864897",
+  "after_sha256": "a7fcb406554be392a464eccd5b184d6e27c3fcff82e5cd50bbf9ba4768864897",
+  "summary": {
+    "new_successes": 0,
+    "new_failures": 0,
+    "total_successes": 80,
+    "expected_records": 80,
+    "output": "results/pilot_raw.jsonl",
+    "requests_sent": 0,
+    "stop_reason": null,
+    "deferred_records": 0
+  }
+}

@@ -11,8 +11,9 @@ Updated 25 November 2026. The TA's 23 November deadline has passed. These files 
 - [x] Genuine encoder cache, regenerated selections and source/license evidence.
 - [x] Clear design for later diversity/complexity methods.
 - [x] IEEE report and source with all five required sections; two rendered pages including references.
-- [ ] Verify final real-run completion in [verification](verification.md).
-- [ ] Check the final PDF and tables; upload through the TA's required channel.
+- [x] Reconcile 80/80 successful real configurations; zero missing records and parse failures.
+- [x] Check the final IEEE PDF and tables against the actual outputs.
+- [ ] Upload through the TA's required channel.
 - [ ] Confirm whether the 10-question pilot meets the TA's expectations.
 - [ ] Attend the progress meeting at its announced time.
 

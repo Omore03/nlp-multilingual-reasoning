@@ -1,150 +1,16 @@
 {
-  "raw_records": 90,
+  "raw_records": 116,
   "unusable_records": 0,
-  "failed_calls": 29,
+  "failed_calls": 36,
   "duplicates_dropped": 0,
   "conflicting_duplicates": 0,
   "unknown_question_records": 0,
-  "unique_successful_scored": 61,
+  "unique_successful_scored": 80,
   "expected_configurations": 80,
   "seeds_seen": [
     42
   ],
-  "missing_configurations": [
-    {
-      "question_id": "gsm8k-train-1d58b8a27f49",
-      "condition": "E-E-E",
-      "strategy": "random",
-      "shot_count": 2,
-      "seed": 42
-    },
-    {
-      "question_id": "gsm8k-train-1d58b8a27f49",
-      "condition": "E-E-E",
-      "strategy": "similarity",
-      "shot_count": 2,
-      "seed": 42
-    },
-    {
-      "question_id": "gsm8k-train-1d58b8a27f49",
-      "condition": "U-E-E",
-      "strategy": "random",
-      "shot_count": 2,
-      "seed": 42
-    },
-    {
-      "question_id": "gsm8k-train-1d58b8a27f49",
-      "condition": "U-E-E",
-      "strategy": "similarity",
-      "shot_count": 2,
-      "seed": 42
-    },
-    {
-      "question_id": "gsm8k-train-1d58b8a27f49",
-      "condition": "U-U-E",
-      "strategy": "random",
-      "shot_count": 2,
-      "seed": 42
-    },
-    {
-      "question_id": "gsm8k-train-1d58b8a27f49",
-      "condition": "U-U-E",
-      "strategy": "similarity",
-      "shot_count": 2,
-      "seed": 42
-    },
-    {
-      "question_id": "gsm8k-train-1d58b8a27f49",
-      "condition": "U-U-U",
-      "strategy": "random",
-      "shot_count": 2,
-      "seed": 42
-    },
-    {
-      "question_id": "gsm8k-train-1d58b8a27f49",
-      "condition": "U-U-U",
-      "strategy": "similarity",
-      "shot_count": 2,
-      "seed": 42
-    },
-    {
-      "question_id": "gsm8k-train-4e78856e0b87",
-      "condition": "U-E-E",
-      "strategy": "similarity",
-      "shot_count": 2,
-      "seed": 42
-    },
-    {
-      "question_id": "gsm8k-train-7ed300676787",
-      "condition": "E-E-E",
-      "strategy": "random",
-      "shot_count": 2,
-      "seed": 42
-    },
-    {
-      "question_id": "gsm8k-train-7ed300676787",
-      "condition": "E-E-E",
-      "strategy": "similarity",
-      "shot_count": 2,
-      "seed": 42
-    },
-    {
-      "question_id": "gsm8k-train-7ed300676787",
-      "condition": "U-U-E",
-      "strategy": "random",
-      "shot_count": 2,
-      "seed": 42
-    },
-    {
-      "question_id": "gsm8k-train-7ed300676787",
-      "condition": "U-U-E",
-      "strategy": "similarity",
-      "shot_count": 2,
-      "seed": 42
-    },
-    {
-      "question_id": "gsm8k-train-7ed300676787",
-      "condition": "U-U-U",
-      "strategy": "similarity",
-      "shot_count": 2,
-      "seed": 42
-    },
-    {
-      "question_id": "gsm8k-train-c7da26a5fbd9",
-      "condition": "E-E-E",
-      "strategy": "random",
-      "shot_count": 2,
-      "seed": 42
-    },
-    {
-      "question_id": "gsm8k-train-c7da26a5fbd9",
-      "condition": "E-E-E",
-      "strategy": "similarity",
-      "shot_count": 2,
-      "seed": 42
-    },
-    {
-      "question_id": "gsm8k-train-c7da26a5fbd9",
-      "condition": "U-E-E",
-      "strategy": "similarity",
-      "shot_count": 2,
-      "seed": 42
-    },
-    {
-      "question_id": "gsm8k-train-c7da26a5fbd9",
-      "condition": "U-U-E",
-      "strategy": "similarity",
-      "shot_count": 2,
-      "seed": 42
-    },
-    {
-      "question_id": "gsm8k-train-c7da26a5fbd9",
-      "condition": "U-U-U",
-      "strategy": "similarity",
-      "shot_count": 2,
-      "seed": 42
-    }
-  ],
+  "missing_configurations": [],
   "unexpected_configurations": [],
   "unknown_question_ids": [],
   "contract_problems": [],
@@ -157,9 +23,9 @@
   ],
   "research_eligible": true,
   "evaluation_kind": "real_pilot",
-  "raw_sha256": "33b0c824a341f7b1fe8f43d520998ad20829f524c5beb39cec676802afc8ba8c",
+  "raw_sha256": "a7fcb406554be392a464eccd5b184d6e27c3fcff82e5cd50bbf9ba4768864897",
   "manifest_sha256": "2820d4c167c2dc3a830382dded0ec11ec08e9795d782ada9865716e347fa3aab",
   "run_id": "a6a5824eab93553910ed95576e6853d85096195cbdae4fab4e9d9bede68246dc",
   "malformed_raw_lines": [],
-  "complete": false
+  "complete": true
 }
