@@ -1,11 +1,11 @@
 {
-  "raw_records": 53,
+  "raw_records": 71,
   "unusable_records": 0,
-  "failed_calls": 15,
+  "failed_calls": 23,
   "duplicates_dropped": 0,
   "conflicting_duplicates": 0,
   "unknown_question_records": 0,
-  "unique_successful_scored": 38,
+  "unique_successful_scored": 48,
   "expected_configurations": 80,
   "seeds_seen": [
     42
@@ -27,36 +27,8 @@
     },
     {
       "question_id": "gsm8k-train-111d72db39e6",
-      "condition": "U-E-E",
-      "strategy": "random",
-      "shot_count": 2,
-      "seed": 42
-    },
-    {
-      "question_id": "gsm8k-train-111d72db39e6",
-      "condition": "U-E-E",
-      "strategy": "similarity",
-      "shot_count": 2,
-      "seed": 42
-    },
-    {
-      "question_id": "gsm8k-train-111d72db39e6",
       "condition": "U-U-E",
       "strategy": "random",
-      "shot_count": 2,
-      "seed": 42
-    },
-    {
-      "question_id": "gsm8k-train-111d72db39e6",
-      "condition": "U-U-E",
-      "strategy": "similarity",
-      "shot_count": 2,
-      "seed": 42
-    },
-    {
-      "question_id": "gsm8k-train-111d72db39e6",
-      "condition": "U-U-U",
-      "strategy": "similarity",
       "shot_count": 2,
       "seed": 42
     },
@@ -117,20 +89,6 @@
       "seed": 42
     },
     {
-      "question_id": "gsm8k-train-4c46af17e4af",
-      "condition": "U-E-E",
-      "strategy": "random",
-      "shot_count": 2,
-      "seed": 42
-    },
-    {
-      "question_id": "gsm8k-train-4e78856e0b87",
-      "condition": "E-E-E",
-      "strategy": "random",
-      "shot_count": 2,
-      "seed": 42
-    },
-    {
       "question_id": "gsm8k-train-4e78856e0b87",
       "condition": "E-E-E",
       "strategy": "similarity",
@@ -140,27 +98,6 @@
     {
       "question_id": "gsm8k-train-4e78856e0b87",
       "condition": "U-E-E",
-      "strategy": "random",
-      "shot_count": 2,
-      "seed": 42
-    },
-    {
-      "question_id": "gsm8k-train-4e78856e0b87",
-      "condition": "U-E-E",
-      "strategy": "similarity",
-      "shot_count": 2,
-      "seed": 42
-    },
-    {
-      "question_id": "gsm8k-train-4e78856e0b87",
-      "condition": "U-U-E",
-      "strategy": "random",
-      "shot_count": 2,
-      "seed": 42
-    },
-    {
-      "question_id": "gsm8k-train-4e78856e0b87",
-      "condition": "U-U-E",
       "strategy": "similarity",
       "shot_count": 2,
       "seed": 42
@@ -169,13 +106,6 @@
       "question_id": "gsm8k-train-4e78856e0b87",
       "condition": "U-U-U",
       "strategy": "random",
-      "shot_count": 2,
-      "seed": 42
-    },
-    {
-      "question_id": "gsm8k-train-4e78856e0b87",
-      "condition": "U-U-U",
-      "strategy": "similarity",
       "shot_count": 2,
       "seed": 42
     },
@@ -318,7 +248,7 @@
   ],
   "research_eligible": true,
   "evaluation_kind": "real_pilot",
-  "raw_sha256": "d7ae42e8f1de8e068dad37a2f230bc45168da4614d7433a1670ab06304cdd665",
+  "raw_sha256": "8a7baf69ccef1a56129384a11783de9cc2e52ed2b6639ce32fb5e95f2ebd52e1",
   "manifest_sha256": "2820d4c167c2dc3a830382dded0ec11ec08e9795d782ada9865716e347fa3aab",
   "run_id": "a6a5824eab93553910ed95576e6853d85096195cbdae4fab4e9d9bede68246dc",
   "malformed_raw_lines": [],

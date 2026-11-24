@@ -1,4 +1,4 @@
-\textbf{The real pilot is incomplete: 38/80 configurations have successful responses.} The journal contains 15 failed record attempts. Table~\ref{tab:pilot} reports only the returned responses; its denominators are the numbers scored, and the completion column shows coverage of the planned 10 questions per cell. These partial figures do not satisfy a complete baseline evaluation and should not be used to rank methods.
+\textbf{The real pilot is incomplete: 48/80 configurations have successful responses.} The journal contains 23 unsuccessful entries. Table~\ref{tab:pilot} reports only the returned responses; its denominators are the numbers scored, and the completion column shows coverage of the planned 10 questions per cell. These partial figures do not satisfy a complete baseline evaluation and should not be used to rank methods.
 
 \begin{table}[t]
 
@@ -20,17 +20,17 @@ Method & Condition & Correct & Acc. & PF & n/10 \\
 
 Random & U-U-U & 6/6 & 100\% & 0 & 6/10 \\
 
-Random & U-U-E & 5/5 & 100\% & 0 & 5/10 \\
+Random & U-U-E & 6/6 & 100\% & 0 & 6/10 \\
 
-Random & U-E-E & 3/3 & 100\% & 0 & 3/10 \\
+Random & U-E-E & 6/6 & 100\% & 0 & 6/10 \\
 
-Random & E-E-E & 5/5 & 100\% & 0 & 5/10 \\
+Random & E-E-E & 6/6 & 100\% & 0 & 6/10 \\
 
-Similarity & U-U-U & 5/5 & 100\% & 0 & 5/10 \\
+Similarity & U-U-U & 7/7 & 100\% & 0 & 7/10 \\
 
-Similarity & U-U-E & 5/5 & 100\% & 0 & 5/10 \\
+Similarity & U-U-E & 7/7 & 100\% & 0 & 7/10 \\
 
-Similarity & U-E-E & 5/5 & 100\% & 0 & 5/10 \\
+Similarity & U-E-E & 6/6 & 100\% & 0 & 6/10 \\
 
 Similarity & E-E-E & 4/4 & 100\% & 0 & 4/10 \\
 
@@ -40,7 +40,7 @@ Similarity & E-E-E & 4/4 & 100\% & 0 & 4/10 \\
 
 \end{table}
 
-Observed terminal record-attempt errors were free\_request\_budget\_exhausted (1), http\_503 (14). Failed calls are retained as execution history, rather than counted as successful answers.
+Execution history contains local attempt-budget deferrals: 1, provider-capacity failures (HTTP 503): 22. These entries are retained separately from successful model answers.
 
 All scored responses match their numeric keys. This small-sample ceiling limits any conclusion about selection effectiveness.
 

@@ -31,12 +31,12 @@ def build():
     lines = []
     if rec['complete']:
         lines.append(f'The real pilot completed all {n} unique configurations on 25 November 2026. '
-                     f'The journal retains {failure_count} failed record attempts before successful resumption. '
+                     f'The journal retains {failure_count} unsuccessful entries before successful resumption. '
                      'Table~\\ref{tab:pilot} reports numerical exact-match accuracy and parse failures. '
                      'All denominators are 10 development questions.')
     else:
         lines.append(f'\\textbf{{The real pilot is incomplete: {n}/80 configurations have successful responses.}} '
-                     f'The journal contains {failure_count} failed record attempts. '
+                     f'The journal contains {failure_count} unsuccessful entries. '
                      'Table~\\ref{tab:pilot} reports only the returned responses; its denominators are the numbers scored, '
                      'and the completion column shows coverage of the planned 10 questions per cell. '
                      'These partial figures do not satisfy a complete baseline evaluation and should not be used to rank methods.')
@@ -67,9 +67,11 @@ def build():
         lines.append('The E-E-E minus U-U-U accuracy gaps, in percentage points, are '+ '; '.join(gaps)+'.')
     failures = Counter(r.get('error',{}).get('code') for r in raw if r['status']=='failure')
     if failures:
-        codes=', '.join(f'{tex(code)} ({count})' for code,count in sorted(failures.items()))
-        lines.append('Observed terminal record-attempt errors were '+codes+'. '
-                     'Failed calls are retained as execution history, rather than counted as successful answers.')
+        labels = {'http_503': 'provider-capacity failures (HTTP 503)',
+                  'free_request_budget_exhausted': 'local attempt-budget deferrals'}
+        codes=', '.join(f'{labels.get(code, tex(code))}: {count}' for code,count in sorted(failures.items()))
+        lines.append('Execution history contains '+codes+'. '
+                     'These entries are retained separately from successful model answers.')
     incorrect=[r for r in scored if not r['correct']]
     if incorrect:
         examples=[]
