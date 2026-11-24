@@ -25,7 +25,7 @@ from src.inference.contracts import import_selector, load_records, resolve_ids, 
 from src.prompting.templates import CONDITIONS, TEMPLATE_VERSION, build_prompt
 
 ROOT = Path(__file__).resolve().parents[2]
-RUNNER_VERSION = '1.2.0-google-direct-free'
+RUNNER_VERSION = '1.3.0-reviewed-18-demo-pilot'
 
 
 def canonical(value):
@@ -147,7 +147,7 @@ def load_config(path):
 
 
 def software_versions():
-    return {'python': platform.python_version(), **{p: version(p) for p in ('PyYAML', 'httpx', 'python-dotenv')}}
+    return {'python': platform.python_version(), **{p: version(p) for p in ('PyYAML', 'httpx', 'python-dotenv', 'numpy')}}
 
 
 def source_identity(selector_file):
@@ -162,8 +162,9 @@ def prepare(c):
     questions = load_records(relative_path(c['dev_path']), False, synthetic)
     if {d['id'] for d in demos} & {q['id'] for q in questions}:
         raise ValueError('Demonstration and development IDs must be disjoint')
-    if len(demos) != 20 or len(questions) != 10:
-        raise ValueError('Pilot boundary requires exactly 20 demos and 10 development questions')
+    demo_count = 20 if synthetic else 18
+    if len(demos) != demo_count or len(questions) != 10:
+        raise ValueError(f'Pilot boundary requires exactly {demo_count} approved demos and 10 development questions')
     selector, selector_file = import_selector(c['selector'])
     pool = {d['id']: d for d in demos}
     plan = []
@@ -187,6 +188,9 @@ def prepare(c):
                 'sources': source_identity(selector_file), 'software': software_versions(),
                 'template_version': TEMPLATE_VERSION, 'runner_version': RUNNER_VERSION,
                 'plan_hash': digest(plan)}
+    provenance = getattr(selector, 'provenance', None)
+    if provenance is not None:
+        identity['selector'] = provenance()
     run_id = digest(identity)
     for item in plan:
         item['record_id'] = digest({'run_id': run_id, **item})

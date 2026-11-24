@@ -4,7 +4,7 @@ Hussain owns data validation and review, Rayyan owns selection, Ammar owns promp
 
 ## Real input files
 
-`data/processed/demo_pool.jsonl` must contain 20 reviewed bilingual demonstrations. Each UTF-8 JSONL row has:
+`data/processed/demo_pool.jsonl` must contain 18 approved bilingual demonstrations. Each UTF-8 JSONL row has:
 
 ```json
 {"id":"demo-001","question_en":"...","question_ur":"...","reasoning_en":"full worked solution","reasoning_ur":"مکمل حل","answer":"1200","verified":true}
@@ -22,7 +22,7 @@ Demo reasoning must include complete operations and units. The template appends 
 
 The loader checks structure, counts and IDs. Hussain's validator and human review establish source membership, arithmetic and translation quality. Do not use MGSM evaluation data in this pilot.
 
-Hussain's supplied generator uses different names: map `solution_en`/`solution_ur` to `reasoning_en`/`reasoning_ur`, and `answer_number` to numeric-string `answer`. Preserve provenance and derive verification only from confirmed review. This adapter is still pending.
+Rayyan supplied the converted schema. The review ledger approves 18 demos and 10 dev questions; demos 4 and 5 remain false and excluded. Approval confirmation is recorded without inventing signature dates.
 
 ## Selector interface
 
@@ -41,7 +41,7 @@ select_examples(query, pool, k, strategy, seed) -> list[str]
 
 Use Urdu retrieval for every condition, including E-E-E. The runner selects once per question/strategy and reuses the same ordered IDs across conditions.
 
-Configure the real callable in `configs/pilot.yaml`; the reserved default is `src.selection.select:select_examples`. Use a thin adapter if needed, without exposing dev answers. Set `selector_version` to identify the code, encoder revision, cache identity and seed policy. Pin dependencies. Document any stable per-query seed derivation; never use Python's randomized `hash()`.
+Configure the real callable in `configs/pilot.yaml`; the reserved default is `src.selection.pilot_adapter:select_examples`. Use a thin adapter if needed, without exposing dev answers. Set `selector_version` to identify the code, encoder revision, cache identity and seed policy. Pin dependencies. Document any stable per-query seed derivation; never use Python's randomized `hash()`.
 
 The manifest hashes the source and checks the full selection plan on resume. Changing external encoder/cache identity requires a version update. `tests/fixtures/selector.py` is only a fixed test table, and production mode rejects it.
 
@@ -78,4 +78,4 @@ Saad joins dev gold by question ID and writes `prediction`, `gold_answer`, `corr
 
 ## Acceptance
 
-Before the real pilot: reviewed 20/10 data, disjoint IDs, two tested real selectors, reviewed prompts and a matching four-condition live model receipt. Then run the [pilot commands](running.md). Completion needs 80 real successes or an explicit account of unresolved failures. Evaluation and final submission remain separate requirements.
+Before the real pilot: approved 18/10 data, disjoint IDs, two tested real selectors, reviewed prompts and a matching four-condition live model receipt. Then run the [pilot commands](running.md). Completion needs 80 real successes or an explicit account of unresolved failures. Evaluation and final submission remain separate requirements.

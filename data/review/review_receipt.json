@@ -1,0 +1,279 @@
+{
+  "confirmed_at": "2026-11-25",
+  "confirmation_source": "Ammar reported Hussain’s confirmation in the project chat: demos 4 and 5 false, all remaining items true.",
+  "review_document": "GSM8K_Urdu_Review_30_Items_Recorded.docx",
+  "review_document_sha256": "b0ca15030f5cb45b953f398c1a3272982c3d26474e652ccc00ba5b09b9e5c75d",
+  "reviewer_reported": "Hussain Baqar",
+  "items": [
+    {
+      "id": "gsm8k-train-73429d562982",
+      "set": "demo",
+      "item_number": 1,
+      "approved": true,
+      "evidence": "Signed review document, 2026-11-13",
+      "document_review_date": "2026-11-13",
+      "reason": null
+    },
+    {
+      "id": "gsm8k-train-3f23a7d4df7c",
+      "set": "demo",
+      "item_number": 2,
+      "approved": true,
+      "evidence": "Signed review document, 2026-11-13",
+      "document_review_date": "2026-11-13",
+      "reason": null
+    },
+    {
+      "id": "gsm8k-train-9eea4e53dec0",
+      "set": "demo",
+      "item_number": 3,
+      "approved": true,
+      "evidence": "Signed review document, 2026-11-13",
+      "document_review_date": "2026-11-13",
+      "reason": null
+    },
+    {
+      "id": "gsm8k-train-4ed90b091532",
+      "set": "demo",
+      "item_number": 4,
+      "approved": false,
+      "evidence": "Signed review document, 2026-11-13",
+      "document_review_date": "2026-11-13",
+      "reason": "Wording correction requested for the Urdu term for pages; excluded until corrected and approved."
+    },
+    {
+      "id": "gsm8k-train-2e8fc28b2be6",
+      "set": "demo",
+      "item_number": 5,
+      "approved": false,
+      "evidence": "Signed review document, 2026-11-13",
+      "document_review_date": "2026-11-13",
+      "reason": "Wording correction requested for the Urdu term for pages; excluded until corrected and approved."
+    },
+    {
+      "id": "gsm8k-train-16f83fb4320c",
+      "set": "demo",
+      "item_number": 6,
+      "approved": true,
+      "evidence": "Signed review document, 2026-11-13",
+      "document_review_date": "2026-11-13",
+      "reason": null
+    },
+    {
+      "id": "gsm8k-train-cf2595dad6a3",
+      "set": "demo",
+      "item_number": 7,
+      "approved": true,
+      "evidence": "Signed review document, 2026-11-13",
+      "document_review_date": "2026-11-13",
+      "reason": null
+    },
+    {
+      "id": "gsm8k-train-f9fe6096f4fc",
+      "set": "demo",
+      "item_number": 8,
+      "approved": true,
+      "evidence": "Hussain confirmation via Ammar, 2026-11-25",
+      "document_review_date": null,
+      "reason": null
+    },
+    {
+      "id": "gsm8k-train-cdcae5775716",
+      "set": "demo",
+      "item_number": 9,
+      "approved": true,
+      "evidence": "Hussain confirmation via Ammar, 2026-11-25",
+      "document_review_date": null,
+      "reason": null
+    },
+    {
+      "id": "gsm8k-train-7f5709a21d11",
+      "set": "demo",
+      "item_number": 10,
+      "approved": true,
+      "evidence": "Signed review document, 2026-11-13",
+      "document_review_date": "2026-11-13",
+      "reason": null
+    },
+    {
+      "id": "gsm8k-train-ea66ef8b11aa",
+      "set": "demo",
+      "item_number": 11,
+      "approved": true,
+      "evidence": "Signed review document, 2026-11-13",
+      "document_review_date": "2026-11-13",
+      "reason": null
+    },
+    {
+      "id": "gsm8k-train-eb06c14679dc",
+      "set": "demo",
+      "item_number": 12,
+      "approved": true,
+      "evidence": "Signed review document, 2026-11-13",
+      "document_review_date": "2026-11-13",
+      "reason": null
+    },
+    {
+      "id": "gsm8k-train-7a6b8353e50c",
+      "set": "demo",
+      "item_number": 13,
+      "approved": true,
+      "evidence": "Hussain confirmation via Ammar, 2026-11-25",
+      "document_review_date": null,
+      "reason": null
+    },
+    {
+      "id": "gsm8k-train-34f9511baf56",
+      "set": "demo",
+      "item_number": 14,
+      "approved": true,
+      "evidence": "Signed review document, 2026-11-13",
+      "document_review_date": "2026-11-13",
+      "reason": null
+    },
+    {
+      "id": "gsm8k-train-9d7481516507",
+      "set": "demo",
+      "item_number": 15,
+      "approved": true,
+      "evidence": "Signed review document, 2026-11-13",
+      "document_review_date": "2026-11-13",
+      "reason": null
+    },
+    {
+      "id": "gsm8k-train-73bcb06b471e",
+      "set": "demo",
+      "item_number": 16,
+      "approved": true,
+      "evidence": "Hussain confirmation via Ammar, 2026-11-25",
+      "document_review_date": null,
+      "reason": null
+    },
+    {
+      "id": "gsm8k-train-da19d532632e",
+      "set": "demo",
+      "item_number": 17,
+      "approved": true,
+      "evidence": "Signed review document, 2026-11-13",
+      "document_review_date": "2026-11-13",
+      "reason": null
+    },
+    {
+      "id": "gsm8k-train-86ba5b70f686",
+      "set": "demo",
+      "item_number": 18,
+      "approved": true,
+      "evidence": "Signed review document, 2026-11-13",
+      "document_review_date": "2026-11-13",
+      "reason": null
+    },
+    {
+      "id": "gsm8k-train-b5a344d0eb73",
+      "set": "demo",
+      "item_number": 19,
+      "approved": true,
+      "evidence": "Signed review document, 2026-11-13",
+      "document_review_date": "2026-11-13",
+      "reason": null
+    },
+    {
+      "id": "gsm8k-train-b384164045eb",
+      "set": "demo",
+      "item_number": 20,
+      "approved": true,
+      "evidence": "Signed review document, 2026-11-13",
+      "document_review_date": "2026-11-13",
+      "reason": null
+    },
+    {
+      "id": "gsm8k-train-78a19fb7a7c3",
+      "set": "dev",
+      "item_number": 1,
+      "approved": true,
+      "evidence": "Hussain confirmation via Ammar, 2026-11-25",
+      "document_review_date": null,
+      "reason": null
+    },
+    {
+      "id": "gsm8k-train-f8ac079613e1",
+      "set": "dev",
+      "item_number": 2,
+      "approved": true,
+      "evidence": "Signed review document, 2026-11-13",
+      "document_review_date": "2026-11-13",
+      "reason": null
+    },
+    {
+      "id": "gsm8k-train-4c46af17e4af",
+      "set": "dev",
+      "item_number": 3,
+      "approved": true,
+      "evidence": "Hussain confirmation via Ammar, 2026-11-25",
+      "document_review_date": null,
+      "reason": null
+    },
+    {
+      "id": "gsm8k-train-19b0d3572fbe",
+      "set": "dev",
+      "item_number": 4,
+      "approved": true,
+      "evidence": "Signed review document, 2026-11-13",
+      "document_review_date": "2026-11-13",
+      "reason": null
+    },
+    {
+      "id": "gsm8k-train-c7b34b999ba8",
+      "set": "dev",
+      "item_number": 5,
+      "approved": true,
+      "evidence": "Signed review document, 2026-11-13",
+      "document_review_date": "2026-11-13",
+      "reason": null
+    },
+    {
+      "id": "gsm8k-train-111d72db39e6",
+      "set": "dev",
+      "item_number": 6,
+      "approved": true,
+      "evidence": "Signed review document, 2026-11-13",
+      "document_review_date": "2026-11-13",
+      "reason": null
+    },
+    {
+      "id": "gsm8k-train-4e78856e0b87",
+      "set": "dev",
+      "item_number": 7,
+      "approved": true,
+      "evidence": "Signed review document, 2026-11-13",
+      "document_review_date": "2026-11-13",
+      "reason": null
+    },
+    {
+      "id": "gsm8k-train-7ed300676787",
+      "set": "dev",
+      "item_number": 8,
+      "approved": true,
+      "evidence": "Signed review document, 2026-11-13",
+      "document_review_date": "2026-11-13",
+      "reason": null
+    },
+    {
+      "id": "gsm8k-train-c7da26a5fbd9",
+      "set": "dev",
+      "item_number": 9,
+      "approved": true,
+      "evidence": "Signed review document, 2026-11-13",
+      "document_review_date": "2026-11-13",
+      "reason": null
+    },
+    {
+      "id": "gsm8k-train-1d58b8a27f49",
+      "set": "dev",
+      "item_number": 10,
+      "approved": true,
+      "evidence": "Signed review document, 2026-11-13",
+      "document_review_date": "2026-11-13",
+      "reason": null
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+\textbf{The real pilot is incomplete: 22/80 configurations have successful responses.} The journal contains 12 failed record attempts. Table~\ref{tab:pilot} reports only the returned responses; its denominators are the numbers scored, and the completion column shows coverage of the planned 10 questions per cell. These partial figures do not satisfy a complete baseline evaluation and should not be used to rank methods.
+
+\begin{table}[t]
+
+\caption{Real development results. PF: missing or ambiguous final-answer parses.}
+
+\label{tab:pilot}
+
+\centering
+
+\setlength{\tabcolsep}{3pt}
+
+\begin{tabular}{llrrrr}
+
+\toprule
+
+Method & Condition & Correct & Acc. & PF & n/10 \\
+
+\midrule
+
+Random & U-U-U & 3/3 & 100\% & 0 & 3/10 \\
+
+Random & U-U-E & 3/3 & 100\% & 0 & 3/10 \\
+
+Random & U-E-E & 3/3 & 100\% & 0 & 3/10 \\
+
+Random & E-E-E & 3/3 & 100\% & 0 & 3/10 \\
+
+Similarity & U-U-U & 3/3 & 100\% & 0 & 3/10 \\
+
+Similarity & U-U-E & 2/2 & 100\% & 0 & 2/10 \\
+
+Similarity & U-E-E & 2/2 & 100\% & 0 & 2/10 \\
+
+Similarity & E-E-E & 3/3 & 100\% & 0 & 3/10 \\
+
+\bottomrule
+
+\end{tabular}
+
+\end{table}
+
+Observed terminal record-attempt errors were free\_request\_budget\_exhausted (1), http\_503 (11). Failed calls are retained as execution history, rather than counted as successful answers.
+
+All scored responses match their numeric keys. This small-sample ceiling limits any conclusion about selection effectiveness.
+
+The combined offline suite passes 229 tests, including the inherited selector and evaluation tests plus integration regressions. The 80-record deterministic mock matrix and no-op resume also pass. These engineering checks are reported separately from the real model results.

@@ -1,50 +1,51 @@
-# Verification record
+# Verification
 
-Date: 12 November 2026 (PKT). Engineering checks are separate from research evaluation.
+Updated 25 November 2026 (PKT). Real results and engineering checks are separate.
 
-## Local checks
+## Integrated checks
 
 | Check | Outcome |
 | --- | --- |
-| Offline test suite | 90 passed |
-| Mock prompt preview | Eight prompts: two fixture strategy labels × four conditions |
-| Mock smoke | Four successful records |
-| Full mock matrix | 80 unique successes, no failures |
-| Matrix resume | Zero new successes; journal unchanged |
-| Native Google adapter | Offline checks cover payloads, metadata, secrets, retries, quota limits and receipts |
-| Runner and prompts | Checks cover languages, ordered demo reuse, gold exclusion, schema, UTF-8, logs, locks and recovery |
+| Offline suite, including clean indexed checkout | 229 passed |
+| Approved data | 18 demos, 10 dev, two excluded demos; 30 disjoint IDs |
+| Arithmetic and review ledger | Passed |
+| Pinned GSM8K source | All 30 questions and keys match; five questions use normalized whitespace |
+| Original Rayyan selections | All 20 reproduced from genuine vectors |
+| Approved frozen selections | 20 pairs regenerated; no rejected IDs; byte-identical regeneration |
+| Real prompt preview | Eight prompts inspected; target gold excluded |
+| Integrated mock matrix | 80 successes; resume adds zero records |
 
-Committed mock evidence uses `results/mock/google_direct_preview.jsonl`, `google_direct_smoke.jsonl` and `google_direct_matrix.jsonl`, with adjacent manifests. These filenames identify the implementation revision; their backend is mock.
+The mock matrix and manifest are preserved in `results/mock/integrated_matrix.*`. They are engineering fixtures and never enter research accuracy.
 
-Matrix SHA-256: `6a7723b4bd51f826bcc1520b9cf21d37667ad1d7f953a78f23b812fcc9ff3fc2`.
+## Real pilot
 
-The simplified README commands were rerun for this documentation update: 90 tests passed, preview produced eight prompts, smoke produced four successes and the matrix produced 80. Resume added no records and preserved the journal bytes. Local Markdown links and code blocks were also checked. The real preview still stops on missing reviewed production inputs, before inference.
+**Incomplete: 22/80 unique successful responses.** The data consist of 10 questions, two strategies and four language conditions, with two examples per prompt.
 
-## Authenticated live smoke
+- Correct numerical answers among scored responses: 22/22.
+- Parse failures: 0.
+- Failed record attempts retained in history: 12.
+- Missing configurations: 58.
+- Reconciliation balanced: true; matching real manifest required.
+- Run identity: `a6a5824eab93553910ed95576e6853d85096195cbdae4fab4e9d9bede68246dc`.
+- Journal SHA-256: `64f86f2c155f8eb7e85d16bff0b356b92642a08669b7193fdf4075fd881f5ea5`.
+- Manifest SHA-256: `2820d4c167c2dc3a830382dded0ec11ec08e9795d782ada9865716e347fa3aab`.
 
-The direct Google run completed all four conditions on a synthetic question:
+The final table is [pilot_summary.md](../results/pilot_summary.md). The full journal, manifest, evaluated responses and reconciliation are tracked separately. Failures followed by success count once; failed calls are not model answers.
 
-| Item | Recorded result |
-| --- | --- |
-| Model / metadata version | `gemma-4-31b-it` / `001` |
-| Successful conditions | U-U-U, U-U-E, U-E-E, E-E-E |
-| Generation attempts / terminal failures | 5 / 0 |
-| Successful-response token usage | 922 prompt + 192 completion = 1114 |
-| Resume | Zero new requests; journal unchanged |
-| Model receipt | Matches the pilot model settings |
+Recorded terminal error codes: `free_request_budget_exhausted`: 1, `http_503`: 11.
 
-Visible solutions, Urdu text and final markers were inspected. This does not certify translation quality or research accuracy. No parser, accuracy metrics or research grading were added.
+Collection is dated 25 November, after the TA's 23 November deadline. Partial coverage does not establish a complete baseline; even complete coverage is only a small development pilot, not final benchmark performance.
 
-Evidence: [sanitized access check](google_live_access_check.json), [journal](../results/live_smoke/google_direct/smoke.jsonl), [manifest](../results/live_smoke/google_direct/smoke.manifest.json) and [receipt](../results/live_smoke/google_direct/model_verification.json).
+## Model and spending constraint
 
-Live journal SHA-256: `61495daddeb16955910167c95e74a1806193d2522e8e7ae3f8a654691b04e5ec`.
+The configured native Google model is `gemma-4-31b-it`, with the frozen settings in `configs/pilot.yaml`. Requests use the existing project that the user confirmed as Free tier with no billing attached. No paid fallback or billing change was made. The API does not provide measured dollar cost, so no billing measurement is claimed.
 
-The existing journal hash and receipt's model hash were checked again against the pilot config during this documentation update. No new live calls were made.
+Successful-response token metadata: `{"completion_tokens": 2610, "prompt_tokens": 8560, "total_tokens": 11170}`. Failed requests may not report usage; these totals are not a complete account of all provider-side computation.
 
-The user confirmed an unbilled Free tier project. This is not an independent billing audit. The API did not supply measured dollar cost; none was invented. No paid fallback was used. Credentials remain in ignored `.env`.
+The four-condition synthetic live smoke from 12 November remains historical access evidence under `results/live_smoke/google_direct/`. Its journal SHA-256 is `61495daddeb16955910167c95e74a1806193d2522e8e7ae3f8a654691b04e5ec`. It is not included in research metrics. The dated model-catalog snapshot also remains historical.
 
-## Current limits
+## Submission and later work
 
-Hussain's draft generator and Rayyan's selector package have arrived but are not integrated. Human review and the later selection artifacts need confirmation. Saad's evaluation and the real 80-record pilot remain pending. See [handoff status](handoff_status.md).
+The report uses the actual IEEEtran class; its rendered page count must stay within three including references. Upload and meeting attendance remain team actions. The repo is public as observed on 25 November; this work does not change visibility. Hosted CI remains disabled.
 
-The repository is private at [Omore03/nlp-multilingual-reasoning](https://github.com/Omore03/nlp-multilingual-reasoning). Local tests are the merge check; hosted CI is disabled. Earlier mock runs and OpenRouter access failures are retained as historical evidence, with their original identities. They do not count as real pilot results.
+Correct/re-review the two excluded demos before reuse. Larger reviewed experiments, deferred selectors, four-shot prompting and separate MGSM evaluation remain future work. See [submission checklist](submission_checklist.md).

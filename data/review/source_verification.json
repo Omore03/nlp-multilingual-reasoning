@@ -1,0 +1,163 @@
+{
+  "checked_on": "2026-11-25",
+  "source_url": "https://raw.githubusercontent.com/openai/grade-school-math/3101c7d5072418e28b9008a6636bde82a006892c/grade_school_math/data/train.jsonl",
+  "source_commit": "3101c7d5072418e28b9008a6636bde82a006892c",
+  "raw_file_sha256": "17f347dc51477c50d4efb83959dbb7c56297aba886e5544ee2aaed3024813465",
+  "source_rows": 7473,
+  "question_matches": 30,
+  "exact_question_matches": 25,
+  "numeric_key_matches": 30,
+  "scope": "English questions (whitespace-normalized where needed) and numeric keys only; not independent Urdu or full worked-solution review.",
+  "items": [
+    {
+      "id": "gsm8k-train-73429d562982",
+      "question_match": "exact",
+      "numeric_key_match": true
+    },
+    {
+      "id": "gsm8k-train-3f23a7d4df7c",
+      "question_match": "exact",
+      "numeric_key_match": true
+    },
+    {
+      "id": "gsm8k-train-9eea4e53dec0",
+      "question_match": "exact",
+      "numeric_key_match": true
+    },
+    {
+      "id": "gsm8k-train-16f83fb4320c",
+      "question_match": "exact",
+      "numeric_key_match": true
+    },
+    {
+      "id": "gsm8k-train-cf2595dad6a3",
+      "question_match": "exact",
+      "numeric_key_match": true
+    },
+    {
+      "id": "gsm8k-train-f9fe6096f4fc",
+      "question_match": "exact",
+      "numeric_key_match": true
+    },
+    {
+      "id": "gsm8k-train-cdcae5775716",
+      "question_match": "whitespace-normalized",
+      "numeric_key_match": true
+    },
+    {
+      "id": "gsm8k-train-7f5709a21d11",
+      "question_match": "exact",
+      "numeric_key_match": true
+    },
+    {
+      "id": "gsm8k-train-ea66ef8b11aa",
+      "question_match": "exact",
+      "numeric_key_match": true
+    },
+    {
+      "id": "gsm8k-train-eb06c14679dc",
+      "question_match": "exact",
+      "numeric_key_match": true
+    },
+    {
+      "id": "gsm8k-train-7a6b8353e50c",
+      "question_match": "exact",
+      "numeric_key_match": true
+    },
+    {
+      "id": "gsm8k-train-34f9511baf56",
+      "question_match": "exact",
+      "numeric_key_match": true
+    },
+    {
+      "id": "gsm8k-train-9d7481516507",
+      "question_match": "exact",
+      "numeric_key_match": true
+    },
+    {
+      "id": "gsm8k-train-73bcb06b471e",
+      "question_match": "exact",
+      "numeric_key_match": true
+    },
+    {
+      "id": "gsm8k-train-da19d532632e",
+      "question_match": "exact",
+      "numeric_key_match": true
+    },
+    {
+      "id": "gsm8k-train-86ba5b70f686",
+      "question_match": "exact",
+      "numeric_key_match": true
+    },
+    {
+      "id": "gsm8k-train-b5a344d0eb73",
+      "question_match": "exact",
+      "numeric_key_match": true
+    },
+    {
+      "id": "gsm8k-train-b384164045eb",
+      "question_match": "exact",
+      "numeric_key_match": true
+    },
+    {
+      "id": "gsm8k-train-78a19fb7a7c3",
+      "question_match": "exact",
+      "numeric_key_match": true
+    },
+    {
+      "id": "gsm8k-train-f8ac079613e1",
+      "question_match": "exact",
+      "numeric_key_match": true
+    },
+    {
+      "id": "gsm8k-train-4c46af17e4af",
+      "question_match": "whitespace-normalized",
+      "numeric_key_match": true
+    },
+    {
+      "id": "gsm8k-train-19b0d3572fbe",
+      "question_match": "whitespace-normalized",
+      "numeric_key_match": true
+    },
+    {
+      "id": "gsm8k-train-c7b34b999ba8",
+      "question_match": "exact",
+      "numeric_key_match": true
+    },
+    {
+      "id": "gsm8k-train-111d72db39e6",
+      "question_match": "exact",
+      "numeric_key_match": true
+    },
+    {
+      "id": "gsm8k-train-4e78856e0b87",
+      "question_match": "exact",
+      "numeric_key_match": true
+    },
+    {
+      "id": "gsm8k-train-7ed300676787",
+      "question_match": "whitespace-normalized",
+      "numeric_key_match": true
+    },
+    {
+      "id": "gsm8k-train-c7da26a5fbd9",
+      "question_match": "exact",
+      "numeric_key_match": true
+    },
+    {
+      "id": "gsm8k-train-1d58b8a27f49",
+      "question_match": "exact",
+      "numeric_key_match": true
+    },
+    {
+      "id": "gsm8k-train-4ed90b091532",
+      "question_match": "exact",
+      "numeric_key_match": true
+    },
+    {
+      "id": "gsm8k-train-2e8fc28b2be6",
+      "question_match": "whitespace-normalized",
+      "numeric_key_match": true
+    }
+  ]
+}

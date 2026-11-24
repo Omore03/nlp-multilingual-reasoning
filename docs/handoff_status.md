@@ -1,49 +1,30 @@
 # Team handoff status
 
-Updated 12 November 2026. This page records the files received and inspected locally. The teammate packages have not yet been merged into the runnable project.
+Updated 25 November 2026. The supplied modules and reviewed data are now integrated.
 
-## Hussain Baqar — data
+| Owner | Received and integrated |
+| --- | --- |
+| Hussain | Data generator/validator evidence, source/license notes and review document. His confirmation reported by Ammar approves all items except demos 4 and 5 |
+| Rayyan | Production random/similarity selectors, 55 original tests, the 24 November encoder cache, pinned revision, 20 original selections and retrieval examples |
+| Saad | Parser, metrics, report module, 77 original tests, fixtures and evaluation plan |
+| Ammar | Prompting/inference framework, thin selector adapter, approval ledger, integration checks, real-run collection and report assembly |
 
-Received:
+## Review decisions
 
-- `build_pairs.py`: generates 20 demonstration and 10 dev records.
-- `validate_pairs.py`: checks schema, arithmetic, overlap and review metadata.
-- `dataset_notes.md`: sources, versions, licensing and known ambiguities.
-- `LICENSE_GSM8K.txt`: the upstream license notice.
+The Word form has 22 explicit accurate decisions, two correction requests and six unticked entries. Ammar's 25 November message reports Hussain's confirmation for the remaining entries. This later evidence is recorded separately; no missing signature date is invented.
 
-The generator sets every record to `translation_status: draft`, with `reviewer` and `review_date` unset. No later review evidence has been supplied. This is real-source draft data, not a synthetic test fixture.
+The production pool has 18 approved demos and the dev set has 10 questions. Demos 4 and 5 remain false in `data/review/excluded_demos.jsonl`. The full ledger is `data/review/review_receipt.json`.
 
-Needed: confirmation of human review and the reviewed JSONL files with reviewer/date recorded. Automatic arithmetic checks alone cannot establish translation quality. Preserve the source notes, uncertainties and license during integration.
+## Selection reconciliation
 
-The supplied fields `solution_en`, `solution_ur` and `answer_number` also need mapping to the runner's `reasoning_en`, `reasoning_ur` and numeric-string `answer`. Set `verified` only from actual review evidence. See the [input contract](integration_contract.md).
+The older context handoff says the encoder run had not happened. The 24 November archive supersedes it: the cache covers all 30 questions, and all 20 original pairs were reproduced from its genuine vectors. Four pairs used unapproved demos. Removing those candidates changes 12 ordered selections, so the entire approved plan was regenerated.
 
-## Rayyan Hasib — selection
+The new `data/selection/approved_plan.json` identifies the encoder revision, cache hash, exact input files and query hashes. The adapter rejects changed questions or pools. It is real cached selection, not a synthetic test table. The small supplied vector cache and frozen selections are tracked; model weights stay outside Git.
 
-Received:
+## Evaluation fixes
 
-- `rayyan_selection.zip`: random/similarity code, encoder/cache support, tests, fixtures and notes.
-- `selection_handover_rayyan.html`: the earlier handover.
-- `pilot_selection_report.html`: a later selection-run report.
+The parser now accepts `FINAL_ANSWER:`. Real scoring requires a matching manifest and rejects mixed runs/models, mock input and duplicate successes. Empty or conflicting runs cannot be declared complete. Original tests are retained, with fixture-mode CLI calls made explicit.
 
-The later report states that 55 tests passed and 20 selections were generated on Hussain's data. Those are reported results; they have not been reproduced in this repository. The ZIP does not include the later generated artifacts or all code updates described in that report.
+## Remaining research work
 
-Needed: the updated code, `selections_pilot.jsonl`, embedding cache, `retrieval_examples.md`, updated selection notes and the exact input-data version used.
-
-Reported encoder: `sentence-transformers/paraphrase-multilingual-mpnet-base-v2`, revision `4328cf26390c98c5e3c738b4460a05b95f4911f5`. Confirm this against the delivered files before configuring the pilot. No encoder weights have been downloaded here. The test encoder must never replace the real similarity encoder in research runs.
-
-## Ammar Anees — shared implementation
-
-Prompting, inference, mock checks and direct Google synthetic live verification are complete. Connecting and checking the teammate packages remains pending. The production data paths and pilot output remain empty.
-
-## Saad ur Rehman — evaluation
-
-The parser, metrics and reporting implementation have not been supplied. The [output contract](integration_contract.md) defines his handoff, including `FINAL_ANSWER:` and the required raw records.
-
-## Before the real pilot
-
-1. Confirm Hussain's review status and integrate the reviewed data.
-2. Reconcile Rayyan's ZIP with his later report and integrate the real selectors.
-3. Run both members' checks, the project tests and a prompt preview.
-4. Keep the verified model settings fixed and run the pilot within free quota.
-
-Original teammate files remain unchanged locally. Large caches, weights and unrelated Downloads files stay outside Git.
+Finish/reconcile the 80 real records and generate the baseline/comparison table. Final MGSM evaluation, larger data, additional selectors and four-shot prompting remain later work. See the verification record for the actual collection status.

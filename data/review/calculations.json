@@ -1,0 +1,612 @@
+[
+  {
+    "id": "gsm8k-train-73429d562982",
+    "answer_number": 72,
+    "answer_unit": "clips",
+    "calculations": [
+      {
+        "expression": "48/2",
+        "result": 24,
+        "unit": "clips"
+      },
+      {
+        "expression": "48+24",
+        "result": 72,
+        "unit": "clips"
+      }
+    ]
+  },
+  {
+    "id": "gsm8k-train-3f23a7d4df7c",
+    "answer_number": 10,
+    "answer_unit": "USD",
+    "calculations": [
+      {
+        "expression": "12/60",
+        "result": 0.2,
+        "unit": "USD/minute"
+      },
+      {
+        "expression": "0.2*50",
+        "result": 10,
+        "unit": "USD"
+      }
+    ]
+  },
+  {
+    "id": "gsm8k-train-9eea4e53dec0",
+    "answer_number": 5,
+    "answer_unit": "USD",
+    "calculations": [
+      {
+        "expression": "100/2",
+        "result": 50,
+        "unit": "USD"
+      },
+      {
+        "expression": "15*2",
+        "result": 30,
+        "unit": "USD"
+      },
+      {
+        "expression": "100-50-15-30",
+        "result": 5,
+        "unit": "USD"
+      }
+    ]
+  },
+  {
+    "id": "gsm8k-train-4ed90b091532",
+    "answer_number": 42,
+    "answer_unit": "pages",
+    "calculations": [
+      {
+        "expression": "12*2",
+        "result": 24,
+        "unit": "pages"
+      },
+      {
+        "expression": "120-12-24",
+        "result": 84,
+        "unit": "pages"
+      },
+      {
+        "expression": "84/2",
+        "result": 42,
+        "unit": "pages"
+      }
+    ]
+  },
+  {
+    "id": "gsm8k-train-2e8fc28b2be6",
+    "answer_number": 624,
+    "answer_unit": "pages/year",
+    "calculations": [
+      {
+        "expression": "3*2",
+        "result": 6,
+        "unit": "pages/round"
+      },
+      {
+        "expression": "6*2",
+        "result": 12,
+        "unit": "pages/week"
+      },
+      {
+        "expression": "12*52",
+        "result": 624,
+        "unit": "pages/year"
+      }
+    ]
+  },
+  {
+    "id": "gsm8k-train-16f83fb4320c",
+    "answer_number": 35,
+    "answer_unit": "flowers",
+    "calculations": [
+      {
+        "expression": "10*80/100",
+        "result": 8,
+        "unit": "flowers"
+      },
+      {
+        "expression": "10+8",
+        "result": 18,
+        "unit": "flowers"
+      },
+      {
+        "expression": "(10+18)*25/100",
+        "result": 7,
+        "unit": "flowers"
+      },
+      {
+        "expression": "10+18+7",
+        "result": 35,
+        "unit": "flowers"
+      }
+    ]
+  },
+  {
+    "id": "gsm8k-train-cf2595dad6a3",
+    "answer_number": 48,
+    "answer_unit": "slices",
+    "calculations": [
+      {
+        "expression": "2*16",
+        "result": 32,
+        "unit": "slices"
+      },
+      {
+        "expression": "2*8",
+        "result": 16,
+        "unit": "slices"
+      },
+      {
+        "expression": "32+16",
+        "result": 48,
+        "unit": "slices"
+      }
+    ]
+  },
+  {
+    "id": "gsm8k-train-f9fe6096f4fc",
+    "answer_number": 5250,
+    "answer_unit": "USD",
+    "calculations": [
+      {
+        "expression": "1750*2",
+        "result": 3500,
+        "unit": "USD"
+      },
+      {
+        "expression": "1750+3500",
+        "result": 5250,
+        "unit": "USD"
+      }
+    ]
+  },
+  {
+    "id": "gsm8k-train-cdcae5775716",
+    "answer_number": 36,
+    "answer_unit": "students",
+    "calculations": [
+      {
+        "expression": "100-40",
+        "result": 60,
+        "unit": "percent"
+      },
+      {
+        "expression": "60*60/100",
+        "result": 36,
+        "unit": "students"
+      }
+    ]
+  },
+  {
+    "id": "gsm8k-train-7f5709a21d11",
+    "answer_number": 15,
+    "answer_unit": "USD",
+    "calculations": [
+      {
+        "expression": "60/2",
+        "result": 30,
+        "unit": "USD"
+      },
+      {
+        "expression": "30/2",
+        "result": 15,
+        "unit": "USD"
+      },
+      {
+        "expression": "30-15",
+        "result": 15,
+        "unit": "USD"
+      }
+    ]
+  },
+  {
+    "id": "gsm8k-train-ea66ef8b11aa",
+    "answer_number": 9,
+    "answer_unit": "ounces tea",
+    "calculations": [
+      {
+        "expression": "12*6",
+        "result": 72,
+        "unit": "ounces beverage"
+      },
+      {
+        "expression": "72/8",
+        "result": 9,
+        "unit": "ounces tea"
+      }
+    ]
+  },
+  {
+    "id": "gsm8k-train-eb06c14679dc",
+    "answer_number": 476,
+    "answer_unit": "USD",
+    "calculations": [
+      {
+        "expression": "12-10",
+        "result": 2,
+        "unit": "tickets"
+      },
+      {
+        "expression": "40*5/100",
+        "result": 2,
+        "unit": "USD/ticket"
+      },
+      {
+        "expression": "10*40+2*(40-2)",
+        "result": 476,
+        "unit": "USD"
+      }
+    ]
+  },
+  {
+    "id": "gsm8k-train-7a6b8353e50c",
+    "answer_number": 500,
+    "answer_unit": "USD",
+    "calculations": [
+      {
+        "expression": "50+200",
+        "result": 250,
+        "unit": "USD"
+      },
+      {
+        "expression": "250*2",
+        "result": 500,
+        "unit": "USD"
+      }
+    ]
+  },
+  {
+    "id": "gsm8k-train-34f9511baf56",
+    "answer_number": 99,
+    "answer_unit": "bananas/monkey",
+    "calculations": [
+      {
+        "expression": "6*9*14",
+        "result": 756,
+        "unit": "bananas"
+      },
+      {
+        "expression": "(10-6)*12*9",
+        "result": 432,
+        "unit": "bananas"
+      },
+      {
+        "expression": "(756+432)/12",
+        "result": 99,
+        "unit": "bananas/monkey"
+      }
+    ]
+  },
+  {
+    "id": "gsm8k-train-9d7481516507",
+    "answer_number": 300,
+    "answer_unit": "USD",
+    "calculations": [
+      {
+        "expression": "30+15+25",
+        "result": 70,
+        "unit": "percent"
+      },
+      {
+        "expression": "100-70",
+        "result": 30,
+        "unit": "percent"
+      },
+      {
+        "expression": "1000*30/100",
+        "result": 300,
+        "unit": "USD"
+      }
+    ]
+  },
+  {
+    "id": "gsm8k-train-73bcb06b471e",
+    "answer_number": 99,
+    "answer_unit": "USD",
+    "calculations": [
+      {
+        "expression": "4*9",
+        "result": 36,
+        "unit": "USD"
+      },
+      {
+        "expression": "3*5",
+        "result": 15,
+        "unit": "USD"
+      },
+      {
+        "expression": "5*7",
+        "result": 35,
+        "unit": "USD"
+      },
+      {
+        "expression": "13+36+15+35",
+        "result": 99,
+        "unit": "USD"
+      }
+    ]
+  },
+  {
+    "id": "gsm8k-train-da19d532632e",
+    "answer_number": 15,
+    "answer_unit": "seconds",
+    "calculations": [
+      {
+        "expression": "60/5",
+        "result": 12,
+        "unit": "seconds"
+      },
+      {
+        "expression": "(90-60)/10",
+        "result": 3,
+        "unit": "seconds"
+      },
+      {
+        "expression": "12+3",
+        "result": 15,
+        "unit": "seconds"
+      }
+    ]
+  },
+  {
+    "id": "gsm8k-train-86ba5b70f686",
+    "answer_number": 3,
+    "answer_unit": "packs",
+    "calculations": [
+      {
+        "expression": "13+3+2",
+        "result": 18,
+        "unit": "people"
+      },
+      {
+        "expression": "18/6",
+        "result": 3,
+        "unit": "packs"
+      }
+    ]
+  },
+  {
+    "id": "gsm8k-train-b5a344d0eb73",
+    "answer_number": 28,
+    "answer_unit": "kilograms/person",
+    "calculations": [
+      {
+        "expression": "27-7",
+        "result": 20,
+        "unit": "kilograms"
+      },
+      {
+        "expression": "103-27-20",
+        "result": 56,
+        "unit": "kilograms"
+      },
+      {
+        "expression": "56/2",
+        "result": 28,
+        "unit": "kilograms/person"
+      }
+    ]
+  },
+  {
+    "id": "gsm8k-train-b384164045eb",
+    "answer_number": 15,
+    "answer_unit": "GBP",
+    "calculations": [
+      {
+        "expression": "(2+1)*1",
+        "result": 3,
+        "unit": "GBP"
+      },
+      {
+        "expression": "(2+2)*3",
+        "result": 12,
+        "unit": "GBP"
+      },
+      {
+        "expression": "3+12",
+        "result": 15,
+        "unit": "GBP"
+      }
+    ]
+  },
+  {
+    "id": "gsm8k-train-78a19fb7a7c3",
+    "answer_number": 768,
+    "answer_unit": "vegetables",
+    "calculations": [
+      {
+        "expression": "237-60",
+        "result": 177,
+        "unit": "cucumbers"
+      },
+      {
+        "expression": "177*2",
+        "result": 354,
+        "unit": "peppers"
+      },
+      {
+        "expression": "237+177+354",
+        "result": 768,
+        "unit": "vegetables"
+      }
+    ]
+  },
+  {
+    "id": "gsm8k-train-f8ac079613e1",
+    "answer_number": 85,
+    "answer_unit": "kilograms",
+    "calculations": [
+      {
+        "expression": "4*3",
+        "result": 12,
+        "unit": "kilograms"
+      },
+      {
+        "expression": "97-12",
+        "result": 85,
+        "unit": "kilograms"
+      }
+    ]
+  },
+  {
+    "id": "gsm8k-train-4c46af17e4af",
+    "answer_number": 4,
+    "answer_unit": "slices",
+    "calculations": [
+      {
+        "expression": "3*10",
+        "result": 30,
+        "unit": "slices"
+      },
+      {
+        "expression": "24+1+1",
+        "result": 26,
+        "unit": "people"
+      },
+      {
+        "expression": "30-26",
+        "result": 4,
+        "unit": "slices"
+      }
+    ]
+  },
+  {
+    "id": "gsm8k-train-19b0d3572fbe",
+    "answer_number": 70,
+    "answer_unit": "person-years",
+    "calculations": [
+      {
+        "expression": "40-10",
+        "result": 30,
+        "unit": "years"
+      },
+      {
+        "expression": "40+30",
+        "result": 70,
+        "unit": "person-years"
+      }
+    ]
+  },
+  {
+    "id": "gsm8k-train-c7b34b999ba8",
+    "answer_number": 700,
+    "answer_unit": "USD",
+    "calculations": [
+      {
+        "expression": "50-40",
+        "result": 10,
+        "unit": "hours"
+      },
+      {
+        "expression": "10*20",
+        "result": 200,
+        "unit": "USD"
+      },
+      {
+        "expression": "500+200",
+        "result": 700,
+        "unit": "USD"
+      }
+    ]
+  },
+  {
+    "id": "gsm8k-train-111d72db39e6",
+    "answer_number": 90,
+    "answer_unit": "rooms",
+    "calculations": [
+      {
+        "expression": "10-1",
+        "result": 9,
+        "unit": "floors"
+      },
+      {
+        "expression": "9*10",
+        "result": 90,
+        "unit": "rooms"
+      }
+    ]
+  },
+  {
+    "id": "gsm8k-train-4e78856e0b87",
+    "answer_number": 6,
+    "answer_unit": "ounces",
+    "calculations": [
+      {
+        "expression": "2-0.50",
+        "result": 1.5,
+        "unit": "USD"
+      },
+      {
+        "expression": "1.5/0.25",
+        "result": 6,
+        "unit": "ounces"
+      }
+    ]
+  },
+  {
+    "id": "gsm8k-train-7ed300676787",
+    "answer_number": 600,
+    "answer_unit": "USD",
+    "calculations": [
+      {
+        "expression": "400*1.5",
+        "result": 600,
+        "unit": "pounds"
+      },
+      {
+        "expression": "600-400",
+        "result": 200,
+        "unit": "pounds"
+      },
+      {
+        "expression": "200*3",
+        "result": 600,
+        "unit": "USD"
+      }
+    ]
+  },
+  {
+    "id": "gsm8k-train-c7da26a5fbd9",
+    "answer_number": 258,
+    "answer_unit": "geckos",
+    "calculations": [
+      {
+        "expression": "86*2",
+        "result": 172,
+        "unit": "geckos"
+      },
+      {
+        "expression": "86+172",
+        "result": 258,
+        "unit": "geckos"
+      }
+    ]
+  },
+  {
+    "id": "gsm8k-train-1d58b8a27f49",
+    "answer_number": 216,
+    "answer_unit": "books",
+    "calculations": [
+      {
+        "expression": "40*4",
+        "result": 160,
+        "unit": "books"
+      },
+      {
+        "expression": "40*40/100",
+        "result": 16,
+        "unit": "books"
+      },
+      {
+        "expression": "160+40+16",
+        "result": 216,
+        "unit": "books"
+      }
+    ]
+  }
+]

@@ -1,0 +1,438 @@
+{
+  "raw_records": 34,
+  "unusable_records": 0,
+  "failed_calls": 12,
+  "duplicates_dropped": 0,
+  "conflicting_duplicates": 0,
+  "unknown_question_records": 0,
+  "unique_successful_scored": 22,
+  "expected_configurations": 80,
+  "seeds_seen": [
+    42
+  ],
+  "missing_configurations": [
+    {
+      "question_id": "gsm8k-train-111d72db39e6",
+      "condition": "E-E-E",
+      "strategy": "random",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-111d72db39e6",
+      "condition": "E-E-E",
+      "strategy": "similarity",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-111d72db39e6",
+      "condition": "U-E-E",
+      "strategy": "random",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-111d72db39e6",
+      "condition": "U-E-E",
+      "strategy": "similarity",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-111d72db39e6",
+      "condition": "U-U-E",
+      "strategy": "random",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-111d72db39e6",
+      "condition": "U-U-E",
+      "strategy": "similarity",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-111d72db39e6",
+      "condition": "U-U-U",
+      "strategy": "random",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-111d72db39e6",
+      "condition": "U-U-U",
+      "strategy": "similarity",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-19b0d3572fbe",
+      "condition": "E-E-E",
+      "strategy": "random",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-19b0d3572fbe",
+      "condition": "E-E-E",
+      "strategy": "similarity",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-19b0d3572fbe",
+      "condition": "U-E-E",
+      "strategy": "similarity",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-19b0d3572fbe",
+      "condition": "U-U-E",
+      "strategy": "similarity",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-19b0d3572fbe",
+      "condition": "U-U-U",
+      "strategy": "similarity",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-1d58b8a27f49",
+      "condition": "E-E-E",
+      "strategy": "random",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-1d58b8a27f49",
+      "condition": "E-E-E",
+      "strategy": "similarity",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-1d58b8a27f49",
+      "condition": "U-E-E",
+      "strategy": "random",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-1d58b8a27f49",
+      "condition": "U-E-E",
+      "strategy": "similarity",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-1d58b8a27f49",
+      "condition": "U-U-E",
+      "strategy": "random",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-1d58b8a27f49",
+      "condition": "U-U-E",
+      "strategy": "similarity",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-1d58b8a27f49",
+      "condition": "U-U-U",
+      "strategy": "random",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-1d58b8a27f49",
+      "condition": "U-U-U",
+      "strategy": "similarity",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-4c46af17e4af",
+      "condition": "U-E-E",
+      "strategy": "random",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-4c46af17e4af",
+      "condition": "U-E-E",
+      "strategy": "similarity",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-4c46af17e4af",
+      "condition": "U-U-E",
+      "strategy": "random",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-4e78856e0b87",
+      "condition": "E-E-E",
+      "strategy": "random",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-4e78856e0b87",
+      "condition": "E-E-E",
+      "strategy": "similarity",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-4e78856e0b87",
+      "condition": "U-E-E",
+      "strategy": "random",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-4e78856e0b87",
+      "condition": "U-E-E",
+      "strategy": "similarity",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-4e78856e0b87",
+      "condition": "U-U-E",
+      "strategy": "random",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-4e78856e0b87",
+      "condition": "U-U-E",
+      "strategy": "similarity",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-4e78856e0b87",
+      "condition": "U-U-U",
+      "strategy": "random",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-4e78856e0b87",
+      "condition": "U-U-U",
+      "strategy": "similarity",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-7ed300676787",
+      "condition": "E-E-E",
+      "strategy": "random",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-7ed300676787",
+      "condition": "E-E-E",
+      "strategy": "similarity",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-7ed300676787",
+      "condition": "U-E-E",
+      "strategy": "random",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-7ed300676787",
+      "condition": "U-E-E",
+      "strategy": "similarity",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-7ed300676787",
+      "condition": "U-U-E",
+      "strategy": "random",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-7ed300676787",
+      "condition": "U-U-E",
+      "strategy": "similarity",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-7ed300676787",
+      "condition": "U-U-U",
+      "strategy": "random",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-7ed300676787",
+      "condition": "U-U-U",
+      "strategy": "similarity",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-c7b34b999ba8",
+      "condition": "E-E-E",
+      "strategy": "random",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-c7b34b999ba8",
+      "condition": "E-E-E",
+      "strategy": "similarity",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-c7b34b999ba8",
+      "condition": "U-E-E",
+      "strategy": "random",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-c7b34b999ba8",
+      "condition": "U-E-E",
+      "strategy": "similarity",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-c7b34b999ba8",
+      "condition": "U-U-E",
+      "strategy": "random",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-c7b34b999ba8",
+      "condition": "U-U-E",
+      "strategy": "similarity",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-c7b34b999ba8",
+      "condition": "U-U-U",
+      "strategy": "random",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-c7b34b999ba8",
+      "condition": "U-U-U",
+      "strategy": "similarity",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-c7da26a5fbd9",
+      "condition": "E-E-E",
+      "strategy": "random",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-c7da26a5fbd9",
+      "condition": "E-E-E",
+      "strategy": "similarity",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-c7da26a5fbd9",
+      "condition": "U-E-E",
+      "strategy": "random",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-c7da26a5fbd9",
+      "condition": "U-E-E",
+      "strategy": "similarity",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-c7da26a5fbd9",
+      "condition": "U-U-E",
+      "strategy": "random",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-c7da26a5fbd9",
+      "condition": "U-U-E",
+      "strategy": "similarity",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-c7da26a5fbd9",
+      "condition": "U-U-U",
+      "strategy": "random",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-c7da26a5fbd9",
+      "condition": "U-U-U",
+      "strategy": "similarity",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-f8ac079613e1",
+      "condition": "U-U-E",
+      "strategy": "similarity",
+      "shot_count": 2,
+      "seed": 42
+    },
+    {
+      "question_id": "gsm8k-train-f8ac079613e1",
+      "condition": "U-U-U",
+      "strategy": "random",
+      "shot_count": 2,
+      "seed": 42
+    }
+  ],
+  "unexpected_configurations": [],
+  "unknown_question_ids": [],
+  "contract_problems": [],
+  "totals_balance": true,
+  "run_identities": [
+    "a6a5824eab93553910ed95576e6853d85096195cbdae4fab4e9d9bede68246dc"
+  ],
+  "model_identities": [
+    "gemma-4-31b-it"
+  ],
+  "research_eligible": true,
+  "evaluation_kind": "real_pilot",
+  "raw_sha256": "64f86f2c155f8eb7e85d16bff0b356b92642a08669b7193fdf4075fd881f5ea5",
+  "manifest_sha256": "2820d4c167c2dc3a830382dded0ec11ec08e9795d782ada9865716e347fa3aab",
+  "run_id": "a6a5824eab93553910ed95576e6853d85096195cbdae4fab4e9d9bede68246dc",
+  "malformed_raw_lines": [],
+  "complete": false
+}

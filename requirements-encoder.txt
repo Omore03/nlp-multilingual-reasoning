@@ -1,0 +1,5 @@
+# Optional: only needed to compute NEW encoder vectors. Not needed for this frozen pilot.
+# Original Rayyan runtime pins are reported in docs/selection_notes.md.
+sentence-transformers==6.2.0
+huggingface-hub==2.3.0
+torch==2.14.1

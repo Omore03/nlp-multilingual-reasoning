@@ -1,6 +1,6 @@
 # Team workflow
 
-Clone the private repository with an authorized GitHub account and follow the [README setup](../README.md#quick-start). Each developer keeps credentials in their own ignored `.env`.
+Clone the repository with an authorized GitHub account and follow the [README setup](../README.md#setup). Each developer keeps credentials in their own ignored `.env`.
 
 ## Ownership
 
@@ -39,10 +39,10 @@ The [integration contract](integration_contract.md) gives exact interfaces. The 
 
 Track source, configs, docs, small synthetic fixtures and reviewed example outputs. Add the small real dataset only with its review and provenance notes. Preserve the GSM8K license if its data is redistributed.
 
-Keep keys, `.env`, environments, bulk datasets, model weights, embedding caches, temporary files and recovery backups out of Git. Review live/pilot outputs for secrets and provenance before explicitly staging individual ignored files. Never force-add an entire results directory.
+Keep keys, `.env`, environments, bulk datasets, model weights, temporary files and recovery backups out of Git. Review live/pilot outputs for secrets and provenance before explicitly staging individual ignored files. Never force-add an entire results directory. The audited 100 KB supplied embedding cache is a documented exception and is tracked for reproduction; new bulk caches stay local.
 
 ## Run and submit
 
 Freeze source, data, dependencies, selectors and model settings before the real pilot. Avoid merging into a checkout with a running or unfinished pilot. Resume the same output only with matching fingerprints; use a new run for changed experiments.
 
-Use only the free API route and existing local hardware. Wait for quota instead of purchasing capacity. Follow the [run guide](running.md), then the [submission checklist](submission_checklist.md). The owner must arrange instructor access to the private repository; visibility changes and invitations need a separate decision.
+Use only the free API route and existing local hardware. Wait for quota instead of purchasing capacity. Follow the [run guide](running.md), then the [submission checklist](submission_checklist.md). The repository is public as observed on 25 November. This integration does not change visibility or collaborator permissions. Confirm submission access with the TA.

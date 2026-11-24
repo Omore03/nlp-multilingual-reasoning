@@ -1,4 +1,4 @@
-# VERIFIED direct Google synthetic smoke, 12 Nov 2026; settings frozen. Real pilot data/selectors pending.
+# Integrated approved 18-demo/10-dev pilot, 25 Nov 2026. Demos 4 and 5 excluded.
 data_kind: real
 demo_path: data/processed/demo_pool.jsonl
 dev_path: data/processed/dev.jsonl
@@ -7,8 +7,8 @@ conditions: [U-U-U, U-U-E, U-E-E, E-E-E]
 strategies: [random, similarity]
 shot_count: 2
 seed: 42
-selector: src.selection.select:select_examples
-selector_version: pending-rayyan-version
+selector: src.selection.pilot_adapter:select_examples
+selector_version: rayyan-mpnet-4328cf26-approved18-v1
 verification_receipt: results/live_smoke/google_direct/model_verification.json
 model:
   backend: google_ai_studio

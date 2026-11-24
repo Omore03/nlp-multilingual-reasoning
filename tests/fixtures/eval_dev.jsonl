@@ -1,0 +1,3 @@
+{"id": "gsm8k-train-78a19fb7a7c3", "question_en": "A garden produced 237 potatoes, 60 fewer cucumbers and twice as many peppers than the cucumbers. How many vegetables did the garden produce?", "answer_number": 768}
+{"id": "gsm8k-train-f8ac079613e1", "question_en": "A boxer weighs 97 kg at 4 months from a fight. He is on a diet that allows him to lose 3 kg per month until the day of the fight. How much will he weigh on the day of the fight?", "answer_number": 85}
+{"id": "synthetic-negative-01", "question_en": "SYNTHETIC TEST ITEM: A thermometer reads 5 degrees and falls 20 degrees. What does it read?", "answer": "-15"}

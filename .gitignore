@@ -28,3 +28,9 @@ htmlcov/
 *.corrupt-*
 *.tmp
 results/mock/local-*
+cache/
+reports/build/
+*.aux
+*.log
+*.out
+*.synctex.gz
