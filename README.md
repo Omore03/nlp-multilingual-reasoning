@@ -33,7 +33,7 @@ The adopted parser policy recovers 15 correct answers and loses none; seven more
 - Zero-shot has three unique conditions; U-E-E duplicates U-U-E without examples and is not rerun.
 - Retrieval always uses Urdu. All Urdu demonstration solutions include English unit words; U-U-U is nominal Urdu.
 
-These are development results. Model generation, runtime, precision and model-specific options differ; the comparison cannot isolate model size. Dataset expansion, MGSM, diversity/complexity and four-shot prompting are deferred.
+These are development results. Model generation, runtime, precision and model-specific options differ; the comparison cannot isolate model size. The next steps are to select or curate a stronger reviewed dataset, repeat baseline and error analysis, then implement diversity/complexity selection and compare two-shot/four-shot prompts. Separate held-out evaluation follows after the approach is fixed. These are planned stages; the current pilot stays frozen.
 
 ## Setup and offline reproduction
 

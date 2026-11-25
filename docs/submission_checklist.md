@@ -27,4 +27,11 @@ The ten-question development pilot is small and establishes no strategy improvem
 
 Hosted 31B zero-shot is optional reference work blocked by HTTP503 capacity (0/30 successful responses). No new local smoke was repeated on Ammar's Mac because Ollama is absent; the inherited local runs/receipts were independently checked. These facts are disclosed and do not leave the completed seven-run baseline unimplemented.
 
-Dataset expansion, MGSM, diversity/complexity, four-shot prompting and final held-out evaluation remain later-stage work.
+Next steps, in order:
+
+1. Select or curate a stronger English–Urdu dataset, record human review and arithmetic checks, and keep candidate, development and final-evaluation items separate. Working targets are about 240 candidates and 40 development questions.
+2. Repeat zero-shot, random and similarity baselines, including multiple random seeds and analysis by language, operation, difficulty and error type.
+3. Implement the proposed diversity/complexity selection and compare two-shot/four-shot prompts after the data and baseline phase.
+4. Freeze the approach before separate paired English/Urdu MGSM evaluation, subject to translation-quality and usage checks.
+
+These are planned tasks, not completed results.

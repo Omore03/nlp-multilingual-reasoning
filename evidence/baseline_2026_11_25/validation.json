@@ -61,7 +61,7 @@
   },
   "live_local_smoke": "not run; Ollama absent",
   "report_pages": 2,
-  "report_visual_review": "all two pages inspected; no clipping/overlap",
-  "report_sha256": "75df1df9dc2d8762a73aa8fb8a1d97aef6b199d457d2d3febbab7a4c84aa3ceb",
-  "submission_update": "2026-11-25: current lead adoption/published-branch wording; no scoring or inference code/data changes. Both updated PDF pages visually inspected; still two pages."
+  "report_visual_review": "Both final pages rendered and inspected; no clipping or overlap; future plan clearly visible.",
+  "report_sha256": "3e04d67d1552401e87062581042cbedf4d70a5ef383a5b075c9936c97e1b8445",
+  "submission_update": "2026-11-25: final report explicitly sequences better reviewed data, renewed baseline/error analysis, proposed novelty and held-out evaluation. Excluded demos are omitted from the report. No code, data, scores or inference changed. Both PDF pages visually inspected; still two pages."
 }

@@ -14,4 +14,6 @@ tectonic --outdir ../../output/pdf main.tex
 
 Tectonic 0.17.0 was used. The generated table reads provenance-checked files; all seven completed runs must be available. The 31B zero-shot capacity failure is described separately and never scored as 0% accuracy.
 
+Methodology includes an explicit future plan: better reviewed data first, renewed baseline/error analysis next, then proposed selection extensions and separate held-out evaluation.
+
 The reviewed final copy is `baseline_report.pdf`. Both rendered pages were inspected. T1 fonts and the original unmodified IEEEtran conference class are included. The original 31B report under `reports/intermediate/` is unchanged. The copied earlier small-model report folders are historical snapshots, superseded by this report for current review.
