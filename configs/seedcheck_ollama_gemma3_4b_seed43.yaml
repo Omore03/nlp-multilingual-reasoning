@@ -1,0 +1,33 @@
+# Seed-variance check for the gemma3:4b arm: random selection only, base selection seed 43 (pilot uses 42).
+# Same data, prompts template and decoding (generation seed stays 42); only the random demo pairs change. 40 calls.
+# Uses the live random selector, which reproduces the frozen seed-42 random pairs 10/10. 25 Nov 2026.
+data_kind: real
+demo_path: data/processed/demo_pool.jsonl
+dev_path: data/processed/dev.jsonl
+output_path: results/gemma3_4b_seed43/pilot_raw.jsonl
+conditions: [U-U-U, U-U-E, U-E-E, E-E-E]
+strategies: [random]
+shot_count: 2
+seed: 43
+selector: src.selection.select:select_examples
+selector_version: rayyan-random-sorted-ids-sha256-per-query-v1
+verification_receipt: results/live_smoke/ollama_gemma3_4b/model_verification.json
+model:
+  backend: ollama
+  model_id: gemma3:4b
+  model_digest: 68ceab7e468a31c988b44d5a4984a0e21f58c4f7158c6ce29c1804babac38df7
+  endpoint: http://127.0.0.1:11434/api/chat
+  credential_env: null
+  route: ollama-local
+  free_only: true
+  max_requests_per_invocation: null
+  min_request_interval_seconds: 0
+  decoding:
+    temperature: 0
+    top_p: 1
+    max_tokens: 2048
+    seed: 42
+    num_ctx: 4096
+  timeout_seconds: 300
+  max_attempts: 3
+  max_retry_wait_seconds: 30

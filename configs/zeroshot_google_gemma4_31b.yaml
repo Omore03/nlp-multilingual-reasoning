@@ -1,0 +1,32 @@
+# Zero-shot baseline for the Gemma 4 31B arm (Google AI Studio, free tier): same 10 dev questions and decoding, no
+# demonstrations; U-E-E omitted (identical to U-U-E at zero shots). 30 calls, within the 40-attempt budget. NOT YET RUN:
+# needs GOOGLE_API_KEY and GOOGLE_AI_STUDIO_FREE_TIER_CONFIRMED=true in the ignored .env. Prepared 25 Nov 2026.
+data_kind: real
+demo_path: data/processed/demo_pool.jsonl
+dev_path: data/processed/dev.jsonl
+output_path: results/gemma4_31b_zeroshot/pilot_raw.jsonl
+conditions: [U-U-U, U-U-E, E-E-E]
+strategies: [none]
+shot_count: 0
+seed: 42
+selector: null
+selector_version: no-selection-zero-shot
+verification_receipt: results/live_smoke/google_direct/model_verification.json
+model:
+  backend: google_ai_studio
+  model_id: gemma-4-31b-it
+  endpoint: https://generativelanguage.googleapis.com/v1beta/models/gemma-4-31b-it:generateContent
+  credential_env: GOOGLE_API_KEY
+  route: google-ai-studio-direct
+  free_only: true
+  max_requests_per_invocation: 40
+  min_request_interval_seconds: 3.1
+  decoding:
+    temperature: 0
+    top_p: 1
+    max_tokens: 2048
+    seed: 42
+    thinking_level: minimal
+  timeout_seconds: 120
+  max_attempts: 3
+  max_retry_wait_seconds: 30

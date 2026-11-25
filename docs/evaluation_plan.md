@@ -32,6 +32,7 @@ Same code as the pilot (`src/evaluation/`).
 - **Parse status.** Every response gets `ok`, `missing` (no marker, or no number after it) or `ambiguous` (several different numbers after a marker, or markers that disagree). Only `ok` can be correct. Parse failures stay in the denominator and are reported in their own column, so formatting problems are visible separately from reasoning errors.
 - **Reconciliation.** Before any table is produced: drop failed API calls, keep one successful record per (question, condition, strategy, shots, seed), and check the scored count equals the expected grid. The report writes a reconciliation file and exits non-zero if anything is missing.
 - **Freeze rule.** The parser and markers are frozen after the pilot. If a change is needed after looking at test outputs, it is applied to every configuration, re-run from the raw file, and logged in the results notes. Raw responses are never edited.
+  - *Change log:* 25 Nov 2026, parser version 2 (last `FINAL_ANSWER` with a number decides, colon optional; earlier rule as fallback), **pending Saad's approval**. Applied to all seven runs from the raw files; 15 answers gained, none lost, 31B unchanged. See [parser change](parser_change_2026-11-25.md).
 
 ## 3. Comparisons
 

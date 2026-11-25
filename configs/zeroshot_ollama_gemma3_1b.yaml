@@ -1,0 +1,32 @@
+# Zero-shot baseline for the gemma3:1b arm: same 10 dev questions and decoding, no demonstrations.
+# U-E-E is omitted because with zero demonstrations its prompt equals U-U-E. 30 calls. 25 Nov 2026.
+data_kind: real
+demo_path: data/processed/demo_pool.jsonl
+dev_path: data/processed/dev.jsonl
+output_path: results/gemma3_1b_zeroshot/pilot_raw.jsonl
+conditions: [U-U-U, U-U-E, E-E-E]
+strategies: [none]
+shot_count: 0
+seed: 42
+selector: null
+selector_version: no-selection-zero-shot
+verification_receipt: results/live_smoke/ollama_gemma3_1b/model_verification.json
+model:
+  backend: ollama
+  model_id: gemma3:1b
+  model_digest: 97558784bdc9175075a72655bf360b15da17df6b3b9e5182af9f8c0c8e58ba7c
+  endpoint: http://127.0.0.1:11434/api/chat
+  credential_env: null
+  route: ollama-local
+  free_only: true
+  max_requests_per_invocation: null
+  min_request_interval_seconds: 0
+  decoding:
+    temperature: 0
+    top_p: 1
+    max_tokens: 2048
+    seed: 42
+    num_ctx: 4096
+  timeout_seconds: 300
+  max_attempts: 3
+  max_retry_wait_seconds: 30

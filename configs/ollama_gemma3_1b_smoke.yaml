@@ -1,0 +1,33 @@
+# Local Ollama synthetic smoke for gemma3:1b (Q4_K_M, Ollama 0.40.18), 25 Nov 2026.
+# Writes the model_verification.json receipt that the real run below requires.
+# The model block must stay byte-for-byte identical to configs/pilot_ollama_gemma3_1b.yaml.
+data_kind: synthetic
+demo_path: tests/fixtures/demo.jsonl
+dev_path: tests/fixtures/dev.jsonl
+output_path: results/live_smoke/ollama_gemma3_1b/smoke.jsonl
+conditions: [U-U-U, U-U-E, U-E-E, E-E-E]
+strategies: [random]
+shot_count: 2
+seed: 42
+selector: tests.fixtures.selector:select_examples
+selector_version: fixture-table-v1
+verification_receipt: null
+model:
+  backend: ollama
+  model_id: gemma3:1b
+  model_digest: 97558784bdc9175075a72655bf360b15da17df6b3b9e5182af9f8c0c8e58ba7c
+  endpoint: http://127.0.0.1:11434/api/chat
+  credential_env: null
+  route: ollama-local
+  free_only: true
+  max_requests_per_invocation: null
+  min_request_interval_seconds: 0
+  decoding:
+    temperature: 0
+    top_p: 1
+    max_tokens: 2048
+    seed: 42
+    num_ctx: 4096
+  timeout_seconds: 300
+  max_attempts: 3
+  max_retry_wait_seconds: 30

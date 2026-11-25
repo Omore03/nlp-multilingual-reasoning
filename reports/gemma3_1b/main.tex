@@ -1,0 +1,64 @@
+\documentclass[conference]{IEEEtran}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{url}
+\title{Urdu--English Mathematical Reasoning:\\A Pilot Study of Demonstration Selection}
+\author{\IEEEauthorblockN{Ammar Anees, Hussain Baqar, Rayyan Hasib, and Saad ur Rehman}}
+\begin{document}
+\maketitle
+\begin{abstract}
+We investigate how demonstration selection interacts with Urdu and English prompt language in mathematical reasoning. Our approach uses few-shot in-context learning without updating model weights. We implement random and multilingual semantic-similarity selection, two solved demonstrations per prompt, and four language arrangements on a fixed small instruction-tuned model (Gemma~3 1B, run locally). The development pilot contains 18 approved bilingual demonstrations and 10 separate GSM8K training questions; two additional demonstrations remain excluded following review. The resulting design contains 80 inference configurations. We provide reproducible selection artifacts, incremental inference journals, strict provenance checks, and numerical-answer evaluation. \input{generated_abstract.tex} Diversity and reasoning-complexity selection, larger development experiments, and held-out MGSM evaluation remain planned extensions. This small pilot supports implementation diagnosis rather than final claims about strategy superiority.
+\end{abstract}
+\begin{IEEEkeywords}
+Urdu, multilingual reasoning, in-context learning, example selection
+\end{IEEEkeywords}
+
+\section{Introduction}
+Few-shot prompts can demonstrate both a solution format and useful reasoning patterns, yet their effectiveness depends on the examples and language supplied. Chain-of-thought prompting motivates providing worked solutions~\cite{wei}; multilingual reasoning research motivates comparing equivalent questions across languages~\cite{shi}. Example-selection research also motivates testing relevant demonstrations against a random baseline~\cite{liu}.
+
+Our research question is: how do Urdu demonstration-selection strategies affect numerical-answer accuracy, and how does their effect vary with question, demonstration, and instruction language? We study this interaction through a controlled design. The proposed contribution is the comparative Urdu--English evaluation and its error analysis, rather than a claim that cosine retrieval or diversity selection is a newly invented algorithm. At this stage, random and similarity methods are implemented; two further strategies have explicit designs.
+
+\section{Methodology}
+\subsection{Data and review}
+GSM8K supplies English mathematical word problems with worked solutions~\cite{cobbe}. Hussain prepared 20 bilingual training demonstrations and 10 separate training development questions. The supplied Word review and subsequent confirmation reported by Ammar approve 28 items. Demonstration items 4 and 5 require Urdu wording corrections and remain unapproved. We exclude them, yielding an 18-item candidate pool and 10 development questions with disjoint IDs. No MGSM evaluation questions are used in this pilot.
+
+The integration preserves original records, review decisions, source notes, and the GSM8K license. Automated checks verify structure, content-based IDs, paired question numbers, Unicode normalization, and arithmetic using Hussain's restricted expression evaluator. These checks complement the recorded human review; they do not independently certify translation quality. All 30 English questions and numeric keys were checked against the pinned original GSM8K training file: 25 questions match exactly and five differ only in whitespace.
+
+\subsection{Baseline and semantic selection}
+Random selection samples two distinct pool IDs without replacement. Pool IDs are sorted, and a per-query seed is derived from SHA-256 of the base seed 42 and query ID. This provides a reproducible random baseline while allowing different questions to receive different pairs.
+
+Similarity selection embeds only Urdu question text using \texttt{paraphrase-multilingual-}\allowbreak\texttt{mpnet-base-v2}~\cite{encoder}, pinned to revision \texttt{4328cf26...}. Candidates are ranked by
+\begin{equation}
+ s_i = \frac{e(q_{ur})^\top e(d_{i,ur})}{\|e(q_{ur})\|\,\|e(d_{i,ur})\|}.
+\end{equation}
+Scores are rounded to six decimal places, with ID order breaking ties. Rayyan supplied 30 cached 768-dimensional vectors, covering the original pool and development questions. We verified text hashes and reproduced all 20 original selection pairs from that cache. We then regenerated every pair against the 18 approved candidates. The resulting real selections are frozen with pool, query, encoder, and cache fingerprints. No test encoder replaces the semantic vectors, and no new model weights are downloaded. Development gold answers are excluded from the selector query.
+
+\subsection{Language conditions and inference}
+Condition codes describe target question, demonstrations, and instructions, respectively: U-U-U, U-U-E, U-E-E, and E-E-E. U denotes Urdu and E denotes English. Exactly two complete solved examples precede the target. Retrieval always uses Urdu, including E-E-E. The same ordered examples are reused across conditions for each query and strategy; only the intended language fields change. Solutions are requested in the target language, with a common terminal marker, \texttt{FINAL\_ANSWER:}.
+
+The fixed model is \texttt{gemma3:1b}, the instruction-tuned Gemma~3 1B model~\cite{gemma} in Q4\_K\_M quantization, run locally through Ollama 0.40.18 on an Apple Silicon laptop. The pulled model is pinned by its manifest digest (\texttt{97558784...}) and checked before generation. Settings are temperature 0, top-$p$ 1, seed 42, 2048 maximum output tokens, and a 4096-token context window. Data, frozen selections, prompts, and decoding match the earlier \texttt{gemma-4-31b-it} pilot; only the model changes. A response that reaches the output limit is kept and scored as the model's answer, since a deterministic retry repeats it. Each response is durably appended; resume skips matching successes and rejects changed plans or fingerprints.
+
+\subsection{Evaluation and proposed extensions}
+Saad's evaluator takes the number after the last FINAL\_ANSWER, normalizes Urdu and Arabic-Indic digits, and compares values exactly; unparsed answers are wrong and counted separately. Integration adds the runner's canonical marker and checks each real record against its frozen manifest. Empty runs, conflicting duplicates, mixed runs/models, and synthetic records cannot be accepted as a complete real experiment. Evaluated artifacts are separate from raw responses.
+
+The full approach will additionally compare query-anchored greedy farthest-first diversity and reasoning-complexity selection. The latter ranks demonstrations using documented solution-step counts, following the motivation of complexity-based prompting~\cite{fu}, without using a target's solution. These methods are designed but not implemented in this pilot. The intended later study uses a larger reviewed pool, two/four shots, and paired English/Urdu MGSM evaluation. Urdu is a third-party translation and requires its own review and usage checks. The final benchmark is kept separate from development decisions.
+
+\section{Results}
+\input{generated_results.tex}
+
+\subsection{Interpretation and limitations}
+Each strategy/condition cell contains only 10 distinct development problems; one problem changes its accuracy by 10 percentage points. The 80 configuration responses do not represent 80 independent problems. We use one selection seed and one small local model, so this pilot cannot characterize seed variance or establish statistical superiority. Repeated evaluation of development questions also limits generalization. Numerical exact match does not validate solution logic, units, or translation quality. Model pretraining overlap with public mathematical datasets cannot be ruled out.
+
+The pilot's practical contribution is an auditable end-to-end comparison with matched examples across language conditions. The next stage should expand reviewed data under an agreed scope, audit worked-solution quality, implement the deferred selectors, and evaluate the frozen approach on a separate benchmark. Any claimed improvement must be supported by those larger paired results.
+
+\begin{thebibliography}{7}
+\bibitem{wei} J. Wei \emph{et al.}, ``Chain-of-thought prompting elicits reasoning in large language models,'' arXiv:2201.11903, 2022.
+\bibitem{shi} F. Shi \emph{et al.}, ``Language models are multilingual chain-of-thought reasoners,'' arXiv:2210.03057, 2022.
+\bibitem{liu} J. Liu \emph{et al.}, ``What makes good in-context examples for GPT-3?'' arXiv:2101.06804, 2021.
+\bibitem{cobbe} K. Cobbe \emph{et al.}, ``Training verifiers to solve math word problems,'' arXiv:2110.14168, 2021.
+\bibitem{encoder} Sentence Transformers, ``paraphrase-multilingual-mpnet-base-v2,'' model card, revision 4328cf26390c98c5e3c738b4460a05b95f4911f5. [Online]. Available: \url{https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2}
+\bibitem{gemma} Google, ``Gemma 3 model card,'' accessed Nov. 25, 2026. [Online]. Available: \url{https://ai.google.dev/gemma/docs/core/model_card_3}; Ollama, ``gemma3:1b,'' \url{https://ollama.com/library/gemma3}
+\bibitem{fu} Y. Fu \emph{et al.}, ``Complexity-based prompting for multi-step reasoning,'' arXiv:2210.00720, 2022.
+\end{thebibliography}
+\end{document}

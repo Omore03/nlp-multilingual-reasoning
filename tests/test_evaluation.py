@@ -114,6 +114,48 @@ def test_custom_marker_replaces_defaults():
     assert parse_answer("#### 9", markers).status == MISSING
 
 
+@pytest.mark.parametrize(
+    "response, expected",
+    [
+        ("Steps...\nFINAL_ANSWER 70", "70"),  # no colon (real Gemma 3 4B output)
+        ("FINAL_ANSWER：70", "70"),  # full-width colon
+        ("FINAL_ANSWER ۷۰", "70"),  # no colon, Urdu digits
+        # Generic "final answer:" followed by a restated question, then the real marker (real 4B output):
+        ("Here is the final answer:\n\nQuestion: Hans has 10 floors and 10 rooms.\n...\nFINAL_ANSWER: 90", "90"),
+        ("FINAL_ANSWER: 3\nWait, recheck: 2 + 3 = 5.\nFINAL_ANSWER: 5", "5"),  # last FINAL_ANSWER wins
+        # An echoed instruction after the answer is skipped, because no number follows it:
+        ("FINAL_ANSWER: 70\nI used the literal marker FINAL_ANSWER: followed by the number.", "70"),
+        ("Final answer: 12\n#### 12\nFINAL_ANSWER: 12", "12"),  # all agree: unchanged
+    ],
+)
+def test_last_final_answer_marker_takes_priority(response, expected):
+    result = parse_answer(response)
+    assert result.status == OK
+    assert result.prediction == expected
+
+
+@pytest.mark.parametrize(
+    "response, expected",
+    [
+        ("Final Answer: The final answer is 70.", "70"),  # no FINAL_ANSWER: earlier rule (real 1B output)
+        ("**Final Answer:**\n\n70", "70"),  # blank lines after a generic marker are skipped, as before
+        ("70 FINAL_ANSWER\nFinal answer: 70", "70"),  # FINAL_ANSWER without a number: fall back
+    ],
+)
+def test_fallback_to_earlier_rule_without_a_usable_final_answer(response, expected):
+    assert parse_answer(response).prediction == expected
+
+
+def test_last_final_answer_with_several_numbers_is_ambiguous():
+    result = parse_answer("FINAL_ANSWER: 5 or 6")
+    assert result.status == AMBIGUOUS
+
+
+def test_final_answer_priority_is_off_for_custom_markers():
+    markers = (r"ANSWER\s*=",)
+    assert parse_answer("ANSWER = 9\nFINAL_ANSWER: 4", markers).prediction == "9"
+
+
 def test_find_numbers_keeps_negative_only_at_word_start():
     assert find_numbers("5-6 and -7") == [Decimal(5), Decimal(6), Decimal(-7)]
 

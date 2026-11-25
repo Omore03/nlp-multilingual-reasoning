@@ -17,6 +17,16 @@ DEFAULT_MARKERS = (
     r"آخری\s+جواب\s*[:：]",
 )
 
+# Parser change proposed 25 Nov 2026 (pending Saad's approval; see docs/parser_change_2026-11-25.md).
+# The runner's own terminal marker takes priority: when a response contains a literal FINAL_ANSWER
+# (colon optional) followed by a number, the LAST such marker decides the answer. Only responses with
+# no usable FINAL_ANSWER fall back to the earlier rule over all DEFAULT_MARKERS, unchanged.
+# This stops two formatting failures: "FINAL_ANSWER 70" (no colon) and a generic "final answer:"
+# followed by a restated question being read as a second, disagreeing answer.
+PARSER_VERSION = "2-last-final-answer-first"
+PRIMARY_MARKER = r"FINAL_ANSWER\s*[:：]?"
+_AUTO = object()
+
 _DIGIT_MAP = {}
 for _offset in range(10):
     _DIGIT_MAP[0x0660 + _offset] = str(_offset)
@@ -125,11 +135,43 @@ def _distinct(values) -> list:
     return unique
 
 
-def parse_answer(response, markers=DEFAULT_MARKERS) -> ParseResult:
+def _last_primary(text: str, primary: str) -> Optional[ParseResult]:
+    """Result from the last literal primary marker that is followed by a number, else None."""
+    for hit in reversed(list(re.finditer(primary, text, re.IGNORECASE))):
+        values = _distinct(find_numbers(_segment_after(text, hit.end())))
+        if not values:
+            continue  # e.g. an echoed instruction "... marker FINAL_ANSWER: followed by the number"
+        if len(values) > 1:
+            return ParseResult(None, AMBIGUOUS, "several numbers after the last FINAL_ANSWER marker")
+        return ParseResult(values[0], OK, "last FINAL_ANSWER marker")
+    return None
+
+
+def parse_answer(response, markers=DEFAULT_MARKERS, primary=_AUTO) -> ParseResult:
+    """Parse the final numerical answer.
+
+    ``primary`` defaults to PRIMARY_MARKER with the default markers and to None (no priority rule)
+    when custom markers are supplied, so custom markers still fully replace the defaults.
+    """
     if not isinstance(response, str) or not response.strip():
         return ParseResult(None, MISSING, "empty response")
 
     text = normalize_text(response).replace("*", "")
+    legacy = _parse_markers(text, markers)
+    if primary is _AUTO:
+        primary = PRIMARY_MARKER if tuple(markers) == DEFAULT_MARKERS else None
+    if primary is None:
+        return legacy
+    last = _last_primary(text, primary)
+    if last is None:
+        return legacy
+    if legacy.status == OK and legacy.value == last.value:
+        return legacy  # same answer as before: keep the earlier detail text unchanged
+    return last
+
+
+def _parse_markers(text: str, markers) -> ParseResult:
+    """The original rule: every marker's segment must agree on a single number."""
     segments = _values_after_markers(text, markers)
     if not segments:
         return ParseResult(None, MISSING, "no final-answer marker")

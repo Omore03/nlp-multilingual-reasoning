@@ -1,4 +1,5 @@
 """Build the paper's tables from Saad's evaluated artifacts, never from invented scores."""
+import argparse
 import json
 import hashlib
 from pathlib import Path
@@ -14,24 +15,27 @@ def tex(value):
     return text
 
 
-def build():
-    rec = json.loads((ROOT / 'results/pilot_reconciliation.json').read_text())
+def build(results_dir='results', report_dir='reports/intermediate', tests=229, run_date='25 November 2026'):
+    """Defaults rebuild the original Gemma 4 31B paper; other arms pass their own results/report folders."""
+    res = ROOT / results_dir
+    rec = json.loads((res / 'pilot_reconciliation.json').read_text())
     if not rec.get('research_eligible'):
         raise ValueError('Paper tables require manifest-checked real evaluation')
-    for path, key in [('results/pilot_raw.jsonl', 'raw_sha256'),
-                      ('results/pilot_raw.manifest.json', 'manifest_sha256')]:
-        if hashlib.sha256((ROOT/path).read_bytes()).hexdigest() != rec[key]:
+    for path, key in [(res / 'pilot_raw.jsonl', 'raw_sha256'),
+                      (res / 'pilot_raw.manifest.json', 'manifest_sha256')]:
+        if hashlib.sha256(path.read_bytes()).hexdigest() != rec[key]:
             raise ValueError('Real outputs changed; evaluate them again before building the paper')
-    scored = [json.loads(l) for l in (ROOT / 'results/pilot_evaluated.jsonl').read_text().splitlines()]
-    raw = [json.loads(l) for l in (ROOT / 'results/pilot_raw.jsonl').read_text().splitlines()]
+    scored = [json.loads(l) for l in (res / 'pilot_evaluated.jsonl').read_text().splitlines()]
+    raw = [json.loads(l) for l in (res / 'pilot_raw.jsonl').read_text().splitlines()]
     n = rec['unique_successful_scored']
     if len(scored) != n:
         raise ValueError('Scored output count differs from reconciliation')
     failure_count = sum(r['status'] == 'failure' for r in raw)
     lines = []
     if rec['complete']:
-        lines.append(f'The real pilot completed all {n} unique configurations on 25 November 2026. '
-                     f'The journal retains {failure_count} unsuccessful entries before successful resumption. '
+        lines.append(f'The real pilot completed all {n} unique configurations on {run_date}. '
+                     + (f'The journal retains {failure_count} unsuccessful entries before successful resumption. '
+                        if failure_count else 'Every configuration succeeded on its first request; the journal contains no unsuccessful entries. ') +
                      'Table~\\ref{tab:pilot} reports numerical exact-match accuracy and parse failures. '
                      'All denominators are 10 development questions.')
     else:
@@ -72,6 +76,11 @@ def build():
         codes=', '.join(f'{labels.get(code, tex(code))}: {count}' for code,count in sorted(failures.items()))
         lines.append('Execution history contains '+codes+'. '
                      'These entries are retained separately from successful model answers.')
+    cutoff = sum(r.get('finish_reason') == 'length' for r in raw if r['status'] == 'success')
+    if cutoff:
+        lines.append(f"{cutoff} scored {'response' if cutoff == 1 else 'responses'} reached the 2048-token output limit before finishing; "
+                     + ('it is scored as returned, so without a final-answer marker it counts as a parse failure.' if cutoff == 1 else
+                        'they are scored as returned, so any without a final-answer marker count as parse failures.'))
     incorrect=[r for r in scored if not r['correct']]
     if incorrect:
         examples=[]
@@ -86,17 +95,23 @@ def build():
                  'For the soda-price query, the two nearest approved examples total purchase costs or pizza portions; '
                  'the query instead subtracts change and divides by a unit price. '
                  'This retrieval observation does not establish a downstream accuracy loss.')
-    lines.append('The combined offline suite passes 229 tests, including the inherited selector and evaluation tests plus integration regressions. '
+    lines.append(f'The combined offline suite passes {tests} tests, including the inherited selector and evaluation tests plus integration regressions. '
                  'The 80-record deterministic mock matrix and no-op resume also pass. These engineering checks are reported separately from the real model results.')
     abstract = (f'The real run returned {n} of 80 planned responses; {sum(r["correct"] for r in scored)} were numerically correct, '
-                f'with {sum(r["parse_status"] != "ok" for r in scored)} parse failures. ')
+                + (lambda pf: f'with {pf} parse failure' + ('' if pf == 1 else 's') + '. ')(sum(r["parse_status"] != "ok" for r in scored)))
     abstract += ('Coverage is complete, but the small sample limits comparisons.' if rec['complete'] else
                  'Provider capacity errors left incomplete coverage, so a full baseline comparison is not yet available.')
-    (ROOT/'reports/intermediate/generated_abstract.tex').write_text(abstract+'\n')
-    target=ROOT/'reports/intermediate/generated_results.tex'
+    (ROOT/report_dir/'generated_abstract.tex').write_text(abstract+'\n')
+    target=ROOT/report_dir/'generated_results.tex'
     target.write_text('\n\n'.join(lines)+'\n')
     print(json.dumps({'successful_real_records':n,'complete':rec['complete'],'failed_record_attempts':failure_count,'paper_table':str(target.relative_to(ROOT))}))
 
 
 if __name__ == '__main__':
-    build()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--results-dir', default='results')
+    parser.add_argument('--report-dir', default='reports/intermediate')
+    parser.add_argument('--tests', type=int, default=229, help='Offline test count to report')
+    parser.add_argument('--run-date', default='25 November 2026')
+    a = parser.parse_args()
+    build(a.results_dir, a.report_dir, a.tests, a.run_date)

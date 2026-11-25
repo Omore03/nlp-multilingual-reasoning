@@ -20,12 +20,17 @@ import yaml
 
 from src.inference.backends import BackendError, MockBackend, OpenRouterBackend, call_with_retries
 from src.inference.google_backend import GoogleAIStudioBackend
+from src.inference.ollama_backend import OllamaBackend, require_local_ollama_model
 from src.inference.free_policy import require_free_model, require_google_free_model
 from src.inference.contracts import import_selector, load_records, resolve_ids, selector_query
-from src.prompting.templates import CONDITIONS, TEMPLATE_VERSION, build_prompt
+from src.prompting.templates import (CONDITIONS, TEMPLATE_VERSION, ZERO_SHOT_CONDITIONS, ZERO_SHOT_TEMPLATE_VERSION,
+                                     build_prompt, build_zero_shot_prompt)
 
 ROOT = Path(__file__).resolve().parents[2]
-RUNNER_VERSION = '1.3.0-reviewed-18-demo-pilot'
+RUNNER_VERSION = '1.4.0-reviewed-18-demo-pilot-local-ollama'
+# Real runs write the original hosted pilot at results/pilot_raw.jsonl, or a separate model arm
+# at results/<arm>/pilot_raw.jsonl so earlier arms are never overwritten or mixed.
+REAL_OUTPUT = re.compile(r'results/(?:[a-z0-9][a-z0-9_-]*/)?pilot_raw\.jsonl\Z')
 
 
 def canonical(value):
@@ -62,15 +67,20 @@ def validate_config(c):
     exact_keys(c, 'data_kind demo_path dev_path output_path conditions strategies shot_count seed selector selector_version model verification_receipt', 'top-level')
     if c['data_kind'] not in ('synthetic', 'real'):
         raise ValueError('data_kind must be synthetic or real')
-    if type(c['shot_count']) is not int or c['shot_count'] != 2:
-        raise ValueError('Pilot supports shot_count=2 only')
+    if type(c['shot_count']) is not int or c['shot_count'] not in (0, 2):
+        raise ValueError('Pilot supports shot_count=2, or 0 for the zero-shot baseline')
+    zero = c['shot_count'] == 0
     if type(c['seed']) is not int or not 0 <= c['seed'] <= 2**32-1:
         raise ValueError('seed must be an unsigned 32-bit integer')
-    for key, allowed in [('conditions', CONDITIONS), ('strategies', ('random', 'similarity'))]:
+    for key, allowed in [('conditions', ZERO_SHOT_CONDITIONS if zero else CONDITIONS),
+                         ('strategies', ('none',) if zero else ('random', 'similarity'))]:
         values = c[key]
         if not isinstance(values, list) or not values or any(not isinstance(x, str) or x not in allowed for x in values) or len(set(values)) != len(values):
             raise ValueError(f'Unsupported or duplicate {key}')
-    if not isinstance(c['selector'], str) or not re.fullmatch(r'[A-Za-z_][\w.] *:[A-Za-z_]\w*'.replace(' ', ''), c['selector']):
+    if zero:
+        if c['selector'] is not None:
+            raise ValueError('Zero-shot runs select no demonstrations; set selector: null')
+    elif not isinstance(c['selector'], str) or not re.fullmatch(r'[A-Za-z_][\w.] *:[A-Za-z_]\w*'.replace(' ', ''), c['selector']):
         raise ValueError('selector must be module:function')
     if not isinstance(c['selector_version'], str) or not c['selector_version'].strip():
         raise ValueError('Set a selector_version and update it when external encoder/cache dependencies change')
@@ -86,19 +96,27 @@ def validate_config(c):
     else:
         if c['demo_path'] != 'data/processed/demo_pool.jsonl' or c['dev_path'] != 'data/processed/dev.jsonl':
             raise ValueError('Real pilot must use the reserved production input paths')
-        if c['output_path'] != 'results/pilot_raw.jsonl' or c['selector'].startswith('tests.'):
-            raise ValueError('Real pilot requires production selector and results/pilot_raw.jsonl')
-        if set(c['conditions']) != set(CONDITIONS) or set(c['strategies']) != {'random', 'similarity'}:
-            raise ValueError('Real pilot requires all four conditions and both strategies')
+        if not REAL_OUTPUT.fullmatch(c['output_path']) or (c['selector'] or '').startswith('tests.'):
+            raise ValueError('Real pilot requires production selector and results/[<arm>/]pilot_raw.jsonl')
+        if zero and (set(c['conditions']) != set(ZERO_SHOT_CONDITIONS) or c['strategies'] != ['none']):
+            raise ValueError('Real zero-shot baseline requires its three conditions and strategy none')
+        # Random-only real runs are the seed-variance check (extra selection seeds for the random baseline).
+        if not zero and (set(c['conditions']) != set(CONDITIONS)
+                         or c['strategies'] not in (['random', 'similarity'], ['similarity', 'random'], ['random'])):
+            raise ValueError('Real pilot requires all four conditions and both strategies, or random only for a seed check')
     m = c['model']
-    exact_keys(m, 'backend model_id endpoint credential_env route decoding timeout_seconds max_attempts max_retry_wait_seconds free_only max_requests_per_invocation min_request_interval_seconds', 'model')
-    if m['backend'] not in ('mock', 'openrouter', 'google_ai_studio'):
-        raise ValueError('Supported backends: mock, google_ai_studio, openrouter (legacy)')
+    local = isinstance(m, dict) and m.get('backend') == 'ollama'
+    exact_keys(m, 'backend model_id endpoint credential_env route decoding timeout_seconds max_attempts max_retry_wait_seconds free_only max_requests_per_invocation min_request_interval_seconds'
+               + (' model_digest' if local else ''), 'model')
+    if m['backend'] not in ('mock', 'openrouter', 'google_ai_studio', 'ollama'):
+        raise ValueError('Supported backends: mock, google_ai_studio, ollama (local), openrouter (legacy)')
     if m['free_only'] is not True:
         raise ValueError('Zero-cost policy requires free_only=true')
     decoding_keys = 'temperature top_p max_tokens seed' + (' reasoning' if m['backend'] == 'openrouter' else '')
     if m['backend'] == 'google_ai_studio':
         decoding_keys += ' thinking_level'
+    if local:
+        decoding_keys += ' num_ctx'
     exact_keys(m['decoding'], decoding_keys, 'decoding')
     if m['backend'] == 'google_ai_studio' and m['decoding']['thinking_level'] != 'minimal':
         raise ValueError('Direct Google Gemma requires thinking_level=minimal')
@@ -128,6 +146,16 @@ def validate_config(c):
         if type(interval) not in (int, float) or not math.isfinite(interval) or not 3.1 <= interval <= 60:
             raise ValueError('Free API pacing must be at least 3.1 seconds per request')
         if not c['output_path'].startswith('results/live_smoke/') and c['data_kind'] == 'synthetic':
+            raise ValueError('Live synthetic calls must write under results/live_smoke/')
+    elif local:
+        require_local_ollama_model(m)
+        if m['max_requests_per_invocation'] is not None or m['min_request_interval_seconds'] != 0:
+            raise ValueError('Local Ollama does not use API request quotas or pacing; set null and 0')
+        if type(m['decoding']['num_ctx']) is not int or not 512 <= m['decoding']['num_ctx'] <= 32768:
+            raise ValueError('num_ctx must be an integer between 512 and 32768')
+        if m['decoding']['max_tokens'] >= m['decoding']['num_ctx']:
+            raise ValueError('max_tokens must leave room for the prompt inside num_ctx')
+        if c['data_kind'] == 'synthetic' and not c['output_path'].startswith('results/live_smoke/'):
             raise ValueError('Live synthetic calls must write under results/live_smoke/')
     elif c['data_kind'] != 'synthetic' or not c['output_path'].startswith('results/mock/'):
         raise ValueError('Mock backend is restricted to synthetic inputs and results/mock/')
@@ -165,20 +193,24 @@ def prepare(c):
     demo_count = 20 if synthetic else 18
     if len(demos) != demo_count or len(questions) != 10:
         raise ValueError(f'Pilot boundary requires exactly {demo_count} approved demos and 10 development questions')
-    selector, selector_file = import_selector(c['selector'])
+    zero = c['shot_count'] == 0
+    selector, selector_file = (None, Path(__file__)) if zero else import_selector(c['selector'])
     pool = {d['id']: d for d in demos}
     plan = []
     for q in questions:
         for strategy in c['strategies']:
-            try:
-                # Copies prevent selector mutation and query gold leakage. Seed is fixed,
-                # selection occurs once per query/strategy, outside the condition loop.
-                ids = selector(selector_query(q), deepcopy(demos), c['shot_count'], strategy, c['seed'])
-            except Exception:
-                raise ValueError('Selector failed; check Rayyan’s adapter, Urdu query contract and dependencies') from None
-            selected = resolve_ids(ids, pool, c['shot_count'])
+            if zero:
+                ids, selected = [], []  # Baseline: no selection, no demonstrations.
+            else:
+                try:
+                    # Copies prevent selector mutation and query gold leakage. Seed is fixed,
+                    # selection occurs once per query/strategy, outside the condition loop.
+                    ids = selector(selector_query(q), deepcopy(demos), c['shot_count'], strategy, c['seed'])
+                except Exception:
+                    raise ValueError('Selector failed; check Rayyan’s adapter, Urdu query contract and dependencies') from None
+                selected = resolve_ids(ids, pool, c['shot_count'])
             for condition in c['conditions']:
-                prompt = build_prompt(q, selected, condition)
+                prompt = build_zero_shot_prompt(q, condition) if zero else build_prompt(q, selected, condition)
                 item = {'question_id': q['id'], 'strategy': strategy, 'condition': condition,
                         'shot_count': c['shot_count'], 'seed': c['seed'], 'demo_ids': ids.copy(),
                         'prompt': prompt, 'prompt_hash': digest(prompt)}
@@ -186,7 +218,7 @@ def prepare(c):
     identity_config = {k: v for k, v in c.items() if k not in ('output_path', 'verification_receipt')}
     identity = {'configuration': identity_config, 'data': {k: file_digest(relative_path(c[k])) for k in ('demo_path', 'dev_path')},
                 'sources': source_identity(selector_file), 'software': software_versions(),
-                'template_version': TEMPLATE_VERSION, 'runner_version': RUNNER_VERSION,
+                'template_version': ZERO_SHOT_TEMPLATE_VERSION if zero else TEMPLATE_VERSION, 'runner_version': RUNNER_VERSION,
                 'plan_hash': digest(plan)}
     provenance = getattr(selector, 'provenance', None)
     if provenance is not None:
@@ -328,6 +360,7 @@ def run(c, resume=False, question_limit=None, repair_tail=False, backend=None):
         if pending and backend is None:
             backend = (MockBackend() if c['model']['backend'] == 'mock' else
                        GoogleAIStudioBackend(c['model']) if c['model']['backend'] == 'google_ai_studio' else
+                       OllamaBackend(c['model']) if c['model']['backend'] == 'ollama' else
                        OpenRouterBackend(c['model']))
         count, failed = 0, 0
         stop_reason = None
@@ -337,7 +370,7 @@ def run(c, resume=False, question_limit=None, repair_tail=False, backend=None):
                 break
             record = {**item, 'run_id': manifest['run_id'], 'model_id': c['model']['model_id'],
                       'backend': c['model']['backend'], 'provider': c['model']['route'],
-                      'inference_settings': c['model'], 'template_version': TEMPLATE_VERSION,
+                      'inference_settings': c['model'], 'template_version': manifest['identity']['template_version'],
                       'configuration_hash': digest(manifest['identity']['configuration']),
                       'data_fingerprints': manifest['identity']['data'], 'timestamp': now(),
                       'mode': manifest['mode'], 'data_kind': c['data_kind']}
@@ -359,6 +392,8 @@ def run(c, resume=False, question_limit=None, repair_tail=False, backend=None):
             if c['model']['backend'] == 'google_ai_studio':
                 record['free_project_tier_confirmed_by_user'] = getattr(backend, 'free_tier_confirmed', False)
                 record['model_access_metadata'] = getattr(backend, 'catalog_evidence', None)
+            elif c['model']['backend'] == 'ollama':
+                record['model_access_metadata'] = getattr(backend, 'catalog_evidence', None)
             record['latency_seconds'] = round(time.monotonic() - start, 6)
             # Defense in depth for any known credential appearing in returned metadata.
             key = os.environ.get(c['model']['credential_env'] or '', '')
@@ -366,7 +401,7 @@ def run(c, resume=False, question_limit=None, repair_tail=False, backend=None):
                 record = json.loads(canonical(record).replace(key, '[REDACTED]'))
             append_json(output, record)
             # Stop global auth/configuration errors; do not waste the remaining matrix calls.
-            if record['status'] == 'failure' and record['error']['code'] in ('http_400', 'http_401', 'http_402', 'http_403', 'http_404', 'http_422', 'http_429', 'free_daily_quota_exhausted', 'free_catalog_preflight_failed', 'google_model_preflight_failed', 'google_daily_quota_exhausted', 'unexpected_nonzero_cost', 'free_policy_model_changed', 'free_request_budget_exhausted', 'retry_after_exceeds_wait_budget', 'provider_error_429', 'provider_error_400', 'provider_error_401', 'provider_error_402', 'provider_error_403', 'provider_error_404', 'provider_error_422'):
+            if record['status'] == 'failure' and record['error']['code'] in ('http_400', 'http_401', 'http_402', 'http_403', 'http_404', 'http_422', 'http_429', 'free_daily_quota_exhausted', 'free_catalog_preflight_failed', 'google_model_preflight_failed', 'google_daily_quota_exhausted', 'unexpected_nonzero_cost', 'free_policy_model_changed', 'free_request_budget_exhausted', 'retry_after_exceeds_wait_budget', 'provider_error_429', 'provider_error_400', 'provider_error_401', 'provider_error_402', 'provider_error_403', 'provider_error_404', 'provider_error_422', 'ollama_server_unreachable', 'ollama_model_preflight_failed', 'model_settings_changed', 'served_model_mismatch', 'context_window_exceeded'):
                 break
         rows = read_journal(output)
         done = validate_journal(rows, manifest)

@@ -1,0 +1,53 @@
+The real pilot completed all 80 unique configurations on 25 November 2026. Every configuration succeeded on its first request; the journal contains no unsuccessful entries. Table~\ref{tab:pilot} reports numerical exact-match accuracy and parse failures. All denominators are 10 development questions.
+
+\begin{table}[t]
+
+\caption{Real development results. PF: missing or ambiguous final-answer parses.}
+
+\label{tab:pilot}
+
+\centering
+
+\setlength{\tabcolsep}{3pt}
+
+\begin{tabular}{llrrrr}
+
+\toprule
+
+Method & Condition & Correct & Acc. & PF & n/10 \\
+
+\midrule
+
+Random & U-U-U & 6/10 & 60\% & 0 & 10/10 \\
+
+Random & U-U-E & 8/10 & 80\% & 0 & 10/10 \\
+
+Random & U-E-E & 8/10 & 80\% & 0 & 10/10 \\
+
+Random & E-E-E & 9/10 & 90\% & 0 & 10/10 \\
+
+Similarity & U-U-U & 9/10 & 90\% & 0 & 10/10 \\
+
+Similarity & U-U-E & 7/10 & 70\% & 1 & 10/10 \\
+
+Similarity & U-E-E & 8/10 & 80\% & 0 & 10/10 \\
+
+Similarity & E-E-E & 9/10 & 90\% & 0 & 10/10 \\
+
+\bottomrule
+
+\end{tabular}
+
+\end{table}
+
+Similarity minus random accuracy differences, in percentage points, are U-U-U: +30; U-U-E: -10; U-E-E: +0; E-E-E: +0. These descriptive differences are not evidence of significance at this sample size.
+
+The E-E-E minus U-U-U accuracy gaps, in percentage points, are random: +30; similarity: +0.
+
+1 scored response reached the 2048-token output limit before finishing; it is scored as returned, so without a final-answer marker it counts as a parse failure.
+
+Saved error examples include query \texttt{111d72db39e6} (random, U-U-U): prediction 99, gold 90, parse status ok; query \texttt{1d58b8a27f49} (random, E-E-E): prediction 176, gold 216, parse status ok; query \texttt{1d58b8a27f49} (similarity, E-E-E): prediction 176, gold 216, parse status ok. Attributing an error to translation, arithmetic, or retrieval requires review of the saved solution.
+
+A qualitative inspection of three queries shows that semantic neighbours can share topics without matching operations. For the soda-price query, the two nearest approved examples total purchase costs or pizza portions; the query instead subtracts change and divides by a unit price. This retrieval observation does not establish a downstream accuracy loss.
+
+The combined offline suite passes 273 tests, including the inherited selector and evaluation tests plus integration regressions. The 80-record deterministic mock matrix and no-op resume also pass. These engineering checks are reported separately from the real model results.

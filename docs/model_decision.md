@@ -61,3 +61,39 @@ Transient errors have bounded retries. Daily quota, auth and invalid settings st
 The recorded smoke produced four successes in five generation attempts, using 1114 tokens across successful responses. The API supplied no measured dollar cost, so no cost value was invented. See [verification](verification.md), the [sanitized access record](google_live_access_check.json) and the [model receipt](../results/live_smoke/google_direct/model_verification.json).
 
 The earlier OpenRouter route returned upstream capacity errors. Its adapter, config and evidence remain historical; active commands use Google directly with no automatic fallback.
+
+## Small-model arm: local Gemma 3 1B (25 Nov 2026)
+
+The Gemma 4 31B pilot scored 80/80, a ceiling that hides any strategy or language effect. A second arm reruns the identical plan (same data, frozen selections, all 80 prompts byte-identical, same decoding) with a smaller model from the same family. Only the model changes. Google's API no longer serves Gemma 3, so it runs locally through Ollama on Rayyan's laptop. This is a local branch for team review and is not merged.
+
+| Setting | Value |
+| --- | --- |
+| Model | `gemma3:1b` (Gemma 3 1B instruction-tuned), Q4_K_M, 999.89M parameters |
+| Pinned digest | `97558784bdc9175075a72655bf360b15da17df6b3b9e5182af9f8c0c8e58ba7c`, checked against `/api/tags` before the first call |
+| Runtime | Ollama 0.40.18 (Homebrew), Apple M5 GPU (Metal), `http://127.0.0.1:11434/api/chat` |
+| Temperature / top-p / seed | 0 / 1 / 42, sent on every call to override the Modelfile defaults (temperature 1, top-k 64, top-p 0.95) |
+| Maximum output / context | 2048 tokens / 4096 tokens (`num_ctx` fixed, not the VRAM-based default) |
+| Attempts, quotas, pacing | 3 attempts per record; no request budget or spacing (local, zero cost) |
+| Configs | `configs/ollama_gemma3_1b_smoke.yaml` (receipt), `configs/pilot_ollama_gemma3_1b.yaml` (real run) |
+| Output | `results/gemma3_1b/`; the 31B arm in `results/pilot_raw.jsonl` is untouched |
+
+A response that fills the 2048-token limit (`finish_reason: length`, typically a small model repeating itself) is kept and scored as returned, because a temperature-0 retry repeats it. Without a final marker it counts as a parse failure. Calls that fill the 4096-token context, return another model, or fail the digest check are rejected. The first attempt, which treated length cut-offs as call failures, was stopped after 6 records and kept in `results/gemma3_1b/aborted_run1_length_as_failure/`.
+
+## Small-model arm: local Gemma 3 4B, and zero-shot baselines (25 Nov 2026)
+
+The 1B arm left Urdu at the floor (U-U-U 0/20), so the decision rule called for the 4B backup. It uses the same runner, decoding and plan; only the model block changes.
+
+| Setting | Value |
+| --- | --- |
+| Model | `gemma3:4b` (Gemma 3 4B instruction-tuned), Q4_K_M, 3.9B parameters, 3.35 GB (includes the unused vision projector) |
+| Pinned digest | `68ceab7e468a31c988b44d5a4984a0e21f58c4f7158c6ce29c1804babac38df7` |
+| Configs | `configs/ollama_gemma3_4b_smoke.yaml`, `configs/pilot_ollama_gemma3_4b.yaml`, `configs/zeroshot_ollama_gemma3_4b.yaml` |
+| Output | `results/gemma3_4b/`, `results/gemma3_4b_zeroshot/` |
+
+**Zero-shot baseline** (`shot_count: 0`, `strategies: [none]`, `selector: null`, template `bilingual-math-0shot-v1`): the same instruction minus the "follow the solved demonstrations" sentence, then the target question. With no demonstrations the demonstration language has no effect, so U-E-E would duplicate U-U-E; only U-U-U, U-U-E and E-E-E are run (30 calls per model), as `docs/evaluation_plan.md` anticipates. Configs: `configs/zeroshot_ollama_gemma3_{1b,4b}.yaml`. The two-shot prompts remain byte-identical to the 31B run.
+
+**Parser (changed 25 Nov, pending Saad's approval).** Some correct 4B answers were scored as parse failures: `FINAL_ANSWER 70` (no colon), or a generic "final answer:" followed by a restated question, read as a second answer. Parser version 2 lets the last `FINAL_ANSWER` followed by a number decide (colon optional) and keeps the earlier rule as a fallback. All runs were re-scored from their raw files: 15 answers gained, none lost, 31B unchanged. Details, evidence and how to revert: [parser change](parser_change_2026-11-25.md).
+
+## Seed-variance check for random selection, Gemma 3 4B (25 Nov 2026)
+
+`configs/seedcheck_ollama_gemma3_4b_seed43.yaml` and `..._seed44.yaml` rerun random selection only, with base selection seeds 43 and 44 instead of 42 (all four conditions, 40 calls each). The generation seed stays 42 and everything else is unchanged, so only the random demonstration pairs differ (all 10 pairs change for each seed). These runs use the live random selector `src.selection.select:select_examples`, which reproduces the frozen seed-42 random pairs 10/10; no encoder is involved. The runner now accepts random-only real runs for this purpose. Output: `results/gemma3_4b_seed43/`, `results/gemma3_4b_seed44/`; the seed table is in `docs/model_comparison.md`.

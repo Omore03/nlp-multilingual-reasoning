@@ -1,0 +1,33 @@
+# Small-model arm of the approved 18-demo/10-dev pilot: same data, frozen selections, prompts and
+# decoding as configs/pilot.yaml; only the model changes (local gemma3:4b via Ollama). 25 Nov 2026.
+# Output is kept apart from the Gemma 4 31B arm in results/pilot_raw.jsonl.
+data_kind: real
+demo_path: data/processed/demo_pool.jsonl
+dev_path: data/processed/dev.jsonl
+output_path: results/gemma3_4b/pilot_raw.jsonl
+conditions: [U-U-U, U-U-E, U-E-E, E-E-E]
+strategies: [random, similarity]
+shot_count: 2
+seed: 42
+selector: src.selection.pilot_adapter:select_examples
+selector_version: rayyan-mpnet-4328cf26-approved18-v1
+verification_receipt: results/live_smoke/ollama_gemma3_4b/model_verification.json
+model:
+  backend: ollama
+  model_id: gemma3:4b
+  model_digest: 68ceab7e468a31c988b44d5a4984a0e21f58c4f7158c6ce29c1804babac38df7
+  endpoint: http://127.0.0.1:11434/api/chat
+  credential_env: null
+  route: ollama-local
+  free_only: true
+  max_requests_per_invocation: null
+  min_request_interval_seconds: 0
+  decoding:
+    temperature: 0
+    top_p: 1
+    max_tokens: 2048
+    seed: 42
+    num_ctx: 4096
+  timeout_seconds: 300
+  max_attempts: 3
+  max_retry_wait_seconds: 30
