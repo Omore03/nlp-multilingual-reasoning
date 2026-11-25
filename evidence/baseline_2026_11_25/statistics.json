@@ -1,0 +1,552 @@
+{
+  "date": "2026-11-25",
+  "cells": [
+    {
+      "model": "31b",
+      "condition": "U-U-U",
+      "strategy": "random",
+      "correct": 10,
+      "n": 10,
+      "wilson_95": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    {
+      "model": "31b",
+      "condition": "U-U-U",
+      "strategy": "similarity",
+      "correct": 10,
+      "n": 10,
+      "wilson_95": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    {
+      "model": "31b",
+      "condition": "U-U-E",
+      "strategy": "random",
+      "correct": 10,
+      "n": 10,
+      "wilson_95": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    {
+      "model": "31b",
+      "condition": "U-U-E",
+      "strategy": "similarity",
+      "correct": 10,
+      "n": 10,
+      "wilson_95": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    {
+      "model": "31b",
+      "condition": "U-E-E",
+      "strategy": "random",
+      "correct": 10,
+      "n": 10,
+      "wilson_95": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    {
+      "model": "31b",
+      "condition": "U-E-E",
+      "strategy": "similarity",
+      "correct": 10,
+      "n": 10,
+      "wilson_95": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    {
+      "model": "31b",
+      "condition": "E-E-E",
+      "strategy": "random",
+      "correct": 10,
+      "n": 10,
+      "wilson_95": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    {
+      "model": "31b",
+      "condition": "E-E-E",
+      "strategy": "similarity",
+      "correct": 10,
+      "n": 10,
+      "wilson_95": [
+        0.7224672001371107,
+        0.9999999999999999
+      ]
+    },
+    {
+      "model": "4b",
+      "condition": "U-U-U",
+      "strategy": "random",
+      "correct": 6,
+      "n": 10,
+      "wilson_95": [
+        0.31267376973365824,
+        0.8318196702937638
+      ]
+    },
+    {
+      "model": "4b",
+      "condition": "U-U-U",
+      "strategy": "similarity",
+      "correct": 9,
+      "n": 10,
+      "wilson_95": [
+        0.5958499732047615,
+        0.9821237869049271
+      ]
+    },
+    {
+      "model": "4b",
+      "condition": "U-U-E",
+      "strategy": "random",
+      "correct": 8,
+      "n": 10,
+      "wilson_95": [
+        0.49016247153664183,
+        0.9433178485456247
+      ]
+    },
+    {
+      "model": "4b",
+      "condition": "U-U-E",
+      "strategy": "similarity",
+      "correct": 7,
+      "n": 10,
+      "wilson_95": [
+        0.39677814746114537,
+        0.8922087325936989
+      ]
+    },
+    {
+      "model": "4b",
+      "condition": "U-E-E",
+      "strategy": "random",
+      "correct": 8,
+      "n": 10,
+      "wilson_95": [
+        0.49016247153664183,
+        0.9433178485456247
+      ]
+    },
+    {
+      "model": "4b",
+      "condition": "U-E-E",
+      "strategy": "similarity",
+      "correct": 8,
+      "n": 10,
+      "wilson_95": [
+        0.49016247153664183,
+        0.9433178485456247
+      ]
+    },
+    {
+      "model": "4b",
+      "condition": "E-E-E",
+      "strategy": "random",
+      "correct": 9,
+      "n": 10,
+      "wilson_95": [
+        0.5958499732047615,
+        0.9821237869049271
+      ]
+    },
+    {
+      "model": "4b",
+      "condition": "E-E-E",
+      "strategy": "similarity",
+      "correct": 9,
+      "n": 10,
+      "wilson_95": [
+        0.5958499732047615,
+        0.9821237869049271
+      ]
+    },
+    {
+      "model": "1b",
+      "condition": "U-U-U",
+      "strategy": "random",
+      "correct": 0,
+      "n": 10,
+      "wilson_95": [
+        0,
+        0.2775327998628892
+      ]
+    },
+    {
+      "model": "1b",
+      "condition": "U-U-U",
+      "strategy": "similarity",
+      "correct": 0,
+      "n": 10,
+      "wilson_95": [
+        0,
+        0.2775327998628892
+      ]
+    },
+    {
+      "model": "1b",
+      "condition": "U-U-E",
+      "strategy": "random",
+      "correct": 1,
+      "n": 10,
+      "wilson_95": [
+        0.017876213095072896,
+        0.4041500267952385
+      ]
+    },
+    {
+      "model": "1b",
+      "condition": "U-U-E",
+      "strategy": "similarity",
+      "correct": 2,
+      "n": 10,
+      "wilson_95": [
+        0.05668215145437519,
+        0.5098375284633583
+      ]
+    },
+    {
+      "model": "1b",
+      "condition": "U-E-E",
+      "strategy": "random",
+      "correct": 2,
+      "n": 10,
+      "wilson_95": [
+        0.05668215145437519,
+        0.5098375284633583
+      ]
+    },
+    {
+      "model": "1b",
+      "condition": "U-E-E",
+      "strategy": "similarity",
+      "correct": 2,
+      "n": 10,
+      "wilson_95": [
+        0.05668215145437519,
+        0.5098375284633583
+      ]
+    },
+    {
+      "model": "1b",
+      "condition": "E-E-E",
+      "strategy": "random",
+      "correct": 4,
+      "n": 10,
+      "wilson_95": [
+        0.16818032970623614,
+        0.6873262302663417
+      ]
+    },
+    {
+      "model": "1b",
+      "condition": "E-E-E",
+      "strategy": "similarity",
+      "correct": 5,
+      "n": 10,
+      "wilson_95": [
+        0.236593090512564,
+        0.7634069094874361
+      ]
+    }
+  ],
+  "paired_comparisons": [
+    {
+      "comparison": "similarity vs random seed42",
+      "model": "31b",
+      "condition": "U-U-U",
+      "first_only_correct": 0,
+      "second_only_correct": 0,
+      "n": 10,
+      "delta_points": 0,
+      "p_unadjusted": 1.0
+    },
+    {
+      "comparison": "similarity vs random seed42",
+      "model": "31b",
+      "condition": "U-U-E",
+      "first_only_correct": 0,
+      "second_only_correct": 0,
+      "n": 10,
+      "delta_points": 0,
+      "p_unadjusted": 1.0
+    },
+    {
+      "comparison": "similarity vs random seed42",
+      "model": "31b",
+      "condition": "U-E-E",
+      "first_only_correct": 0,
+      "second_only_correct": 0,
+      "n": 10,
+      "delta_points": 0,
+      "p_unadjusted": 1.0
+    },
+    {
+      "comparison": "similarity vs random seed42",
+      "model": "31b",
+      "condition": "E-E-E",
+      "first_only_correct": 0,
+      "second_only_correct": 0,
+      "n": 10,
+      "delta_points": 0,
+      "p_unadjusted": 1.0
+    },
+    {
+      "comparison": "similarity vs random seed42",
+      "model": "4b",
+      "condition": "U-U-U",
+      "first_only_correct": 3,
+      "second_only_correct": 0,
+      "n": 10,
+      "delta_points": 30,
+      "p_unadjusted": 0.25
+    },
+    {
+      "comparison": "similarity vs random seed42",
+      "model": "4b",
+      "condition": "U-U-E",
+      "first_only_correct": 0,
+      "second_only_correct": 1,
+      "n": 10,
+      "delta_points": -10,
+      "p_unadjusted": 1.0
+    },
+    {
+      "comparison": "similarity vs random seed42",
+      "model": "4b",
+      "condition": "U-E-E",
+      "first_only_correct": 0,
+      "second_only_correct": 0,
+      "n": 10,
+      "delta_points": 0,
+      "p_unadjusted": 1.0
+    },
+    {
+      "comparison": "similarity vs random seed42",
+      "model": "4b",
+      "condition": "E-E-E",
+      "first_only_correct": 0,
+      "second_only_correct": 0,
+      "n": 10,
+      "delta_points": 0,
+      "p_unadjusted": 1.0
+    },
+    {
+      "comparison": "two-shot random vs zero-shot",
+      "model": "4b",
+      "condition": "U-U-U",
+      "first_only_correct": 1,
+      "second_only_correct": 3,
+      "n": 10,
+      "delta_points": -20,
+      "p_unadjusted": 0.625
+    },
+    {
+      "comparison": "two-shot similarity vs zero-shot",
+      "model": "4b",
+      "condition": "U-U-U",
+      "first_only_correct": 1,
+      "second_only_correct": 0,
+      "n": 10,
+      "delta_points": 10,
+      "p_unadjusted": 1.0
+    },
+    {
+      "comparison": "two-shot random vs zero-shot",
+      "model": "4b",
+      "condition": "U-U-E",
+      "first_only_correct": 1,
+      "second_only_correct": 0,
+      "n": 10,
+      "delta_points": 10,
+      "p_unadjusted": 1.0
+    },
+    {
+      "comparison": "two-shot similarity vs zero-shot",
+      "model": "4b",
+      "condition": "U-U-E",
+      "first_only_correct": 1,
+      "second_only_correct": 1,
+      "n": 10,
+      "delta_points": 0,
+      "p_unadjusted": 1.0
+    },
+    {
+      "comparison": "two-shot random vs zero-shot",
+      "model": "4b",
+      "condition": "U-E-E",
+      "first_only_correct": 1,
+      "second_only_correct": 0,
+      "n": 10,
+      "delta_points": 10,
+      "p_unadjusted": 1.0
+    },
+    {
+      "comparison": "two-shot similarity vs zero-shot",
+      "model": "4b",
+      "condition": "U-E-E",
+      "first_only_correct": 1,
+      "second_only_correct": 0,
+      "n": 10,
+      "delta_points": 10,
+      "p_unadjusted": 1.0
+    },
+    {
+      "comparison": "two-shot random vs zero-shot",
+      "model": "4b",
+      "condition": "E-E-E",
+      "first_only_correct": 1,
+      "second_only_correct": 0,
+      "n": 10,
+      "delta_points": 10,
+      "p_unadjusted": 1.0
+    },
+    {
+      "comparison": "two-shot similarity vs zero-shot",
+      "model": "4b",
+      "condition": "E-E-E",
+      "first_only_correct": 1,
+      "second_only_correct": 0,
+      "n": 10,
+      "delta_points": 10,
+      "p_unadjusted": 1.0
+    },
+    {
+      "comparison": "similarity vs random seed42",
+      "model": "1b",
+      "condition": "U-U-U",
+      "first_only_correct": 0,
+      "second_only_correct": 0,
+      "n": 10,
+      "delta_points": 0,
+      "p_unadjusted": 1.0
+    },
+    {
+      "comparison": "similarity vs random seed42",
+      "model": "1b",
+      "condition": "U-U-E",
+      "first_only_correct": 1,
+      "second_only_correct": 0,
+      "n": 10,
+      "delta_points": 10,
+      "p_unadjusted": 1.0
+    },
+    {
+      "comparison": "similarity vs random seed42",
+      "model": "1b",
+      "condition": "U-E-E",
+      "first_only_correct": 1,
+      "second_only_correct": 1,
+      "n": 10,
+      "delta_points": 0,
+      "p_unadjusted": 1.0
+    },
+    {
+      "comparison": "similarity vs random seed42",
+      "model": "1b",
+      "condition": "E-E-E",
+      "first_only_correct": 1,
+      "second_only_correct": 0,
+      "n": 10,
+      "delta_points": 10,
+      "p_unadjusted": 1.0
+    },
+    {
+      "comparison": "two-shot random vs zero-shot",
+      "model": "1b",
+      "condition": "U-U-U",
+      "first_only_correct": 0,
+      "second_only_correct": 1,
+      "n": 10,
+      "delta_points": -10,
+      "p_unadjusted": 1.0
+    },
+    {
+      "comparison": "two-shot similarity vs zero-shot",
+      "model": "1b",
+      "condition": "U-U-U",
+      "first_only_correct": 0,
+      "second_only_correct": 1,
+      "n": 10,
+      "delta_points": -10,
+      "p_unadjusted": 1.0
+    },
+    {
+      "comparison": "two-shot random vs zero-shot",
+      "model": "1b",
+      "condition": "U-U-E",
+      "first_only_correct": 1,
+      "second_only_correct": 2,
+      "n": 10,
+      "delta_points": -10,
+      "p_unadjusted": 1.0
+    },
+    {
+      "comparison": "two-shot similarity vs zero-shot",
+      "model": "1b",
+      "condition": "U-U-E",
+      "first_only_correct": 1,
+      "second_only_correct": 1,
+      "n": 10,
+      "delta_points": 0,
+      "p_unadjusted": 1.0
+    },
+    {
+      "comparison": "two-shot random vs zero-shot",
+      "model": "1b",
+      "condition": "U-E-E",
+      "first_only_correct": 1,
+      "second_only_correct": 1,
+      "n": 10,
+      "delta_points": 0,
+      "p_unadjusted": 1.0
+    },
+    {
+      "comparison": "two-shot similarity vs zero-shot",
+      "model": "1b",
+      "condition": "U-E-E",
+      "first_only_correct": 2,
+      "second_only_correct": 2,
+      "n": 10,
+      "delta_points": 0,
+      "p_unadjusted": 1.0
+    },
+    {
+      "comparison": "two-shot random vs zero-shot",
+      "model": "1b",
+      "condition": "E-E-E",
+      "first_only_correct": 0,
+      "second_only_correct": 0,
+      "n": 10,
+      "delta_points": 0,
+      "p_unadjusted": 1.0
+    },
+    {
+      "comparison": "two-shot similarity vs zero-shot",
+      "model": "1b",
+      "condition": "E-E-E",
+      "first_only_correct": 1,
+      "second_only_correct": 0,
+      "n": 10,
+      "delta_points": 10,
+      "p_unadjusted": 1.0
+    }
+  ],
+  "interpretation": "Exploratory unadjusted exact two-sided McNemar tests. Ten paired questions per cell; no independent-observation pooling across conditions or strategies. Wilson intervals are per cell, not across repeated configurations."
+}

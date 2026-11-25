@@ -1,0 +1,12 @@
+| Strategy | Condition | n | Correct | Wrong answer | Cut off | No marker | Ambiguous | Format failures | Answer only | Off-language | Lenient correct |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| random | U-U-U | 10 | 6 | 4 | 0 | 0 | 0 | 0 | 0 | 0 | 6 |
+| random | U-U-E | 10 | 7 | 3 | 0 | 0 | 0 | 0 | 0 | 0 | 7 |
+| random | U-E-E | 10 | 8 | 1 | 0 | 0 | 1 | 1 | 0 | 5 | 9 |
+| random | E-E-E | 10 | 8 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 8 |
+| random | ALL | 40 | 29 | 10 | 0 | 0 | 1 | 1 | 0 | 5 | 30 |
+| ALL | U-U-U | 10 | 6 | 4 | 0 | 0 | 0 | 0 | 0 | 0 | 6 |
+| ALL | U-U-E | 10 | 7 | 3 | 0 | 0 | 0 | 0 | 0 | 0 | 7 |
+| ALL | U-E-E | 10 | 8 | 1 | 0 | 0 | 1 | 1 | 0 | 5 | 9 |
+| ALL | E-E-E | 10 | 8 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 8 |
+| ALL | ALL | 40 | 29 | 10 | 0 | 0 | 1 | 1 | 0 | 5 | 30 |

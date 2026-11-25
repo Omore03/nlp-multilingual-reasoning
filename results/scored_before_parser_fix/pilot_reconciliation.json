@@ -1,0 +1,31 @@
+{
+  "raw_records": 116,
+  "unusable_records": 0,
+  "failed_calls": 36,
+  "duplicates_dropped": 0,
+  "conflicting_duplicates": 0,
+  "unknown_question_records": 0,
+  "unique_successful_scored": 80,
+  "expected_configurations": 80,
+  "seeds_seen": [
+    42
+  ],
+  "missing_configurations": [],
+  "unexpected_configurations": [],
+  "unknown_question_ids": [],
+  "contract_problems": [],
+  "totals_balance": true,
+  "run_identities": [
+    "a6a5824eab93553910ed95576e6853d85096195cbdae4fab4e9d9bede68246dc"
+  ],
+  "model_identities": [
+    "gemma-4-31b-it"
+  ],
+  "research_eligible": true,
+  "evaluation_kind": "real_pilot",
+  "raw_sha256": "a7fcb406554be392a464eccd5b184d6e27c3fcff82e5cd50bbf9ba4768864897",
+  "manifest_sha256": "2820d4c167c2dc3a830382dded0ec11ec08e9795d782ada9865716e347fa3aab",
+  "run_id": "a6a5824eab93553910ed95576e6853d85096195cbdae4fab4e9d9bede68246dc",
+  "malformed_raw_lines": [],
+  "complete": true
+}

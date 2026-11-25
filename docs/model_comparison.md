@@ -1,6 +1,6 @@
 # Model-arm comparison: Gemma 4 31B, Gemma 3 4B, Gemma 3 1B
 
-Same 10 dev questions, 18-item pool, frozen selections, prompts and decoding in every two-shot arm; only the model changes. Zero-shot arms use the same questions with no demonstrations. Each cell is correct/10. Built by `scripts/compare_arms.py` from the evaluated files.
+The main two-shot arms share 10 dev questions, the 18-item pool, frozen selections and prompt text. Generation, backend, quantization and model-specific decoding differ, so this is not a controlled size-only experiment. Zero-shot arms use the same questions with no demonstrations. Each cell is correct/10. Built by `scripts/compare_arms.py` from the evaluated files.
 
 ## Exact-match accuracy
 
@@ -38,7 +38,7 @@ b = questions only similarity solved; c = questions only random solved; p = exac
 
 ## Random selection across seeds (Gemma 3 4B)
 
-Seeds 43 and 44 change only the random demonstration pairs (generation seed stays 42). The spread shows how far random can move by chance; a strategy gap smaller than it is not evidence.
+Seeds 43 and 44 change only the random demonstration pairs (generation seed stays 42). The spread describes sensitivity to demonstration selection; it is not a significance threshold.
 
 | Condition | Random seed 42 | Random seed 43 | Random seed 44 | Random range | Similarity |
 |---|---|---|---|---|---|
@@ -63,7 +63,7 @@ Seeds 43 and 44 change only the random demonstration pairs (generation seed stay
 
 ## Reasoning errors vs format failures (all strategies pooled per arm and condition)
 
-Wrong answer = a parsed but wrong number. Format failures = cut off at the 2048-token limit, no marker, or ambiguous marker. Answer only = under 40 output tokens. Off-language = solution mainly in the other script than the target question. Lenient = independent cross-check (number after the last literal FINAL_ANSWER, colon optional); since parser version 2 it should equal Correct. See `scripts/error_breakdown.py`.
+Wrong answer = a parsed but wrong number; this alone does not identify its cause. Cutoff, missing-marker and ambiguous-marker categories describe noncorrect outputs. Answer only is a historical column name for the short-output heuristic (<40 tokens), not a verified absence of working. Off-language is a script heuristic that cannot distinguish Urdu from other Arabic-script languages or English from Spanish. Lenient is a permissive diagnostic that includes correct records; it is not independent validation. See `scripts/error_breakdown.py`.
 
 | Arm | Condition | n | Correct | Lenient | Wrong answer | Cut off | No/ambiguous marker | Answer only | Off-language |
 |---|---|---|---|---|---|---|---|---|---|
@@ -103,6 +103,10 @@ Same raw responses, re-scored. Version 2 reads the number after the last FINAL_A
 ## Caveats
 
 - 10 questions per cell: one question is 10 points. An exact McNemar test reaches p < 0.05 only if at least 6 questions differ and all go the same way (6–0 gives p = 0.031; 5–0 gives 0.063; 6–1 gives 0.125).
-- All questions are GSM8K training items, so memorisation cannot be ruled out, most of all for the 31B model.
-- 4B and 1B are 4-bit (Q4_K_M) local builds; 31B is the hosted full model. Size is not the only difference.
+- All questions are public GSM8K training items. Pretraining overlap is possible for every model; these runs do not measure it.
+- 4B and 1B are Q4_K_M local builds; hosted 31B precision is not recorded. Generation, backend, precision and model options differ.
 - One selection seed (42), except the 4B random seed check (42, 43, 44). The deferred diversity/complexity selectors, 4-shot prompts and MGSM are not included.
+
+## Incomplete reference arm
+
+Gemma 4 31B zero-shot is not a completed baseline. The 25 November attempt returned repeated HTTP503 capacity failures and was stopped. It is excluded from accuracy comparisons; see `evidence/baseline_2026_11_25/google_zero_shot_attempt.json`.

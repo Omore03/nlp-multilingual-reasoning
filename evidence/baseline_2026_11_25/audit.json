@@ -1,0 +1,232 @@
+{
+  "date": "2026-11-25",
+  "parser_version": "2.1-bounded-final-answer-first",
+  "runs": [
+    {
+      "run": "31b_two_shot",
+      "folder": "results",
+      "run_id": "a6a5824eab93553910ed95576e6853d85096195cbdae4fab4e9d9bede68246dc",
+      "raw_sha256": "a7fcb406554be392a464eccd5b184d6e27c3fcff82e5cd50bbf9ba4768864897",
+      "manifest_sha256": "2820d4c167c2dc3a830382dded0ec11ec08e9795d782ada9865716e347fa3aab",
+      "scored": 80,
+      "correct_before": 80,
+      "correct_after": 80,
+      "parse_failures_before": 0,
+      "parse_failures_after": 0,
+      "gained": 0,
+      "lost": 0,
+      "newly_parsed_wrong": 0,
+      "failed_entries": 36,
+      "cutoff_responses": 0,
+      "maximum_total_tokens": 760,
+      "verified_evaluated_sha256": "80a587251d64f729331c3efb52cf52a1e09bbd098a37c84f0543b68e320f1071"
+    },
+    {
+      "run": "4b_two_shot",
+      "folder": "results/gemma3_4b",
+      "run_id": "e40966fdea0e30df73c6cd9bcfeb053b3297b66ee51918d87492522d294aa7ca",
+      "raw_sha256": "91e5bf2dcd2f264c87607f6ab0d26631c41b42d09be5eaa98bf85ae34ddf5f64",
+      "manifest_sha256": "b3e23524b46dc6993be0020e6ad9300fd2bb640e6a4cec4ea1595d7a85ab37e6",
+      "scored": 80,
+      "correct_before": 61,
+      "correct_after": 64,
+      "parse_failures_before": 7,
+      "parse_failures_after": 1,
+      "gained": 3,
+      "lost": 0,
+      "newly_parsed_wrong": 3,
+      "failed_entries": 0,
+      "cutoff_responses": 1,
+      "maximum_total_tokens": 2492,
+      "verified_evaluated_sha256": "8e66527ef960eda2fd2cb4ba3f7e1953d96a9af1ae0347bc9e31cfaeccfa8216"
+    },
+    {
+      "run": "4b_zero_shot",
+      "folder": "results/gemma3_4b_zeroshot",
+      "run_id": "060d3763a0ab771fdb4f360946ee6d95230a33195ce95bfc3acec2f98e9bd6da",
+      "raw_sha256": "a17abb9494aa05009c6a715fd4282d5bf6e96ddcfd0fc0580ce9a7e32e9371e0",
+      "manifest_sha256": "51f2c967856d38493e5551373ae7571ae73cfa9c8f94f41e68371468af65a8fb",
+      "scored": 30,
+      "correct_before": 14,
+      "correct_after": 23,
+      "parse_failures_before": 13,
+      "parse_failures_after": 1,
+      "gained": 9,
+      "lost": 0,
+      "newly_parsed_wrong": 3,
+      "failed_entries": 0,
+      "cutoff_responses": 0,
+      "maximum_total_tokens": 655,
+      "verified_evaluated_sha256": "50ead4f98e185b44f1e3cace709b9ebd8b2887d7000fed04ab62163a91f8a8dd"
+    },
+    {
+      "run": "4b_seed43",
+      "folder": "results/gemma3_4b_seed43",
+      "run_id": "6a25360b9502a47948bc86d2e42c6c7f215a644762c16c80bc8e27bdf06b03e5",
+      "raw_sha256": "d38bee45c2cc1622fa6f1e7220b34ce03b8409fde5895803306741707d473c4e",
+      "manifest_sha256": "6220626c99102e0504f6ffc35ba1b28a13ea1086e68ef0dbfad423532b3f1ce6",
+      "scored": 40,
+      "correct_before": 29,
+      "correct_after": 30,
+      "parse_failures_before": 1,
+      "parse_failures_after": 0,
+      "gained": 1,
+      "lost": 0,
+      "newly_parsed_wrong": 0,
+      "failed_entries": 0,
+      "cutoff_responses": 0,
+      "maximum_total_tokens": 837,
+      "verified_evaluated_sha256": "29b011e030d73feb1a5b23f2727a7fce2fb086571e1ae7c0d536ececca3f48f5"
+    },
+    {
+      "run": "4b_seed44",
+      "folder": "results/gemma3_4b_seed44",
+      "run_id": "29829aca17dd7253ae5e642e40924e3579d1abc61fd7b41c4b1d1e7d00bc1a61",
+      "raw_sha256": "bda18dbeba396dda08ae0185adea01468dd43b67a060dca8d28131c6f694e2dd",
+      "manifest_sha256": "ee7c3b17a65e6f308fcc805e3e42aae155976d9f5f5acb4ccdb5742e8bd29902",
+      "scored": 40,
+      "correct_before": 30,
+      "correct_after": 32,
+      "parse_failures_before": 3,
+      "parse_failures_after": 0,
+      "gained": 2,
+      "lost": 0,
+      "newly_parsed_wrong": 1,
+      "failed_entries": 0,
+      "cutoff_responses": 0,
+      "maximum_total_tokens": 750,
+      "verified_evaluated_sha256": "eefc789931c2236ba6a8e37f15c31db514d70a70ed9592c5c2fe97a7a1074c6e"
+    },
+    {
+      "run": "1b_two_shot",
+      "folder": "results/gemma3_1b",
+      "run_id": "3430953fb7bcf48c280091176d3e5689b3fd114f774478da1be4d138bf4ff919",
+      "raw_sha256": "78b0609b88dbc347d4518998573370b42b75a076c59fff23215c79e4efc4134c",
+      "manifest_sha256": "c3b003c9c8e7c96e9a85781c48ca9aed85d71bbf6c7d05e281bfa99025884558",
+      "scored": 80,
+      "correct_before": 16,
+      "correct_after": 16,
+      "parse_failures_before": 15,
+      "parse_failures_after": 15,
+      "gained": 0,
+      "lost": 0,
+      "newly_parsed_wrong": 0,
+      "failed_entries": 0,
+      "cutoff_responses": 14,
+      "maximum_total_tokens": 2529,
+      "verified_evaluated_sha256": "2d1d1763f0d30f1e6ee15014bf10cb4e9219e4c8876e21c2e6ae3104f5393dd0"
+    },
+    {
+      "run": "1b_zero_shot",
+      "folder": "results/gemma3_1b_zeroshot",
+      "run_id": "e3b629c84480a8da113a83faa99b7365281a5fff4dd89d390e6668845f7730c5",
+      "raw_sha256": "912f2bfccc816a23afcc60f5b916b3db49b7e1c4ecb0570e0f998744ac7643c7",
+      "manifest_sha256": "30fd35bbdc8bc04a3754640a3dfde76a690c62df5fb40c53d8ae0a3d369206a2",
+      "scored": 30,
+      "correct_before": 7,
+      "correct_after": 7,
+      "parse_failures_before": 11,
+      "parse_failures_after": 11,
+      "gained": 0,
+      "lost": 0,
+      "newly_parsed_wrong": 0,
+      "failed_entries": 0,
+      "cutoff_responses": 10,
+      "maximum_total_tokens": 2192,
+      "verified_evaluated_sha256": "39a0bfb7da5362e573b163357fd712cefb2b0ca018a62b63aff423fbbf45020a"
+    }
+  ],
+  "total_scored": 380,
+  "total_gained": 15,
+  "total_lost": 0,
+  "newly_parsed_wrong": 7,
+  "two_shot_prompts_identical": true,
+  "zero_shot_prompts_identical": true,
+  "configs_previewed": [
+    {
+      "config": "configs/live_smoke.yaml",
+      "planned_records": 40
+    },
+    {
+      "config": "configs/mock.yaml",
+      "planned_records": 80
+    },
+    {
+      "config": "configs/mock_smoke.yaml",
+      "planned_records": 40
+    },
+    {
+      "config": "configs/ollama_gemma3_1b_smoke.yaml",
+      "planned_records": 40
+    },
+    {
+      "config": "configs/ollama_gemma3_4b_smoke.yaml",
+      "planned_records": 40
+    },
+    {
+      "config": "configs/openrouter_live_smoke.yaml",
+      "planned_records": 40
+    },
+    {
+      "config": "configs/pilot.yaml",
+      "planned_records": 80
+    },
+    {
+      "config": "configs/pilot_ollama_gemma3_1b.yaml",
+      "planned_records": 80
+    },
+    {
+      "config": "configs/pilot_ollama_gemma3_4b.yaml",
+      "planned_records": 80
+    },
+    {
+      "config": "configs/seedcheck_ollama_gemma3_4b_seed43.yaml",
+      "planned_records": 40
+    },
+    {
+      "config": "configs/seedcheck_ollama_gemma3_4b_seed44.yaml",
+      "planned_records": 40
+    },
+    {
+      "config": "configs/zeroshot_google_gemma4_31b.yaml",
+      "planned_records": 30
+    },
+    {
+      "config": "configs/zeroshot_ollama_gemma3_1b.yaml",
+      "planned_records": 30
+    },
+    {
+      "config": "configs/zeroshot_ollama_gemma3_4b.yaml",
+      "planned_records": 30
+    }
+  ],
+  "closest_demo_dev_text_pairs": [
+    {
+      "dev_id": "gsm8k-train-78a19fb7a7c3",
+      "demo_id": "gsm8k-train-73429d562982",
+      "text_similarity": 0.4475
+    },
+    {
+      "dev_id": "gsm8k-train-c7da26a5fbd9",
+      "demo_id": "gsm8k-train-73429d562982",
+      "text_similarity": 0.386
+    },
+    {
+      "dev_id": "gsm8k-train-4e78856e0b87",
+      "demo_id": "gsm8k-train-3f23a7d4df7c",
+      "text_similarity": 0.3664
+    },
+    {
+      "dev_id": "gsm8k-train-c7da26a5fbd9",
+      "demo_id": "gsm8k-train-cdcae5775716",
+      "text_similarity": 0.363
+    },
+    {
+      "dev_id": "gsm8k-train-f8ac079613e1",
+      "demo_id": "gsm8k-train-f9fe6096f4fc",
+      "text_similarity": 0.3561
+    }
+  ],
+  "urdu_solutions_with_ascii_words": 18,
+  "note": "Saved response verification and offline rescoring; inherited local inference not repeated. Text similarity is a duplicate-screening heuristic, not translation review."
+}

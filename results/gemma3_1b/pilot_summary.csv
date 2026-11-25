@@ -1,0 +1,16 @@
+strategy,condition,shot_count,correct,total,accuracy,parse_failures,missing,ambiguous
+random,U-U-U,2,0,10,0.0,1,1,0
+random,U-U-E,2,1,10,0.1,2,2,0
+random,U-E-E,2,2,10,0.2,3,3,0
+random,E-E-E,2,4,10,0.4,1,1,0
+similarity,U-U-U,2,0,10,0.0,0,0,0
+similarity,U-U-E,2,2,10,0.2,4,3,1
+similarity,U-E-E,2,2,10,0.2,3,3,0
+similarity,E-E-E,2,5,10,0.5,1,1,0
+random,ALL,2,7,40,0.175,7,7,0
+similarity,ALL,2,9,40,0.225,8,7,1
+ALL,U-U-U,2,0,20,0.0,1,1,0
+ALL,U-U-E,2,3,20,0.15,6,5,1
+ALL,U-E-E,2,4,20,0.2,6,6,0
+ALL,E-E-E,2,9,20,0.45,2,2,0
+ALL,ALL,2,16,80,0.2,15,14,1

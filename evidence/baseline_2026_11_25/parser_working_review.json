@@ -1,0 +1,122 @@
+[
+  {
+    "record_id": "d0641a00b5733b6ca2a43d4e54b0af79ee7b48354b01c3457cf78f64dfb882f9",
+    "run": "4b_two_shot",
+    "cause": "generic restatement",
+    "numeric_final_matches_key": true,
+    "working_note": "Visible calculation reaches the extracted numerical key; this is not a full translation or reasoning certification.",
+    "human_approval": "pending"
+  },
+  {
+    "record_id": "2cd37e737040cf1f074cffcf4c82508983debbb06c0ce65c48b667bd78498cae",
+    "run": "4b_two_shot",
+    "cause": "generic restatement",
+    "numeric_final_matches_key": true,
+    "working_note": "Visible calculation reaches the extracted numerical key; this is not a full translation or reasoning certification.",
+    "human_approval": "pending"
+  },
+  {
+    "record_id": "9423554a71a697658bb9128b6c56571b8b8cf8b29c235c919877fe4bcbb6ff9e",
+    "run": "4b_two_shot",
+    "cause": "generic restatement",
+    "numeric_final_matches_key": true,
+    "working_note": "Visible calculation reaches the extracted numerical key; this is not a full translation or reasoning certification.",
+    "human_approval": "pending"
+  },
+  {
+    "record_id": "a2e671a34e00f0bcdfd8017c0f701cff559d5e71c6f8a875bb10167ab0c478c5",
+    "run": "4b_zero_shot",
+    "cause": "missing colon",
+    "numeric_final_matches_key": true,
+    "working_note": "Visible calculation reaches the extracted numerical key; this is not a full translation or reasoning certification.",
+    "human_approval": "pending"
+  },
+  {
+    "record_id": "100060ade1f5a67f2c1eea89071469581e1ed4bd7aec30530fc5ded1cfe0161f",
+    "run": "4b_zero_shot",
+    "cause": "missing colon",
+    "numeric_final_matches_key": true,
+    "working_note": "Visible calculation reaches the extracted numerical key; this is not a full translation or reasoning certification.",
+    "human_approval": "pending"
+  },
+  {
+    "record_id": "33999fc6e9b2444b7c4ffacce3f32a30828abacf2cc21d7b9df210983d241794",
+    "run": "4b_zero_shot",
+    "cause": "generic restatement",
+    "numeric_final_matches_key": true,
+    "working_note": "Visible calculation reaches the extracted numerical key; this is not a full translation or reasoning certification.",
+    "human_approval": "pending"
+  },
+  {
+    "record_id": "6cd07b6b353ef0f76269d5a9c3c41abd1de101c1e2a009519ed55d3680db2825",
+    "run": "4b_zero_shot",
+    "cause": "missing colon",
+    "numeric_final_matches_key": true,
+    "working_note": "Visible calculation reaches the extracted numerical key; this is not a full translation or reasoning certification.",
+    "human_approval": "pending"
+  },
+  {
+    "record_id": "91b5c7d896ae96401bf7eb86dace2b6057b5f412b704c1f81ade29c4ddb5340d",
+    "run": "4b_zero_shot",
+    "cause": "generic restatement",
+    "numeric_final_matches_key": true,
+    "working_note": "Visible calculation reaches the extracted numerical key; this is not a full translation or reasoning certification.",
+    "human_approval": "pending"
+  },
+  {
+    "record_id": "0e72c88e3f4914eff5184b13da60e666bb86dccba8c83e962e7d7179e5293299",
+    "run": "4b_zero_shot",
+    "cause": "missing colon",
+    "numeric_final_matches_key": true,
+    "working_note": "Visible calculation reaches the extracted numerical key; this is not a full translation or reasoning certification.",
+    "human_approval": "pending"
+  },
+  {
+    "record_id": "2a3341fed413a14c05440422199013f5194bd7cdf93926321f0e2d7f53f57ca8",
+    "run": "4b_zero_shot",
+    "cause": "generic restatement",
+    "numeric_final_matches_key": true,
+    "working_note": "Visible calculation reaches the extracted numerical key; this is not a full translation or reasoning certification.",
+    "human_approval": "pending"
+  },
+  {
+    "record_id": "cbc53907b762a055241dafbdbbaea076ad3ea932ac7b7bf3cdf77583715a9c6d",
+    "run": "4b_zero_shot",
+    "cause": "missing colon",
+    "numeric_final_matches_key": true,
+    "working_note": "Visible calculation reaches the extracted numerical key; this is not a full translation or reasoning certification.",
+    "human_approval": "pending"
+  },
+  {
+    "record_id": "bb77cb0116337feb94ca3b9cb4bcdc1c138fee8ee4ff4ffb715d5b846c18e703",
+    "run": "4b_zero_shot",
+    "cause": "generic restatement",
+    "numeric_final_matches_key": true,
+    "working_note": "Visible calculation reaches the extracted numerical key; this is not a full translation or reasoning certification.",
+    "human_approval": "pending"
+  },
+  {
+    "record_id": "dae4b0efcc0090bfb042b6b84c652ecda0e02c226024e8929bf7cdfdf1953872",
+    "run": "4b_seed43",
+    "cause": "generic restatement",
+    "numeric_final_matches_key": true,
+    "working_note": "Visible calculation reaches the extracted numerical key; this is not a full translation or reasoning certification.",
+    "human_approval": "pending"
+  },
+  {
+    "record_id": "292e82677903f4ef100d6dbb6400e4795a0ebe0d1b1959ff19fc0ed7e5affdb9",
+    "run": "4b_seed44",
+    "cause": "generic restatement",
+    "numeric_final_matches_key": true,
+    "working_note": "Visible calculation reaches the extracted numerical key; this is not a full translation or reasoning certification.",
+    "human_approval": "pending"
+  },
+  {
+    "record_id": "b297d57f26bd5b4f084c19772ea239911b4b81179ef68caff6f2793a9c7585ba",
+    "run": "4b_seed44",
+    "cause": "generic restatement",
+    "numeric_final_matches_key": true,
+    "working_note": "Final 6 matches the key, but the prose reverses money spent and money remaining. Numerical correctness must not be described as fully correct working.",
+    "human_approval": "pending"
+  }
+]

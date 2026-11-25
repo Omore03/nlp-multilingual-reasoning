@@ -28,3 +28,7 @@ The parser now accepts `FINAL_ANSWER:`. Real scoring requires a matching manifes
 ## Remaining research work
 
 The 80-configuration real pilot is complete and scored: both selectors reach 40/40 numerical matches, with zero parse failures. The report and baseline table are ready for team review. This ten-question pilot cannot establish strategy superiority. Final MGSM evaluation, larger data, additional selectors and four-shot prompting remain later work. See the [verification record](verification.md).
+
+## Local baseline follow-up, 25 November 2026
+
+The isolated `codex/baseline-submission-2026-11-25` branch integrates Rayyan's supplied delta. Seven saved runs and 380 scored records have been independently reconciled; see the root README and completion report for the current status. This does not change or replace the original 31B journal/report. 4B/1B local inference is inherited evidence, not a new execution on Ammar's Mac. The Google zero-shot attempt has zero successful responses because of capacity failures. No remote write or submission occurred.

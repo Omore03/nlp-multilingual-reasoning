@@ -10,7 +10,7 @@ AMBIGUOUS = "ambiguous"
 PARSE_STATUSES = (OK, MISSING, AMBIGUOUS)
 
 DEFAULT_MARKERS = (
-    r"FINAL_ANSWER\s*:",
+    r"(?<!\w)FINAL_ANSWER(?!\w)\s*:",
     r"#{4}",
     r"final\s+answer\s*(?:is\b\s*[:：]?|[:：])",
     r"حتمی\s+جواب\s*[:：]",
@@ -23,8 +23,8 @@ DEFAULT_MARKERS = (
 # no usable FINAL_ANSWER fall back to the earlier rule over all DEFAULT_MARKERS, unchanged.
 # This stops two formatting failures: "FINAL_ANSWER 70" (no colon) and a generic "final answer:"
 # followed by a restated question being read as a second, disagreeing answer.
-PARSER_VERSION = "2-last-final-answer-first"
-PRIMARY_MARKER = r"FINAL_ANSWER\s*[:：]?"
+PARSER_VERSION = "2.1-bounded-final-answer-first"
+PRIMARY_MARKER = r"(?<!\w)FINAL_ANSWER(?!\w)\s*[:：]?"
 _AUTO = object()
 
 _DIGIT_MAP = {}

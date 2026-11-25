@@ -1,0 +1,458 @@
+{
+  "run_id": "e3b629c84480a8da113a83faa99b7365281a5fff4dd89d390e6668845f7730c5",
+  "identity": {
+    "configuration": {
+      "data_kind": "real",
+      "demo_path": "data/processed/demo_pool.jsonl",
+      "dev_path": "data/processed/dev.jsonl",
+      "conditions": [
+        "U-U-U",
+        "U-U-E",
+        "E-E-E"
+      ],
+      "strategies": [
+        "none"
+      ],
+      "shot_count": 0,
+      "seed": 42,
+      "selector": null,
+      "selector_version": "no-selection-zero-shot",
+      "model": {
+        "backend": "ollama",
+        "model_id": "gemma3:1b",
+        "model_digest": "97558784bdc9175075a72655bf360b15da17df6b3b9e5182af9f8c0c8e58ba7c",
+        "endpoint": "http://127.0.0.1:11434/api/chat",
+        "credential_env": null,
+        "route": "ollama-local",
+        "free_only": true,
+        "max_requests_per_invocation": null,
+        "min_request_interval_seconds": 0,
+        "decoding": {
+          "temperature": 0,
+          "top_p": 1,
+          "max_tokens": 2048,
+          "seed": 42,
+          "num_ctx": 4096
+        },
+        "timeout_seconds": 300,
+        "max_attempts": 3,
+        "max_retry_wait_seconds": 30
+      }
+    },
+    "data": {
+      "demo_path": "ce4125ff702fdc7da2e9ff07268e7016617e402ee53f67bcb740eb944f2ff90a",
+      "dev_path": "9138c1f4cbbaf2e29deff692575d4eec2c2e8ae8f1734c357c043f02a16b5f52"
+    },
+    "sources": {
+      "src/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/data/__init__.py": "59852ae77acc904a6ad4c7a92ff6eee76379ae1af17002f4239d810158035ef9",
+      "src/data/hussain_validator.py": "f0ad2ccfd7bf02d290b095b48ed8f9ffd8e11332f544a02eb8c8d08618c0c879",
+      "src/data/validate.py": "401984f345feaeeb855053b4b109ec6115377afb35d4cffa3de2d70924faa89a",
+      "src/evaluation/__init__.py": "74e5bf4e9b90cb3669146293405f4181e2f190f8498b28ddb2b2a7284053ecd4",
+      "src/evaluation/answer_parser.py": "ff3cff0c402442607661837c75b8f7eeafd3513756413d52586071425b09922a",
+      "src/evaluation/metrics.py": "6b3df3ea3eccdff614a2bb32967f9f8af58bb90fc08d628d3aa43aca43856001",
+      "src/evaluation/report.py": "0badc3e887639c53f28cdc8d73d312f6bfca6325b4e459c03a557a1ef15ebba8",
+      "src/inference/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/inference/backends.py": "d6072902a0e0eb2af525faf9e555e6e13438f4d9fccdb2537e7d97b8ab07543e",
+      "src/inference/contracts.py": "3d68881821ea45173482df8b255a95bc6f41624a1d90c64405e2d8b01066e602",
+      "src/inference/free_policy.py": "9d009a0f7d219d6a33d9aaf8da3046aba43f7fb56d35c061e6eee1e629e1ffdb",
+      "src/inference/google_backend.py": "7499b66cc58ec615d6f8c2ecb9573185ed0604f643419460fb7c3bf29fcadbb6",
+      "src/inference/ollama_backend.py": "3650718af2722d9fd16f504ac3ffc910455fd90be83dd22a1967ba4d2e95a682",
+      "src/inference/runner.py": "87dc79eadb75a824e94336ff66356e171dc7360a9417da5d2f4730dbf37de915",
+      "src/prompting/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/prompting/templates.py": "938d9f86a85eb7dc3d40c4d7abba5ab37be1a65b48f30bff90fcd6d9843fc736",
+      "src/selection/__init__.py": "79523f81c54005583ef8aecedc5b68a3fba0c9c2e2620200ebf0ea7f759ff228",
+      "src/selection/encoders.py": "cf74d0808cf6fe852f625fa25a9ab942a1873504981c5b6ff9c94764432deb85",
+      "src/selection/pilot_adapter.py": "c562a9afd8c76e17ea14fa25885236a5d5ab8633c91adff9455c98615528bec9",
+      "src/selection/random.py": "d4d2d7907b10accd24ded34fb5e348303cbe4d1338ac0fe16d788de236563747",
+      "src/selection/select.py": "0e496c77af4e08d00fc78848038885ef1187f8d2645f5ad924c37ae52b44f2f8",
+      "src/selection/similarity.py": "4d1517a56732777377368f76c5eba92d0aed3a387bf544e4137a9005ae48a0fa"
+    },
+    "software": {
+      "python": "3.13.18",
+      "PyYAML": "6.0.3",
+      "httpx": "0.28.1",
+      "python-dotenv": "1.2.1",
+      "numpy": "2.3.5"
+    },
+    "template_version": "bilingual-math-0shot-v1",
+    "runner_version": "1.4.0-reviewed-18-demo-pilot-local-ollama",
+    "plan_hash": "b107f4f8840a9b83a6c9cd7de93747fd88387668f4ea0b5007aa355764f44c44"
+  },
+  "resolved_configuration": {
+    "data_kind": "real",
+    "demo_path": "data/processed/demo_pool.jsonl",
+    "dev_path": "data/processed/dev.jsonl",
+    "output_path": "results/gemma3_1b_zeroshot/pilot_raw.jsonl",
+    "conditions": [
+      "U-U-U",
+      "U-U-E",
+      "E-E-E"
+    ],
+    "strategies": [
+      "none"
+    ],
+    "shot_count": 0,
+    "seed": 42,
+    "selector": null,
+    "selector_version": "no-selection-zero-shot",
+    "verification_receipt": "results/live_smoke/ollama_gemma3_1b/model_verification.json",
+    "model": {
+      "backend": "ollama",
+      "model_id": "gemma3:1b",
+      "model_digest": "97558784bdc9175075a72655bf360b15da17df6b3b9e5182af9f8c0c8e58ba7c",
+      "endpoint": "http://127.0.0.1:11434/api/chat",
+      "credential_env": null,
+      "route": "ollama-local",
+      "free_only": true,
+      "max_requests_per_invocation": null,
+      "min_request_interval_seconds": 0,
+      "decoding": {
+        "temperature": 0,
+        "top_p": 1,
+        "max_tokens": 2048,
+        "seed": 42,
+        "num_ctx": 4096
+      },
+      "timeout_seconds": 300,
+      "max_attempts": 3,
+      "max_retry_wait_seconds": 30
+    }
+  },
+  "created_at": "2026-11-25T12:35:58.703822+00:00",
+  "expected_records": 30,
+  "plan": [
+    {
+      "question_id": "gsm8k-train-78a19fb7a7c3",
+      "strategy": "none",
+      "condition": "U-U-U",
+      "shot_count": 0,
+      "seed": 42,
+      "demo_ids": [],
+      "prompt": "ہدف سوال کی زبان میں مکمل مرحلہ وار حل لکھیں۔ آخری سطر میں صرف حتمی عددی جواب لکھیں۔ اس سطر کے شروع میں یہی نشان FINAL_ANSWER: لکھیں اور اس کے بعد جواب کا عدد لکھیں۔\n\nہدف سوال\nسوال: ایک باغ میں 237 آلو اگے، کھیرے آلوؤں سے 60 کم تھے، اور مرچیں کھیروں سے دگنی تھیں۔ باغ میں کل کتنی سبزیاں اگیں؟",
+      "prompt_hash": "cc165d23d594185f8ab59c48d4fe7e39d9979ee857dff958ced8ab15bf041cd6",
+      "record_id": "5306face8848551b6d3c65018c74201294a12e5eb30ed4cddc5645d29837df43"
+    },
+    {
+      "question_id": "gsm8k-train-78a19fb7a7c3",
+      "strategy": "none",
+      "condition": "U-U-E",
+      "shot_count": 0,
+      "seed": 42,
+      "demo_ids": [],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nTarget question\nQuestion: ایک باغ میں 237 آلو اگے، کھیرے آلوؤں سے 60 کم تھے، اور مرچیں کھیروں سے دگنی تھیں۔ باغ میں کل کتنی سبزیاں اگیں؟",
+      "prompt_hash": "f79cee62b99a74674f41d31e57f231a83fa5151d48e1c40b413d67f5ff06638b",
+      "record_id": "cdf9c171da78c0027edf72885f126ccea39a45b03c2461a595f56a7d67d42bab"
+    },
+    {
+      "question_id": "gsm8k-train-78a19fb7a7c3",
+      "strategy": "none",
+      "condition": "E-E-E",
+      "shot_count": 0,
+      "seed": 42,
+      "demo_ids": [],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nTarget question\nQuestion: A garden produced 237 potatoes, 60 fewer cucumbers and twice as many peppers than the cucumbers. How many vegetables did the garden produce?",
+      "prompt_hash": "6b16c5a8cfa6dc4a79b902660cab93713204a2f7138165bf3bc1d63338ea6ab9",
+      "record_id": "3baf85c27e73b76e5c8046b5035c972fa2f8783a3afc6d82a5c40aa9c10669b7"
+    },
+    {
+      "question_id": "gsm8k-train-f8ac079613e1",
+      "strategy": "none",
+      "condition": "U-U-U",
+      "shot_count": 0,
+      "seed": 42,
+      "demo_ids": [],
+      "prompt": "ہدف سوال کی زبان میں مکمل مرحلہ وار حل لکھیں۔ آخری سطر میں صرف حتمی عددی جواب لکھیں۔ اس سطر کے شروع میں یہی نشان FINAL_ANSWER: لکھیں اور اس کے بعد جواب کا عدد لکھیں۔\n\nہدف سوال\nسوال: مقابلے سے 4 ماہ پہلے ایک باکسر کا وزن 97 کلوگرام ہے۔ وہ مقابلے کے دن تک ہر ماہ 3 کلوگرام وزن کم کرتا ہے۔ مقابلے کے دن اس کا وزن کتنا ہوگا؟",
+      "prompt_hash": "837922cbe7d5ee23806b2eb8c2aa3f60a96b8d9518967361da61d957286375fa",
+      "record_id": "3f1d5de6a24bfee94b0479266d5660fc93448146208640de6a5da5d3c599f418"
+    },
+    {
+      "question_id": "gsm8k-train-f8ac079613e1",
+      "strategy": "none",
+      "condition": "U-U-E",
+      "shot_count": 0,
+      "seed": 42,
+      "demo_ids": [],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nTarget question\nQuestion: مقابلے سے 4 ماہ پہلے ایک باکسر کا وزن 97 کلوگرام ہے۔ وہ مقابلے کے دن تک ہر ماہ 3 کلوگرام وزن کم کرتا ہے۔ مقابلے کے دن اس کا وزن کتنا ہوگا؟",
+      "prompt_hash": "4901ccd887dc00d001349e1ce7e50e799d10e00d628acb7878dc7f03ca8f07a9",
+      "record_id": "6ecdc701a04bd1eaedbc01825bb97f07dfbce1015c9227c9fa2a6a37f6f09ca4"
+    },
+    {
+      "question_id": "gsm8k-train-f8ac079613e1",
+      "strategy": "none",
+      "condition": "E-E-E",
+      "shot_count": 0,
+      "seed": 42,
+      "demo_ids": [],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nTarget question\nQuestion: A boxer weighs 97 kg at 4 months from a fight. He is on a diet that allows him to lose 3 kg per month until the day of the fight. How much will he weigh on the day of the fight?",
+      "prompt_hash": "3ba002aa10a343459d5b858564662fbcc0596eff9385972433e81da859497ca6",
+      "record_id": "f169fb4c163f87318a08410e569e1fb4271f9bb420fdb91d2693deba3ebaa13c"
+    },
+    {
+      "question_id": "gsm8k-train-4c46af17e4af",
+      "strategy": "none",
+      "condition": "U-U-U",
+      "shot_count": 0,
+      "seed": 42,
+      "demo_ids": [],
+      "prompt": "ہدف سوال کی زبان میں مکمل مرحلہ وار حل لکھیں۔ آخری سطر میں صرف حتمی عددی جواب لکھیں۔ اس سطر کے شروع میں یہی نشان FINAL_ANSWER: لکھیں اور اس کے بعد جواب کا عدد لکھیں۔\n\nہدف سوال\nسوال: مینی کے پاس سالگرہ کی 3 کوکی پائیاں تھیں جو وہ اپنے 24 ہم جماعتوں اور استاد مسٹر کیتھ کے ساتھ بانٹنا چاہتا تھا۔ ہر پائی کو 10 سلائسوں میں کاٹا گیا۔ اگر مینی، ہر ہم جماعت اور استاد نے 1 سلائس کھایا تو کتنے سلائس بچے؟",
+      "prompt_hash": "f0247c13db47ef355a3aa252bed4a6f7ea7fa6d78fbfd117c3de343e04f6bce0",
+      "record_id": "cb4cf4f110e3172e0a2b38c4699f5365f15e7d9d1de5d08eca026af5ab2b4099"
+    },
+    {
+      "question_id": "gsm8k-train-4c46af17e4af",
+      "strategy": "none",
+      "condition": "U-U-E",
+      "shot_count": 0,
+      "seed": 42,
+      "demo_ids": [],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nTarget question\nQuestion: مینی کے پاس سالگرہ کی 3 کوکی پائیاں تھیں جو وہ اپنے 24 ہم جماعتوں اور استاد مسٹر کیتھ کے ساتھ بانٹنا چاہتا تھا۔ ہر پائی کو 10 سلائسوں میں کاٹا گیا۔ اگر مینی، ہر ہم جماعت اور استاد نے 1 سلائس کھایا تو کتنے سلائس بچے؟",
+      "prompt_hash": "fa84d39b4dd996678ab8c76b926a71e8c7d65374c64c05eb2ae240ada784f84c",
+      "record_id": "e7f6fc997c8b56062b41948fae5012585215b24512e8bb76cc10912a538587e2"
+    },
+    {
+      "question_id": "gsm8k-train-4c46af17e4af",
+      "strategy": "none",
+      "condition": "E-E-E",
+      "shot_count": 0,
+      "seed": 42,
+      "demo_ids": [],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nTarget question\nQuestion: Manny had 3 birthday cookie pies to share with his 24 classmates and his teacher, Mr. Keith. If each of the cookie pies were cut into 10 slices and Manny, his classmates, and Mr. Keith all had 1 piece, how many slices are left?",
+      "prompt_hash": "4918f83c574dbbf300c19ba6a53a244bbed9928020ae804b42a6bb55e45ed42a",
+      "record_id": "d0c52cc7fd54ad466c97a98aee971e44fddcfb3e6632f4c452d62b09f4262375"
+    },
+    {
+      "question_id": "gsm8k-train-19b0d3572fbe",
+      "strategy": "none",
+      "condition": "U-U-U",
+      "shot_count": 0,
+      "seed": 42,
+      "demo_ids": [],
+      "prompt": "ہدف سوال کی زبان میں مکمل مرحلہ وار حل لکھیں۔ آخری سطر میں صرف حتمی عددی جواب لکھیں۔ اس سطر کے شروع میں یہی نشان FINAL_ANSWER: لکھیں اور اس کے بعد جواب کا عدد لکھیں۔\n\nہدف سوال\nسوال: جیمز نے 40 سال تدریس کی۔ اس کے ساتھی نے اس سے 10 سال کم تدریس کی۔ دونوں کا مجموعی تدریسی تجربہ کتنے سال ہے؟",
+      "prompt_hash": "6fbfd490587c2db1489ed2ba2e3fd7b0f735368926aa4329b7af156baa3a8ff2",
+      "record_id": "6fa0470678f93d63c4f558394fc9f30df5961eebca553d215a41900855f86e0b"
+    },
+    {
+      "question_id": "gsm8k-train-19b0d3572fbe",
+      "strategy": "none",
+      "condition": "U-U-E",
+      "shot_count": 0,
+      "seed": 42,
+      "demo_ids": [],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nTarget question\nQuestion: جیمز نے 40 سال تدریس کی۔ اس کے ساتھی نے اس سے 10 سال کم تدریس کی۔ دونوں کا مجموعی تدریسی تجربہ کتنے سال ہے؟",
+      "prompt_hash": "a0a2387678d8a5a61d86bcaa10b9f6ab32ff58baca1148e4c89e119843684c06",
+      "record_id": "e1617a66805554b3a66e3c34eb5e78bb153c5a0c54f6f851e1d3e1852effbb78"
+    },
+    {
+      "question_id": "gsm8k-train-19b0d3572fbe",
+      "strategy": "none",
+      "condition": "E-E-E",
+      "shot_count": 0,
+      "seed": 42,
+      "demo_ids": [],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nTarget question\nQuestion: James spends 40 years teaching. His partner has been teaching for 10 years less. How long is their combined experience?",
+      "prompt_hash": "fb3587c3cb8543315bf0c96fedb55d7a2112b323b50f02a8dce8fccf34cfc2ec",
+      "record_id": "5445145d969bd0ab39a49cc99af376a561204171ab20d480a285d83aeb66a3bc"
+    },
+    {
+      "question_id": "gsm8k-train-c7b34b999ba8",
+      "strategy": "none",
+      "condition": "U-U-U",
+      "shot_count": 0,
+      "seed": 42,
+      "demo_ids": [],
+      "prompt": "ہدف سوال کی زبان میں مکمل مرحلہ وار حل لکھیں۔ آخری سطر میں صرف حتمی عددی جواب لکھیں۔ اس سطر کے شروع میں یہی نشان FINAL_ANSWER: لکھیں اور اس کے بعد جواب کا عدد لکھیں۔\n\nہدف سوال\nسوال: آئرین کو ہفتے میں 40 گھنٹے کام کرنے پر $500 ملتے ہیں، اور ہر اضافی گھنٹے پر مزید $20 ملتے ہیں۔ اگر اس نے گزشتہ ہفتے 50 گھنٹے کام کیا تو اس کی کل آمدنی کیا تھی؟",
+      "prompt_hash": "54e3fd0099c959eac9037d9244257ee0d619d299aad70d72faf73d75479b3083",
+      "record_id": "12e94bd3153dcfb1434802f9089745eca657a469d9ff270075de3d00c49a6f9a"
+    },
+    {
+      "question_id": "gsm8k-train-c7b34b999ba8",
+      "strategy": "none",
+      "condition": "U-U-E",
+      "shot_count": 0,
+      "seed": 42,
+      "demo_ids": [],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nTarget question\nQuestion: آئرین کو ہفتے میں 40 گھنٹے کام کرنے پر $500 ملتے ہیں، اور ہر اضافی گھنٹے پر مزید $20 ملتے ہیں۔ اگر اس نے گزشتہ ہفتے 50 گھنٹے کام کیا تو اس کی کل آمدنی کیا تھی؟",
+      "prompt_hash": "2b59a68da917440df747a561bc37d0828cce45d66de3d121ce24dadee5ab35c6",
+      "record_id": "fb6d4f5c8a3fcc96daccac4d73134174cb5ed3a4a2ecb04c3c94db4eccef51b3"
+    },
+    {
+      "question_id": "gsm8k-train-c7b34b999ba8",
+      "strategy": "none",
+      "condition": "E-E-E",
+      "shot_count": 0,
+      "seed": 42,
+      "demo_ids": [],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nTarget question\nQuestion: Irene earns $500 if she works for 40 hours a week and gets an extra $20 for every hour of overtime. If she worked 50 hours last week, calculate her total income.",
+      "prompt_hash": "bee595b495e64ca6dc292a8d8ed20daad17f2c877426885dadf1b6474ee07862",
+      "record_id": "3d753de8e0546f899471d0a991e923d80a79ebf3ac4623d0451c6d35dfda368e"
+    },
+    {
+      "question_id": "gsm8k-train-111d72db39e6",
+      "strategy": "none",
+      "condition": "U-U-U",
+      "shot_count": 0,
+      "seed": 42,
+      "demo_ids": [],
+      "prompt": "ہدف سوال کی زبان میں مکمل مرحلہ وار حل لکھیں۔ آخری سطر میں صرف حتمی عددی جواب لکھیں۔ اس سطر کے شروع میں یہی نشان FINAL_ANSWER: لکھیں اور اس کے بعد جواب کا عدد لکھیں۔\n\nہدف سوال\nسوال: ہانس نے ایک ہوٹل میں کمرہ بک کیا۔ ہوٹل کی 10 منزلیں ہیں اور ہر منزل پر 10 ایک جیسے کمرے ہیں۔ ایک حادثے کی وجہ سے آخری منزل مہمانوں کے لیے دستیاب نہیں۔ اگر کوئی اور مہمان نہیں تو ہانس کو کتنے مختلف کمروں میں ٹھہرایا جا سکتا ہے؟",
+      "prompt_hash": "bdd4310fafb24caf0bb5a1949923da4feb00606e6d2943373670f8d69d123fe1",
+      "record_id": "6e20dceeaca924e3cf9ba0f51ff627f559eb1e00d9be34287a130a9aa26d05a4"
+    },
+    {
+      "question_id": "gsm8k-train-111d72db39e6",
+      "strategy": "none",
+      "condition": "U-U-E",
+      "shot_count": 0,
+      "seed": 42,
+      "demo_ids": [],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nTarget question\nQuestion: ہانس نے ایک ہوٹل میں کمرہ بک کیا۔ ہوٹل کی 10 منزلیں ہیں اور ہر منزل پر 10 ایک جیسے کمرے ہیں۔ ایک حادثے کی وجہ سے آخری منزل مہمانوں کے لیے دستیاب نہیں۔ اگر کوئی اور مہمان نہیں تو ہانس کو کتنے مختلف کمروں میں ٹھہرایا جا سکتا ہے؟",
+      "prompt_hash": "2d788dd0f34a41cddbfa662f9786f46aaf36ce40af8a7e3b81bd2dd228dd6e23",
+      "record_id": "b956515bf4d796298787cca7493ac214ca5b3da568576cc9f16e58d894b2388c"
+    },
+    {
+      "question_id": "gsm8k-train-111d72db39e6",
+      "strategy": "none",
+      "condition": "E-E-E",
+      "shot_count": 0,
+      "seed": 42,
+      "demo_ids": [],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nTarget question\nQuestion: Hans booked a room in a hotel. The hotel has 10 floors with 10 identical rooms on each floor. Because of an accident, the last floor is unavailable for the guests. Considering there are no other guests, in how many different rooms could Hans be checked in?",
+      "prompt_hash": "72abdb73093790e0277ce9c2d947e912b48d3ea41b0358796e259b466a81a7f9",
+      "record_id": "5052660417a905671df3952707d8295f59682a6b6e84e613262c6b3da7c17a26"
+    },
+    {
+      "question_id": "gsm8k-train-4e78856e0b87",
+      "strategy": "none",
+      "condition": "U-U-U",
+      "shot_count": 0,
+      "seed": 42,
+      "demo_ids": [],
+      "prompt": "ہدف سوال کی زبان میں مکمل مرحلہ وار حل لکھیں۔ آخری سطر میں صرف حتمی عددی جواب لکھیں۔ اس سطر کے شروع میں یہی نشان FINAL_ANSWER: لکھیں اور اس کے بعد جواب کا عدد لکھیں۔\n\nہدف سوال\nسوال: پیٹر سوڈا خریدنے دکان گیا۔ سوڈے کی قیمت $.25 فی اونس ہے۔ وہ اپنے ساتھ $2 لایا اور اس کے پاس جاتے وقت $.50 بچے۔ اس نے کتنے اونس سوڈا خریدا؟",
+      "prompt_hash": "222020ebdd91f3b6356d209bc687a8bd42f42e140e1e44bb6f108d87e2c9204f",
+      "record_id": "c7e5fb0826c75d5aa48f2dbfe9e2deacfd2d0b9680d548d03cef96b7db7d0b80"
+    },
+    {
+      "question_id": "gsm8k-train-4e78856e0b87",
+      "strategy": "none",
+      "condition": "U-U-E",
+      "shot_count": 0,
+      "seed": 42,
+      "demo_ids": [],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nTarget question\nQuestion: پیٹر سوڈا خریدنے دکان گیا۔ سوڈے کی قیمت $.25 فی اونس ہے۔ وہ اپنے ساتھ $2 لایا اور اس کے پاس جاتے وقت $.50 بچے۔ اس نے کتنے اونس سوڈا خریدا؟",
+      "prompt_hash": "3b2ca1c01e30d3cfd83baaa0ca48ba2782a071726efea62cee88437e038cdf54",
+      "record_id": "9010d41a7ed30c7319c2ff89edc76a7936252750e3fd04f31010cf2bf65d992e"
+    },
+    {
+      "question_id": "gsm8k-train-4e78856e0b87",
+      "strategy": "none",
+      "condition": "E-E-E",
+      "shot_count": 0,
+      "seed": 42,
+      "demo_ids": [],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nTarget question\nQuestion: Peter goes to the store to buy a soda. The soda costs $.25 an ounce. He brought $2 with him and leaves with $.50. How many ounces of soda did he buy?",
+      "prompt_hash": "474bec97cb22855c31ca93317192ce78ecf1051781f7498062be44bcfa54be69",
+      "record_id": "51f1e358d6c4b21e4f211a82da617cce41b17c0d9e2e16083e072a308d68603d"
+    },
+    {
+      "question_id": "gsm8k-train-7ed300676787",
+      "strategy": "none",
+      "condition": "U-U-U",
+      "shot_count": 0,
+      "seed": 42,
+      "demo_ids": [],
+      "prompt": "ہدف سوال کی زبان میں مکمل مرحلہ وار حل لکھیں۔ آخری سطر میں صرف حتمی عددی جواب لکھیں۔ اس سطر کے شروع میں یہی نشان FINAL_ANSWER: لکھیں اور اس کے بعد جواب کا عدد لکھیں۔\n\nہدف سوال\nسوال: جان کی گائے کا وزن 400 پاؤنڈ ہے۔ وزن بڑھ کر ابتدائی وزن سے 1.5 گنا ہو گیا۔ وہ گائے کو $3 فی پاؤنڈ میں بیچ سکتا ہے۔ وزن بڑھنے کے بعد اس کی قیمت کتنی زیادہ ہو گئی؟",
+      "prompt_hash": "045533a0031c3f7a8dfe4d45138d176e5f6413db7af7de2298d1c0718dde6a8c",
+      "record_id": "8f67c52b0ab02f747d60809b352714aa95c8e265949606d53a1332effa9c418a"
+    },
+    {
+      "question_id": "gsm8k-train-7ed300676787",
+      "strategy": "none",
+      "condition": "U-U-E",
+      "shot_count": 0,
+      "seed": 42,
+      "demo_ids": [],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nTarget question\nQuestion: جان کی گائے کا وزن 400 پاؤنڈ ہے۔ وزن بڑھ کر ابتدائی وزن سے 1.5 گنا ہو گیا۔ وہ گائے کو $3 فی پاؤنڈ میں بیچ سکتا ہے۔ وزن بڑھنے کے بعد اس کی قیمت کتنی زیادہ ہو گئی؟",
+      "prompt_hash": "b5324d1ba2fe38b6709252da72c8b6a36dc50c3b3322d8c51d6f238a863ff509",
+      "record_id": "41a8a40d64f36d50fc87385ae73b02e6d95a88d53578b23dc33ffb09ed5adf6c"
+    },
+    {
+      "question_id": "gsm8k-train-7ed300676787",
+      "strategy": "none",
+      "condition": "E-E-E",
+      "shot_count": 0,
+      "seed": 42,
+      "demo_ids": [],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nTarget question\nQuestion: John's cow weighs 400 pounds. It increased its weight to 1.5 times its starting weight. He is able to sell the cow for $3 per pound. How much more is it worth after gaining the weight?",
+      "prompt_hash": "0dae332ce657c5e0b271308c02e222d9770a7e920b77681a00d52921b003ba57",
+      "record_id": "d78342c7642a434b4862cfdd38ed5ea080047c3043a04e6c019aca939d1bf0ad"
+    },
+    {
+      "question_id": "gsm8k-train-c7da26a5fbd9",
+      "strategy": "none",
+      "condition": "U-U-U",
+      "shot_count": 0,
+      "seed": 42,
+      "demo_ids": [],
+      "prompt": "ہدف سوال کی زبان میں مکمل مرحلہ وار حل لکھیں۔ آخری سطر میں صرف حتمی عددی جواب لکھیں۔ اس سطر کے شروع میں یہی نشان FINAL_ANSWER: لکھیں اور اس کے بعد جواب کا عدد لکھیں۔\n\nہدف سوال\nسوال: برینڈن نے پچھلے سال 86 گیکو بیچے۔ اس سے پچھلے سال اس نے اس تعداد سے دگنے گیکو بیچے۔ ان دو برسوں میں اس نے کل کتنے گیکو بیچے؟",
+      "prompt_hash": "069b14dea11bcfbd3121f267b34d0d0b0bddec51ebdee9745b0d2d013eb66563",
+      "record_id": "2ceb5b5a33cc996dfd35ba41cd6981a7a02a643b9bf9d3d3372fc0cc5b8bf34e"
+    },
+    {
+      "question_id": "gsm8k-train-c7da26a5fbd9",
+      "strategy": "none",
+      "condition": "U-U-E",
+      "shot_count": 0,
+      "seed": 42,
+      "demo_ids": [],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nTarget question\nQuestion: برینڈن نے پچھلے سال 86 گیکو بیچے۔ اس سے پچھلے سال اس نے اس تعداد سے دگنے گیکو بیچے۔ ان دو برسوں میں اس نے کل کتنے گیکو بیچے؟",
+      "prompt_hash": "a12f1261086dfa050cd5460b5f80bffbc400e7926d463e81267bdcdee61e9560",
+      "record_id": "862e8c742a2e53713d070d88e3fdd35afacdcb9ec5ed33a5b2c7fa89bde50c16"
+    },
+    {
+      "question_id": "gsm8k-train-c7da26a5fbd9",
+      "strategy": "none",
+      "condition": "E-E-E",
+      "shot_count": 0,
+      "seed": 42,
+      "demo_ids": [],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nTarget question\nQuestion: Brandon sold 86 geckos last year. He sold twice that many the year before. How many geckos has Brandon sold in the last two years?",
+      "prompt_hash": "3066924a62f4e96ea10b4a03d58d7d143b9ef90bac0e78f513c8d42af5f5cf9d",
+      "record_id": "c03913592ea62b83552b3dd204fa0668ba262b7b8a9ebc5bc3c4014ec03fa368"
+    },
+    {
+      "question_id": "gsm8k-train-1d58b8a27f49",
+      "strategy": "none",
+      "condition": "U-U-U",
+      "shot_count": 0,
+      "seed": 42,
+      "demo_ids": [],
+      "prompt": "ہدف سوال کی زبان میں مکمل مرحلہ وار حل لکھیں۔ آخری سطر میں صرف حتمی عددی جواب لکھیں۔ اس سطر کے شروع میں یہی نشان FINAL_ANSWER: لکھیں اور اس کے بعد جواب کا عدد لکھیں۔\n\nہدف سوال\nسوال: کرسٹیان لائبریری میں کام کرتا ہے۔ وہ روزانہ اوسطاً 40 کتابیں ادھار لیتا ہے۔ ہر جمعے کو ادھار لی گئی کتابوں کی تعداد روزانہ اوسط سے تقریباً 40% زیادہ ہوتی ہے۔ اگر لائبریری پیر سے جمعہ تک کھلی رہتی ہے تو وہ ایک ہفتے میں کتنی کتابیں ادھار لیتا ہے؟",
+      "prompt_hash": "f756e75c8007b3b366f15af3655dcbf6c30f71733e7b7c27d78957f3407ef452",
+      "record_id": "e2b8a27128a5c41451f0431017d2e83542cd30299ed17f5b3d77b2e5f2330df4"
+    },
+    {
+      "question_id": "gsm8k-train-1d58b8a27f49",
+      "strategy": "none",
+      "condition": "U-U-E",
+      "shot_count": 0,
+      "seed": 42,
+      "demo_ids": [],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nTarget question\nQuestion: کرسٹیان لائبریری میں کام کرتا ہے۔ وہ روزانہ اوسطاً 40 کتابیں ادھار لیتا ہے۔ ہر جمعے کو ادھار لی گئی کتابوں کی تعداد روزانہ اوسط سے تقریباً 40% زیادہ ہوتی ہے۔ اگر لائبریری پیر سے جمعہ تک کھلی رہتی ہے تو وہ ایک ہفتے میں کتنی کتابیں ادھار لیتا ہے؟",
+      "prompt_hash": "813d978e29cc57f4ef1222b010b547ed2079d91a74d8e34e609ee3ae11923c1a",
+      "record_id": "6292386a773bb97d877dfc3b568a9af9421f8312e2951b3dec1ec7bf2450f787"
+    },
+    {
+      "question_id": "gsm8k-train-1d58b8a27f49",
+      "strategy": "none",
+      "condition": "E-E-E",
+      "shot_count": 0,
+      "seed": 42,
+      "demo_ids": [],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nTarget question\nQuestion: Krystian works in the library. He borrows an average of 40 books every day. Every Friday, his number of borrowed books is about 40% higher than the daily average. How many books does he borrow in a week if the library is open from Monday to Friday?",
+      "prompt_hash": "7309333d3952b847040d6940358b879df1207a8c381cf3ac06326b6c194bdf2c",
+      "record_id": "6ca4fb67c3b4b71dd85df0f6f58fdd3b53cd39eaf9112a3172c881bf3f295572"
+    }
+  ],
+  "mode": "live",
+  "data_kind": "real"
+}

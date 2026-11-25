@@ -1,0 +1,690 @@
+{
+  "run_id": "29829aca17dd7253ae5e642e40924e3579d1abc61fd7b41c4b1d1e7d00bc1a61",
+  "identity": {
+    "configuration": {
+      "data_kind": "real",
+      "demo_path": "data/processed/demo_pool.jsonl",
+      "dev_path": "data/processed/dev.jsonl",
+      "conditions": [
+        "U-U-U",
+        "U-U-E",
+        "U-E-E",
+        "E-E-E"
+      ],
+      "strategies": [
+        "random"
+      ],
+      "shot_count": 2,
+      "seed": 44,
+      "selector": "src.selection.select:select_examples",
+      "selector_version": "rayyan-random-sorted-ids-sha256-per-query-v1",
+      "model": {
+        "backend": "ollama",
+        "model_id": "gemma3:4b",
+        "model_digest": "68ceab7e468a31c988b44d5a4984a0e21f58c4f7158c6ce29c1804babac38df7",
+        "endpoint": "http://127.0.0.1:11434/api/chat",
+        "credential_env": null,
+        "route": "ollama-local",
+        "free_only": true,
+        "max_requests_per_invocation": null,
+        "min_request_interval_seconds": 0,
+        "decoding": {
+          "temperature": 0,
+          "top_p": 1,
+          "max_tokens": 2048,
+          "seed": 42,
+          "num_ctx": 4096
+        },
+        "timeout_seconds": 300,
+        "max_attempts": 3,
+        "max_retry_wait_seconds": 30
+      }
+    },
+    "data": {
+      "demo_path": "ce4125ff702fdc7da2e9ff07268e7016617e402ee53f67bcb740eb944f2ff90a",
+      "dev_path": "9138c1f4cbbaf2e29deff692575d4eec2c2e8ae8f1734c357c043f02a16b5f52"
+    },
+    "sources": {
+      "src/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/data/__init__.py": "59852ae77acc904a6ad4c7a92ff6eee76379ae1af17002f4239d810158035ef9",
+      "src/data/hussain_validator.py": "f0ad2ccfd7bf02d290b095b48ed8f9ffd8e11332f544a02eb8c8d08618c0c879",
+      "src/data/validate.py": "401984f345feaeeb855053b4b109ec6115377afb35d4cffa3de2d70924faa89a",
+      "src/evaluation/__init__.py": "74e5bf4e9b90cb3669146293405f4181e2f190f8498b28ddb2b2a7284053ecd4",
+      "src/evaluation/answer_parser.py": "ff3cff0c402442607661837c75b8f7eeafd3513756413d52586071425b09922a",
+      "src/evaluation/metrics.py": "6b3df3ea3eccdff614a2bb32967f9f8af58bb90fc08d628d3aa43aca43856001",
+      "src/evaluation/report.py": "0badc3e887639c53f28cdc8d73d312f6bfca6325b4e459c03a557a1ef15ebba8",
+      "src/inference/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/inference/backends.py": "d6072902a0e0eb2af525faf9e555e6e13438f4d9fccdb2537e7d97b8ab07543e",
+      "src/inference/contracts.py": "3d68881821ea45173482df8b255a95bc6f41624a1d90c64405e2d8b01066e602",
+      "src/inference/free_policy.py": "9d009a0f7d219d6a33d9aaf8da3046aba43f7fb56d35c061e6eee1e629e1ffdb",
+      "src/inference/google_backend.py": "7499b66cc58ec615d6f8c2ecb9573185ed0604f643419460fb7c3bf29fcadbb6",
+      "src/inference/ollama_backend.py": "3650718af2722d9fd16f504ac3ffc910455fd90be83dd22a1967ba4d2e95a682",
+      "src/inference/runner.py": "772e4b360c67018c5ac79755feae973e3c457819f2b78db1bac3da462589d7ea",
+      "src/prompting/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/prompting/templates.py": "938d9f86a85eb7dc3d40c4d7abba5ab37be1a65b48f30bff90fcd6d9843fc736",
+      "src/selection/__init__.py": "79523f81c54005583ef8aecedc5b68a3fba0c9c2e2620200ebf0ea7f759ff228",
+      "src/selection/encoders.py": "cf74d0808cf6fe852f625fa25a9ab942a1873504981c5b6ff9c94764432deb85",
+      "src/selection/pilot_adapter.py": "c562a9afd8c76e17ea14fa25885236a5d5ab8633c91adff9455c98615528bec9",
+      "src/selection/random.py": "d4d2d7907b10accd24ded34fb5e348303cbe4d1338ac0fe16d788de236563747",
+      "src/selection/select.py": "0e496c77af4e08d00fc78848038885ef1187f8d2645f5ad924c37ae52b44f2f8",
+      "src/selection/similarity.py": "4d1517a56732777377368f76c5eba92d0aed3a387bf544e4137a9005ae48a0fa"
+    },
+    "software": {
+      "python": "3.13.18",
+      "PyYAML": "6.0.3",
+      "httpx": "0.28.1",
+      "python-dotenv": "1.2.1",
+      "numpy": "2.3.5"
+    },
+    "template_version": "bilingual-math-2shot-v1",
+    "runner_version": "1.4.0-reviewed-18-demo-pilot-local-ollama",
+    "plan_hash": "d1a6b5ceed0b8200940e41a2b92bd758b3895b60d748887364c273ee18addf56"
+  },
+  "resolved_configuration": {
+    "data_kind": "real",
+    "demo_path": "data/processed/demo_pool.jsonl",
+    "dev_path": "data/processed/dev.jsonl",
+    "output_path": "results/gemma3_4b_seed44/pilot_raw.jsonl",
+    "conditions": [
+      "U-U-U",
+      "U-U-E",
+      "U-E-E",
+      "E-E-E"
+    ],
+    "strategies": [
+      "random"
+    ],
+    "shot_count": 2,
+    "seed": 44,
+    "selector": "src.selection.select:select_examples",
+    "selector_version": "rayyan-random-sorted-ids-sha256-per-query-v1",
+    "verification_receipt": "results/live_smoke/ollama_gemma3_4b/model_verification.json",
+    "model": {
+      "backend": "ollama",
+      "model_id": "gemma3:4b",
+      "model_digest": "68ceab7e468a31c988b44d5a4984a0e21f58c4f7158c6ce29c1804babac38df7",
+      "endpoint": "http://127.0.0.1:11434/api/chat",
+      "credential_env": null,
+      "route": "ollama-local",
+      "free_only": true,
+      "max_requests_per_invocation": null,
+      "min_request_interval_seconds": 0,
+      "decoding": {
+        "temperature": 0,
+        "top_p": 1,
+        "max_tokens": 2048,
+        "seed": 42,
+        "num_ctx": 4096
+      },
+      "timeout_seconds": 300,
+      "max_attempts": 3,
+      "max_retry_wait_seconds": 30
+    }
+  },
+  "created_at": "2026-11-25T13:43:08.526369+00:00",
+  "expected_records": 40,
+  "plan": [
+    {
+      "question_id": "gsm8k-train-78a19fb7a7c3",
+      "strategy": "random",
+      "condition": "U-U-U",
+      "shot_count": 2,
+      "seed": 44,
+      "demo_ids": [
+        "gsm8k-train-9d7481516507",
+        "gsm8k-train-cf2595dad6a3"
+      ],
+      "prompt": "ہدف سوال کی زبان میں مکمل مرحلہ وار حل لکھیں۔ حل شدہ مثالوں کی پیروی کریں۔ آخری سطر میں صرف حتمی عددی جواب لکھیں۔ اس سطر کے شروع میں یہی نشان FINAL_ANSWER: لکھیں اور اس کے بعد جواب کا عدد لکھیں۔\n\nمثال 1\nسوال: جیمز شکاگو کی ایک یونیورسٹی میں پہلے سال کا طالب علم ہے۔ اس کا فی سمسٹر بجٹ $1000 ہے۔ وہ 30% کھانے، 15% رہائش اور 25% تفریح پر خرچ کرتا ہے اور باقی نصابی مواد پر۔ وہ نصابی مواد پر کتنی رقم خرچ کرتا ہے؟\nمکمل حل: تین بتائے گئے اخراجات کے فیصد جمع کریں\n30+15+25 = 70 percent\nباقی فیصد نصابی مواد کے لیے ہے\n100-70 = 30 percent\nبجٹ کا باقی فیصد معلوم کریں\n1000*30/100 = 300 USD\nFINAL_ANSWER: 300\n\nمثال 2\nسوال: البرٹ نے 2 بڑے اور 2 چھوٹے پیزے خریدے۔ ایک بڑے پیزے کے 16 اور ایک چھوٹے پیزے کے 8 سلائس ہیں۔ اگر وہ سب کھا لے تو اس دن وہ کتنے سلائس کھائے گا؟\nمکمل حل: بڑے پیزوں کے سلائس معلوم کریں\n2*16 = 32 slices\nچھوٹے پیزوں کے سلائس معلوم کریں\n2*8 = 16 slices\nدونوں قسم کے سلائس جمع کریں\n32+16 = 48 slices\nFINAL_ANSWER: 48\n\nہدف سوال\nسوال: ایک باغ میں 237 آلو اگے، کھیرے آلوؤں سے 60 کم تھے، اور مرچیں کھیروں سے دگنی تھیں۔ باغ میں کل کتنی سبزیاں اگیں؟",
+      "prompt_hash": "4f2c27327d80c0da3c48af1a3c071bd4772f7d83b4fea5cfcf38ef908a97eab7",
+      "record_id": "80ff8a1f518634a1fd4fbc7472fbf147276b855a4688c00b8b2482569b80a8b1"
+    },
+    {
+      "question_id": "gsm8k-train-78a19fb7a7c3",
+      "strategy": "random",
+      "condition": "U-U-E",
+      "shot_count": 2,
+      "seed": 44,
+      "demo_ids": [
+        "gsm8k-train-9d7481516507",
+        "gsm8k-train-cf2595dad6a3"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: جیمز شکاگو کی ایک یونیورسٹی میں پہلے سال کا طالب علم ہے۔ اس کا فی سمسٹر بجٹ $1000 ہے۔ وہ 30% کھانے، 15% رہائش اور 25% تفریح پر خرچ کرتا ہے اور باقی نصابی مواد پر۔ وہ نصابی مواد پر کتنی رقم خرچ کرتا ہے؟\nWorked solution: تین بتائے گئے اخراجات کے فیصد جمع کریں\n30+15+25 = 70 percent\nباقی فیصد نصابی مواد کے لیے ہے\n100-70 = 30 percent\nبجٹ کا باقی فیصد معلوم کریں\n1000*30/100 = 300 USD\nFINAL_ANSWER: 300\n\nDemonstration 2\nQuestion: البرٹ نے 2 بڑے اور 2 چھوٹے پیزے خریدے۔ ایک بڑے پیزے کے 16 اور ایک چھوٹے پیزے کے 8 سلائس ہیں۔ اگر وہ سب کھا لے تو اس دن وہ کتنے سلائس کھائے گا؟\nWorked solution: بڑے پیزوں کے سلائس معلوم کریں\n2*16 = 32 slices\nچھوٹے پیزوں کے سلائس معلوم کریں\n2*8 = 16 slices\nدونوں قسم کے سلائس جمع کریں\n32+16 = 48 slices\nFINAL_ANSWER: 48\n\nTarget question\nQuestion: ایک باغ میں 237 آلو اگے، کھیرے آلوؤں سے 60 کم تھے، اور مرچیں کھیروں سے دگنی تھیں۔ باغ میں کل کتنی سبزیاں اگیں؟",
+      "prompt_hash": "b669ec20b20538cd0e1a6d52c30d69a1ae39085ca3edb594d9a6ec511fa30119",
+      "record_id": "4146ec3a02cfbb4d0c541816514b54bdd210cd4bea0d029c37eb95662c4d7d34"
+    },
+    {
+      "question_id": "gsm8k-train-78a19fb7a7c3",
+      "strategy": "random",
+      "condition": "U-E-E",
+      "shot_count": 2,
+      "seed": 44,
+      "demo_ids": [
+        "gsm8k-train-9d7481516507",
+        "gsm8k-train-cf2595dad6a3"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: James is a first-year student at a University in Chicago. He has a budget of $1000 per semester. He spends 30% of his money on food, 15% on accommodation, 25% on entertainment, and the rest on coursework materials. How much money does he spend on coursework materials?\nWorked solution: Add the three specified budget percentages. 30+15+25 = 70 percent. The rest is for coursework materials. 100-70 = 30 percent. Apply the remaining percentage to the budget. 1000*30/100 = 300 USD.\nFINAL_ANSWER: 300\n\nDemonstration 2\nQuestion: Albert is wondering how much pizza he can eat in one day. He buys 2 large pizzas and 2 small pizzas. A large pizza has 16 slices and a small pizza has 8 slices. If he eats it all, how many pieces does he eat that day?\nWorked solution: Find slices in large pizzas. 2*16 = 32 slices. Find slices in small pizzas. 2*8 = 16 slices. Add both kinds. 32+16 = 48 slices.\nFINAL_ANSWER: 48\n\nTarget question\nQuestion: ایک باغ میں 237 آلو اگے، کھیرے آلوؤں سے 60 کم تھے، اور مرچیں کھیروں سے دگنی تھیں۔ باغ میں کل کتنی سبزیاں اگیں؟",
+      "prompt_hash": "550bdf3d04d4293186d015d528914243a0abeb7dfbf953b81c1d15f06d5bead4",
+      "record_id": "faad5a8d9b2f09d70ea56307d4edeace9258dbb213aae69c15d795b4fadac31c"
+    },
+    {
+      "question_id": "gsm8k-train-78a19fb7a7c3",
+      "strategy": "random",
+      "condition": "E-E-E",
+      "shot_count": 2,
+      "seed": 44,
+      "demo_ids": [
+        "gsm8k-train-9d7481516507",
+        "gsm8k-train-cf2595dad6a3"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: James is a first-year student at a University in Chicago. He has a budget of $1000 per semester. He spends 30% of his money on food, 15% on accommodation, 25% on entertainment, and the rest on coursework materials. How much money does he spend on coursework materials?\nWorked solution: Add the three specified budget percentages. 30+15+25 = 70 percent. The rest is for coursework materials. 100-70 = 30 percent. Apply the remaining percentage to the budget. 1000*30/100 = 300 USD.\nFINAL_ANSWER: 300\n\nDemonstration 2\nQuestion: Albert is wondering how much pizza he can eat in one day. He buys 2 large pizzas and 2 small pizzas. A large pizza has 16 slices and a small pizza has 8 slices. If he eats it all, how many pieces does he eat that day?\nWorked solution: Find slices in large pizzas. 2*16 = 32 slices. Find slices in small pizzas. 2*8 = 16 slices. Add both kinds. 32+16 = 48 slices.\nFINAL_ANSWER: 48\n\nTarget question\nQuestion: A garden produced 237 potatoes, 60 fewer cucumbers and twice as many peppers than the cucumbers. How many vegetables did the garden produce?",
+      "prompt_hash": "2d80e1be804299c35843ba675c734cdcebd4627ef51382ef66a6ce6b31c3def6",
+      "record_id": "24f145d7955b54d2dff5aee65eb1e89fcc954759f9b46c07b424dc1d0f999421"
+    },
+    {
+      "question_id": "gsm8k-train-f8ac079613e1",
+      "strategy": "random",
+      "condition": "U-U-U",
+      "shot_count": 2,
+      "seed": 44,
+      "demo_ids": [
+        "gsm8k-train-da19d532632e",
+        "gsm8k-train-ea66ef8b11aa"
+      ],
+      "prompt": "ہدف سوال کی زبان میں مکمل مرحلہ وار حل لکھیں۔ حل شدہ مثالوں کی پیروی کریں۔ آخری سطر میں صرف حتمی عددی جواب لکھیں۔ اس سطر کے شروع میں یہی نشان FINAL_ANSWER: لکھیں اور اس کے بعد جواب کا عدد لکھیں۔\n\nمثال 1\nسوال: 90 میگابائٹ کی فائل کے پہلے 60 میگابائٹ 5 میگابائٹ فی سیکنڈ کی رفتار سے، اور اس کے بعد باقی حصہ 10 میگابائٹ فی سیکنڈ کی رفتار سے ڈاؤن لوڈ ہوتا ہے۔ پوری فائل ڈاؤن لوڈ ہونے میں کتنے سیکنڈ لگیں گے؟\nمکمل حل: پہلے 60 میگابائٹ کا وقت معلوم کریں\n60/5 = 12 seconds\nباقی 30 میگابائٹ کا وقت معلوم کریں\n(90-60)/10 = 3 seconds\nدونوں اوقات جمع کریں\n12+3 = 15 seconds\nFINAL_ANSWER: 15\n\nمثال 2\nسوال: آرٹیمس تقریب کے لیے چائے بنا رہی ہے۔ اس کی والدہ 8 اونس کے ایک کپ کے لیے ایک اونس چائے استعمال کرتی ہیں۔ آرٹیمس یہی تناسب رکھے گی۔ تقریب میں 12 لوگ ہیں اور ہر ایک کو 6 اونس کا کپ چاہیے۔ اسے کتنے اونس چائے چاہیے؟\nمکمل حل: مشروب کی کل مقدار معلوم کریں\n12*6 = 72 ounces beverage\nہر 8 اونس مشروب کے لیے ایک اونس چائے لیں\n72/8 = 9 ounces tea\nFINAL_ANSWER: 9\n\nہدف سوال\nسوال: مقابلے سے 4 ماہ پہلے ایک باکسر کا وزن 97 کلوگرام ہے۔ وہ مقابلے کے دن تک ہر ماہ 3 کلوگرام وزن کم کرتا ہے۔ مقابلے کے دن اس کا وزن کتنا ہوگا؟",
+      "prompt_hash": "052ff3f41475721d3a11fa4b8e890d225d75ed3c9cbc5d70cddd3e3eaa55d2c5",
+      "record_id": "c4fa97d161b2ba04712f3356b38b335f5f5504b020150c442c447cf340957a01"
+    },
+    {
+      "question_id": "gsm8k-train-f8ac079613e1",
+      "strategy": "random",
+      "condition": "U-U-E",
+      "shot_count": 2,
+      "seed": 44,
+      "demo_ids": [
+        "gsm8k-train-da19d532632e",
+        "gsm8k-train-ea66ef8b11aa"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: 90 میگابائٹ کی فائل کے پہلے 60 میگابائٹ 5 میگابائٹ فی سیکنڈ کی رفتار سے، اور اس کے بعد باقی حصہ 10 میگابائٹ فی سیکنڈ کی رفتار سے ڈاؤن لوڈ ہوتا ہے۔ پوری فائل ڈاؤن لوڈ ہونے میں کتنے سیکنڈ لگیں گے؟\nWorked solution: پہلے 60 میگابائٹ کا وقت معلوم کریں\n60/5 = 12 seconds\nباقی 30 میگابائٹ کا وقت معلوم کریں\n(90-60)/10 = 3 seconds\nدونوں اوقات جمع کریں\n12+3 = 15 seconds\nFINAL_ANSWER: 15\n\nDemonstration 2\nQuestion: آرٹیمس تقریب کے لیے چائے بنا رہی ہے۔ اس کی والدہ 8 اونس کے ایک کپ کے لیے ایک اونس چائے استعمال کرتی ہیں۔ آرٹیمس یہی تناسب رکھے گی۔ تقریب میں 12 لوگ ہیں اور ہر ایک کو 6 اونس کا کپ چاہیے۔ اسے کتنے اونس چائے چاہیے؟\nWorked solution: مشروب کی کل مقدار معلوم کریں\n12*6 = 72 ounces beverage\nہر 8 اونس مشروب کے لیے ایک اونس چائے لیں\n72/8 = 9 ounces tea\nFINAL_ANSWER: 9\n\nTarget question\nQuestion: مقابلے سے 4 ماہ پہلے ایک باکسر کا وزن 97 کلوگرام ہے۔ وہ مقابلے کے دن تک ہر ماہ 3 کلوگرام وزن کم کرتا ہے۔ مقابلے کے دن اس کا وزن کتنا ہوگا؟",
+      "prompt_hash": "93241c7d5ee2fe1ae29a0974a2188ad21956e9fcb57f6a1d70172bf849e9194b",
+      "record_id": "f5fddb70a77e5e673f324d6b5bba8445cb9a7d9ad1f3b71c8a5b6edd0c4d7b94"
+    },
+    {
+      "question_id": "gsm8k-train-f8ac079613e1",
+      "strategy": "random",
+      "condition": "U-E-E",
+      "shot_count": 2,
+      "seed": 44,
+      "demo_ids": [
+        "gsm8k-train-da19d532632e",
+        "gsm8k-train-ea66ef8b11aa"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: The file, 90 megabytes in size, downloads at the rate of 5 megabytes per second for its first 60 megabytes, and then 10 megabytes per second thereafter. How long, in seconds, does it take to download entirely?\nWorked solution: Time for the first 60 MB. 60/5 = 12 seconds. Time for the remaining 30 MB. (90-60)/10 = 3 seconds. Add both download times. 12+3 = 15 seconds.\nFINAL_ANSWER: 15\n\nDemonstration 2\nQuestion: Artemis is making tea for a party. She knows her mom drinks an 8-ounce cup of tea and uses one ounce of tea. She will use this same ratio for the party. The party has 12 people there and each of them wants a 6-ounce cup of tea. How many ounces of tea does she need?\nWorked solution: Find the total beverage volume. 12*6 = 72 ounces beverage. Use one ounce of tea per 8 ounces of beverage. 72/8 = 9 ounces tea.\nFINAL_ANSWER: 9\n\nTarget question\nQuestion: مقابلے سے 4 ماہ پہلے ایک باکسر کا وزن 97 کلوگرام ہے۔ وہ مقابلے کے دن تک ہر ماہ 3 کلوگرام وزن کم کرتا ہے۔ مقابلے کے دن اس کا وزن کتنا ہوگا؟",
+      "prompt_hash": "19a964e2ebb26439ea7669e23e53ec9f5e4933fa9ed91ced6314f5f8c7697ed8",
+      "record_id": "3e39659e85cafb8003a6161e2d52b69ca0ace84447fa6a384d4f74c1a4d092be"
+    },
+    {
+      "question_id": "gsm8k-train-f8ac079613e1",
+      "strategy": "random",
+      "condition": "E-E-E",
+      "shot_count": 2,
+      "seed": 44,
+      "demo_ids": [
+        "gsm8k-train-da19d532632e",
+        "gsm8k-train-ea66ef8b11aa"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: The file, 90 megabytes in size, downloads at the rate of 5 megabytes per second for its first 60 megabytes, and then 10 megabytes per second thereafter. How long, in seconds, does it take to download entirely?\nWorked solution: Time for the first 60 MB. 60/5 = 12 seconds. Time for the remaining 30 MB. (90-60)/10 = 3 seconds. Add both download times. 12+3 = 15 seconds.\nFINAL_ANSWER: 15\n\nDemonstration 2\nQuestion: Artemis is making tea for a party. She knows her mom drinks an 8-ounce cup of tea and uses one ounce of tea. She will use this same ratio for the party. The party has 12 people there and each of them wants a 6-ounce cup of tea. How many ounces of tea does she need?\nWorked solution: Find the total beverage volume. 12*6 = 72 ounces beverage. Use one ounce of tea per 8 ounces of beverage. 72/8 = 9 ounces tea.\nFINAL_ANSWER: 9\n\nTarget question\nQuestion: A boxer weighs 97 kg at 4 months from a fight. He is on a diet that allows him to lose 3 kg per month until the day of the fight. How much will he weigh on the day of the fight?",
+      "prompt_hash": "50da32d9a39d722da75f890bc906cb54445e40ce7787c6965e5e0e5b7ba1409c",
+      "record_id": "769bc02b7c82c9430d493b4423b3a8e1e4abd122d3455eb057753902ee028b00"
+    },
+    {
+      "question_id": "gsm8k-train-4c46af17e4af",
+      "strategy": "random",
+      "condition": "U-U-U",
+      "shot_count": 2,
+      "seed": 44,
+      "demo_ids": [
+        "gsm8k-train-ea66ef8b11aa",
+        "gsm8k-train-7a6b8353e50c"
+      ],
+      "prompt": "ہدف سوال کی زبان میں مکمل مرحلہ وار حل لکھیں۔ حل شدہ مثالوں کی پیروی کریں۔ آخری سطر میں صرف حتمی عددی جواب لکھیں۔ اس سطر کے شروع میں یہی نشان FINAL_ANSWER: لکھیں اور اس کے بعد جواب کا عدد لکھیں۔\n\nمثال 1\nسوال: آرٹیمس تقریب کے لیے چائے بنا رہی ہے۔ اس کی والدہ 8 اونس کے ایک کپ کے لیے ایک اونس چائے استعمال کرتی ہیں۔ آرٹیمس یہی تناسب رکھے گی۔ تقریب میں 12 لوگ ہیں اور ہر ایک کو 6 اونس کا کپ چاہیے۔ اسے کتنے اونس چائے چاہیے؟\nمکمل حل: مشروب کی کل مقدار معلوم کریں\n12*6 = 72 ounces beverage\nہر 8 اونس مشروب کے لیے ایک اونس چائے لیں\n72/8 = 9 ounces tea\nFINAL_ANSWER: 9\n\nمثال 2\nسوال: ریچل اور سارا مقابلے کے لیے نئے جوتے اور لباس خریدنا چاہتی ہیں۔ سارا نے $50 کے جوتے اور $200 کا لباس خریدا۔ اگر ریچل سارا کے جوتوں اور لباس کی مجموعی قیمت سے دگنا خرچ کرنا چاہتی ہے تو اسے کتنی رقم رکھنی چاہیے؟\nمکمل حل: سارا کا کل خرچ معلوم کریں\n50+200 = 250 USD\nریچل کے لیے اس کل رقم کو دگنا کریں\n250*2 = 500 USD\nFINAL_ANSWER: 500\n\nہدف سوال\nسوال: مینی کے پاس سالگرہ کی 3 کوکی پائیاں تھیں جو وہ اپنے 24 ہم جماعتوں اور استاد مسٹر کیتھ کے ساتھ بانٹنا چاہتا تھا۔ ہر پائی کو 10 سلائسوں میں کاٹا گیا۔ اگر مینی، ہر ہم جماعت اور استاد نے 1 سلائس کھایا تو کتنے سلائس بچے؟",
+      "prompt_hash": "11116be7977ff3916631fbe4137b961dc36038982b09d8c286318d04820a5ead",
+      "record_id": "ec6208c2318ce2db8ddcc951ace8a912355ba4c69c44c1388d1b3210ff4e10a2"
+    },
+    {
+      "question_id": "gsm8k-train-4c46af17e4af",
+      "strategy": "random",
+      "condition": "U-U-E",
+      "shot_count": 2,
+      "seed": 44,
+      "demo_ids": [
+        "gsm8k-train-ea66ef8b11aa",
+        "gsm8k-train-7a6b8353e50c"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: آرٹیمس تقریب کے لیے چائے بنا رہی ہے۔ اس کی والدہ 8 اونس کے ایک کپ کے لیے ایک اونس چائے استعمال کرتی ہیں۔ آرٹیمس یہی تناسب رکھے گی۔ تقریب میں 12 لوگ ہیں اور ہر ایک کو 6 اونس کا کپ چاہیے۔ اسے کتنے اونس چائے چاہیے؟\nWorked solution: مشروب کی کل مقدار معلوم کریں\n12*6 = 72 ounces beverage\nہر 8 اونس مشروب کے لیے ایک اونس چائے لیں\n72/8 = 9 ounces tea\nFINAL_ANSWER: 9\n\nDemonstration 2\nQuestion: ریچل اور سارا مقابلے کے لیے نئے جوتے اور لباس خریدنا چاہتی ہیں۔ سارا نے $50 کے جوتے اور $200 کا لباس خریدا۔ اگر ریچل سارا کے جوتوں اور لباس کی مجموعی قیمت سے دگنا خرچ کرنا چاہتی ہے تو اسے کتنی رقم رکھنی چاہیے؟\nWorked solution: سارا کا کل خرچ معلوم کریں\n50+200 = 250 USD\nریچل کے لیے اس کل رقم کو دگنا کریں\n250*2 = 500 USD\nFINAL_ANSWER: 500\n\nTarget question\nQuestion: مینی کے پاس سالگرہ کی 3 کوکی پائیاں تھیں جو وہ اپنے 24 ہم جماعتوں اور استاد مسٹر کیتھ کے ساتھ بانٹنا چاہتا تھا۔ ہر پائی کو 10 سلائسوں میں کاٹا گیا۔ اگر مینی، ہر ہم جماعت اور استاد نے 1 سلائس کھایا تو کتنے سلائس بچے؟",
+      "prompt_hash": "1709a62ffc3a0007b7607bbeefbecfe1c25a30f79a4d368122430a6a5620ea34",
+      "record_id": "d1563db89090a70f32cd872bc7c0e41538b4053585fe7e93f28a89d12a0798ac"
+    },
+    {
+      "question_id": "gsm8k-train-4c46af17e4af",
+      "strategy": "random",
+      "condition": "U-E-E",
+      "shot_count": 2,
+      "seed": 44,
+      "demo_ids": [
+        "gsm8k-train-ea66ef8b11aa",
+        "gsm8k-train-7a6b8353e50c"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: Artemis is making tea for a party. She knows her mom drinks an 8-ounce cup of tea and uses one ounce of tea. She will use this same ratio for the party. The party has 12 people there and each of them wants a 6-ounce cup of tea. How many ounces of tea does she need?\nWorked solution: Find the total beverage volume. 12*6 = 72 ounces beverage. Use one ounce of tea per 8 ounces of beverage. 72/8 = 9 ounces tea.\nFINAL_ANSWER: 9\n\nDemonstration 2\nQuestion: Rachel and Sara want to attend a beauty and modeling contest. They both want to buy new pairs of shoes and dresses. Sara buys a pair of shoes which costs $50 and a dress which costs $200. How much should Rachel budget if she wants to spend twice as much as what Sara spent on the pair of shoes and dress?\nWorked solution: Find Sara's total spending. 50+200 = 250 USD. Double that total for Rachel. 250*2 = 500 USD.\nFINAL_ANSWER: 500\n\nTarget question\nQuestion: مینی کے پاس سالگرہ کی 3 کوکی پائیاں تھیں جو وہ اپنے 24 ہم جماعتوں اور استاد مسٹر کیتھ کے ساتھ بانٹنا چاہتا تھا۔ ہر پائی کو 10 سلائسوں میں کاٹا گیا۔ اگر مینی، ہر ہم جماعت اور استاد نے 1 سلائس کھایا تو کتنے سلائس بچے؟",
+      "prompt_hash": "a2af221ff55a5d1087e3bd2505adf9ea0ace910efa2febfa551c605a0d9c9677",
+      "record_id": "7886fcbb46e27e708a28257f60174b298d6a0ca987efd56ad6d1e9f69e785d71"
+    },
+    {
+      "question_id": "gsm8k-train-4c46af17e4af",
+      "strategy": "random",
+      "condition": "E-E-E",
+      "shot_count": 2,
+      "seed": 44,
+      "demo_ids": [
+        "gsm8k-train-ea66ef8b11aa",
+        "gsm8k-train-7a6b8353e50c"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: Artemis is making tea for a party. She knows her mom drinks an 8-ounce cup of tea and uses one ounce of tea. She will use this same ratio for the party. The party has 12 people there and each of them wants a 6-ounce cup of tea. How many ounces of tea does she need?\nWorked solution: Find the total beverage volume. 12*6 = 72 ounces beverage. Use one ounce of tea per 8 ounces of beverage. 72/8 = 9 ounces tea.\nFINAL_ANSWER: 9\n\nDemonstration 2\nQuestion: Rachel and Sara want to attend a beauty and modeling contest. They both want to buy new pairs of shoes and dresses. Sara buys a pair of shoes which costs $50 and a dress which costs $200. How much should Rachel budget if she wants to spend twice as much as what Sara spent on the pair of shoes and dress?\nWorked solution: Find Sara's total spending. 50+200 = 250 USD. Double that total for Rachel. 250*2 = 500 USD.\nFINAL_ANSWER: 500\n\nTarget question\nQuestion: Manny had 3 birthday cookie pies to share with his 24 classmates and his teacher, Mr. Keith. If each of the cookie pies were cut into 10 slices and Manny, his classmates, and Mr. Keith all had 1 piece, how many slices are left?",
+      "prompt_hash": "356570f3c48458b951918958312877899233852d4174fb41867b555d3790957c",
+      "record_id": "e645d5906a999b63348182f7054852f6d31e67104e029f2b7975c368046629dd"
+    },
+    {
+      "question_id": "gsm8k-train-19b0d3572fbe",
+      "strategy": "random",
+      "condition": "U-U-U",
+      "shot_count": 2,
+      "seed": 44,
+      "demo_ids": [
+        "gsm8k-train-da19d532632e",
+        "gsm8k-train-34f9511baf56"
+      ],
+      "prompt": "ہدف سوال کی زبان میں مکمل مرحلہ وار حل لکھیں۔ حل شدہ مثالوں کی پیروی کریں۔ آخری سطر میں صرف حتمی عددی جواب لکھیں۔ اس سطر کے شروع میں یہی نشان FINAL_ANSWER: لکھیں اور اس کے بعد جواب کا عدد لکھیں۔\n\nمثال 1\nسوال: 90 میگابائٹ کی فائل کے پہلے 60 میگابائٹ 5 میگابائٹ فی سیکنڈ کی رفتار سے، اور اس کے بعد باقی حصہ 10 میگابائٹ فی سیکنڈ کی رفتار سے ڈاؤن لوڈ ہوتا ہے۔ پوری فائل ڈاؤن لوڈ ہونے میں کتنے سیکنڈ لگیں گے؟\nمکمل حل: پہلے 60 میگابائٹ کا وقت معلوم کریں\n60/5 = 12 seconds\nباقی 30 میگابائٹ کا وقت معلوم کریں\n(90-60)/10 = 3 seconds\nدونوں اوقات جمع کریں\n12+3 = 15 seconds\nFINAL_ANSWER: 15\n\nمثال 2\nسوال: 12 بندروں کے ایک خاندان نے کیلوں کے 10 ڈھیر جمع کیے۔ 6 ڈھیروں میں ہر ایک کے 9 گچھے تھے اور ہر گچھے میں 14 کیلے تھے۔ باقی ڈھیروں میں ہر ایک کے 12 گچھے تھے اور ہر گچھے میں 9 کیلے تھے۔ اگر کیلے برابر تقسیم ہوں تو ہر بندر کو کتنے کیلے ملیں گے؟\nمکمل حل: پہلے چھ ڈھیروں کے کیلے گنیں\n6*9*14 = 756 bananas\nباقی چار ڈھیروں کے کیلے گنیں\n(10-6)*12*9 = 432 bananas\nکل کیلوں کو 12 بندروں میں برابر تقسیم کریں\n(756+432)/12 = 99 bananas/monkey\nFINAL_ANSWER: 99\n\nہدف سوال\nسوال: جیمز نے 40 سال تدریس کی۔ اس کے ساتھی نے اس سے 10 سال کم تدریس کی۔ دونوں کا مجموعی تدریسی تجربہ کتنے سال ہے؟",
+      "prompt_hash": "342224de4eee0d52cce78437bef6553b4f21d6e4a4891a421e2577adb5642612",
+      "record_id": "27e6794af40771b004f552c881d4204ebff3afd171165c2bc194e8817f63484f"
+    },
+    {
+      "question_id": "gsm8k-train-19b0d3572fbe",
+      "strategy": "random",
+      "condition": "U-U-E",
+      "shot_count": 2,
+      "seed": 44,
+      "demo_ids": [
+        "gsm8k-train-da19d532632e",
+        "gsm8k-train-34f9511baf56"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: 90 میگابائٹ کی فائل کے پہلے 60 میگابائٹ 5 میگابائٹ فی سیکنڈ کی رفتار سے، اور اس کے بعد باقی حصہ 10 میگابائٹ فی سیکنڈ کی رفتار سے ڈاؤن لوڈ ہوتا ہے۔ پوری فائل ڈاؤن لوڈ ہونے میں کتنے سیکنڈ لگیں گے؟\nWorked solution: پہلے 60 میگابائٹ کا وقت معلوم کریں\n60/5 = 12 seconds\nباقی 30 میگابائٹ کا وقت معلوم کریں\n(90-60)/10 = 3 seconds\nدونوں اوقات جمع کریں\n12+3 = 15 seconds\nFINAL_ANSWER: 15\n\nDemonstration 2\nQuestion: 12 بندروں کے ایک خاندان نے کیلوں کے 10 ڈھیر جمع کیے۔ 6 ڈھیروں میں ہر ایک کے 9 گچھے تھے اور ہر گچھے میں 14 کیلے تھے۔ باقی ڈھیروں میں ہر ایک کے 12 گچھے تھے اور ہر گچھے میں 9 کیلے تھے۔ اگر کیلے برابر تقسیم ہوں تو ہر بندر کو کتنے کیلے ملیں گے؟\nWorked solution: پہلے چھ ڈھیروں کے کیلے گنیں\n6*9*14 = 756 bananas\nباقی چار ڈھیروں کے کیلے گنیں\n(10-6)*12*9 = 432 bananas\nکل کیلوں کو 12 بندروں میں برابر تقسیم کریں\n(756+432)/12 = 99 bananas/monkey\nFINAL_ANSWER: 99\n\nTarget question\nQuestion: جیمز نے 40 سال تدریس کی۔ اس کے ساتھی نے اس سے 10 سال کم تدریس کی۔ دونوں کا مجموعی تدریسی تجربہ کتنے سال ہے؟",
+      "prompt_hash": "4668ffad9408a6e04c2ab0607bad6744ce050c227c643134bad4fdcbc19b4f82",
+      "record_id": "7ccdba061cb9c0f4ce72e2b77693f326a845a01d9e0ef036809d92cf36344758"
+    },
+    {
+      "question_id": "gsm8k-train-19b0d3572fbe",
+      "strategy": "random",
+      "condition": "U-E-E",
+      "shot_count": 2,
+      "seed": 44,
+      "demo_ids": [
+        "gsm8k-train-da19d532632e",
+        "gsm8k-train-34f9511baf56"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: The file, 90 megabytes in size, downloads at the rate of 5 megabytes per second for its first 60 megabytes, and then 10 megabytes per second thereafter. How long, in seconds, does it take to download entirely?\nWorked solution: Time for the first 60 MB. 60/5 = 12 seconds. Time for the remaining 30 MB. (90-60)/10 = 3 seconds. Add both download times. 12+3 = 15 seconds.\nFINAL_ANSWER: 15\n\nDemonstration 2\nQuestion: A family of 12 monkeys collected 10 piles of bananas. 6 piles had 9 hands, with each hand having 14 bananas, while the remaining piles had 12 hands, with each hand having 9 bananas. How many bananas would each monkey get if they divide the bananas equally amongst themselves?\nWorked solution: Count bananas in the first six piles. 6*9*14 = 756 bananas. Count bananas in the remaining four piles. (10-6)*12*9 = 432 bananas. Divide the total equally among 12 monkeys. (756+432)/12 = 99 bananas/monkey.\nFINAL_ANSWER: 99\n\nTarget question\nQuestion: جیمز نے 40 سال تدریس کی۔ اس کے ساتھی نے اس سے 10 سال کم تدریس کی۔ دونوں کا مجموعی تدریسی تجربہ کتنے سال ہے؟",
+      "prompt_hash": "c4f0c2496cbb0e0f80d1f36a90c94253962cacef1d6492f85e030c4983181087",
+      "record_id": "285bb8965e43ca686d9b80e0dd7455715baaff6ac629ca3e825fd056aad77e39"
+    },
+    {
+      "question_id": "gsm8k-train-19b0d3572fbe",
+      "strategy": "random",
+      "condition": "E-E-E",
+      "shot_count": 2,
+      "seed": 44,
+      "demo_ids": [
+        "gsm8k-train-da19d532632e",
+        "gsm8k-train-34f9511baf56"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: The file, 90 megabytes in size, downloads at the rate of 5 megabytes per second for its first 60 megabytes, and then 10 megabytes per second thereafter. How long, in seconds, does it take to download entirely?\nWorked solution: Time for the first 60 MB. 60/5 = 12 seconds. Time for the remaining 30 MB. (90-60)/10 = 3 seconds. Add both download times. 12+3 = 15 seconds.\nFINAL_ANSWER: 15\n\nDemonstration 2\nQuestion: A family of 12 monkeys collected 10 piles of bananas. 6 piles had 9 hands, with each hand having 14 bananas, while the remaining piles had 12 hands, with each hand having 9 bananas. How many bananas would each monkey get if they divide the bananas equally amongst themselves?\nWorked solution: Count bananas in the first six piles. 6*9*14 = 756 bananas. Count bananas in the remaining four piles. (10-6)*12*9 = 432 bananas. Divide the total equally among 12 monkeys. (756+432)/12 = 99 bananas/monkey.\nFINAL_ANSWER: 99\n\nTarget question\nQuestion: James spends 40 years teaching. His partner has been teaching for 10 years less. How long is their combined experience?",
+      "prompt_hash": "0312b0a0c8f04fe68a72bf56cad645c6f5625fdcf0ccd6f13396c3460392ac46",
+      "record_id": "43579d5baa29d61b85832f389c09d5bdffa4d3e1a07017a85cf64a9b2d797b19"
+    },
+    {
+      "question_id": "gsm8k-train-c7b34b999ba8",
+      "strategy": "random",
+      "condition": "U-U-U",
+      "shot_count": 2,
+      "seed": 44,
+      "demo_ids": [
+        "gsm8k-train-9d7481516507",
+        "gsm8k-train-73bcb06b471e"
+      ],
+      "prompt": "ہدف سوال کی زبان میں مکمل مرحلہ وار حل لکھیں۔ حل شدہ مثالوں کی پیروی کریں۔ آخری سطر میں صرف حتمی عددی جواب لکھیں۔ اس سطر کے شروع میں یہی نشان FINAL_ANSWER: لکھیں اور اس کے بعد جواب کا عدد لکھیں۔\n\nمثال 1\nسوال: جیمز شکاگو کی ایک یونیورسٹی میں پہلے سال کا طالب علم ہے۔ اس کا فی سمسٹر بجٹ $1000 ہے۔ وہ 30% کھانے، 15% رہائش اور 25% تفریح پر خرچ کرتا ہے اور باقی نصابی مواد پر۔ وہ نصابی مواد پر کتنی رقم خرچ کرتا ہے؟\nمکمل حل: تین بتائے گئے اخراجات کے فیصد جمع کریں\n30+15+25 = 70 percent\nباقی فیصد نصابی مواد کے لیے ہے\n100-70 = 30 percent\nبجٹ کا باقی فیصد معلوم کریں\n1000*30/100 = 300 USD\nFINAL_ANSWER: 300\n\nمثال 2\nسوال: ایوا کی سالگرہ کے لیے اس کے والدین نے $13 کا یونیکورن پنیاتا خریدا۔ انہوں نے ریزیز کے 4 تھیلے فی تھیلا $9، سنکرز کے 3 تھیلے فی تھیلا $5، اور سکیٹلز کے 5 تھیلے فی تھیلا $7 خریدے۔ پنیاتا اور مٹھائیوں پر کل کتنی لاگت آئی؟\nمکمل حل: ریزیز کی قیمت معلوم کریں\n4*9 = 36 USD\nسنکرز کی قیمت معلوم کریں\n3*5 = 15 USD\nسکیٹلز کی قیمت معلوم کریں\n5*7 = 35 USD\nپنیاتا اور تمام مٹھائیوں کی قیمت جمع کریں\n13+36+15+35 = 99 USD\nFINAL_ANSWER: 99\n\nہدف سوال\nسوال: آئرین کو ہفتے میں 40 گھنٹے کام کرنے پر $500 ملتے ہیں، اور ہر اضافی گھنٹے پر مزید $20 ملتے ہیں۔ اگر اس نے گزشتہ ہفتے 50 گھنٹے کام کیا تو اس کی کل آمدنی کیا تھی؟",
+      "prompt_hash": "4d1f5a9e98266ba8dd6151f76ea91dc8ff96505ce04c90b5154ad15843fb5fb3",
+      "record_id": "5fb4411b6b2e0cfe75128fb9fe07a87eadc7585c6c23d9d7c52a5f22c720f94c"
+    },
+    {
+      "question_id": "gsm8k-train-c7b34b999ba8",
+      "strategy": "random",
+      "condition": "U-U-E",
+      "shot_count": 2,
+      "seed": 44,
+      "demo_ids": [
+        "gsm8k-train-9d7481516507",
+        "gsm8k-train-73bcb06b471e"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: جیمز شکاگو کی ایک یونیورسٹی میں پہلے سال کا طالب علم ہے۔ اس کا فی سمسٹر بجٹ $1000 ہے۔ وہ 30% کھانے، 15% رہائش اور 25% تفریح پر خرچ کرتا ہے اور باقی نصابی مواد پر۔ وہ نصابی مواد پر کتنی رقم خرچ کرتا ہے؟\nWorked solution: تین بتائے گئے اخراجات کے فیصد جمع کریں\n30+15+25 = 70 percent\nباقی فیصد نصابی مواد کے لیے ہے\n100-70 = 30 percent\nبجٹ کا باقی فیصد معلوم کریں\n1000*30/100 = 300 USD\nFINAL_ANSWER: 300\n\nDemonstration 2\nQuestion: ایوا کی سالگرہ کے لیے اس کے والدین نے $13 کا یونیکورن پنیاتا خریدا۔ انہوں نے ریزیز کے 4 تھیلے فی تھیلا $9، سنکرز کے 3 تھیلے فی تھیلا $5، اور سکیٹلز کے 5 تھیلے فی تھیلا $7 خریدے۔ پنیاتا اور مٹھائیوں پر کل کتنی لاگت آئی؟\nWorked solution: ریزیز کی قیمت معلوم کریں\n4*9 = 36 USD\nسنکرز کی قیمت معلوم کریں\n3*5 = 15 USD\nسکیٹلز کی قیمت معلوم کریں\n5*7 = 35 USD\nپنیاتا اور تمام مٹھائیوں کی قیمت جمع کریں\n13+36+15+35 = 99 USD\nFINAL_ANSWER: 99\n\nTarget question\nQuestion: آئرین کو ہفتے میں 40 گھنٹے کام کرنے پر $500 ملتے ہیں، اور ہر اضافی گھنٹے پر مزید $20 ملتے ہیں۔ اگر اس نے گزشتہ ہفتے 50 گھنٹے کام کیا تو اس کی کل آمدنی کیا تھی؟",
+      "prompt_hash": "f374c62463570b90181d63df79f3cf0dfb80a2cfe907e786deb7d1648a4ff690",
+      "record_id": "ebe49d2a95d39b383b661b3cabce830596cb9596a46e0248b47cff308aa602e5"
+    },
+    {
+      "question_id": "gsm8k-train-c7b34b999ba8",
+      "strategy": "random",
+      "condition": "U-E-E",
+      "shot_count": 2,
+      "seed": 44,
+      "demo_ids": [
+        "gsm8k-train-9d7481516507",
+        "gsm8k-train-73bcb06b471e"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: James is a first-year student at a University in Chicago. He has a budget of $1000 per semester. He spends 30% of his money on food, 15% on accommodation, 25% on entertainment, and the rest on coursework materials. How much money does he spend on coursework materials?\nWorked solution: Add the three specified budget percentages. 30+15+25 = 70 percent. The rest is for coursework materials. 100-70 = 30 percent. Apply the remaining percentage to the budget. 1000*30/100 = 300 USD.\nFINAL_ANSWER: 300\n\nDemonstration 2\nQuestion: It's Ava's birthday party. Her parents bought a unicorn piñata for $13 and filled it with all of her favorite treats. They bought 4 bags of Reese's for $9 per bag, 3 bags of Snickers for $5 per bag, and 5 bags of Skittles for $7 per bag. How much did the unicorn piñata and the treats cost altogether?\nWorked solution: Find Reese's cost. 4*9 = 36 USD. Find Snickers cost. 3*5 = 15 USD. Find Skittles cost. 5*7 = 35 USD. Add the piñata and all treats. 13+36+15+35 = 99 USD.\nFINAL_ANSWER: 99\n\nTarget question\nQuestion: آئرین کو ہفتے میں 40 گھنٹے کام کرنے پر $500 ملتے ہیں، اور ہر اضافی گھنٹے پر مزید $20 ملتے ہیں۔ اگر اس نے گزشتہ ہفتے 50 گھنٹے کام کیا تو اس کی کل آمدنی کیا تھی؟",
+      "prompt_hash": "38e1778230fbee3e233eeffa010c7a286809f9962996114e1958a12a5ad9c561",
+      "record_id": "673354ae5f5bb5e11a5f0193e5d3bd1c99aa0d85bd15386f43d56cc8933a53d7"
+    },
+    {
+      "question_id": "gsm8k-train-c7b34b999ba8",
+      "strategy": "random",
+      "condition": "E-E-E",
+      "shot_count": 2,
+      "seed": 44,
+      "demo_ids": [
+        "gsm8k-train-9d7481516507",
+        "gsm8k-train-73bcb06b471e"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: James is a first-year student at a University in Chicago. He has a budget of $1000 per semester. He spends 30% of his money on food, 15% on accommodation, 25% on entertainment, and the rest on coursework materials. How much money does he spend on coursework materials?\nWorked solution: Add the three specified budget percentages. 30+15+25 = 70 percent. The rest is for coursework materials. 100-70 = 30 percent. Apply the remaining percentage to the budget. 1000*30/100 = 300 USD.\nFINAL_ANSWER: 300\n\nDemonstration 2\nQuestion: It's Ava's birthday party. Her parents bought a unicorn piñata for $13 and filled it with all of her favorite treats. They bought 4 bags of Reese's for $9 per bag, 3 bags of Snickers for $5 per bag, and 5 bags of Skittles for $7 per bag. How much did the unicorn piñata and the treats cost altogether?\nWorked solution: Find Reese's cost. 4*9 = 36 USD. Find Snickers cost. 3*5 = 15 USD. Find Skittles cost. 5*7 = 35 USD. Add the piñata and all treats. 13+36+15+35 = 99 USD.\nFINAL_ANSWER: 99\n\nTarget question\nQuestion: Irene earns $500 if she works for 40 hours a week and gets an extra $20 for every hour of overtime. If she worked 50 hours last week, calculate her total income.",
+      "prompt_hash": "5ab9e1b40b0384d6247a625f26346f5686e356e8f2ea34262282d8199d711990",
+      "record_id": "f55b5d6199cc864c9fe4c0844a1d917edf4b61b18719c64c7e587e9bba73e4c3"
+    },
+    {
+      "question_id": "gsm8k-train-111d72db39e6",
+      "strategy": "random",
+      "condition": "U-U-U",
+      "shot_count": 2,
+      "seed": 44,
+      "demo_ids": [
+        "gsm8k-train-eb06c14679dc",
+        "gsm8k-train-7f5709a21d11"
+      ],
+      "prompt": "ہدف سوال کی زبان میں مکمل مرحلہ وار حل لکھیں۔ حل شدہ مثالوں کی پیروی کریں۔ آخری سطر میں صرف حتمی عددی جواب لکھیں۔ اس سطر کے شروع میں یہی نشان FINAL_ANSWER: لکھیں اور اس کے بعد جواب کا عدد لکھیں۔\n\nمثال 1\nسوال: کنسرٹ کا ایک ٹکٹ $40 کا ہے۔ مسٹر بینسن نے 12 ٹکٹ خریدے اور 10 سے زائد خریدے گئے ہر ٹکٹ پر 5% رعایت ملی۔ انہوں نے کل کتنی رقم ادا کی؟\nمکمل حل: صرف دو ٹکٹوں پر رعایت ملتی ہے\n12-10 = 2 tickets\nہر مستحق ٹکٹ پر $2 رعایت ہے\n40*5/100 = 2 USD/ticket\nدس پوری قیمت والے اور دو رعایتی ٹکٹوں کی قیمت جمع کریں\n10*40+2*(40-2) = 476 USD\nFINAL_ANSWER: 476\n\nمثال 2\nسوال: لیزا، جیک اور ٹامی نے پورے ہفتے گاڑیاں دھو کر $60 کمائے۔ اس میں سے آدھی رقم لیزا نے کمائی۔ ٹامی نے لیزا کی کمائی کا آدھا حصہ کمایا۔ لیزا نے ٹامی سے کتنی زیادہ رقم کمائی؟\nمکمل حل: لیزا کل رقم کا آدھا کماتی ہے\n60/2 = 30 USD\nٹامی لیزا کی رقم کا آدھا کماتا ہے\n30/2 = 15 USD\nلیزا کی کمائی میں سے ٹامی کی کمائی منفی کریں\n30-15 = 15 USD\nFINAL_ANSWER: 15\n\nہدف سوال\nسوال: ہانس نے ایک ہوٹل میں کمرہ بک کیا۔ ہوٹل کی 10 منزلیں ہیں اور ہر منزل پر 10 ایک جیسے کمرے ہیں۔ ایک حادثے کی وجہ سے آخری منزل مہمانوں کے لیے دستیاب نہیں۔ اگر کوئی اور مہمان نہیں تو ہانس کو کتنے مختلف کمروں میں ٹھہرایا جا سکتا ہے؟",
+      "prompt_hash": "8f6ed92dabd9ec04ce6ad07892d877c05d378c63d1941eab8cf4fca7a8876b59",
+      "record_id": "ac1f1c13b6240cac83478d963a78aee52b8202eb71b7eeabf9813d7fe4e1425d"
+    },
+    {
+      "question_id": "gsm8k-train-111d72db39e6",
+      "strategy": "random",
+      "condition": "U-U-E",
+      "shot_count": 2,
+      "seed": 44,
+      "demo_ids": [
+        "gsm8k-train-eb06c14679dc",
+        "gsm8k-train-7f5709a21d11"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: کنسرٹ کا ایک ٹکٹ $40 کا ہے۔ مسٹر بینسن نے 12 ٹکٹ خریدے اور 10 سے زائد خریدے گئے ہر ٹکٹ پر 5% رعایت ملی۔ انہوں نے کل کتنی رقم ادا کی؟\nWorked solution: صرف دو ٹکٹوں پر رعایت ملتی ہے\n12-10 = 2 tickets\nہر مستحق ٹکٹ پر $2 رعایت ہے\n40*5/100 = 2 USD/ticket\nدس پوری قیمت والے اور دو رعایتی ٹکٹوں کی قیمت جمع کریں\n10*40+2*(40-2) = 476 USD\nFINAL_ANSWER: 476\n\nDemonstration 2\nQuestion: لیزا، جیک اور ٹامی نے پورے ہفتے گاڑیاں دھو کر $60 کمائے۔ اس میں سے آدھی رقم لیزا نے کمائی۔ ٹامی نے لیزا کی کمائی کا آدھا حصہ کمایا۔ لیزا نے ٹامی سے کتنی زیادہ رقم کمائی؟\nWorked solution: لیزا کل رقم کا آدھا کماتی ہے\n60/2 = 30 USD\nٹامی لیزا کی رقم کا آدھا کماتا ہے\n30/2 = 15 USD\nلیزا کی کمائی میں سے ٹامی کی کمائی منفی کریں\n30-15 = 15 USD\nFINAL_ANSWER: 15\n\nTarget question\nQuestion: ہانس نے ایک ہوٹل میں کمرہ بک کیا۔ ہوٹل کی 10 منزلیں ہیں اور ہر منزل پر 10 ایک جیسے کمرے ہیں۔ ایک حادثے کی وجہ سے آخری منزل مہمانوں کے لیے دستیاب نہیں۔ اگر کوئی اور مہمان نہیں تو ہانس کو کتنے مختلف کمروں میں ٹھہرایا جا سکتا ہے؟",
+      "prompt_hash": "e78ee2444ee91e0c1adc86c933f7ca128837314c15b28204c9057daf5ce55e84",
+      "record_id": "e99e448039b1bcb5496e1962911b3e67f1c3547b885c3eca09b6d5f69725b5ee"
+    },
+    {
+      "question_id": "gsm8k-train-111d72db39e6",
+      "strategy": "random",
+      "condition": "U-E-E",
+      "shot_count": 2,
+      "seed": 44,
+      "demo_ids": [
+        "gsm8k-train-eb06c14679dc",
+        "gsm8k-train-7f5709a21d11"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: A concert ticket costs $40. Mr. Benson bought 12 tickets and received a 5% discount for every ticket bought that exceeds 10. How much did Mr. Benson pay in all?\nWorked solution: Only two tickets receive a discount. 12-10 = 2 tickets. Discount per eligible ticket is $2. 40*5/100 = 2 USD/ticket. Add ten full-price and two discounted tickets. 10*40+2*(40-2) = 476 USD.\nFINAL_ANSWER: 476\n\nDemonstration 2\nQuestion: Lisa, Jack, and Tommy earned $60 from washing cars all week. However, half of the $60 was earned by Lisa. Tommy earned half of what Lisa earned. How much more money did Lisa earn than Tommy?\nWorked solution: Lisa earns half of the total. 60/2 = 30 USD. Tommy earns half of Lisa's amount. 30/2 = 15 USD. Subtract Tommy's earnings from Lisa's. 30-15 = 15 USD.\nFINAL_ANSWER: 15\n\nTarget question\nQuestion: ہانس نے ایک ہوٹل میں کمرہ بک کیا۔ ہوٹل کی 10 منزلیں ہیں اور ہر منزل پر 10 ایک جیسے کمرے ہیں۔ ایک حادثے کی وجہ سے آخری منزل مہمانوں کے لیے دستیاب نہیں۔ اگر کوئی اور مہمان نہیں تو ہانس کو کتنے مختلف کمروں میں ٹھہرایا جا سکتا ہے؟",
+      "prompt_hash": "585b4618a9f5a6ba90b85b83929e1b0b1a2186ae0ef7ca53d005c08d5b2a4208",
+      "record_id": "292e82677903f4ef100d6dbb6400e4795a0ebe0d1b1959ff19fc0ed7e5affdb9"
+    },
+    {
+      "question_id": "gsm8k-train-111d72db39e6",
+      "strategy": "random",
+      "condition": "E-E-E",
+      "shot_count": 2,
+      "seed": 44,
+      "demo_ids": [
+        "gsm8k-train-eb06c14679dc",
+        "gsm8k-train-7f5709a21d11"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: A concert ticket costs $40. Mr. Benson bought 12 tickets and received a 5% discount for every ticket bought that exceeds 10. How much did Mr. Benson pay in all?\nWorked solution: Only two tickets receive a discount. 12-10 = 2 tickets. Discount per eligible ticket is $2. 40*5/100 = 2 USD/ticket. Add ten full-price and two discounted tickets. 10*40+2*(40-2) = 476 USD.\nFINAL_ANSWER: 476\n\nDemonstration 2\nQuestion: Lisa, Jack, and Tommy earned $60 from washing cars all week. However, half of the $60 was earned by Lisa. Tommy earned half of what Lisa earned. How much more money did Lisa earn than Tommy?\nWorked solution: Lisa earns half of the total. 60/2 = 30 USD. Tommy earns half of Lisa's amount. 30/2 = 15 USD. Subtract Tommy's earnings from Lisa's. 30-15 = 15 USD.\nFINAL_ANSWER: 15\n\nTarget question\nQuestion: Hans booked a room in a hotel. The hotel has 10 floors with 10 identical rooms on each floor. Because of an accident, the last floor is unavailable for the guests. Considering there are no other guests, in how many different rooms could Hans be checked in?",
+      "prompt_hash": "c831b6209f8ee436070b554785788c8956d4ff536e196c4cb0f27ce5e6038561",
+      "record_id": "3747ec5308b16ee157fa3955ef8faae6517a0c88b7b83b53448949b1cd50eff4"
+    },
+    {
+      "question_id": "gsm8k-train-4e78856e0b87",
+      "strategy": "random",
+      "condition": "U-U-U",
+      "shot_count": 2,
+      "seed": 44,
+      "demo_ids": [
+        "gsm8k-train-ea66ef8b11aa",
+        "gsm8k-train-34f9511baf56"
+      ],
+      "prompt": "ہدف سوال کی زبان میں مکمل مرحلہ وار حل لکھیں۔ حل شدہ مثالوں کی پیروی کریں۔ آخری سطر میں صرف حتمی عددی جواب لکھیں۔ اس سطر کے شروع میں یہی نشان FINAL_ANSWER: لکھیں اور اس کے بعد جواب کا عدد لکھیں۔\n\nمثال 1\nسوال: آرٹیمس تقریب کے لیے چائے بنا رہی ہے۔ اس کی والدہ 8 اونس کے ایک کپ کے لیے ایک اونس چائے استعمال کرتی ہیں۔ آرٹیمس یہی تناسب رکھے گی۔ تقریب میں 12 لوگ ہیں اور ہر ایک کو 6 اونس کا کپ چاہیے۔ اسے کتنے اونس چائے چاہیے؟\nمکمل حل: مشروب کی کل مقدار معلوم کریں\n12*6 = 72 ounces beverage\nہر 8 اونس مشروب کے لیے ایک اونس چائے لیں\n72/8 = 9 ounces tea\nFINAL_ANSWER: 9\n\nمثال 2\nسوال: 12 بندروں کے ایک خاندان نے کیلوں کے 10 ڈھیر جمع کیے۔ 6 ڈھیروں میں ہر ایک کے 9 گچھے تھے اور ہر گچھے میں 14 کیلے تھے۔ باقی ڈھیروں میں ہر ایک کے 12 گچھے تھے اور ہر گچھے میں 9 کیلے تھے۔ اگر کیلے برابر تقسیم ہوں تو ہر بندر کو کتنے کیلے ملیں گے؟\nمکمل حل: پہلے چھ ڈھیروں کے کیلے گنیں\n6*9*14 = 756 bananas\nباقی چار ڈھیروں کے کیلے گنیں\n(10-6)*12*9 = 432 bananas\nکل کیلوں کو 12 بندروں میں برابر تقسیم کریں\n(756+432)/12 = 99 bananas/monkey\nFINAL_ANSWER: 99\n\nہدف سوال\nسوال: پیٹر سوڈا خریدنے دکان گیا۔ سوڈے کی قیمت $.25 فی اونس ہے۔ وہ اپنے ساتھ $2 لایا اور اس کے پاس جاتے وقت $.50 بچے۔ اس نے کتنے اونس سوڈا خریدا؟",
+      "prompt_hash": "345d500433b976f89260a000da46cc102948442d99e7870d6733c4dc900f0e8c",
+      "record_id": "3383eb00b2ee66063377c556678a37cc20d37f04abe1bc7bd3fe94c7e6c43b7b"
+    },
+    {
+      "question_id": "gsm8k-train-4e78856e0b87",
+      "strategy": "random",
+      "condition": "U-U-E",
+      "shot_count": 2,
+      "seed": 44,
+      "demo_ids": [
+        "gsm8k-train-ea66ef8b11aa",
+        "gsm8k-train-34f9511baf56"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: آرٹیمس تقریب کے لیے چائے بنا رہی ہے۔ اس کی والدہ 8 اونس کے ایک کپ کے لیے ایک اونس چائے استعمال کرتی ہیں۔ آرٹیمس یہی تناسب رکھے گی۔ تقریب میں 12 لوگ ہیں اور ہر ایک کو 6 اونس کا کپ چاہیے۔ اسے کتنے اونس چائے چاہیے؟\nWorked solution: مشروب کی کل مقدار معلوم کریں\n12*6 = 72 ounces beverage\nہر 8 اونس مشروب کے لیے ایک اونس چائے لیں\n72/8 = 9 ounces tea\nFINAL_ANSWER: 9\n\nDemonstration 2\nQuestion: 12 بندروں کے ایک خاندان نے کیلوں کے 10 ڈھیر جمع کیے۔ 6 ڈھیروں میں ہر ایک کے 9 گچھے تھے اور ہر گچھے میں 14 کیلے تھے۔ باقی ڈھیروں میں ہر ایک کے 12 گچھے تھے اور ہر گچھے میں 9 کیلے تھے۔ اگر کیلے برابر تقسیم ہوں تو ہر بندر کو کتنے کیلے ملیں گے؟\nWorked solution: پہلے چھ ڈھیروں کے کیلے گنیں\n6*9*14 = 756 bananas\nباقی چار ڈھیروں کے کیلے گنیں\n(10-6)*12*9 = 432 bananas\nکل کیلوں کو 12 بندروں میں برابر تقسیم کریں\n(756+432)/12 = 99 bananas/monkey\nFINAL_ANSWER: 99\n\nTarget question\nQuestion: پیٹر سوڈا خریدنے دکان گیا۔ سوڈے کی قیمت $.25 فی اونس ہے۔ وہ اپنے ساتھ $2 لایا اور اس کے پاس جاتے وقت $.50 بچے۔ اس نے کتنے اونس سوڈا خریدا؟",
+      "prompt_hash": "915cdcc54a1c2bdc0fa80b3bc255141d46c6486ac59517e87a725ea3d86b74b0",
+      "record_id": "79ccea17c4a8462bb20d0dd920c918daac1a173e95c2e0288ea9d813a541426c"
+    },
+    {
+      "question_id": "gsm8k-train-4e78856e0b87",
+      "strategy": "random",
+      "condition": "U-E-E",
+      "shot_count": 2,
+      "seed": 44,
+      "demo_ids": [
+        "gsm8k-train-ea66ef8b11aa",
+        "gsm8k-train-34f9511baf56"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: Artemis is making tea for a party. She knows her mom drinks an 8-ounce cup of tea and uses one ounce of tea. She will use this same ratio for the party. The party has 12 people there and each of them wants a 6-ounce cup of tea. How many ounces of tea does she need?\nWorked solution: Find the total beverage volume. 12*6 = 72 ounces beverage. Use one ounce of tea per 8 ounces of beverage. 72/8 = 9 ounces tea.\nFINAL_ANSWER: 9\n\nDemonstration 2\nQuestion: A family of 12 monkeys collected 10 piles of bananas. 6 piles had 9 hands, with each hand having 14 bananas, while the remaining piles had 12 hands, with each hand having 9 bananas. How many bananas would each monkey get if they divide the bananas equally amongst themselves?\nWorked solution: Count bananas in the first six piles. 6*9*14 = 756 bananas. Count bananas in the remaining four piles. (10-6)*12*9 = 432 bananas. Divide the total equally among 12 monkeys. (756+432)/12 = 99 bananas/monkey.\nFINAL_ANSWER: 99\n\nTarget question\nQuestion: پیٹر سوڈا خریدنے دکان گیا۔ سوڈے کی قیمت $.25 فی اونس ہے۔ وہ اپنے ساتھ $2 لایا اور اس کے پاس جاتے وقت $.50 بچے۔ اس نے کتنے اونس سوڈا خریدا؟",
+      "prompt_hash": "583a7ea573111e0a3d2bb1c3852a678feed180f197c8f8b9f0e8ae238aa4e5f6",
+      "record_id": "b297d57f26bd5b4f084c19772ea239911b4b81179ef68caff6f2793a9c7585ba"
+    },
+    {
+      "question_id": "gsm8k-train-4e78856e0b87",
+      "strategy": "random",
+      "condition": "E-E-E",
+      "shot_count": 2,
+      "seed": 44,
+      "demo_ids": [
+        "gsm8k-train-ea66ef8b11aa",
+        "gsm8k-train-34f9511baf56"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: Artemis is making tea for a party. She knows her mom drinks an 8-ounce cup of tea and uses one ounce of tea. She will use this same ratio for the party. The party has 12 people there and each of them wants a 6-ounce cup of tea. How many ounces of tea does she need?\nWorked solution: Find the total beverage volume. 12*6 = 72 ounces beverage. Use one ounce of tea per 8 ounces of beverage. 72/8 = 9 ounces tea.\nFINAL_ANSWER: 9\n\nDemonstration 2\nQuestion: A family of 12 monkeys collected 10 piles of bananas. 6 piles had 9 hands, with each hand having 14 bananas, while the remaining piles had 12 hands, with each hand having 9 bananas. How many bananas would each monkey get if they divide the bananas equally amongst themselves?\nWorked solution: Count bananas in the first six piles. 6*9*14 = 756 bananas. Count bananas in the remaining four piles. (10-6)*12*9 = 432 bananas. Divide the total equally among 12 monkeys. (756+432)/12 = 99 bananas/monkey.\nFINAL_ANSWER: 99\n\nTarget question\nQuestion: Peter goes to the store to buy a soda. The soda costs $.25 an ounce. He brought $2 with him and leaves with $.50. How many ounces of soda did he buy?",
+      "prompt_hash": "122dcdeea900b94c7ff7d7b27a6476ae4af22d37829425861aba645e18b0f34b",
+      "record_id": "8e37e6a83ee5e48a20d522c4a0dc79d346b6939a249d99885a62baa6fe81ba01"
+    },
+    {
+      "question_id": "gsm8k-train-7ed300676787",
+      "strategy": "random",
+      "condition": "U-U-U",
+      "shot_count": 2,
+      "seed": 44,
+      "demo_ids": [
+        "gsm8k-train-16f83fb4320c",
+        "gsm8k-train-34f9511baf56"
+      ],
+      "prompt": "ہدف سوال کی زبان میں مکمل مرحلہ وار حل لکھیں۔ حل شدہ مثالوں کی پیروی کریں۔ آخری سطر میں صرف حتمی عددی جواب لکھیں۔ اس سطر کے شروع میں یہی نشان FINAL_ANSWER: لکھیں اور اس کے بعد جواب کا عدد لکھیں۔\n\nمثال 1\nسوال: مارک کے باغ میں تین رنگوں کے پھول ہیں۔ دس پیلے ہیں اور جامنی پھول پیلے پھولوں سے 80% زیادہ ہیں۔ سبز پھولوں کی تعداد پیلے اور جامنی پھولوں کی مجموعی تعداد کا صرف 25% ہے۔ مارک کے باغ میں کل کتنے پھول ہیں؟\nمکمل حل: جامنی پھول پیلے پھولوں سے 8 زیادہ ہیں\n10*80/100 = 8 flowers\nجامنی پھول معلوم کریں\n10+8 = 18 flowers\nسبز پھول پیلے اور جامنی پھولوں کے مجموعے کا 25% ہیں\n(10+18)*25/100 = 7 flowers\nتینوں رنگوں کے پھول جمع کریں\n10+18+7 = 35 flowers\nFINAL_ANSWER: 35\n\nمثال 2\nسوال: 12 بندروں کے ایک خاندان نے کیلوں کے 10 ڈھیر جمع کیے۔ 6 ڈھیروں میں ہر ایک کے 9 گچھے تھے اور ہر گچھے میں 14 کیلے تھے۔ باقی ڈھیروں میں ہر ایک کے 12 گچھے تھے اور ہر گچھے میں 9 کیلے تھے۔ اگر کیلے برابر تقسیم ہوں تو ہر بندر کو کتنے کیلے ملیں گے؟\nمکمل حل: پہلے چھ ڈھیروں کے کیلے گنیں\n6*9*14 = 756 bananas\nباقی چار ڈھیروں کے کیلے گنیں\n(10-6)*12*9 = 432 bananas\nکل کیلوں کو 12 بندروں میں برابر تقسیم کریں\n(756+432)/12 = 99 bananas/monkey\nFINAL_ANSWER: 99\n\nہدف سوال\nسوال: جان کی گائے کا وزن 400 پاؤنڈ ہے۔ وزن بڑھ کر ابتدائی وزن سے 1.5 گنا ہو گیا۔ وہ گائے کو $3 فی پاؤنڈ میں بیچ سکتا ہے۔ وزن بڑھنے کے بعد اس کی قیمت کتنی زیادہ ہو گئی؟",
+      "prompt_hash": "90e8307632616a6dcefa2a2121a249325ac3499b61f6529598a0c2a49fdefa6d",
+      "record_id": "84b68d9b46daa78eecde4e9797aea44864e77fd5e1cd5bf3bfe4c9510f4b1fb0"
+    },
+    {
+      "question_id": "gsm8k-train-7ed300676787",
+      "strategy": "random",
+      "condition": "U-U-E",
+      "shot_count": 2,
+      "seed": 44,
+      "demo_ids": [
+        "gsm8k-train-16f83fb4320c",
+        "gsm8k-train-34f9511baf56"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: مارک کے باغ میں تین رنگوں کے پھول ہیں۔ دس پیلے ہیں اور جامنی پھول پیلے پھولوں سے 80% زیادہ ہیں۔ سبز پھولوں کی تعداد پیلے اور جامنی پھولوں کی مجموعی تعداد کا صرف 25% ہے۔ مارک کے باغ میں کل کتنے پھول ہیں؟\nWorked solution: جامنی پھول پیلے پھولوں سے 8 زیادہ ہیں\n10*80/100 = 8 flowers\nجامنی پھول معلوم کریں\n10+8 = 18 flowers\nسبز پھول پیلے اور جامنی پھولوں کے مجموعے کا 25% ہیں\n(10+18)*25/100 = 7 flowers\nتینوں رنگوں کے پھول جمع کریں\n10+18+7 = 35 flowers\nFINAL_ANSWER: 35\n\nDemonstration 2\nQuestion: 12 بندروں کے ایک خاندان نے کیلوں کے 10 ڈھیر جمع کیے۔ 6 ڈھیروں میں ہر ایک کے 9 گچھے تھے اور ہر گچھے میں 14 کیلے تھے۔ باقی ڈھیروں میں ہر ایک کے 12 گچھے تھے اور ہر گچھے میں 9 کیلے تھے۔ اگر کیلے برابر تقسیم ہوں تو ہر بندر کو کتنے کیلے ملیں گے؟\nWorked solution: پہلے چھ ڈھیروں کے کیلے گنیں\n6*9*14 = 756 bananas\nباقی چار ڈھیروں کے کیلے گنیں\n(10-6)*12*9 = 432 bananas\nکل کیلوں کو 12 بندروں میں برابر تقسیم کریں\n(756+432)/12 = 99 bananas/monkey\nFINAL_ANSWER: 99\n\nTarget question\nQuestion: جان کی گائے کا وزن 400 پاؤنڈ ہے۔ وزن بڑھ کر ابتدائی وزن سے 1.5 گنا ہو گیا۔ وہ گائے کو $3 فی پاؤنڈ میں بیچ سکتا ہے۔ وزن بڑھنے کے بعد اس کی قیمت کتنی زیادہ ہو گئی؟",
+      "prompt_hash": "c7d69c0d369ec4ff7c4bff4e3d46c4837a706ee1a9ba7037d6c6203a74f4cff3",
+      "record_id": "10a953e411ecabf82364de858a0968bfb8155c66f5ce75fa246c16ed23db0839"
+    },
+    {
+      "question_id": "gsm8k-train-7ed300676787",
+      "strategy": "random",
+      "condition": "U-E-E",
+      "shot_count": 2,
+      "seed": 44,
+      "demo_ids": [
+        "gsm8k-train-16f83fb4320c",
+        "gsm8k-train-34f9511baf56"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: Mark has a garden with flowers. He planted plants of three different colors in it. Ten of them are yellow, and there are 80% more of those in purple. There are only 25% as many green flowers as there are yellow and purple flowers. How many flowers does Mark have in his garden?\nWorked solution: Purple flowers exceed yellow by 8. 10*80/100 = 8 flowers. Find purple flowers. 10+8 = 18 flowers. Green flowers are 25% of yellow plus purple. (10+18)*25/100 = 7 flowers. Add all three colors. 10+18+7 = 35 flowers.\nFINAL_ANSWER: 35\n\nDemonstration 2\nQuestion: A family of 12 monkeys collected 10 piles of bananas. 6 piles had 9 hands, with each hand having 14 bananas, while the remaining piles had 12 hands, with each hand having 9 bananas. How many bananas would each monkey get if they divide the bananas equally amongst themselves?\nWorked solution: Count bananas in the first six piles. 6*9*14 = 756 bananas. Count bananas in the remaining four piles. (10-6)*12*9 = 432 bananas. Divide the total equally among 12 monkeys. (756+432)/12 = 99 bananas/monkey.\nFINAL_ANSWER: 99\n\nTarget question\nQuestion: جان کی گائے کا وزن 400 پاؤنڈ ہے۔ وزن بڑھ کر ابتدائی وزن سے 1.5 گنا ہو گیا۔ وہ گائے کو $3 فی پاؤنڈ میں بیچ سکتا ہے۔ وزن بڑھنے کے بعد اس کی قیمت کتنی زیادہ ہو گئی؟",
+      "prompt_hash": "25d7bc83d8f8729500913cd0f670a8daaa2b5c7964652b00f1b0e5619675715e",
+      "record_id": "5fa4f2c0e5a74b3c9c56fb1a40cfe0e6148895dee1423569fc0b9320b54eca6e"
+    },
+    {
+      "question_id": "gsm8k-train-7ed300676787",
+      "strategy": "random",
+      "condition": "E-E-E",
+      "shot_count": 2,
+      "seed": 44,
+      "demo_ids": [
+        "gsm8k-train-16f83fb4320c",
+        "gsm8k-train-34f9511baf56"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: Mark has a garden with flowers. He planted plants of three different colors in it. Ten of them are yellow, and there are 80% more of those in purple. There are only 25% as many green flowers as there are yellow and purple flowers. How many flowers does Mark have in his garden?\nWorked solution: Purple flowers exceed yellow by 8. 10*80/100 = 8 flowers. Find purple flowers. 10+8 = 18 flowers. Green flowers are 25% of yellow plus purple. (10+18)*25/100 = 7 flowers. Add all three colors. 10+18+7 = 35 flowers.\nFINAL_ANSWER: 35\n\nDemonstration 2\nQuestion: A family of 12 monkeys collected 10 piles of bananas. 6 piles had 9 hands, with each hand having 14 bananas, while the remaining piles had 12 hands, with each hand having 9 bananas. How many bananas would each monkey get if they divide the bananas equally amongst themselves?\nWorked solution: Count bananas in the first six piles. 6*9*14 = 756 bananas. Count bananas in the remaining four piles. (10-6)*12*9 = 432 bananas. Divide the total equally among 12 monkeys. (756+432)/12 = 99 bananas/monkey.\nFINAL_ANSWER: 99\n\nTarget question\nQuestion: John's cow weighs 400 pounds. It increased its weight to 1.5 times its starting weight. He is able to sell the cow for $3 per pound. How much more is it worth after gaining the weight?",
+      "prompt_hash": "7fbf9ff93a7b4ce5673a49879ff598e55560356fdc7a01ba85c1216a1cd3eadd",
+      "record_id": "e9fad8fee8e6af91e1973a718b8861bd6904964d2ba18900e78704c4d00dc743"
+    },
+    {
+      "question_id": "gsm8k-train-c7da26a5fbd9",
+      "strategy": "random",
+      "condition": "U-U-U",
+      "shot_count": 2,
+      "seed": 44,
+      "demo_ids": [
+        "gsm8k-train-cf2595dad6a3",
+        "gsm8k-train-f9fe6096f4fc"
+      ],
+      "prompt": "ہدف سوال کی زبان میں مکمل مرحلہ وار حل لکھیں۔ حل شدہ مثالوں کی پیروی کریں۔ آخری سطر میں صرف حتمی عددی جواب لکھیں۔ اس سطر کے شروع میں یہی نشان FINAL_ANSWER: لکھیں اور اس کے بعد جواب کا عدد لکھیں۔\n\nمثال 1\nسوال: البرٹ نے 2 بڑے اور 2 چھوٹے پیزے خریدے۔ ایک بڑے پیزے کے 16 اور ایک چھوٹے پیزے کے 8 سلائس ہیں۔ اگر وہ سب کھا لے تو اس دن وہ کتنے سلائس کھائے گا؟\nمکمل حل: بڑے پیزوں کے سلائس معلوم کریں\n2*16 = 32 slices\nچھوٹے پیزوں کے سلائس معلوم کریں\n2*8 = 16 slices\nدونوں قسم کے سلائس جمع کریں\n32+16 = 48 slices\nFINAL_ANSWER: 48\n\nمثال 2\nسوال: مسٹر سام نے اپنے دو بیٹوں، کین اور ٹونی، میں کچھ رقم تقسیم کی۔ کین کو $1750 ملے اور ٹونی کو کین سے دگنی رقم ملی۔ کل کتنی رقم تقسیم ہوئی؟\nمکمل حل: ٹونی کو کین سے دگنی رقم ملتی ہے\n1750*2 = 3500 USD\nدونوں حصے جمع کریں\n1750+3500 = 5250 USD\nFINAL_ANSWER: 5250\n\nہدف سوال\nسوال: برینڈن نے پچھلے سال 86 گیکو بیچے۔ اس سے پچھلے سال اس نے اس تعداد سے دگنے گیکو بیچے۔ ان دو برسوں میں اس نے کل کتنے گیکو بیچے؟",
+      "prompt_hash": "0216857b1dd0be3db781a5e021ced8aabc50ba2750be359efad0984c285a723e",
+      "record_id": "2c4f09ed87c4a7ac9a2cd92eb88fb6fda8fc954ae0a0e26fdf8a094171657d60"
+    },
+    {
+      "question_id": "gsm8k-train-c7da26a5fbd9",
+      "strategy": "random",
+      "condition": "U-U-E",
+      "shot_count": 2,
+      "seed": 44,
+      "demo_ids": [
+        "gsm8k-train-cf2595dad6a3",
+        "gsm8k-train-f9fe6096f4fc"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: البرٹ نے 2 بڑے اور 2 چھوٹے پیزے خریدے۔ ایک بڑے پیزے کے 16 اور ایک چھوٹے پیزے کے 8 سلائس ہیں۔ اگر وہ سب کھا لے تو اس دن وہ کتنے سلائس کھائے گا؟\nWorked solution: بڑے پیزوں کے سلائس معلوم کریں\n2*16 = 32 slices\nچھوٹے پیزوں کے سلائس معلوم کریں\n2*8 = 16 slices\nدونوں قسم کے سلائس جمع کریں\n32+16 = 48 slices\nFINAL_ANSWER: 48\n\nDemonstration 2\nQuestion: مسٹر سام نے اپنے دو بیٹوں، کین اور ٹونی، میں کچھ رقم تقسیم کی۔ کین کو $1750 ملے اور ٹونی کو کین سے دگنی رقم ملی۔ کل کتنی رقم تقسیم ہوئی؟\nWorked solution: ٹونی کو کین سے دگنی رقم ملتی ہے\n1750*2 = 3500 USD\nدونوں حصے جمع کریں\n1750+3500 = 5250 USD\nFINAL_ANSWER: 5250\n\nTarget question\nQuestion: برینڈن نے پچھلے سال 86 گیکو بیچے۔ اس سے پچھلے سال اس نے اس تعداد سے دگنے گیکو بیچے۔ ان دو برسوں میں اس نے کل کتنے گیکو بیچے؟",
+      "prompt_hash": "27ca275797f898751537716af8c4246300d53b5076d2a1a07dbae1ee2020e45b",
+      "record_id": "daaeebcbfd671f89b8737827364b5696b90fbadb0726a9c2217a2596642755e4"
+    },
+    {
+      "question_id": "gsm8k-train-c7da26a5fbd9",
+      "strategy": "random",
+      "condition": "U-E-E",
+      "shot_count": 2,
+      "seed": 44,
+      "demo_ids": [
+        "gsm8k-train-cf2595dad6a3",
+        "gsm8k-train-f9fe6096f4fc"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: Albert is wondering how much pizza he can eat in one day. He buys 2 large pizzas and 2 small pizzas. A large pizza has 16 slices and a small pizza has 8 slices. If he eats it all, how many pieces does he eat that day?\nWorked solution: Find slices in large pizzas. 2*16 = 32 slices. Find slices in small pizzas. 2*8 = 16 slices. Add both kinds. 32+16 = 48 slices.\nFINAL_ANSWER: 48\n\nDemonstration 2\nQuestion: Mr. Sam shared a certain amount of money between his two sons, Ken and Tony. If Ken got $1750, and Tony got twice as much as Ken, how much was the money shared?\nWorked solution: Tony receives twice Ken's amount. 1750*2 = 3500 USD. Add both shares. 1750+3500 = 5250 USD.\nFINAL_ANSWER: 5250\n\nTarget question\nQuestion: برینڈن نے پچھلے سال 86 گیکو بیچے۔ اس سے پچھلے سال اس نے اس تعداد سے دگنے گیکو بیچے۔ ان دو برسوں میں اس نے کل کتنے گیکو بیچے؟",
+      "prompt_hash": "151db13a1bc64f0a923f44914cfb629d20abe94b0ad5ac9293a1a5c9e6b4f8f8",
+      "record_id": "1d9011b6fbd838760999a743e17ab614ba03aded1e02780dc34baff9c6586941"
+    },
+    {
+      "question_id": "gsm8k-train-c7da26a5fbd9",
+      "strategy": "random",
+      "condition": "E-E-E",
+      "shot_count": 2,
+      "seed": 44,
+      "demo_ids": [
+        "gsm8k-train-cf2595dad6a3",
+        "gsm8k-train-f9fe6096f4fc"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: Albert is wondering how much pizza he can eat in one day. He buys 2 large pizzas and 2 small pizzas. A large pizza has 16 slices and a small pizza has 8 slices. If he eats it all, how many pieces does he eat that day?\nWorked solution: Find slices in large pizzas. 2*16 = 32 slices. Find slices in small pizzas. 2*8 = 16 slices. Add both kinds. 32+16 = 48 slices.\nFINAL_ANSWER: 48\n\nDemonstration 2\nQuestion: Mr. Sam shared a certain amount of money between his two sons, Ken and Tony. If Ken got $1750, and Tony got twice as much as Ken, how much was the money shared?\nWorked solution: Tony receives twice Ken's amount. 1750*2 = 3500 USD. Add both shares. 1750+3500 = 5250 USD.\nFINAL_ANSWER: 5250\n\nTarget question\nQuestion: Brandon sold 86 geckos last year. He sold twice that many the year before. How many geckos has Brandon sold in the last two years?",
+      "prompt_hash": "fad9bf7d42424b624989d1ba9d91834ac6fc5a0f6126898d580c42ea255a8f30",
+      "record_id": "17398a017bd796f6d57013ca845f3484a923a1388b3a3a997f7f78e9a264ada1"
+    },
+    {
+      "question_id": "gsm8k-train-1d58b8a27f49",
+      "strategy": "random",
+      "condition": "U-U-U",
+      "shot_count": 2,
+      "seed": 44,
+      "demo_ids": [
+        "gsm8k-train-34f9511baf56",
+        "gsm8k-train-73429d562982"
+      ],
+      "prompt": "ہدف سوال کی زبان میں مکمل مرحلہ وار حل لکھیں۔ حل شدہ مثالوں کی پیروی کریں۔ آخری سطر میں صرف حتمی عددی جواب لکھیں۔ اس سطر کے شروع میں یہی نشان FINAL_ANSWER: لکھیں اور اس کے بعد جواب کا عدد لکھیں۔\n\nمثال 1\nسوال: 12 بندروں کے ایک خاندان نے کیلوں کے 10 ڈھیر جمع کیے۔ 6 ڈھیروں میں ہر ایک کے 9 گچھے تھے اور ہر گچھے میں 14 کیلے تھے۔ باقی ڈھیروں میں ہر ایک کے 12 گچھے تھے اور ہر گچھے میں 9 کیلے تھے۔ اگر کیلے برابر تقسیم ہوں تو ہر بندر کو کتنے کیلے ملیں گے؟\nمکمل حل: پہلے چھ ڈھیروں کے کیلے گنیں\n6*9*14 = 756 bananas\nباقی چار ڈھیروں کے کیلے گنیں\n(10-6)*12*9 = 432 bananas\nکل کیلوں کو 12 بندروں میں برابر تقسیم کریں\n(756+432)/12 = 99 bananas/monkey\nFINAL_ANSWER: 99\n\nمثال 2\nسوال: نتالیا نے اپریل میں اپنے 48 دوستوں کو کلپس فروخت کیں، پھر مئی میں اس سے آدھی تعداد میں کلپس فروخت کیں۔ اس نے اپریل اور مئی میں مجموعی طور پر کتنی کلپس فروخت کیں؟\nمکمل حل: مئی کی فروخت اپریل کی 48 کلپس کی آدھی ہے\n48/2 = 24 clips\nاپریل اور مئی کی فروخت جمع کریں\n48+24 = 72 clips\nFINAL_ANSWER: 72\n\nہدف سوال\nسوال: کرسٹیان لائبریری میں کام کرتا ہے۔ وہ روزانہ اوسطاً 40 کتابیں ادھار لیتا ہے۔ ہر جمعے کو ادھار لی گئی کتابوں کی تعداد روزانہ اوسط سے تقریباً 40% زیادہ ہوتی ہے۔ اگر لائبریری پیر سے جمعہ تک کھلی رہتی ہے تو وہ ایک ہفتے میں کتنی کتابیں ادھار لیتا ہے؟",
+      "prompt_hash": "97275a9ce96bbac2dff8068b5c50106e896254a67ac539c3faeed885d2291c67",
+      "record_id": "c43ca92d12e455626ad5353dfef5c40d96881b18d042cc4c2b57cfb085372771"
+    },
+    {
+      "question_id": "gsm8k-train-1d58b8a27f49",
+      "strategy": "random",
+      "condition": "U-U-E",
+      "shot_count": 2,
+      "seed": 44,
+      "demo_ids": [
+        "gsm8k-train-34f9511baf56",
+        "gsm8k-train-73429d562982"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: 12 بندروں کے ایک خاندان نے کیلوں کے 10 ڈھیر جمع کیے۔ 6 ڈھیروں میں ہر ایک کے 9 گچھے تھے اور ہر گچھے میں 14 کیلے تھے۔ باقی ڈھیروں میں ہر ایک کے 12 گچھے تھے اور ہر گچھے میں 9 کیلے تھے۔ اگر کیلے برابر تقسیم ہوں تو ہر بندر کو کتنے کیلے ملیں گے؟\nWorked solution: پہلے چھ ڈھیروں کے کیلے گنیں\n6*9*14 = 756 bananas\nباقی چار ڈھیروں کے کیلے گنیں\n(10-6)*12*9 = 432 bananas\nکل کیلوں کو 12 بندروں میں برابر تقسیم کریں\n(756+432)/12 = 99 bananas/monkey\nFINAL_ANSWER: 99\n\nDemonstration 2\nQuestion: نتالیا نے اپریل میں اپنے 48 دوستوں کو کلپس فروخت کیں، پھر مئی میں اس سے آدھی تعداد میں کلپس فروخت کیں۔ اس نے اپریل اور مئی میں مجموعی طور پر کتنی کلپس فروخت کیں؟\nWorked solution: مئی کی فروخت اپریل کی 48 کلپس کی آدھی ہے\n48/2 = 24 clips\nاپریل اور مئی کی فروخت جمع کریں\n48+24 = 72 clips\nFINAL_ANSWER: 72\n\nTarget question\nQuestion: کرسٹیان لائبریری میں کام کرتا ہے۔ وہ روزانہ اوسطاً 40 کتابیں ادھار لیتا ہے۔ ہر جمعے کو ادھار لی گئی کتابوں کی تعداد روزانہ اوسط سے تقریباً 40% زیادہ ہوتی ہے۔ اگر لائبریری پیر سے جمعہ تک کھلی رہتی ہے تو وہ ایک ہفتے میں کتنی کتابیں ادھار لیتا ہے؟",
+      "prompt_hash": "1b564bd96caeaaba73f5ce9dcb3044bc19f16d5cd91ee9fde9ae10cc80c33666",
+      "record_id": "c538c185678175b9083c0332ab189a180d80112eaba504ee871e36d6d8108c8e"
+    },
+    {
+      "question_id": "gsm8k-train-1d58b8a27f49",
+      "strategy": "random",
+      "condition": "U-E-E",
+      "shot_count": 2,
+      "seed": 44,
+      "demo_ids": [
+        "gsm8k-train-34f9511baf56",
+        "gsm8k-train-73429d562982"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: A family of 12 monkeys collected 10 piles of bananas. 6 piles had 9 hands, with each hand having 14 bananas, while the remaining piles had 12 hands, with each hand having 9 bananas. How many bananas would each monkey get if they divide the bananas equally amongst themselves?\nWorked solution: Count bananas in the first six piles. 6*9*14 = 756 bananas. Count bananas in the remaining four piles. (10-6)*12*9 = 432 bananas. Divide the total equally among 12 monkeys. (756+432)/12 = 99 bananas/monkey.\nFINAL_ANSWER: 99\n\nDemonstration 2\nQuestion: Natalia sold clips to 48 of her friends in April, and then she sold half as many clips in May. How many clips did Natalia sell altogether in April and May?\nWorked solution: May sales are half of April's 48 clips. 48/2 = 24 clips. Add April and May sales. 48+24 = 72 clips.\nFINAL_ANSWER: 72\n\nTarget question\nQuestion: کرسٹیان لائبریری میں کام کرتا ہے۔ وہ روزانہ اوسطاً 40 کتابیں ادھار لیتا ہے۔ ہر جمعے کو ادھار لی گئی کتابوں کی تعداد روزانہ اوسط سے تقریباً 40% زیادہ ہوتی ہے۔ اگر لائبریری پیر سے جمعہ تک کھلی رہتی ہے تو وہ ایک ہفتے میں کتنی کتابیں ادھار لیتا ہے؟",
+      "prompt_hash": "015a53d5c79c3e4ccf8cc69aa7ab083700847f75493216ceee973c7d64f26555",
+      "record_id": "9d0ac1efabb828ad6333e8cf3010582c1a7c19bd90ccd0162c29eef4446502ba"
+    },
+    {
+      "question_id": "gsm8k-train-1d58b8a27f49",
+      "strategy": "random",
+      "condition": "E-E-E",
+      "shot_count": 2,
+      "seed": 44,
+      "demo_ids": [
+        "gsm8k-train-34f9511baf56",
+        "gsm8k-train-73429d562982"
+      ],
+      "prompt": "Solve the target question with a complete worked solution in the target question language. Follow the solved demonstrations. End with a single final numerical answer on the last line using the literal marker FINAL_ANSWER: followed by the number.\n\nDemonstration 1\nQuestion: A family of 12 monkeys collected 10 piles of bananas. 6 piles had 9 hands, with each hand having 14 bananas, while the remaining piles had 12 hands, with each hand having 9 bananas. How many bananas would each monkey get if they divide the bananas equally amongst themselves?\nWorked solution: Count bananas in the first six piles. 6*9*14 = 756 bananas. Count bananas in the remaining four piles. (10-6)*12*9 = 432 bananas. Divide the total equally among 12 monkeys. (756+432)/12 = 99 bananas/monkey.\nFINAL_ANSWER: 99\n\nDemonstration 2\nQuestion: Natalia sold clips to 48 of her friends in April, and then she sold half as many clips in May. How many clips did Natalia sell altogether in April and May?\nWorked solution: May sales are half of April's 48 clips. 48/2 = 24 clips. Add April and May sales. 48+24 = 72 clips.\nFINAL_ANSWER: 72\n\nTarget question\nQuestion: Krystian works in the library. He borrows an average of 40 books every day. Every Friday, his number of borrowed books is about 40% higher than the daily average. How many books does he borrow in a week if the library is open from Monday to Friday?",
+      "prompt_hash": "55518ce8697b3cbc4c56997f334555eb428790010a1cc4e2a8d81c72641ce5bc",
+      "record_id": "6b6198d006f1091ff4db427b2e5bd1fa939fb6dd2cabaabd3803d381e68b51ce"
+    }
+  ],
+  "mode": "live",
+  "data_kind": "real"
+}

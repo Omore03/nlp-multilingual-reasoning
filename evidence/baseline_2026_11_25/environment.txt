@@ -1,0 +1,15 @@
+Bundle built: 2026-11-25 20:14 PKT
+Machine: MacBook Air, Apple M5, 16 GB RAM, macOS 26.6 (arm64)
+Python (repo .venv): 3.13.18   [repo docs recommend 3.12; 3.13 was used]
+Ollama: 0.40.18 (Homebrew), Metal GPU backend
+Tectonic: 0.17.0 (Homebrew)
+git: 2.54.0
+Repository: https://github.com/Omore03/nlp-multilingual-reasoning  base commit 01f52473ba2966d68f0b6a561ca348d9006d9484 (main, up to date at bundling)
+Local branch: local/ollama-gemma3-1b (uncommitted, unpushed; push URL disabled); parser version 2 pending approval
+
+Ollama models (name, full digest, size, quantisation, parameters):
+  gemma3:4b 68ceab7e468a31c988b44d5a4984a0e21f58c4f7158c6ce29c1804babac38df7 3350272403 bytes Q4_K_M 3.9B parent dhiltgen/gemma3:4b-it-q4_K_M-llamacpp
+  gemma3:1b 97558784bdc9175075a72655bf360b15da17df6b3b9e5182af9f8c0c8e58ba7c 806067407 bytes Q4_K_M 999.89M parent dhiltgen/gemma3:1b-it-q4_K_M-llamacpp
+
+Hosted model (original arm): gemma-4-31b-it via Google AI Studio REST (free tier), per configs/pilot.yaml
+Encoder (selection, not re-run today): sentence-transformers/paraphrase-multilingual-mpnet-base-v2 @ 4328cf26390c98c5e3c738b4460a05b95f4911f5

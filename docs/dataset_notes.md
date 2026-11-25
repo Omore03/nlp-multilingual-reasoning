@@ -21,3 +21,7 @@ The integration checks 30 unique, disjoint IDs across approved and excluded reco
 Human review is reported evidence, not an independent language-quality certification by this validator. Source ambiguities remain relevant, including Natalia's friends/clips wording and Krystian's daily-average wording. The pinned original training file has now been checked: all 30 questions match (25 exactly, five after collapsing whitespace), and all 30 numeric keys agree. See `data/review/source_verification.json`. This comparison does not certify full worked-solution or Urdu-text identity.
 
 GSM8K source revision: `3101c7d5072418e28b9008a6636bde82a006892c`. Preserve [the source notes](dataset_sources.md) and `data/LICENSE_GSM8K.txt`. No MGSM evaluation records were acquired or used in this pilot.
+
+## Frozen language limitation, 25 November 2026
+
+All 18 approved `reasoning_ur` fields contain English unit words or abbreviations (for example clips, pages or USD). U-U-U means the nominal Urdu fields, not strictly Urdu-only text. No frozen text was changed. Demos 4/5 remain excluded. Any later translation correction needs human review, new data/selection fingerprints and a separately identified run. The duplicate screen found no equal normalized English question across the 18-demo/10-dev split; the maximum character-sequence similarity was 0.4475. This heuristic cannot certify semantic nonduplication.

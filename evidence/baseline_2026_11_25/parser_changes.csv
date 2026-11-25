@@ -1,0 +1,335 @@
+run,record_id,question_id,condition,strategy,old_status,old_prediction,new_status,new_prediction,gold,gained,lost,cause,response,working_review,reviewer
+4b_two_shot,d0641a00b5733b6ca2a43d4e54b0af79ee7b48354b01c3457cf78f64dfb882f9,gsm8k-train-111d72db39e6,U-E-E,similarity,ambiguous,,ok,90,90,True,False,generic restatement,"Here's the solution to the question in Urdu, followed by the final answer:
+
+**Question:** ہانس نے ایک ہوٹل میں کمرہ بک کیا۔ ہوٹل کی 10 منزلیں ہیں اور ہر منزل پر 10 ایک جیسے کمرے ہیں۔ ایک حادثے کی وجہ سے آخری منزل مہمانوں کے لیے دستیاب نہیں۔ اگر کوئی اور مہمان نہیں تو ہانس کو کتنے مختلف کمروں میں ٹھہرایا جا سکتا ہے؟
+
+**Worked solution:**
+
+ہانس 10 منزلوں کے ہوٹل میں رہ سکتا ہے، لیکن آخری منزل بند ہے۔  اس لیے، ہانس صرف 9 منزلوں میں رہ سکتا ہے۔
+
+ہر منزل پر 10 کمرے ہیں،  اس لیے ہر منزل میں ہانس کو 10 مختلف کمروں میں ٹھہرایا جا سکتا ہے۔
+
+مجموعی طور پر، ہانس کو 9 منزلیں * 10 کمرے/منزل = 90 مختلف کمروں میں ٹھہرایا جا سکتا ہے۔
+
+FINAL_ANSWER: 90",,
+4b_two_shot,09cc3bc363182d74fb880bf5102d3bf4b34c8ca60ce211571cfc43ae3d23b657,gsm8k-train-1d58b8a27f49,U-E-E,random,ambiguous,,ok,176,216,False,False,generic restatement,"Here's the solution to the question in Urdu, followed by the final answer:
+
+**Question:** کرسٹیان لائبریری میں کام کرتا ہے۔ وہ روزانہ اوسطاً 40 کتابیں ادھار لیتا ہے۔ ہر جمعے کو ادھار لی گئی کتابوں کی تعداد روزانہ اوسط سے تقریباً 40% زیادہ ہوتی ہے۔ اگر لائبریری پیر سے جمعہ تک کھلی رہتی ہے تو وہ ایک ہفتے میں کتنی کتابیں ادھار لیتا ہے؟
+
+**Worked solution:**
+
+*   **روزانہ اوسط کتابیں:** کرسٹیان روزانہ اوسطاً 40 کتابیں ادھار لیتا ہے۔
+*   **پیر سے جمعہ تک روزانہ کتابیں:** پیر سے جمعہ تک لائبریری 5 دن کھلی رہتی ہے۔  اگر کرسٹیان ہر روز 40 کتابیں لیتا ہے تو 5 دنوں میں وہ 5 * 40 = 200 کتابیں لیتا۔
+*   **جمعے کو اضافی کتابیں:** جمعے کو وہ اوسط سے 40% زیادہ کتابیں لیتا ہے، یعنی 40 + (40 * 0.40) = 40 + 16 = 56 کتابیں لیتا ہے۔
+*   **اعداد جمع:** ایک ہفتے میں، کرسٹیان پیر سے لے کر جمعے تک کتابیں لیتا ہے۔  پیر سے لے کر جمعے تک 5 دن ہیں۔
+    *   پیر، منگل، بدھ، جمعہ: 40 کتابیں
+    *   جمعہ: 56 کتابیں
+    *   جمعیت: 40 + 40 + 40 + 56 = 176 کتابیں
+
+**FINAL_ANSWER: 176**",,
+4b_two_shot,22526100bd47d6c181b847788a5353d4fd70f8d919a32d9bcfc69b678f33c294,gsm8k-train-1d58b8a27f49,U-E-E,similarity,ambiguous,,ok,256,216,False,False,generic restatement,"Here's the solution to the question in Urdu, followed by the final answer:
+
+**Question:** کرسٹیان لائبریری میں کام کرتا ہے۔ وہ روزانہ اوسطاً 40 کتابیں ادھار لیتا ہے۔ ہر جمعے کو ادھار لی گئی کتابوں کی تعداد روزانہ اوسط سے تقریباً 40% زیادہ ہوتی ہے۔ اگر لائبریری پیر سے جمعہ تک کھلی رہتی ہے تو وہ ایک ہفتے میں کتنی کتابیں ادھار لیتا ہے؟
+
+**Worked solution:**
+
+*   **روزانہ اوسط کتابیں:** کرسٹیان روزانہ اوسطاً 40 کتابیں ادھار لیتا ہے۔
+*   **جمعے کو زیادہ کتابیں:** جمعے کو، وہ اوسط سے 40% زیادہ کتابیں لیتا ہے.  40% کا 40 تقسیم 100 = 16 کتابیں زیادہ.  اس لیے جمعے کو وہ 40 + 16 = 56 کتابیں لیتا ہے۔
+*   **پیر سے বৃহস্পতিবার کتابیں:** پیر سے বৃহস্পতিবার (پنج روز) وہ اوسطاً 40 کتابیں لیتا ہے۔  40 * 5 = 200 کتابیں.
+*   **جمعہ کو کتابیں:** جمعے کو وہ 56 کتابیں لیتا ہے۔
+*   **ایک ہفتے میں کتابیں:**  ایک ہفتے میں وہ 200 + 56 = 256 کتابیں لیتا ہے۔
+
+FINAL_ANSWER: 256",,
+4b_two_shot,b7291b752b9d30f3b3c5217c1a8898233b2cc0610a15f7e7c0de8e6691926167,gsm8k-train-4c46af17e4af,U-E-E,similarity,ambiguous,,ok,5,4,False,False,generic restatement,"Here's the solution to the problem in Urdu, followed by the final answer:
+
+**Problem:** مینی کے پاس سالگرہ کی 3 کوکی پائیاں تھیں جو وہ اپنے 24 ہم جماعتوں اور استاد مسٹر کیتھ کے ساتھ بانٹنا چاہتا تھا۔ ہر پائی کو 10 سلائسوں میں کاٹا گیا۔ اگر مینی، ہر ہم جماعت اور استاد نے 1 سلائس کھایا تو کتنے سلائس بچے؟
+
+**Solution:**
+
+1. **Total People:** مینی + ہم جماعت = 1 + 24 = 25 افراد
+2. **Total Slices from Puffs:** 3 کوکی پائیاں * 10 سلائس/پائی = 30 سلائس
+3. **Total Slices Eaten:** 25 افراد * 1 سلائس/افراد = 25 سلائس
+4. **Slices Remaining:** 30 سلائس - 25 سلائس = 5 سلائس
+
+FINAL_ANSWER: 5",,
+4b_two_shot,2cd37e737040cf1f074cffcf4c82508983debbb06c0ce65c48b667bd78498cae,gsm8k-train-7ed300676787,U-E-E,similarity,ambiguous,,ok,600,600,True,False,generic restatement,"Here's the solution to the question in Urdu, followed by the final answer:
+
+سوال: جان کی گائے کا وزن 400 پاؤنڈ ہے۔ وزن بڑھ کر ابتدائی وزن سے 1.5 گنا ہو گیا۔ وہ گائے کو $3 فی پاؤنڈ میں بیچ سکتا ہے۔ وزن بڑھنے کے بعد اس کی قیمت کتنی زیادہ ہو گئی؟
+
+**حل:**
+
+1.  **ابتدائی وزن سے وزن میں اضافہ:** گائے کا ابتدائی وزن 400 پاؤنڈ ہے اور یہ 1.5 گنا ہو گیا، یعنی 400 * 1.5 = 600 پاؤنڈ۔
+
+2.  **وزن میں اضافہ:** وزن میں اضافہ = 600 - 400 = 200 پاؤنڈ۔
+
+3.  **وزن بڑھنے کے بعد کی قیمت:** وزن بڑھنے کے بعد گائے کا وزن 600 پاؤنڈ ہے اور جان اسے $3 فی پاؤنڈ میں بیچ سکتا ہے۔  اس لیے قیمت = 600 * $3 = $1800۔
+
+4.  **قیمت میں اضافہ:** وزن بڑھنے کے بعد کی قیمت - ابتدائی قیمت = $1800 - (400 * $3) = $1800 - $1200 = $600۔
+
+**FINAL_ANSWER: 600**",,
+4b_two_shot,9423554a71a697658bb9128b6c56571b8b8cf8b29c235c919877fe4bcbb6ff9e,gsm8k-train-f8ac079613e1,U-E-E,random,ambiguous,,ok,85,85,True,False,generic restatement,"Here's the solution to the question in Urdu, followed by the final answer:
+
+**Question:** مقابلے سے 4 ماہ پہلے ایک باکسر کا وزن 97 کلوگرام ہے۔ وہ مقابلے کے دن تک ہر ماہ 3 کلوگرام وزن کم کرتا ہے۔ مقابلے کے دن اس کا وزن کتنا ہوگا؟
+
+**Worked solution:**
+
+1.  **ابتدائی وزن:** باکسر کا ابتدائی وزن 97 کلوگرام ہے۔
+2.  **وزن کم کرنے کی مدت:** مقابلے کے دن تک 4 ماہ ہیں۔
+3.  **ہر ماہ وزن میں کمی:** ہر ماہ 3 کلوگرام۔
+4.  **کل وزن میں کمی:** 4 ماہ * 3 کلوگرام/مہ = 12 کلوگرام۔
+5.  **مقابلے کے دن کا وزن:** ابتدائی وزن - کل وزن میں کمی = 97 کلوگرام - 12 کلوگرام = 85 کلوگرام۔
+
+FINAL_ANSWER: 85",,
+4b_zero_shot,a2e671a34e00f0bcdfd8017c0f701cff559d5e71c6f8a875bb10167ab0c478c5,gsm8k-train-19b0d3572fbe,E-E-E,none,missing,,ok,70,70,True,False,missing colon,"Okay, let's solve this problem step by step in English.
+
+First, we need to find out how many years James' partner has been teaching. The partner has been teaching for 10 years less than James, who has been teaching for 40 years.  So, we subtract 10 from James' teaching years:
+
+40 years - 10 years = 30 years
+
+Now, we need to find the combined experience of James and his partner. We add their individual teaching years together:
+
+40 years (James) + 30 years (Partner) = 70 years
+
+Therefore, their combined experience is 70 years.
+
+FINAL_ANSWER 70",,
+4b_zero_shot,c34d1ec570a644f8ed895e8626c7941a222fa43cf4f3f4f5d6248d0b0f26c2ff,gsm8k-train-1d58b8a27f49,E-E-E,none,missing,,ok,256,216,False,False,missing colon,"Okay, let's solve this problem step by step in Spanish.
+
+**Entendiendo el problema:**
+
+Krystian trabaja en la biblioteca y presta un promedio de 40 libros cada día.  Pero, todos los viernes, el número de libros que presta es un 40% más que el promedio diario. Queremos saber cuántos libros presta en una semana, considerando que la biblioteca está abierta de lunes a viernes.
+
+**Pasos para la solución:**
+
+1. **Libros prestados los viernes:**  El número de libros prestados los viernes es un 40% más que el promedio diario de 40 libros.  Calculamos este 40% de 40:
+   * 40% de 40 = (40/100) * 40 = 0.40 * 40 = 16 libros.
+   * Entonces, los viernes presta 40 + 16 = 56 libros.
+
+2. **Días de la semana que cuenta:** La biblioteca está abierta de lunes a viernes, lo que son 5 días.
+
+3. **Libros prestados en los días de semana:** Krystian presta un promedio de 40 libros por día, y esto ocurre durante 5 días de la semana.  Por lo tanto, presta:
+   * 40 libros/día * 5 días = 200 libros.
+
+4. **Libros prestados en total en la semana:**  Krystian presta 56 libros los viernes y 200 libros en los otros 5 días de la semana.  Sumamos estos dos totales:
+   * 56 + 200 = 256 libros.
+
+FINAL_ANSWER 256",,
+4b_zero_shot,884917ee1e494611203c77c0d89d2538517661f3418e58f9050c79c19069c297,gsm8k-train-1d58b8a27f49,U-U-E,none,ambiguous,,ok,176,216,False,False,generic restatement,"Here's the solution to the problem in Urdu, followed by the final answer:
+
+**سوال:** کرسٹیان لائبریری میں کام کرتا ہے۔ وہ روزانہ اوسطاً 40 کتابیں ادھار لیتا ہے۔ ہر جمعے کو ادھار لی گئی کتابوں کی تعداد روزانہ اوسط سے تقریباً 40% زیادہ ہوتی ہے۔ اگر لائبریری پیر سے جمعہ تک کھلی رہتی ہے تو وہ ایک ہفتے میں کتنی کتابیں ادھار لیتا ہے؟
+
+**حل:**
+
+*   پیر، mart, سَری، اور جمعہ میں کرسٹیان اوسطاً 40 کتابیں ادھار لیتا ہے۔
+*   جمعے کو، وہ اوسط سے 40% زیادہ کتابیں ادھار لیتا ہے۔  یعنی جمعے میں وہ 40 + (40% of 40) = 40 + 16 = 56 کتابیں ادھار لیتا ہے۔
+*   پیر، mart, سَری، اور mart میں وہ 40 کتابیں ادھار لیتا ہے۔
+*   جمعہ میں وہ 56 کتابیں ادھار لیتا ہے۔
+*   اُیک ہفتے میں، وہ (40 + 40 + 40 + 56) = 176 کتابیں ادھار لیتا ہے۔
+
+**جواب:** کرسٹیان ایک ہفتے میں 176 کتابیں ادھار لیتا ہے۔
+
+FINAL_ANSWER: 176",,
+4b_zero_shot,ea8f4e4019f1bd84fa3d054a46e46c19263cd9072beec47e97ca13c2401fb479,gsm8k-train-4c46af17e4af,E-E-E,none,missing,,ok,5,4,False,False,missing colon,"Okay, let's solve this problem step by step in English.
+
+First, we need to find the total number of people sharing the cookies. Manny has 24 classmates and Mr. Keith, so the total number of people is 24 + 1 = 25.
+
+Next, we need to find the total number of slices of cookies. Manny had 3 pies, and each pie was cut into 10 slices, so the total number of slices is 3 * 10 = 30 slices.
+
+Since each of the 25 people had 1 slice, the number of slices eaten is 25 * 1 = 25 slices.
+
+Finally, we need to find the number of slices left. We subtract the number of slices eaten from the total number of slices: 30 - 25 = 5 slices.
+
+FINAL_ANSWER 5",,
+4b_zero_shot,100060ade1f5a67f2c1eea89071469581e1ed4bd7aec30530fc5ded1cfe0161f,gsm8k-train-4e78856e0b87,E-E-E,none,missing,,ok,6,6,True,False,missing colon,"Okay, let's solve this problem step-by-step in English.
+
+Peter bought a soda that cost $0.25 per ounce. He started with $2.00 and left with $0.50.  We need to figure out how much he spent on the soda.
+
+The amount of money he left is the difference between the money he started with and the money he spent on the soda.
+
+Money spent = Starting money - Money left
+Money spent = $2.00 - $0.50
+Money spent = $1.50
+
+Now we know that the soda cost $1.50.  We also know that the soda costs $0.25 per ounce.  To find the number of ounces, we'll divide the total cost by the price per ounce.
+
+Number of ounces = Total cost / Price per ounce
+Number of ounces = $1.50 / $0.25
+
+To make the division easier, we can multiply both the numerator and denominator by 100:
+Number of ounces = 150 / 25
+
+Now we can divide:
+Number of ounces = 6
+
+Therefore, Peter bought 6 ounces of soda.
+
+FINAL_ANSWER 6",,
+4b_zero_shot,33999fc6e9b2444b7c4ffacce3f32a30828abacf2cc21d7b9df210983d241794,gsm8k-train-4e78856e0b87,U-U-E,none,ambiguous,,ok,6,6,True,False,generic restatement,"Here's the solution to the problem in Urdu, followed by the final answer:
+
+**Problem:** پیٹر سوڈا خریدنے دکان گیا۔ سوڈے کی قیمت $.25 فی اونس ہے۔ وہ اپنے ساتھ $2 لایا اور اس کے پاس جاتے وقت $.50 بچے۔ اس نے کتنے اونس سوڈا خریدا؟
+
+**Solution:**
+
+1. **بچائے گئے پیسے کو شروع میں پیسے سے کم کریں:** پیٹر نے اپنے پاس جاتے وقت $0.50 بچائے، جو اس کے شروع میں $2 سے کم کر دیے گئے۔  اس لیے، سوڈا خریدنے کے لیے اس کے پاس کا ابتدائی پیسہ = $2 - $0.50 = $1.50
+
+2. **سوڈا کی قیمت کو اونس میں تقسیم کریں:** سوڈا کی قیمت $0.25 فی اونس ہے۔  اس لیے، وہ $1.50 سے کتنے اونس سوڈا خرید سکتا ہے، یہ $0.25 سے تقسیم کر کے معلوم کیا جا سکتا ہے۔
+
+3. **تقسیم کریں:** $1.50 / $0.25 = 6
+
+**Therefore, پیٹر نے 6 اونس سوڈا خریدا۔**
+
+FINAL_ANSWER: 6",,
+4b_zero_shot,6cd07b6b353ef0f76269d5a9c3c41abd1de101c1e2a009519ed55d3680db2825,gsm8k-train-7ed300676787,E-E-E,none,missing,,ok,600,600,True,False,missing colon,"Okay, let's solve this problem step-by-step in English.
+
+First, we need to calculate the cow's new weight after it increased. The cow's starting weight was 400 pounds, and it increased to 1.5 times that amount.
+
+New weight = 1.5 * 400 pounds = 600 pounds
+
+Next, we need to find out how much more the cow weighs now compared to its starting weight.
+
+Weight increase = New weight - Starting weight = 600 pounds - 400 pounds = 200 pounds
+
+Now, we know the cow sells for $3 per pound. We need to calculate the total value of the cow at its new weight.
+
+Total value = New weight * Price per pound = 600 pounds * $3/pound = $1800
+
+Finally, we need to find out how much more the cow is worth after gaining the weight. This is the difference between the total value at the new weight and the original value of the cow.
+
+Original value = Starting weight * Price per pound = 400 pounds * $3/pound = $1200
+
+Difference in value = Total value - Original value = $1800 - $1200 = $600
+
+Therefore, the cow is worth $600 more after gaining the weight.
+
+FINAL_ANSWER 600",,
+4b_zero_shot,91b5c7d896ae96401bf7eb86dace2b6057b5f412b704c1f81ade29c4ddb5340d,gsm8k-train-7ed300676787,U-U-E,none,ambiguous,,ok,600,600,True,False,generic restatement,"Here's the solution to the problem in Urdu, followed by the final answer:
+
+**Problem:** جان کی گائے کا وزن 400 پاؤنڈ ہے۔ وزن بڑھ کر ابتدائی وزن سے 1.5 گنا ہو گیا۔ وہ گائے کو $3 فی پاؤنڈ میں بیچ سکتا ہے۔ وزن بڑھنے کے بعد اس کی قیمت کتنی زیادہ ہو گئی؟
+
+**Solution:**
+
+1. **ابتدائی وزن:** جان کی گائے کا ابتدائی وزن 400 پاؤنڈ ہے۔
+
+2. **وزن میں اضافہ:** وزن 1.5 گنا ہو گیا ہے، یعنی 400 پاؤنڈ * 1.5 = 600 پاؤنڈ۔
+
+3. **وزن بڑھنے کے بعد کا وزن:** گائے کا وزن بڑھ کر 600 پاؤنڈ ہو گیا۔
+
+4. **ابتدائی قیمت:** گائے کی ابتدائی قیمت 400 پاؤنڈ * $3/پاؤنڈ = $1200 تھی۔
+
+5. **وزن بڑھنے کے بعد کی قیمت:** گائے کی وزن بڑھنے کے بعد کی قیمت 600 پاؤنڈ * $3/پاؤنڈ = $1800 ہے۔
+
+6. **قیمت میں اضافہ:** قیمت میں اضافہ = $1800 - $1200 = $600 ہے۔
+
+**Final Answer:**
+FINAL_ANSWER: 600",,
+4b_zero_shot,0e72c88e3f4914eff5184b13da60e666bb86dccba8c83e962e7d7179e5293299,gsm8k-train-c7b34b999ba8,E-E-E,none,missing,,ok,700,700,True,False,missing colon,"Okay, let's solve this problem step-by-step in English.
+
+**Understanding the Problem:**
+
+Irene earns a base amount for working 40 hours and then receives extra pay for any hours worked beyond that (overtime). We need to calculate her total income when she worked 50 hours last week.
+
+**Step 1: Calculate the base earnings for 40 hours.**
+
+Irene earns $500 for 40 hours.
+
+**Step 2: Calculate the overtime hours.**
+
+She worked 50 hours - 40 hours = 10 hours of overtime.
+
+**Step 3: Calculate the earnings from overtime.**
+
+She gets $20 for every hour of overtime, so for 10 hours, she earns 10 hours * $20/hour = $200.
+
+**Step 4: Calculate the total income.**
+
+Her total income is the base earnings plus the overtime earnings: $500 + $200 = $700.
+
+FINAL_ANSWER 700",,
+4b_zero_shot,2a3341fed413a14c05440422199013f5194bd7cdf93926321f0e2d7f53f57ca8,gsm8k-train-c7b34b999ba8,U-U-E,none,ambiguous,,ok,700,700,True,False,generic restatement,"Here's the solution to the problem in Urdu, followed by the final answer:
+
+**سوال:** ایرین کو ہفته‌میں 40 گھنٹه‌که‌کارئه‌که‌تن $500 ملتے‌هه‌ن، وه‌ر هر اضافه‌ي گھنٹه‌که‌تن مزید $20 ملتے‌هه‌ن. اگر اسه‌که‌سته‌پسته‌وه‌که‌ت 50 گھنٹه‌کارئه‌که‌تن کړي، تو اسه‌که‌که‌تن کل آمدني كيږي؟
+
+**حل:**
+
+*   **نه‌رمال کاري آمدني:** ایرین به‌تنهایی 40 گھنٹه‌که‌کارئه‌که‌تن $500 ترلاسه ڪري ٿي.
+*   **هر گھنٹه‌ي اضافه‌ي آمدني:** هر اضافه‌ي گھنٹه‌ي لاءِ، انه‌که‌تن $20 اضافه‌يږي.
+*   **اضافي گھنٹه‌ҳо:** اسه‌که‌سته‌پسته‌وه‌که‌ت 50 گھنٹه‌کارئه‌که‌تن کړي آهي، ۽ اضافه‌ي گھنٹه‌ҳо 50 - 40 = 10 گھنٹه‌ҳо آهي.
+*   **اضافي آمدني:** 10 اضافه‌ي گھنٹه‌ҳо لاءِ اضافه‌ي آمدني 10 * $20 = $200 آهي.
+*   **کل آمدني:** اسه‌که‌که‌تن کل آمدني نه‌رمال کاري آمدني ۽ اضافه‌ي آمدني جو جمع آهي، ڇاڻڪه‌ $500 + $200 = $700.
+
+**پاسپردي:** $700
+
+FINAL_ANSWER: 700",,
+4b_zero_shot,cbc53907b762a055241dafbdbbaea076ad3ea932ac7b7bf3cdf77583715a9c6d,gsm8k-train-c7da26a5fbd9,E-E-E,none,missing,,ok,258,258,True,False,missing colon,"Okay, let's solve this problem step by step in English.
+
+First, we need to find out how many geckos Brandon sold the year before last year.  He sold twice the number he sold last year, and last year he sold 86 geckos.
+
+So, the number of geckos he sold the year before is 2 * 86 = 172.
+
+Now, we need to find the total number of geckos he sold in the last two years. We add the number of geckos he sold last year (86) and the number he sold the year before (172).
+
+Total geckos = 86 + 172 = 258
+
+Therefore, Brandon has sold 258 geckos in the last two years.
+
+FINAL_ANSWER 258",,
+4b_zero_shot,bb77cb0116337feb94ca3b9cb4bcdc1c138fee8ee4ff4ffb715d5b846c18e703,gsm8k-train-c7da26a5fbd9,U-U-E,none,ambiguous,,ok,258,258,True,False,generic restatement,"Here's the solution to the problem in Urdu, followed by the final answer:
+
+**Problem:** برینڈن نے پچھلے سال 86 گیکو بیچے۔ اس سے پچھلے سال اس نے اس تعداد سے دگنے گیکو بیچے۔ ان دو برسوں میں اس نے کل کتنے گیکو بیچے؟
+
+**Solution:**
+
+1.  **پچھلے سال اس نے دگنے گیکو بیچے:** برینڈن نے پچھلے سال 86 گیکو بیچے، اس سے دگنے یعنی 86 * 2 = 172 گیکو بیچے۔
+
+2.  **دو برسوں میں کل گیکو:**  پچھلے سال اس نے 86 گیکو بیچے اور اس سے پہلے والے سال اس نے 172 گیکو بیچے۔  اس لیے دو برسوں میں اس نے کل 86 + 172 = 258 گیکو بیچے۔
+
+FINAL_ANSWER: 258",,
+4b_seed43,dae4b0efcc0090bfb042b6b84c652ecda0e02c226024e8929bf7cdfdf1953872,gsm8k-train-1d58b8a27f49,U-E-E,random,ambiguous,,ok,216,216,True,False,generic restatement,"Here's the solution to the question in Urdu, followed by the final answer:
+
+**Question:** کرسٹیان لائبریری میں کام کرتا ہے۔ وہ روزانہ اوسطاً 40 کتابیں ادھار لیتا ہے۔ ہر جمعے کو ادھار لی گئی کتابوں کی تعداد روزانہ اوسط سے تقریباً 40% زیادہ ہوتی ہے۔ اگر لائبریری پیر سے جمعہ تک کھلی رہتی ہے تو وہ ایک ہفتے میں کتنی کتابیں ادھار لیتا ہے؟
+
+**Worked solution:**
+
+*   **Normal Daily Reading:** کرسٹیان پیر سے جمعہ تک، روزانہ 40 کتابیں ادھار لیتا ہے۔
+*   **Friday Increase:** جمعے کو، وہ اوسط سے 40% زیادہ کتابیں لیتا ہے۔ یعنی 40 کی 40% = 16 کتابیں زیادہ۔
+*   **Friday Reading:** جمعے کو وہ 40 + 16 = 56 کتابیں لیتا ہے۔
+*   **Other Days Reading:** پیر سے قرار روز (Thursday) تک، وہ روزانہ 40 کتابیں لیتا ہے۔  یعنی 4 روز میں وہ 4 * 40 = 160 کتابیں لیتا ہے۔
+*   **Total Weekly Reading:**  ایک ہفتے میں وہ کتابیں پڑھتا ہے: 160 (پیر سے قرار روز) + 56 (جمعہ) = 216 کتابیں.
+
+FINAL_ANSWER: 216",,
+4b_seed44,292e82677903f4ef100d6dbb6400e4795a0ebe0d1b1959ff19fc0ed7e5affdb9,gsm8k-train-111d72db39e6,U-E-E,random,ambiguous,,ok,90,90,True,False,generic restatement,"Here's the solution to the question in Urdu, followed by the final answer:
+
+**Question:** ہانس نے ایک ہوٹل میں کمرہ بک کیا۔ ہوٹل کی 10 منزلیں ہیں اور ہر منزل پر 10 ایک جیسے کمرے ہیں۔ ایک حادثے کی وجہ سے آخری منزل مہمانوں کے لیے دستیاب نہیں۔ اگر کوئی اور مہمان نہیں تو ہانس کو کتنے مختلف کمروں میں ٹھہرایا جا سکتا ہے؟
+
+**Worked solution:**
+
+ہانس 9 منزلیں استعمال کر سکتا ہے (1 سے 9 تک) کیونکہ آخری منزل دستیاب نہیں ہے۔
+
+ہر منزل پر 10 کمرے ہیں، اس لیے 9 منزلیں * 10 کمرے/منزل = 90 کمرے ہیں۔
+
+ہانس کو 90 مختلف کمروں میں ٹھہرایا جا سکتا ہے۔
+
+FINAL_ANSWER: 90",,
+4b_seed44,9d0ac1efabb828ad6333e8cf3010582c1a7c19bd90ccd0162c29eef4446502ba,gsm8k-train-1d58b8a27f49,U-E-E,random,ambiguous,,ok,296,216,False,False,generic restatement,"Here's the solution to the question in Urdu, followed by the final answer:
+
+**Question:** کرسٹیان لائبریری میں کام کرتا ہے۔ وہ روزانہ اوسطاً 40 کتابیں ادھار لیتا ہے۔ ہر جمعے کو ادھار لی گئی کتابوں کی تعداد روزانہ اوسط سے تقریباً 40% زیادہ ہوتی ہے۔ اگر لائبریری پیر سے جمعہ تک کھلی رہتی ہے تو وہ ایک ہفتے میں کتنی کتابیں ادھار لیتا ہے؟
+
+**Worked solution:**
+
+*   **روزانہ اوسط کتابیں:** کرسٹیان روزانہ اوسطاً 40 کتابیں ادھار لیتا ہے۔
+*   **پیر سے جمعہ تک روزانہ کتابیں:** پیر سے جمعہ تک لائبریری 6 دن کھلی رہتی ہے۔  اگر کرسٹیان ہر روز 40 کتابیں لیتا ہے تو 6 دن میں وہ 6 * 40 = 240 کتابیں لیتا۔
+*   **جمعے کو اضافی کتابیں:** جمعے کو کرسٹیان اوسط سے 40% زیادہ کتابیں لیتا ہے۔  40% کی مقدار 40 * 0.40 = 16 ہے۔  اس لیے جمعے کو وہ 40 + 16 = 56 کتابیں لیتا ہے۔
+*   **ایک ہفتے میں کل کتابیں:** پیر سے جمعہ تک کل کتابیں = (پیر سے جمعہ تک) + (جمعے کو اضافی کتابیں) = 240 + 56 = 296 کتابیں ہیں۔
+
+**FINAL_ANSWER: 296**",,
+4b_seed44,b297d57f26bd5b4f084c19772ea239911b4b81179ef68caff6f2793a9c7585ba,gsm8k-train-4e78856e0b87,U-E-E,random,ambiguous,,ok,6,6,True,False,generic restatement,"Here's the solution to the problem in Urdu, followed by the final answer:
+
+**Problem:** پیٹر سوڈا خریدنے دکان گیا۔ سوڈے کی قیمت $.25 فی اونس ہے۔ وہ اپنے ساتھ $2 لایا اور اس کے پاس جاتے وقت $.50 بچے۔ اس نے کتنے اونس سوڈا خریدا؟
+
+**Worked Solution:**
+
+1. **Calculate the money Peter had after buying soda:** Peter started with $2 and spent $0.50, so he had $2 - $0.50 = $1.50 left.
+
+2. **Calculate the amount of soda he could buy:** The soda costs $0.25 per ounce.  With $1.50, he can buy $1.50 / $0.25 = 6 ounces of soda.
+
+FINAL_ANSWER: 6",,

@@ -1,0 +1,11 @@
+strategy,condition,shot_count,correct,total,accuracy,parse_failures,missing,ambiguous
+random,U-U-U,2,6,10,0.6,0,0,0
+random,U-U-E,2,7,10,0.7,0,0,0
+random,U-E-E,2,9,10,0.9,0,0,0
+random,E-E-E,2,8,10,0.8,0,0,0
+random,ALL,2,30,40,0.75,0,0,0
+ALL,U-U-U,2,6,10,0.6,0,0,0
+ALL,U-U-E,2,7,10,0.7,0,0,0
+ALL,U-E-E,2,9,10,0.9,0,0,0
+ALL,E-E-E,2,8,10,0.8,0,0,0
+ALL,ALL,2,30,40,0.75,0,0,0

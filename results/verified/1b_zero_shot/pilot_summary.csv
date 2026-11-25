@@ -1,0 +1,9 @@
+strategy,condition,shot_count,correct,total,accuracy,parse_failures,missing,ambiguous
+none,U-U-U,0,1,10,0.1,6,6,0
+none,U-U-E,0,2,10,0.2,5,4,1
+none,E-E-E,0,4,10,0.4,0,0,0
+none,ALL,0,7,30,0.2333,11,10,1
+ALL,U-U-U,0,1,10,0.1,6,6,0
+ALL,U-U-E,0,2,10,0.2,5,4,1
+ALL,E-E-E,0,4,10,0.4,0,0,0
+ALL,ALL,0,7,30,0.2333,11,10,1

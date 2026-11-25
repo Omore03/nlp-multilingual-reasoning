@@ -1,30 +1,28 @@
-# Submission checklist
+# Baseline review checklist
 
-Updated 25 November 2026. The TA's 23 November deadline has passed. These files do not establish that the team submitted on time; confirm submission and meeting arrangements directly.
+Updated 25 November 2026. The latest fully visible TA notice gives 24 November, 11:59 PM; a newer message is partly obscured. Confirm the latest deadline, upload status and meeting slot with the team.
 
-## Intermediate deliverable
+## Completed locally
 
-- [x] Reviewed 18-demo/10-dev data; two rejected demos excluded.
-- [x] Random baseline and real semantic-similarity implementation.
-- [x] Four prompt-language conditions, shared model and fixed settings.
-- [x] Saad's numerical evaluator and manifest checks.
-- [x] Genuine encoder cache, regenerated selections and source/license evidence.
-- [x] Clear design for later diversity/complexity methods.
-- [x] IEEE report and source with all five required sections; two rendered pages including references.
-- [x] Reconcile 80/80 successful real configurations; zero missing records and parse failures.
-- [x] Check the final IEEE PDF and tables against the actual outputs.
-- [ ] Upload through the TA's required channel.
-- [ ] Confirm whether the 10-question pilot meets the TA's expectations.
-- [ ] Attend the progress meeting at its announced time.
+- [x] Integrate Rayyan's 35-file patch on an isolated feature branch; preserve main and all unrelated files.
+- [x] Keep 18 approved demos, ten dev questions and two exclusions unchanged.
+- [x] Audit selection, prompts, seed handling, model metadata and inference controls.
+- [x] Independently reconcile all seven completed journals and 380 scored records.
+- [x] Reproduce both inherited parser versions; inspect all 15 numerical gains and seven newly parsed wrong answers.
+- [x] Record current parser provenance and preserve raw/pre-fix evidence.
+- [x] Run 285 tests, all 14 offline config previews, data validation and mock/resume.
+- [x] Prepare 32 draft error tags and a consolidated IEEE report for team review.
 
-A larger sample or additional model is a separate scope decision. The current pilot supplies preliminary implementation evidence, not final benchmark conclusions.
+## Remaining decisions/actions
 
-## Final semester work
+- [ ] D1: team agrees the primary model (4B recommended; 31B/1B reference arms retained).
+- [ ] D2: Saad/team ratify scoring completed cutoff outputs as returned.
+- [ ] D3: Saad/team approve the parser policy; draft numerical audit is not human sign-off.
+- [ ] D6: team approves the consolidated report/extra arms and each member understands their work.
+- [ ] Saad/Rayyan review the draft error tags; Hussain reviews language issues before any later data change.
+- [ ] Ammar approves any remote push, PR or main integration.
+- [ ] Team submits via the required channel, confirms pilot sufficiency, and attends the meeting.
 
-- [ ] Correct and re-review the two excluded translations before reuse.
-- [ ] Agree and run a larger reviewed development experiment.
-- [ ] Implement and evaluate the deferred selectors and four-shot conditions.
-- [ ] Review permissions and translations for the separate MGSM benchmark.
-- [ ] Complete held-out evaluation, paired analysis and the final report.
+Optional reference: hosted 31B zero-shot is blocked by HTTP503 capacity (0/30 responses). Local smoke was not repeated on this Mac because Ollama is absent. Neither is represented as completed.
 
-The main README records individual contributions. The repository is public as observed on 25 November; no visibility change is part of this integration.
+Dataset expansion (D5), MGSM (D4), diversity/complexity selectors, four-shot and final held-out evaluation remain deferred. No submission, push or merge has occurred.

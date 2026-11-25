@@ -64,7 +64,7 @@ The earlier OpenRouter route returned upstream capacity errors. Its adapter, con
 
 ## Small-model arm: local Gemma 3 1B (25 Nov 2026)
 
-The Gemma 4 31B pilot scored 80/80, a ceiling that hides any strategy or language effect. A second arm reruns the identical plan (same data, frozen selections, all 80 prompts byte-identical, same decoding) with a smaller model from the same family. Only the model changes. Google's API no longer serves Gemma 3, so it runs locally through Ollama on Rayyan's laptop. This is a local branch for team review and is not merged.
+The Gemma 4 31B pilot scored 80/80, a ceiling that hides any strategy or language effect. A second arm reruns the identical plan (same data, frozen selections, all 80 prompts byte-identical, shared numerical decoding settings) with a smaller model. Generation, backend, quantization and model-specific options also differ; this is not a size-only causal comparison. Google's API no longer serves Gemma 3, so it runs locally through Ollama on Rayyan's laptop. This is a local branch for team review and is not merged.
 
 | Setting | Value |
 | --- | --- |
@@ -97,3 +97,11 @@ The 1B arm left Urdu at the floor (U-U-U 0/20), so the decision rule called for 
 ## Seed-variance check for random selection, Gemma 3 4B (25 Nov 2026)
 
 `configs/seedcheck_ollama_gemma3_4b_seed43.yaml` and `..._seed44.yaml` rerun random selection only, with base selection seeds 43 and 44 instead of 42 (all four conditions, 40 calls each). The generation seed stays 42 and everything else is unchanged, so only the random demonstration pairs differ (all 10 pairs change for each seed). These runs use the live random selector `src.selection.select:select_examples`, which reproduces the frozen seed-42 random pairs 10/10; no encoder is involved. The runner now accepts random-only real runs for this purpose. Output: `results/gemma3_4b_seed43/`, `results/gemma3_4b_seed44/`; the seed table is in `docs/model_comparison.md`.
+
+## Current local review status, 25 November 2026
+
+The seven saved runs (380 scored configurations) are independently verified. Gemma 3 4B is a **recommendation pending team agreement**, not an approved replacement for the original model. The local integration machine has neither Ollama nor a running local server; saved digests/runtime metadata were checked, but local inference was not repeated and no model weights were downloaded. Hosted precision is not recorded.
+
+The 31B zero-shot attempt used the existing user-confirmed unbilled Google project and fixed free model. Two terminal HTTP503 entries (six recorded generation attempts, plus a cancelled in-flight call) produced zero successful responses, so the attempt was stopped. The incomplete 0/30 reference arm is not included in accuracy comparisons. No billing changes or paid fallback were used. See the attempt receipt in `evidence/baseline_2026_11_25/`. Google pricing was rechecked at <https://aistudio.google.com/docs/pricing#gemma-4>.
+
+The returned local token totals are below the configured 4096-token window. The saturation check rejects a full returned window; token counts alone do not independently establish that no prompt truncation occurred. Local model defaults not explicitly sent (for example top-k) remain runtime/model defaults, so “every sampling default is overridden” is too broad.

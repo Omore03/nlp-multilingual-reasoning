@@ -1,0 +1,41 @@
+{
+  "raw_records": 40,
+  "unusable_records": 0,
+  "failed_calls": 0,
+  "duplicates_dropped": 0,
+  "conflicting_duplicates": 0,
+  "unknown_question_records": 0,
+  "unique_successful_scored": 40,
+  "expected_configurations": 40,
+  "seeds_seen": [
+    43
+  ],
+  "missing_configurations": [],
+  "unexpected_configurations": [],
+  "unknown_question_ids": [],
+  "contract_problems": [],
+  "totals_balance": true,
+  "run_identities": [
+    "6a25360b9502a47948bc86d2e42c6c7f215a644762c16c80bc8e27bdf06b03e5"
+  ],
+  "model_identities": [
+    "gemma3:4b"
+  ],
+  "research_eligible": true,
+  "evaluation_kind": "real_pilot",
+  "raw_sha256": "d38bee45c2cc1622fa6f1e7220b34ce03b8409fde5895803306741707d473c4e",
+  "parser_version": "2.1-bounded-final-answer-first",
+  "parser_sha256": "3ca82f6792c3740b2b6cf74903a6290fae1ca1fa9def31ea76939c578dad8e01",
+  "parser_markers": [
+    "(?<!\\w)FINAL_ANSWER(?!\\w)\\s*:",
+    "#{4}",
+    "final\\s+answer\\s*(?:is\\b\\s*[:：]?|[:：])",
+    "حتمی\\s+جواب\\s*[:：]",
+    "آخری\\s+جواب\\s*[:：]"
+  ],
+  "manifest_sha256": "6220626c99102e0504f6ffc35ba1b28a13ea1086e68ef0dbfad423532b3f1ce6",
+  "run_id": "6a25360b9502a47948bc86d2e42c6c7f215a644762c16c80bc8e27bdf06b03e5",
+  "malformed_raw_lines": [],
+  "complete": true,
+  "evaluated_sha256": "29b011e030d73feb1a5b23f2727a7fce2fb086571e1ae7c0d536ececca3f48f5"
+}

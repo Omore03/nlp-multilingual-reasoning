@@ -8,6 +8,7 @@ docs/evaluation_plan.md; with 10 questions per cell it is reported, not relied o
 import argparse
 from collections import Counter, defaultdict
 import importlib.util
+import hashlib
 import json
 from math import comb
 from pathlib import Path
@@ -35,10 +36,29 @@ def load_arm(folder, prefix='pilot'):
     rec = json.loads((folder / f'{prefix}_reconciliation.json').read_text())
     if not (rec.get('research_eligible') and rec.get('complete')):
         raise ValueError(f'{folder} is not a complete, manifest-checked real evaluation')
+    for suffix, key in [('raw.jsonl', 'raw_sha256'), ('raw.manifest.json', 'manifest_sha256'),
+                        ('evaluated.jsonl', 'evaluated_sha256')]:
+        target = folder / f'{prefix}_{suffix}'
+        expected = rec.get(key)
+        if expected is None:
+            # Inherited reconciliations predate evaluated hashes; use the verified import ledger.
+            receipt = json.loads((ROOT / 'evidence/baseline_2026_11_25/source_receipt.json').read_text())
+            entry = next((e for e in receipt['runs'].values() if ROOT/e['repo_folder'] == folder), None)
+            expected = entry['files'].get(target.name) if entry else None
+        if expected is None or hashlib.sha256(target.read_bytes()).hexdigest() != expected:
+            raise ValueError(f'{folder}: changed or stale {target.name}; rescore before comparison')
     rows = [json.loads(l) for l in (folder / f'{prefix}_evaluated.jsonl').read_text(encoding='utf-8').splitlines() if l.strip()]
     if len(rows) != rec['unique_successful_scored']:
         raise ValueError(f'{folder}: evaluated rows differ from reconciliation')
     return rows
+
+
+def paired_counts(first, second):
+    a = {r['question_id']: r['correct'] for r in first}
+    b = {r['question_id']: r['correct'] for r in second}
+    if not a or a.keys() != b.keys() or len(a) != len(first) or len(b) != len(second):
+        raise ValueError('Comparison requires unique, matched paired questions')
+    return sum(a[q] and not b[q] for q in a), sum(b[q] and not a[q] for q in a)
 
 
 def cell(rows, strategy, condition):
@@ -51,8 +71,9 @@ def fmt(rows):
 
 def build(arms):
     out = ['# Model-arm comparison: Gemma 4 31B, Gemma 3 4B, Gemma 3 1B', '',
-           'Same 10 dev questions, 18-item pool, frozen selections, prompts and decoding in every two-shot arm; '
-           'only the model changes. Zero-shot arms use the same questions with no demonstrations. '
+           'The main two-shot arms share 10 dev questions, the 18-item pool, frozen selections and prompt text. '
+           'Generation, backend, quantization and model-specific decoding differ, so this is not a controlled size-only experiment. '
+           'Zero-shot arms use the same questions with no demonstrations. '
            'Each cell is correct/10. Built by `scripts/compare_arms.py` from the evaluated files.', '',
            '## Exact-match accuracy', '',
            '| Arm | Strategy | ' + ' | '.join(CONDITIONS) + ' | All |', '|' + '---|' * 7]
@@ -78,8 +99,7 @@ def build(arms):
         for c in CONDITIONS:
             sim = {r['question_id']: r['correct'] for r in cell(rows, 'similarity', c)}
             ran = {r['question_id']: r['correct'] for r in cell(rows, 'random', c)}
-            b = sum(sim[q] and not ran[q] for q in sim)
-            cc = sum(ran[q] and not sim[q] for q in sim)
+            b, cc = paired_counts(cell(rows, 'similarity', c), cell(rows, 'random', c))
             delta = 100 * (sum(sim.values()) - sum(ran.values())) // len(sim)
             out.append(f'| {name} | {c} | {delta:+d} | {b} | {cc} | {mcnemar_exact(b, cc):.3f} |')
     seed_runs = [(42, ROOT / 'results/gemma3_4b')] + [(k, ROOT / f'results/gemma3_4b_seed{k}') for k in (43, 44)]
@@ -89,7 +109,7 @@ def build(arms):
         sim = next((rows for name, _, rows in loaded if name == 'Gemma 3 4B (two-shot)'), None)
         out += ['', '## Random selection across seeds (Gemma 3 4B)', '',
                 'Seeds 43 and 44 change only the random demonstration pairs (generation seed stays 42). '
-                'The spread shows how far random can move by chance; a strategy gap smaller than it is not evidence.', '',
+                'The spread describes sensitivity to demonstration selection; it is not a significance threshold.', '',
                 '| Condition | ' + ' | '.join(f'Random seed {k}' for k in runs) + ' | Random range | Similarity |',
                 '|' + '---|' * (len(runs) + 3)]
         for c in CONDITIONS + ('ALL',):
@@ -113,10 +133,12 @@ def build(arms):
             out.append(f"| {model} | {c} | {fmt(z)}{' (U-U-E)' if c == 'U-E-E' else ''} | "
                        f"{fmt(cell(parts['two'], 'random', c))} | {fmt(cell(parts['two'], 'similarity', c))} |")
     out += ['', '## Reasoning errors vs format failures (all strategies pooled per arm and condition)', '',
-            'Wrong answer = a parsed but wrong number. Format failures = cut off at the 2048-token limit, no marker, '
-            'or ambiguous marker. Answer only = under 40 output tokens. Off-language = solution mainly in the other '
-            'script than the target question. Lenient = independent cross-check (number after the last literal '
-            'FINAL_ANSWER, colon optional); since parser version 2 it should equal Correct. See `scripts/error_breakdown.py`.', '',
+            'Wrong answer = a parsed but wrong number; this alone does not identify its cause. Cutoff, missing-marker '
+            'and ambiguous-marker categories describe noncorrect outputs. Answer only is a historical column name for '
+            'the short-output heuristic (<40 tokens), not a verified absence of working. Off-language is a script heuristic '
+            'that cannot distinguish Urdu from other Arabic-script languages or English from Spanish. '
+            'Lenient is a permissive diagnostic that includes correct records; it is not independent validation. '
+            'See `scripts/error_breakdown.py`.', '',
             '| Arm | Condition | n | Correct | Lenient | Wrong answer | Cut off | No/ambiguous marker | Answer only | Off-language |',
             '|' + '---|' * 10]
     for name, folder, rows in loaded:
@@ -148,8 +170,8 @@ def build(arms):
     out += ['', '## Caveats', '',
             '- 10 questions per cell: one question is 10 points. An exact McNemar test reaches p < 0.05 only if at '
             'least 6 questions differ and all go the same way (6–0 gives p = 0.031; 5–0 gives 0.063; 6–1 gives 0.125).',
-            '- All questions are GSM8K training items, so memorisation cannot be ruled out, most of all for the 31B model.',
-            '- 4B and 1B are 4-bit (Q4_K_M) local builds; 31B is the hosted full model. Size is not the only difference.',
+            '- All questions are public GSM8K training items. Pretraining overlap is possible for every model; these runs do not measure it.',
+            '- 4B and 1B are Q4_K_M local builds; hosted 31B precision is not recorded. Generation, backend, precision and model options differ.',
             '- One selection seed (42), except the 4B random seed check (42, 43, 44). The deferred diversity/complexity '
             'selectors, 4-shot prompts and MGSM are not included.', '']
     return '\n'.join(out)
@@ -164,8 +186,15 @@ def main(argv=None):
             ('Gemma 3 4B zero-shot', 'results/gemma3_4b_zeroshot'),
             ('Gemma 3 1B (two-shot)', 'results/gemma3_1b'),
             ('Gemma 3 1B zero-shot', 'results/gemma3_1b_zeroshot')]
-    arms = [(n, f) for n, f in arms if (ROOT / f / 'pilot_reconciliation.json').exists()]
+    optional = ROOT / 'results/gemma4_31b_zeroshot/pilot_reconciliation.json'
+    optional_rec = json.loads(optional.read_text()) if optional.exists() else None
+    if optional_rec and optional_rec.get('complete'):
+        arms.insert(1, ('Gemma 4 31B zero-shot', 'results/gemma4_31b_zeroshot'))
     text = build(arms)
+    if not optional_rec or not optional_rec.get('complete'):
+        text += ('\n## Incomplete reference arm\n\nGemma 4 31B zero-shot is not a completed baseline. '
+                 'The 25 November attempt returned repeated HTTP503 capacity failures and was stopped. '
+                 'It is excluded from accuracy comparisons; see `evidence/baseline_2026_11_25/google_zero_shot_attempt.json`.\n')
     (ROOT / args.out).write_text(text, encoding='utf-8')
     print(text)
 

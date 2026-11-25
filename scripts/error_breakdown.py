@@ -3,21 +3,21 @@
 Reads Saad's evaluated JSONL (never re-scores) and adds descriptive categories:
 
   correct        parse ok and numerically correct
-  wrong_answer   parse ok but wrong number: a reasoning or arithmetic error
+  wrong_answer   parse ok but wrong number; the cause requires response review
   cut_off        hit the output-token limit (finish_reason=length), e.g. repetition loops
   no_marker      finished, but no FINAL_ANSWER-style marker with a number
   ambiguous      finished, but markers disagree or give several numbers
 
 Two flags are counted alongside (they overlap the categories):
-  answer_only    fewer than ANSWER_ONLY_TOKENS output tokens: no worked solution was written
-  off_language   the solution's main script differs from the target-question language
+  answer_only    historical name for fewer than ANSWER_ONLY_TOKENS output tokens (a heuristic)
+  off_language   the response's main script differs from the target-question script (a heuristic)
 
 Format failures = cut_off + no_marker + ambiguous. Exact match is unchanged; this is diagnosis only.
 
-lenient_correct is an independent cross-check, NOT a score: it re-reads only the number right after the LAST literal
+lenient_correct is a permissive diagnostic, NOT an independent score: it re-reads the number after the LAST literal
 FINAL_ANSWER (colon optional), ignoring the parser's generic 'final answer:' phrases. It shows how many
-exact-match failures are formatting rather than arithmetic. Since parser version 2 (pending approval) the
-official parser applies this rule itself, so lenient_correct should equal correct; it is kept as a cross-check.
+exact-match failures may be formatting-related. It also includes every official correct record and accepts the first
+number in a segment; it therefore cannot independently certify parser correctness or sound reasoning.
 """
 import argparse
 import csv

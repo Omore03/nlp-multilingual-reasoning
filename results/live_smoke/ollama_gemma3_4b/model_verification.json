@@ -1,0 +1,33 @@
+{
+  "verified_at": "2026-11-25T12:42:33.303763+00:00",
+  "model_hash": "a7cc618f8265e46833a2785f7f32f60a853be2f0647886433028428aaac16620",
+  "model": {
+    "backend": "ollama",
+    "model_id": "gemma3:4b",
+    "model_digest": "68ceab7e468a31c988b44d5a4984a0e21f58c4f7158c6ce29c1804babac38df7",
+    "endpoint": "http://127.0.0.1:11434/api/chat",
+    "credential_env": null,
+    "route": "ollama-local",
+    "free_only": true,
+    "max_requests_per_invocation": null,
+    "min_request_interval_seconds": 0,
+    "decoding": {
+      "temperature": 0,
+      "top_p": 1,
+      "max_tokens": 2048,
+      "seed": 42,
+      "num_ctx": 4096
+    },
+    "timeout_seconds": 300,
+    "max_attempts": 3,
+    "max_retry_wait_seconds": 30
+  },
+  "output_path": "results/live_smoke/ollama_gemma3_4b/smoke.jsonl",
+  "output_hash": "8369f99e2fc0d03f6033c2c71f063e0d9e9f6fec564a929adbeb6d585d50c2c5",
+  "record_ids": [
+    "ce66b6a83b3baaab3f34456eea427b1e1cdfa9a14de8c61bd3f33581b9a9cd15",
+    "5aad2723cd10411647632a98f617589041f5bf21b3c0fcbc736d207405959a51",
+    "77c5b31c36db4441621d9ef85c8c7c22ca967bfce2ca5ca047aadcf325f5f925",
+    "3e7e2a17a2912364989fbdbf85e7b4a002c54f8a2711155f2e9601040c2d15eb"
+  ]
+}

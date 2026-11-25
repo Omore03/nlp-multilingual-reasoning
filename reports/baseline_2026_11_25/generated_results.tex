@@ -1,0 +1,23 @@
+\begin{table}[t]
+\caption{Numerical exact match on ten development questions per language cell. Zero-shot U-E-E shares the U-U-E prompt and is not rerun.}
+\label{tab:baseline}
+\centering
+\setlength{\tabcolsep}{2.6pt}
+\small
+\begin{tabular}{llrrrrr}
+\toprule
+Model & Method & UUU & UUE & UEE & EEE & Total \\
+\midrule
+4 31B & random 42 & 10 & 10 & 10 & 10 & 40/40 \\
+4 31B & similarity & 10 & 10 & 10 & 10 & 40/40 \\
+3 4B & random 42 & 6 & 8 & 8 & 9 & 31/40 \\
+3 4B & similarity & 9 & 7 & 8 & 9 & 33/40 \\
+3 4B & random 43 & 6 & 7 & 9 & 8 & 30/40 \\
+3 4B & random 44 & 9 & 8 & 7 & 8 & 32/40 \\
+3 4B & zero-shot & 8 & 7 & shared & 8 & 23/30 \\
+3 1B & random 42 & 0 & 1 & 2 & 4 & 7/40 \\
+3 1B & similarity & 0 & 2 & 2 & 5 & 9/40 \\
+3 1B & zero-shot & 1 & 2 & shared & 4 & 7/30 \\
+\bottomrule
+\end{tabular}
+\end{table}

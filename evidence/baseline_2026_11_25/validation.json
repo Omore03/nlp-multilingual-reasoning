@@ -1,0 +1,66 @@
+{
+  "date": "2026-11-25",
+  "checks": [
+    {
+      "command": ".venv/bin/python -m pytest -q --junitxml=tmp/baseline_audit/tests.xml",
+      "exit_code": 0
+    },
+    {
+      "command": ".venv/bin/python -m src.data.validate",
+      "exit_code": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/audit_baseline.py",
+      "exit_code": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/compare_arms.py --out docs/model_comparison.md",
+      "exit_code": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/baseline_statistics.py",
+      "exit_code": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/build_baseline_report.py",
+      "exit_code": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/build_report_inputs.py",
+      "exit_code": 0
+    }
+  ],
+  "pytest": {
+    "tests": 285,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "python": "3.12.12",
+  "platform": "macOS-14.2.1-arm64-arm-64bit",
+  "packages": {
+    "PyYAML": "6.0.3",
+    "httpx": "0.28.1",
+    "python-dotenv": "1.2.1",
+    "numpy": "2.3.5",
+    "pytest": "9.0.2"
+  },
+  "config_previews": 14,
+  "real_receipts_verified": 8,
+  "frozen_selection_plan_reproduced": true,
+  "selection_seed42_pairs_reproduced": 10,
+  "selection_seed43_changed_pairs": 10,
+  "selection_seed44_changed_pairs": 10,
+  "mock_first_run": {
+    "successes": 80,
+    "failures": 0
+  },
+  "mock_resume": {
+    "new_successes": 0,
+    "new_failures": 0
+  },
+  "live_local_smoke": "not run; Ollama absent",
+  "report_pages": 2,
+  "report_visual_review": "all two pages inspected; no clipping/overlap",
+  "report_sha256": "dc320c1a96052b320d2ca840c6516a0d516e61c69db40cdacf60d65ba2c9d513"
+}

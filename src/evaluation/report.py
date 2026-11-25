@@ -6,7 +6,7 @@ import json
 import sys
 from pathlib import Path
 
-from .answer_parser import DEFAULT_MARKERS
+from .answer_parser import DEFAULT_MARKERS, PARSER_VERSION
 from .metrics import ALL, CONDITIONS, STRATEGIES, SUMMARY_FIELDS, full_summary, gold_answers, score_record
 
 RAW_FIELDS = (
@@ -234,6 +234,9 @@ def build_report(raw_path, dev_path, out_dir, prefix="pilot", conditions=CONDITI
     reconciliation["research_eligible"] = manifest is not None
     reconciliation["evaluation_kind"] = "real_pilot" if manifest is not None else "fixture_engineering_check"
     reconciliation["raw_sha256"] = hashlib.sha256(raw_path.read_bytes()).hexdigest()
+    reconciliation["parser_version"] = PARSER_VERSION
+    reconciliation["parser_sha256"] = hashlib.sha256(Path(__file__).with_name("answer_parser.py").read_bytes()).hexdigest()
+    reconciliation["parser_markers"] = list(markers)
     if manifest is not None:
         reconciliation["manifest_sha256"] = hashlib.sha256(Path(manifest_path).read_bytes()).hexdigest()
         reconciliation["run_id"] = manifest["run_id"]
@@ -258,6 +261,7 @@ def build_report(raw_path, dev_path, out_dir, prefix="pilot", conditions=CONDITI
     table = markdown_table(main_rows) + "\n\nMargins\n\n" + markdown_table(margin_rows) + "\n"
 
     write_jsonl(paths["evaluated"], scored)
+    reconciliation["evaluated_sha256"] = hashlib.sha256(paths["evaluated"].read_bytes()).hexdigest()
     write_csv(paths["summary_csv"], rows)
     paths["summary_md"].write_text(table, encoding="utf-8")
     paths["reconciliation"].write_text(json.dumps(reconciliation, ensure_ascii=False, indent=2), encoding="utf-8")

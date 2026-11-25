@@ -1,0 +1,887 @@
+model,strategy,condition,question_id,question_en,gold,prediction,parse_status,auto_category,finish_reason,output_tokens,question_ops,demo1_id,demo1_ops,demo1_question_en,demo2_id,demo2_ops,demo2_question_en,response,tag_primary,tag_secondary,notes,reviewer,draft_tag_primary,draft_rationale,draft_confidence,human_review_status
+Gemma 3 4B,random,U-U-U,gsm8k-train-111d72db39e6,"Hans booked a room in a hotel. The hotel has 10 floors with 10 identical rooms on each floor. Because of an accident, the last floor is unavailable for the guests. Considering there are no other guests, in how many different rooms could Hans be checked in?",90,99,ok,wrong_answer,stop,92,− ×,gsm8k-train-73429d562982,÷ +,"Natalia sold clips to 48 of her friends in April, and then she sold half as many clips in May. How many clips did Natalia sell altogether in April and May?",gsm8k-train-7a6b8353e50c,+ ×,Rachel and Sara want to attend a beauty and modeling contest. They both want to buy new pairs of shoes and dresses. Sara buys a pair of shoes which costs $50 and a dress which costs $200. How much should Rachel budget if she wants to spend twice as much as what Sara spent on the pair of shoes and dress?,"مکمل حل: ہوٹل میں منزلیں 10 ہیں اور ہر منزل پر 10 کمرے ہیں، اس لیے کل کمروں کی تعداد 10 * 10 = 100 ہے۔
+آخری منزل مہمانوں کے لیے دستیاب نہیں ہے، اس لیے ہانس کو 100 - 1 = 99 مختلف کمروں میں ٹھہرایا جا سکتا ہے۔
+FINAL_ANSWER: 99",,,,,wrong plan / misread question,Subtracts one room from 100 rather than the ten rooms on the unavailable floor.,high,pending Saad/Rayyan review
+Gemma 3 4B,random,U-U-U,gsm8k-train-4c46af17e4af,"Manny had 3 birthday cookie pies to share with his 24 classmates and his teacher, Mr. Keith. If each of the cookie pies were cut into 10 slices and Manny, his classmates, and Mr. Keith all had 1 piece, how many slices are left?",4,2,ok,wrong_answer,stop,135,× + + −,gsm8k-train-da19d532632e,÷ − ÷ +,"The file, 90 megabytes in size, downloads at the rate of 5 megabytes per second for its first 60 megabytes, and then 10 megabytes per second thereafter. How long, in seconds, does it take to download entirely?",gsm8k-train-cf2595dad6a3,× × +,"Albert is wondering how much pizza he can eat in one day. He buys 2 large pizzas and 2 small pizzas. A large pizza has 16 slices and a small pizza has 8 slices. If he eats it all, how many pieces does he eat that day?","مکمل حل:
+مینی کی کوکی پائیاں = 3
+ہم جماعتوں کی تعداد = 24
+استاد کی تعداد = 1
+کل افراد = 3 + 24 + 1 = 28
+ہر کوکی پائی کا سلائس = 10
+کل سلائس = 3 * 10 = 30
+ہر فرد نے کھائے سلائس = 1
+کل کھائے گئے سلائس = 28 * 1 = 28
+بچے سلائس = 30 - 28 = 2
+FINAL_ANSWER: 2",,,,,wrong plan / misread question,Uses the three pies as three people: 3+24+1=28; Manny should count once.,high,pending Saad/Rayyan review
+Gemma 3 4B,random,U-U-U,gsm8k-train-c7da26a5fbd9,Brandon sold 86 geckos last year. He sold twice that many the year before. How many geckos has Brandon sold in the last two years?,258,129,ok,wrong_answer,stop,84,× +,gsm8k-train-da19d532632e,÷ − ÷ +,"The file, 90 megabytes in size, downloads at the rate of 5 megabytes per second for its first 60 megabytes, and then 10 megabytes per second thereafter. How long, in seconds, does it take to download entirely?",gsm8k-train-34f9511baf56,× × − × × + ÷,"A family of 12 monkeys collected 10 piles of bananas. 6 piles had 9 hands, with each hand having 14 bananas, while the remaining piles had 12 hands, with each hand having 9 bananas. How many bananas would each monkey get if they divide the bananas equally amongst themselves?","مکمل حل:
+پچھلے سال برینڈن نے 86 گیکو بیچے تھے۔
+اس سے پہلے سال میں برینڈن نے 86/2 = 43 گیکو بیچے تھے۔
+ان دو سالوں میں برینڈن نے 86 + 43 = 129 گیکو بیچے تھے۔
+FINAL_ANSWER: 129",,,,,wrong plan / misread question,Divides 86 by two although the previous year is twice last year; arithmetic follows the wrong relation. Demo influence is unproven.,high,pending Saad/Rayyan review
+Gemma 3 4B,random,U-U-U,gsm8k-train-f8ac079613e1,A boxer weighs 97 kg at 4 months from a fight. He is on a diet that allows him to lose 3 kg per month until the day of the fight. How much will he weigh on the day of the fight?,85,13,ok,wrong_answer,stop,168,× −,gsm8k-train-3f23a7d4df7c,÷ ×,"Weng earns $12 an hour for babysitting. Yesterday, she just did 50 minutes of babysitting. How much did she earn?",gsm8k-train-9d7481516507,+ + − × ÷,"James is a first-year student at a University in Chicago. He has a budget of $1000 per semester. He spends 30% of his money on food, 15% on accommodation, 25% on entertainment, and the rest on coursework materials. How much money does he spend on coursework materials?","مکمل حل:
+مقابلے سے 4 ماہ پہلے باکسر کا وزن 97 کلوگرام ہے۔
+وہ مقابلے کے دن تک ہر ماہ 3 کلوگرام وزن کم کرتا ہے۔
+مقابلے سے 4 ماہ = 4 * 4 = 16 ہفتے
+16 ہفتوں = 16 * 7 = 112 دن
+وہ 112 دنوں میں 112/4 = 28 بار وزن کم کرے گا۔
+وہ 28 بار 3 کلوگرام وزن کم کرتا ہے، یعنی 28 * 3 = 84 کلوگرام وزن کم کرتا ہے۔
+مقابلے کے دن اس کا وزن 97 - 84 = 13 کلوگرام ہوگا۔
+FINAL_ANSWER: 13",,,,,wrong plan / misread question,Converts months to days and invents 28 weight-loss events rather than four monthly losses.,high,pending Saad/Rayyan review
+Gemma 3 4B,random,U-U-E,gsm8k-train-1d58b8a27f49,"Krystian works in the library. He borrows an average of 40 books every day. Every Friday, his number of borrowed books is about 40% higher than the daily average. How many books does he borrow in a week if the library is open from Monday to Friday?",216,176,ok,wrong_answer,stop,231,× × ÷ + +,gsm8k-train-b5a344d0eb73,− − − ÷,Four people lost a total of 103 kilograms of weight. The first person lost 27 kilograms. The second person lost 7 kilograms less than the first person. The two remaining people lost the same amount. How many kilograms did each of the last two people lose?,gsm8k-train-73429d562982,÷ +,"Natalia sold clips to 48 of her friends in April, and then she sold half as many clips in May. How many clips did Natalia sell altogether in April and May?","Worked solution:
+پیر سے جمعہ تک کے دنوں کی تعداد معلوم کریں
+پیر، سزدار، بدھ، جمعہ - 4 دن
+جمعے کو ادھار لی جانے والی کتابوں کی تعداد روزانہ اوسط سے 40% زیادہ ہوتی ہے
+پیر سے بدھ تک، کرسٹیان اوسطاً 40 کتابیں ادھار لیتا ہے۔
+جمعے تک، کرسٹیان 40 + 40 * 0.40 = 40 + 16 = 56 کتابیں ادھار لیتا ہے۔
+جمعے کو کرسٹیان 56 کتابیں ادھار لیتا ہے۔
+پیر سے بدھ تک کرسٹیان 40 * 3 = 120 کتابیں ادھار لیتا ہے۔
+جمعے تک کرسٹیان 120 + 56 = 176 کتابیں ادھار لیتا ہے۔
+پیر سے جمعہ تک کرسٹیان 176 کتابیں ادھار لیتا ہے۔
+FINAL_ANSWER: 176",,,,,wrong plan / misread question,"Counts three ordinary days plus Friday, omitting an open day. Source daily-average wording remains a separate ambiguity.",high,pending Saad/Rayyan review
+Gemma 3 4B,random,U-U-E,gsm8k-train-4c46af17e4af,"Manny had 3 birthday cookie pies to share with his 24 classmates and his teacher, Mr. Keith. If each of the cookie pies were cut into 10 slices and Manny, his classmates, and Mr. Keith all had 1 piece, how many slices are left?",4,2,ok,wrong_answer,stop,154,× + + −,gsm8k-train-da19d532632e,÷ − ÷ +,"The file, 90 megabytes in size, downloads at the rate of 5 megabytes per second for its first 60 megabytes, and then 10 megabytes per second thereafter. How long, in seconds, does it take to download entirely?",gsm8k-train-cf2595dad6a3,× × +,"Albert is wondering how much pizza he can eat in one day. He buys 2 large pizzas and 2 small pizzas. A large pizza has 16 slices and a small pizza has 8 slices. If he eats it all, how many pieces does he eat that day?","Worked solution:
+مینی کی کوکی پائیاں = 3
+ہم جماعتوں کی تعداد = 24
+استاد کی تعداد = 1
+کل افراد = 3 + 24 + 1 = 28
+کوکی پائیاں ہر پائی کو 10 سلائسوں میں کاٹی گئیں، یعنی 3 پائی * 10 سلائس = 30 سلائس
+مینی، ہر ہم جماعت اور استاد نے 1 سلائس کھایا، یعنی 28 افراد * 1 سلائس = 28 سلائس
+باقے سلائس = 30 - 28 = 2 سلائس
+FINAL_ANSWER: 2",,,,,wrong plan / misread question,"Counts 3 pies as 3 people, producing 28 eaters and 2 remaining slices.",high,pending Saad/Rayyan review
+Gemma 3 4B,random,U-E-E,gsm8k-train-1d58b8a27f49,"Krystian works in the library. He borrows an average of 40 books every day. Every Friday, his number of borrowed books is about 40% higher than the daily average. How many books does he borrow in a week if the library is open from Monday to Friday?",216,176,ok,wrong_answer,stop,384,× × ÷ + +,gsm8k-train-b5a344d0eb73,− − − ÷,Four people lost a total of 103 kilograms of weight. The first person lost 27 kilograms. The second person lost 7 kilograms less than the first person. The two remaining people lost the same amount. How many kilograms did each of the last two people lose?,gsm8k-train-73429d562982,÷ +,"Natalia sold clips to 48 of her friends in April, and then she sold half as many clips in May. How many clips did Natalia sell altogether in April and May?","Here's the solution to the question in Urdu, followed by the final answer:
+
+**Question:** کرسٹیان لائبریری میں کام کرتا ہے۔ وہ روزانہ اوسطاً 40 کتابیں ادھار لیتا ہے۔ ہر جمعے کو ادھار لی گئی کتابوں کی تعداد روزانہ اوسط سے تقریباً 40% زیادہ ہوتی ہے۔ اگر لائبریری پیر سے جمعہ تک کھلی رہتی ہے تو وہ ایک ہفتے میں کتنی کتابیں ادھار لیتا ہے؟
+
+**Worked solution:**
+
+*   **روزانہ اوسط کتابیں:** کرسٹیان روزانہ اوسطاً 40 کتابیں ادھار لیتا ہے۔
+*   **پیر سے جمعہ تک روزانہ کتابیں:** پیر سے جمعہ تک لائبریری 5 دن کھلی رہتی ہے۔  اگر کرسٹیان ہر روز 40 کتابیں لیتا ہے تو 5 دنوں میں وہ 5 * 40 = 200 کتابیں لیتا۔
+*   **جمعے کو اضافی کتابیں:** جمعے کو وہ اوسط سے 40% زیادہ کتابیں لیتا ہے، یعنی 40 + (40 * 0.40) = 40 + 16 = 56 کتابیں لیتا ہے۔
+*   **اعداد جمع:** ایک ہفتے میں، کرسٹیان پیر سے لے کر جمعے تک کتابیں لیتا ہے۔  پیر سے لے کر جمعے تک 5 دن ہیں۔
+    *   پیر، منگل، بدھ، جمعہ: 40 کتابیں
+    *   جمعہ: 56 کتابیں
+    *   جمعیت: 40 + 40 + 40 + 56 = 176 کتابیں
+
+**FINAL_ANSWER: 176**",,,,,wrong plan / misread question,Lists only three ordinary 40-book days plus Friday and totals 176.,high,pending Saad/Rayyan review
+Gemma 3 4B,random,U-E-E,gsm8k-train-4c46af17e4af,"Manny had 3 birthday cookie pies to share with his 24 classmates and his teacher, Mr. Keith. If each of the cookie pies were cut into 10 slices and Manny, his classmates, and Mr. Keith all had 1 piece, how many slices are left?",4,3,ok,wrong_answer,stop,128,× + + −,gsm8k-train-da19d532632e,÷ − ÷ +,"The file, 90 megabytes in size, downloads at the rate of 5 megabytes per second for its first 60 megabytes, and then 10 megabytes per second thereafter. How long, in seconds, does it take to download entirely?",gsm8k-train-cf2595dad6a3,× × +,"Albert is wondering how much pizza he can eat in one day. He buys 2 large pizzas and 2 small pizzas. A large pizza has 16 slices and a small pizza has 8 slices. If he eats it all, how many pieces does he eat that day?","Worked solution:
+First, find the total number of people to share the cookies. مینی + 24 ہم جماعت = 27 افراد
+Next, find the total number of slices. 3 پائی * 10 سلائس/پائی = 30 سلائس
+Then, find the total number of slices eaten. 27 افراد * 1 سلائس/افراد = 27 سلائس
+Finally, find the number of slices remaining. 30 سلائس - 27 سلائس = 3 سلائس
+FINAL_ANSWER: 3",,,,,arithmetic slip,"Writes Manny + 24 classmates = 27, and does not separately include the teacher; both counting and arithmetic are faulty.",medium,pending Saad/Rayyan review
+Gemma 3 4B,random,E-E-E,gsm8k-train-1d58b8a27f49,"Krystian works in the library. He borrows an average of 40 books every day. Every Friday, his number of borrowed books is about 40% higher than the daily average. How many books does he borrow in a week if the library is open from Monday to Friday?",216,176,ok,wrong_answer,stop,145,× × ÷ + +,gsm8k-train-b5a344d0eb73,− − − ÷,Four people lost a total of 103 kilograms of weight. The first person lost 27 kilograms. The second person lost 7 kilograms less than the first person. The two remaining people lost the same amount. How many kilograms did each of the last two people lose?,gsm8k-train-73429d562982,÷ +,"Natalia sold clips to 48 of her friends in April, and then she sold half as many clips in May. How many clips did Natalia sell altogether in April and May?","Worked solution:
+First, calculate the number of books Krystian borrows on a Friday. 40 books * 40% = 16 books.
+Next, calculate the total number of books he borrows from Monday to Thursday. Since he borrows 40 books every day, over 4 days he borrows 40 books/day * 4 days = 160 books.
+Finally, calculate the total number of books he borrows in a week (Monday to Friday). This is the sum of books borrowed from Monday to Thursday plus the books borrowed on Friday: 160 + 16 = 176 books.
+
+FINAL_ANSWER: 176",,,,,wrong plan / misread question,"Uses 16, the 40% increment alone, as Friday total; should use 56 under the source key interpretation.",high,pending Saad/Rayyan review
+Gemma 3 4B,similarity,U-U-U,gsm8k-train-4c46af17e4af,"Manny had 3 birthday cookie pies to share with his 24 classmates and his teacher, Mr. Keith. If each of the cookie pies were cut into 10 slices and Manny, his classmates, and Mr. Keith all had 1 piece, how many slices are left?",4,2,ok,wrong_answer,stop,159,× + + −,gsm8k-train-cf2595dad6a3,× × +,"Albert is wondering how much pizza he can eat in one day. He buys 2 large pizzas and 2 small pizzas. A large pizza has 16 slices and a small pizza has 8 slices. If he eats it all, how many pieces does he eat that day?",gsm8k-train-ea66ef8b11aa,× ÷,Artemis is making tea for a party. She knows her mom drinks an 8-ounce cup of tea and uses one ounce of tea. She will use this same ratio for the party. The party has 12 people there and each of them wants a 6-ounce cup of tea. How many ounces of tea does she need?,"مکمل حل:
+مینی کی کوکی پائیاں: 3
+ہم جماعتوں کی تعداد: 24
+استاد کیتھ کی تعداد: 1
+کل افراد کی تعداد: 3 + 24 + 1 = 28
+ہر کوکی پائی کو سلائس کی تعداد: 10
+ہر فرد نے کھائے سلائس: 1
+کل کھائے گئے سلائس: 28 * 1 = 28
+ہر کوکی پائی میں سلائس کی تعداد: 10
+کل سلائس: 3 * 10 = 30
+بچے سلائس: 30 - 28 = 2
+FINAL_ANSWER: 2",,,,,wrong plan / misread question,Counts pies as people: 3+24+1=28 rather than 1+24+1=26.,high,pending Saad/Rayyan review
+Gemma 3 4B,similarity,U-U-E,gsm8k-train-1d58b8a27f49,"Krystian works in the library. He borrows an average of 40 books every day. Every Friday, his number of borrowed books is about 40% higher than the daily average. How many books does he borrow in a week if the library is open from Monday to Friday?",216,256,ok,wrong_answer,stop,186,× × ÷ + +,gsm8k-train-9d7481516507,+ + − × ÷,"James is a first-year student at a University in Chicago. He has a budget of $1000 per semester. He spends 30% of his money on food, 15% on accommodation, 25% on entertainment, and the rest on coursework materials. How much money does he spend on coursework materials?",gsm8k-train-3f23a7d4df7c,÷ ×,"Weng earns $12 an hour for babysitting. Yesterday, she just did 50 minutes of babysitting. How much did she earn?","Worked solution:
+پیر سے جمعہ تک کے دنوں کی تعداد کا حساب لگائیں
+پیر، سزدار، بدھ، جمعہ - 4 دن
+روزانہ اوسطاً 40 کتابیں ادھار لیتا ہے
+پیر اور بدھ کو 40 کتابیں ادھار لیتا ہے
+جمعہ کو 40 * 1.4 = 56 کتابیں ادھار لیتا ہے
+جمعہ کے علاوہ دیگر دنوں میں 40 کتابیں ادھار لیتا ہے
+پیر اور بدھ کو 40 * 2 = 80 کتابیں ادھار لیتا ہے
+ایک ہفتے میں ادھار لی جانے والی کتابوں کی کل تعداد = 40 + 40 + 40 + 56 + 40 + 40 = 256
+FINAL_ANSWER: 256",,,,,wrong plan / misread question,"Sums five ordinary 40-book days plus Friday 56, counting six days.",high,pending Saad/Rayyan review
+Gemma 3 4B,similarity,U-U-E,gsm8k-train-4c46af17e4af,"Manny had 3 birthday cookie pies to share with his 24 classmates and his teacher, Mr. Keith. If each of the cookie pies were cut into 10 slices and Manny, his classmates, and Mr. Keith all had 1 piece, how many slices are left?",4,2,ok,wrong_answer,stop,146,× + + −,gsm8k-train-cf2595dad6a3,× × +,"Albert is wondering how much pizza he can eat in one day. He buys 2 large pizzas and 2 small pizzas. A large pizza has 16 slices and a small pizza has 8 slices. If he eats it all, how many pieces does he eat that day?",gsm8k-train-ea66ef8b11aa,× ÷,Artemis is making tea for a party. She knows her mom drinks an 8-ounce cup of tea and uses one ounce of tea. She will use this same ratio for the party. The party has 12 people there and each of them wants a 6-ounce cup of tea. How many ounces of tea does she need?,"Worked solution:
+مینی کی کوکی پائیاں: 3
+ہم جماعتوں کی تعداد: 24
+استاد کیتھ کی تعداد: 1
+کل افراد کی تعداد: 3 + 24 + 1 = 28
+ہر کوکی پائی کو کاٹے ہوئے سلائس: 10
+کل سلائس: 3 * 10 = 30
+ہر فرد نے کھائے ہوئے سلائس: 1
+کل کھائے ہوئے سلائس: 28 * 1 = 28
+بچے ہوئے سلائس: 30 - 28 = 2
+FINAL_ANSWER: 2",,,,,wrong plan / misread question,Again counts 3 pies as people; errors persist with both selectors.,high,pending Saad/Rayyan review
+Gemma 3 4B,similarity,U-U-E,gsm8k-train-78a19fb7a7c3,"A garden produced 237 potatoes, 60 fewer cucumbers and twice as many peppers than the cucumbers. How many vegetables did the garden produce?",768,,missing,cut_off,length,2048,− × + +,gsm8k-train-16f83fb4320c,× ÷ + + × ÷ + +,"Mark has a garden with flowers. He planted plants of three different colors in it. Ten of them are yellow, and there are 80% more of those in purple. There are only 25% as many green flowers as there are yellow and purple flowers. How many flowers does Mark have in his garden?",gsm8k-train-cf2595dad6a3,× × +,"Albert is wondering how much pizza he can eat in one day. He buys 2 large pizzas and 2 small pizzas. A large pizza has 16 slices and a small pizza has 8 slices. If he eats it all, how many pieces does he eat that day?","Worked solution:
+فرض کریں کہ کھیرے 'x' ہیں۔
+تو مرچیں 'x - 60' ہوں گی۔
+تو آلو '237' ہیں۔
+مرچیں کھیروں سے دگنی ہیں، یعنی مرچیں 'x - 60' ہیں۔
+آلو، کھیرے اور مرچیں سب جمی ہوئی ہیں۔
+237 + x + (x - 60) = کل سبزیاں
+237 + x + x - 60 = کل سبزیاں
+2x + 177 = کل سبزیاں
+کل سبزیاں معلوم کرنے کے لیے، ہمیں 'x' کا حل کرنا ہوگا۔
+سوال میں یہ نہیں بتایا گیا کہ کل سبزیاں کتنی ہیں۔ اس لیے، ہم صرف 'x' کی قدر کا تعین کر سکتے ہیں۔
+کل سبزیاں = 2x + 177
+جب تک ہم 'x' کی قدر نہیں جانتے، ہم اس طرح کے جواب کو ہی دے سکتے ہیں۔
+اگر ہم فرض کریں کہ 'x' کی قدر 177 ہے، تو مرچیں 177 - 60 = 117 ہوں گی۔
+آلو 237 ہیں۔
+مرچیں 117 ہیں۔
+کھیرے 177 ہیں۔
+کل سبزیاں 237 + 177 + 117 = 531 ہوں گی۔
+لیکن یہ فرض کرنے پر مبنی ہے کہ کھیرے 60 کم ہیں۔
+اگر ہم فرض کریں کہ کھیرے 177 ہیں، تو مرچیں 177 - 60 = 117 ہوں گی۔
+آلو 237 ہیں۔
+مرچیں 117 ہیں۔
+کھیرے 177 ہیں۔
+کل سبزیاں 237 + 177 + 117 = 531 ہوں گی۔
+اگر ہم فرض کریں کہ مرچیں کھیروں سے دگنی ہیں، تو مرچیں 'x - 60' ہیں۔
+آلو 237 ہیں۔
+کھیرے 'x' ہیں۔
+مرچیں 'x - 60' ہیں۔
+کل سبزیاں = 237 + x + (x - 60) = 2x + 177
+کل سبزیاں = 2x + 177
+سوال میں یہ نہیں بتایا گیا کہ کل سبزیاں کتنی ہیں۔
+فرض کریں کہ مرچیں کھیروں سے دگنی ہیں۔
+فرض کریں کہ کھیرے 'x' ہیں۔
+مرچیں 'x - 60' ہیں۔
+آلو 237 ہیں۔
+کل سبزیاں = 237 + x + (x - 60) = 2x + 177
+جب تک ہم 'x' کی قدر نہیں جانتے، ہم اس طرح کے جواب کو ہی دے سکتے ہیں۔
+فرض کریں کہ کل سبزیاں 'y' ہیں۔
+تو y = 2x + 177
+فرض کریں کہ کھیرے 100 ہیں۔
+تو مرچیں 40 ہیں۔
+آلو 237 ہیں۔
+کل سبزیاں = 237 + 100 + 40 = 377
+فرض کریں کہ کھیرے 200 ہیں۔
+تو مرچیں 140 ہیں۔
+آلو 237 ہیں۔
+کل سبزیاں = 237 + 200 + 140 = 577
+فرض کریں کہ کھیرے 300 ہیں۔
+تو مرچیں 240 ہیں۔
+آلو 237 ہیں۔
+کل سبزیاں = 237 + 300 + 240 = 777
+فرض کریں کہ کھیرے 400 ہیں۔
+تو مرچیں 340 ہیں۔
+آلو 237 ہیں۔
+کل سبزیاں = 237 + 400 + 340 = 977
+فرض کریں کہ کھیرے 500 ہیں۔
+تو مرچیں 440 ہیں۔
+آلو 237 ہیں۔
+کل سبزیاں = 237 + 500 + 440 = 1177
+فرض کریں کہ کھیرے 600 ہیں۔
+تو مرچیں 540 ہیں۔
+آلو 237 ہیں۔
+کل سبزیاں = 237 + 600 + 540 = 1377
+فرض کریں کہ کھیرے 700 ہیں۔
+تو مرچیں 640 ہیں۔
+آلو 237 ہیں۔
+کل سبزیاں = 237 + 700 + 640 = 1577
+فرض کریں کہ کھیرے 800 ہیں۔
+تو مرچیں 740 ہیں۔
+آلو 237 ہیں۔
+کل سبزیاں = 237 + 800 + 740 = 1777
+فرض کریں کہ کھیرے 900 ہیں۔
+تو مرچیں 840 ہیں۔
+آلو 237 ہیں۔
+کل سبزیاں = 237 + 900 + 840 = 1977
+فرض کریں کہ کھیرے 1000 ہیں۔
+تو مرچیں 940 ہیں۔
+آلو 237 ہیں۔
+کل سبزیاں = 237 + 1000 + 940 = 2177
+فرض کریں کہ کھیرے 1100 ہیں۔
+تو مرچیں 1040 ہیں۔
+آلو 237 ہیں۔
+کل سبزیاں = 237 + 1100 + 1040 = 2377
+فرض کریں کہ کھیرے 1200 ہیں۔
+تو مرچیں 1140 ہیں۔
+آلو 237 ہیں۔
+کل سبزیاں = 237 + 1200 + 1140 = 2577
+فرض کریں کہ کھیرے 1300 ہیں۔
+تو مرچیں 1240 ہیں۔
+آلو 237 ہیں۔
+کل سبزیاں = 237 + 1300 + 1240 = 2777
+فرض کریں کہ کھیرے 1400 ہیں۔
+تو مرچیں 1340 ہیں۔
+آلو 237 ہیں۔
+کل سبزیاں = 237 + 1400 + 1340 = 2977
+فرض کریں کہ کھیرے 1500 ہیں۔
+تو مرچیں 1440 ہیں۔
+آلو 237 ہیں۔
+کل سبزیاں = 237 + 1500 + 1440 = 3177
+فرض کریں کہ کھیرے 1600 ہیں۔
+تو مرچیں 1540 ہیں۔
+آلو 237 ہیں۔
+کل سبزیاں = 237 + 1600 + 1540 = 3377
+فرض کریں کہ کھیرے 1700 ہیں۔
+تو مرچیں 1640 ہیں۔
+آلو 237 ہیں۔
+کل سبزیاں = 237 + 1700 + 1640 = 3577
+فرض کریں کہ کھیرے 1800 ہیں۔
+تو مرچیں 1740 ہیں۔
+آلو 237 ہیں۔
+کل سبزیاں = 237 + 1800 + 1740 = 3777
+فرض کریں کہ کھیرے 1900 ہیں۔
+تو مرچیں 1840 ہیں۔
+آلو 237 ہیں۔
+کل سبزیاں = 237 + 1900 + 1840 = 3977
+فرض کریں کہ کھیرے 2000 ہیں۔
+تو مرچیں 1940 ہیں۔
+آلو 237 ہیں۔
+کل سبزیاں = 237 + 2000 + 1940 = 4177
+فرض کریں کہ کھیرے 2100 ہیں۔
+تو مرچیں 2040 ہیں۔
+آلو 237 ہیں۔
+کل سبزیاں = 237 + 2100 + 2040 = 4377
+فرض کریں کہ کھیرے 2200 ہیں۔
+تو مرچیں 2140 ہیں۔
+آلو 237 ہیں۔
+کل سبزیاں = 237 + 2200 + 2140 = 4577
+فرض کریں کہ کھیرے 2300 ہیں۔
+تو مرچیں 2240 ہیں۔
+آلو 237 ہیں۔
+کل سبزیاں = 237 + 2300 + 2240 = 4777
+فرض کریں کہ کھیرے 2400 ہیں۔
+تو مرچیں 2340 ہیں۔
+آلو 237 ہیں۔
+کل سبزیاں = 237 + 2400 + 2340 = 4977
+فرض کریں کہ کھیرے 2500 ہیں۔
+تو مرچیں 2440 ہیں۔
+آلو 237 ہیں۔
+کل سبزیاں = 237 + 2500 + 2440 = 5177
+فرض کریں کہ کھیرے 2600 ہیں۔
+تو مرچیں 2540 ہیں۔",,,,,repetition loop / cut off,Repeatedly assigns hypothetical cucumber counts; encodes twice as many peppers as x-60. Stops at 2048 tokens without terminal answer.,high,pending Saad/Rayyan review
+Gemma 3 4B,similarity,U-E-E,gsm8k-train-1d58b8a27f49,"Krystian works in the library. He borrows an average of 40 books every day. Every Friday, his number of borrowed books is about 40% higher than the daily average. How many books does he borrow in a week if the library is open from Monday to Friday?",216,256,ok,wrong_answer,stop,324,× × ÷ + +,gsm8k-train-9d7481516507,+ + − × ÷,"James is a first-year student at a University in Chicago. He has a budget of $1000 per semester. He spends 30% of his money on food, 15% on accommodation, 25% on entertainment, and the rest on coursework materials. How much money does he spend on coursework materials?",gsm8k-train-3f23a7d4df7c,÷ ×,"Weng earns $12 an hour for babysitting. Yesterday, she just did 50 minutes of babysitting. How much did she earn?","Here's the solution to the question in Urdu, followed by the final answer:
+
+**Question:** کرسٹیان لائبریری میں کام کرتا ہے۔ وہ روزانہ اوسطاً 40 کتابیں ادھار لیتا ہے۔ ہر جمعے کو ادھار لی گئی کتابوں کی تعداد روزانہ اوسط سے تقریباً 40% زیادہ ہوتی ہے۔ اگر لائبریری پیر سے جمعہ تک کھلی رہتی ہے تو وہ ایک ہفتے میں کتنی کتابیں ادھار لیتا ہے؟
+
+**Worked solution:**
+
+*   **روزانہ اوسط کتابیں:** کرسٹیان روزانہ اوسطاً 40 کتابیں ادھار لیتا ہے۔
+*   **جمعے کو زیادہ کتابیں:** جمعے کو، وہ اوسط سے 40% زیادہ کتابیں لیتا ہے.  40% کا 40 تقسیم 100 = 16 کتابیں زیادہ.  اس لیے جمعے کو وہ 40 + 16 = 56 کتابیں لیتا ہے۔
+*   **پیر سے বৃহস্পতিবার کتابیں:** پیر سے বৃহস্পতিবার (پنج روز) وہ اوسطاً 40 کتابیں لیتا ہے۔  40 * 5 = 200 کتابیں.
+*   **جمعہ کو کتابیں:** جمعے کو وہ 56 کتابیں لیتا ہے۔
+*   **ایک ہفتے میں کتابیں:**  ایک ہفتے میں وہ 200 + 56 = 256 کتابیں لیتا ہے۔
+
+FINAL_ANSWER: 256",,,,,wrong plan / misread question,Calls Monday-Thursday five days and then adds Friday: 200+56=256. Also mixes scripts; translation causation unproven.,high,pending Saad/Rayyan review
+Gemma 3 4B,similarity,U-E-E,gsm8k-train-4c46af17e4af,"Manny had 3 birthday cookie pies to share with his 24 classmates and his teacher, Mr. Keith. If each of the cookie pies were cut into 10 slices and Manny, his classmates, and Mr. Keith all had 1 piece, how many slices are left?",4,5,ok,wrong_answer,stop,227,× + + −,gsm8k-train-cf2595dad6a3,× × +,"Albert is wondering how much pizza he can eat in one day. He buys 2 large pizzas and 2 small pizzas. A large pizza has 16 slices and a small pizza has 8 slices. If he eats it all, how many pieces does he eat that day?",gsm8k-train-ea66ef8b11aa,× ÷,Artemis is making tea for a party. She knows her mom drinks an 8-ounce cup of tea and uses one ounce of tea. She will use this same ratio for the party. The party has 12 people there and each of them wants a 6-ounce cup of tea. How many ounces of tea does she need?,"Here's the solution to the problem in Urdu, followed by the final answer:
+
+**Problem:** مینی کے پاس سالگرہ کی 3 کوکی پائیاں تھیں جو وہ اپنے 24 ہم جماعتوں اور استاد مسٹر کیتھ کے ساتھ بانٹنا چاہتا تھا۔ ہر پائی کو 10 سلائسوں میں کاٹا گیا۔ اگر مینی، ہر ہم جماعت اور استاد نے 1 سلائس کھایا تو کتنے سلائس بچے؟
+
+**Solution:**
+
+1. **Total People:** مینی + ہم جماعت = 1 + 24 = 25 افراد
+2. **Total Slices from Puffs:** 3 کوکی پائیاں * 10 سلائس/پائی = 30 سلائس
+3. **Total Slices Eaten:** 25 افراد * 1 سلائس/افراد = 25 سلائس
+4. **Slices Remaining:** 30 سلائس - 25 سلائس = 5 سلائس
+
+FINAL_ANSWER: 5",,,,,wrong plan / misread question,"Counts Manny and 24 classmates but omits the teacher, giving 25 instead of 26 eaters.",high,pending Saad/Rayyan review
+Gemma 3 4B,similarity,E-E-E,gsm8k-train-1d58b8a27f49,"Krystian works in the library. He borrows an average of 40 books every day. Every Friday, his number of borrowed books is about 40% higher than the daily average. How many books does he borrow in a week if the library is open from Monday to Friday?",216,176,ok,wrong_answer,stop,109,× × ÷ + +,gsm8k-train-9d7481516507,+ + − × ÷,"James is a first-year student at a University in Chicago. He has a budget of $1000 per semester. He spends 30% of his money on food, 15% on accommodation, 25% on entertainment, and the rest on coursework materials. How much money does he spend on coursework materials?",gsm8k-train-3f23a7d4df7c,÷ ×,"Weng earns $12 an hour for babysitting. Yesterday, she just did 50 minutes of babysitting. How much did she earn?","Worked solution:
+First, calculate the number of books Krystian borrows on a Friday: 40 books * 40% = 16 books.
+Next, calculate the total number of books he borrows from Monday to Thursday: 40 books/day * 4 days = 160 books.
+Finally, calculate the total number of books he borrows in a week: 160 books + 16 books = 176 books.
+
+FINAL_ANSWER: 176",,,,,wrong plan / misread question,"Treats Friday as the 16-book increment rather than total 56, giving 160+16.",high,pending Saad/Rayyan review
+Gemma 3 1B,random,U-U-U,gsm8k-train-111d72db39e6,"Hans booked a room in a hotel. The hotel has 10 floors with 10 identical rooms on each floor. Because of an accident, the last floor is unavailable for the guests. Considering there are no other guests, in how many different rooms could Hans be checked in?",90,10,ok,wrong_answer,stop,14,− ×,gsm8k-train-73429d562982,÷ +,"Natalia sold clips to 48 of her friends in April, and then she sold half as many clips in May. How many clips did Natalia sell altogether in April and May?",gsm8k-train-7a6b8353e50c,+ ×,Rachel and Sara want to attend a beauty and modeling contest. They both want to buy new pairs of shoes and dresses. Sara buys a pair of shoes which costs $50 and a dress which costs $200. How much should Rachel budget if she wants to spend twice as much as what Sara spent on the pair of shoes and dress?,"FINAL_ANSWER: 10
+
+عدد: 10",,,,,other,"Only gives 10 twice, without a derivation. A wrong numerical answer is observable; its cause cannot be determined.",low,pending Saad/Rayyan review
+Gemma 3 1B,random,U-U-U,gsm8k-train-19b0d3572fbe,James spends 40 years teaching. His partner has been teaching for 10 years less. How long is their combined experience?,70,-3,ok,wrong_answer,stop,33,− +,gsm8k-train-7f5709a21d11,÷ ÷ −,"Lisa, Jack, and Tommy earned $60 from washing cars all week. However, half of the $60 was earned by Lisa. Tommy earned half of what Lisa earned. How much more money did Lisa earn than Tommy?",gsm8k-train-b5a344d0eb73,− − − ÷,Four people lost a total of 103 kilograms of weight. The first person lost 27 kilograms. The second person lost 7 kilograms less than the first person. The two remaining people lost the same amount. How many kilograms did each of the last two people lose?,"مکمل حل: ساتھی کی تدریسی تجربہ کم کیا گیا ہے
+7 - 10 = -3 سال
+FINAL_ANSWER: -3",,,,,wrong plan / misread question,"Introduces unsupported 7 and computes 7-10, instead of 40+(40-10).",high,pending Saad/Rayyan review
+Gemma 3 1B,random,U-U-E,gsm8k-train-111d72db39e6,"Hans booked a room in a hotel. The hotel has 10 floors with 10 identical rooms on each floor. Because of an accident, the last floor is unavailable for the guests. Considering there are no other guests, in how many different rooms could Hans be checked in?",90,,missing,cut_off,length,2048,− ×,gsm8k-train-73429d562982,÷ +,"Natalia sold clips to 48 of her friends in April, and then she sold half as many clips in May. How many clips did Natalia sell altogether in April and May?",gsm8k-train-7a6b8353e50c,+ ×,Rachel and Sara want to attend a beauty and modeling contest. They both want to buy new pairs of shoes and dresses. Sara buys a pair of shoes which costs $50 and a dress which costs $200. How much should Rachel budget if she wants to spend twice as much as what Sara spent on the pair of shoes and dress?,"Let $N$ be the total number of rooms in the hotel. We are given that the hotel has 10 rooms in 10 levels.
+Each room has 10 guests. So, the total number of guests in the hotel is $10 \times 10 = 100$ guests.
+
+Hans rented out $x$ different rooms to the guests.
+After the accident, the last level is unavailable. This means that all the rooms are occupied.
+The number of guests is 100.
+The total number of rooms is 10.
+Since the last level is unavailable, all 10 rooms are occupied.
+The number of guests in the hotel is 100.
+The total number of rooms is 10.
+The number of rooms available is $10 - 1 = 9$.
+Since there are 100 guests, and 9 rooms are available, the number of guests that can be accommodated is $9 \times 10 = 90$ guests.
+However, we are told that the number of guests is 100.
+Let $x$ be the number of rooms that Hans rented out.
+The total number of guests is 100.
+The total number of rooms is 10.
+The number of rooms available is $10 - 1 = 9$.
+Since there are 100 guests, and 9 rooms are available, the number of guests that can be accommodated is $9 \times 10 = 90$.
+The number of guests that can be accommodated is $100 - 90 = 10$ guests.
+Since each room has 10 guests, the number of rooms rented out is $\frac{100}{10} = 10$ rooms.
+The number of rooms available is $10 - 1 = 9$.
+The number of rooms rented out is $x$.
+The total number of guests is 100.
+The number of rooms is 10.
+The number of guests in the hotel is 100.
+The number of rooms is 10.
+The number of guests in the hotel is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of rooms is 10.
+The number of guests is",,,,,repetition loop / cut off,"Confuses rooms with guests and repeats statements until the 2048-token cutoff, without a final marker.",high,pending Saad/Rayyan review
+Gemma 3 1B,random,U-U-E,gsm8k-train-19b0d3572fbe,James spends 40 years teaching. His partner has been teaching for 10 years less. How long is their combined experience?,70,15,ok,wrong_answer,stop,42,− +,gsm8k-train-7f5709a21d11,÷ ÷ −,"Lisa, Jack, and Tommy earned $60 from washing cars all week. However, half of the $60 was earned by Lisa. Tommy earned half of what Lisa earned. How much more money did Lisa earn than Tommy?",gsm8k-train-b5a344d0eb73,− − − ÷,Four people lost a total of 103 kilograms of weight. The first person lost 27 kilograms. The second person lost 7 kilograms less than the first person. The two remaining people lost the same amount. How many kilograms did each of the last two people lose?,"Worked solution: جیمز اور اس کے ساتھی کا مجموعی تدریسی تجربہ کتنے سال ہے؟
+7 + 8 = 15
+FINAL_ANSWER: 15",,,,,wrong plan / misread question,Introduces unrelated operands 7 and 8 and sums them; neither represents the question quantities.,high,pending Saad/Rayyan review
+Gemma 3 1B,random,U-E-E,gsm8k-train-111d72db39e6,"Hans booked a room in a hotel. The hotel has 10 floors with 10 identical rooms on each floor. Because of an accident, the last floor is unavailable for the guests. Considering there are no other guests, in how many different rooms could Hans be checked in?",90,99,ok,wrong_answer,stop,584,− ×,gsm8k-train-73429d562982,÷ +,"Natalia sold clips to 48 of her friends in April, and then she sold half as many clips in May. How many clips did Natalia sell altogether in April and May?",gsm8k-train-7a6b8353e50c,+ ×,Rachel and Sara want to attend a beauty and modeling contest. They both want to buy new pairs of shoes and dresses. Sara buys a pair of shoes which costs $50 and a dress which costs $200. How much should Rachel budget if she wants to spend twice as much as what Sara spent on the pair of shoes and dress?,"Let the total number of rooms in the hotel be 10.
+There are 10 rooms on each floor.
+The total number of rooms in the hotel is 10 * 10 = 100 rooms.
+
+A disaster has occurred, so the last room is unavailable.
+This means that the hotel has 99 rooms available.
+
+We want to find out how many different rooms HANS can have.
+Since there are 99 rooms available, and each floor has 10 rooms, we can think of this as arranging 99 rooms in 99 positions.
+The number of ways to arrange 99 distinct objects in 99 positions is given by the permutation formula:
+$P(99, 99) = \frac{99!}{(99-99)!} = \frac{99!}{0!} = 99!$
+However, this is the number of ways to arrange 99 distinct objects in 99 positions.
+
+We want to find the number of different rooms HANS can have.
+Since there are 99 rooms available, and each floor has 10 rooms, we can think of this as arranging 99 rooms in 99 positions.
+The number of ways to arrange 99 distinct objects in 99 positions is given by the permutation formula:
+$P(99, 99) = \frac{99!}{(99-99)!} = \frac{99!}{0!} = 99!$
+However, this is the number of ways to arrange 99 distinct objects in 99 positions.
+
+We have 99 rooms available. HANS can have any number of rooms.
+Let's consider the case where HANS has 1 room.
+Then there are 98 rooms remaining.
+Let's consider the case where HANS has 2 rooms.
+Then there are 97 rooms remaining.
+...
+Let's consider the case where HANS has 99 rooms.
+The number of ways to arrange 99 distinct objects in 99 positions is $99!$.
+
+The question is how many different rooms can HANS have?
+Since there are 99 rooms available, HANS can have any number of rooms from 1 to 99.
+The number of different rooms HANS can have is 99.
+
+However, the question is asking how many different rooms HANS can have.
+Since there are 99 rooms available, HANS can have any number of rooms from 1 to 99.
+The number of different rooms HANS can have is 99.
+
+Final Answer: The final answer is 99.",,,,,wrong plan / misread question,"Changes an unavailable floor to one unavailable room, then discusses permutations before answering 99.",high,pending Saad/Rayyan review
+Gemma 3 1B,random,U-E-E,gsm8k-train-1d58b8a27f49,"Krystian works in the library. He borrows an average of 40 books every day. Every Friday, his number of borrowed books is about 40% higher than the daily average. How many books does he borrow in a week if the library is open from Monday to Friday?",216,,missing,cut_off,length,2048,× × ÷ + +,gsm8k-train-b5a344d0eb73,− − − ÷,Four people lost a total of 103 kilograms of weight. The first person lost 27 kilograms. The second person lost 7 kilograms less than the first person. The two remaining people lost the same amount. How many kilograms did each of the last two people lose?,gsm8k-train-73429d562982,÷ +,"Natalia sold clips to 48 of her friends in April, and then she sold half as many clips in May. How many clips did Natalia sell altogether in April and May?","Let $A$ be the number of books Kirsi sells daily. We are given that Kirsi sells an average of 40 books per day.
+The number of books she sells every day is 40.
+The number of books she sells every day is increased by 40% in every subsequent day.
+So, the number of books she sells on each day is increased by $0.40 \times 40 = 16$ books.
+The number of books she sells on each day is now $40 + 16 = 56$ books.
+Kirsi sells 56 books every day for 7 days (from Monday to Friday).
+The total number of books she sells in a week is $56 \times 7 = 392$ books.
+The total number of books she sells in a week is 392.
+The number of books she sells every day is 40.
+The number of books she sells every day is increased by 40% in every subsequent day.
+So, the number of books she sells on each day is increased by $0.40 \times 40 = 16$ books.
+The number of books she sells on each day is now $40 + 16 = 56$ books.
+The number of books she sells in a week is $56 \times 7 = 392$ books.
+The number of books she sells in a week is 392.
+The number of books she sells every day is 40.
+The number of books she sells every day is increased by 40% in every subsequent day.
+So, the number of books she sells on each day is increased by $0.40 \times 40 = 16$ books.
+The number of books she sells on each day is now $40 + 16 = 56$ books.
+The number of books she sells in a week is $56 \times 7 = 392$ books.
+The number of books she sells in a week is 392.
+The number of books she sells every day is 40.
+The number of books she sells every day is increased by 40% in every subsequent day.
+Let $N$ be the number of books she sells in a week.
+$N = 7 \times 40 = 280$ books.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in a week is $7 \times 40 = 280$.
+The number of books she sells in",,,,,repetition loop / cut off,"Changes borrowing to selling, miscounts open days, and repeats incompatible totals until cutoff.",high,pending Saad/Rayyan review
+Gemma 3 1B,random,E-E-E,gsm8k-train-111d72db39e6,"Hans booked a room in a hotel. The hotel has 10 floors with 10 identical rooms on each floor. Because of an accident, the last floor is unavailable for the guests. Considering there are no other guests, in how many different rooms could Hans be checked in?",90,99,ok,wrong_answer,stop,102,− ×,gsm8k-train-73429d562982,÷ +,"Natalia sold clips to 48 of her friends in April, and then she sold half as many clips in May. How many clips did Natalia sell altogether in April and May?",gsm8k-train-7a6b8353e50c,+ ×,Rachel and Sara want to attend a beauty and modeling contest. They both want to buy new pairs of shoes and dresses. Sara buys a pair of shoes which costs $50 and a dress which costs $200. How much should Rachel budget if she wants to spend twice as much as what Sara spent on the pair of shoes and dress?,"Let's analyze the problem.
+
+The hotel has 10 floors with 10 identical rooms on each floor.
+There are a total of 10 * 10 = 100 rooms.
+However, the last floor is unavailable for guests.
+So, the number of available rooms is 100 - 1 = 99 rooms.
+
+Hans can be checked in any of the 99 rooms.
+
+FINAL_ANSWER: 99
+",,,,,wrong plan / misread question,Computes 100-1 rather than 100-10 for the unavailable floor.,high,pending Saad/Rayyan review
+Gemma 3 1B,random,E-E-E,gsm8k-train-1d58b8a27f49,"Krystian works in the library. He borrows an average of 40 books every day. Every Friday, his number of borrowed books is about 40% higher than the daily average. How many books does he borrow in a week if the library is open from Monday to Friday?",216,256,ok,wrong_answer,stop,224,× × ÷ + +,gsm8k-train-b5a344d0eb73,− − − ÷,Four people lost a total of 103 kilograms of weight. The first person lost 27 kilograms. The second person lost 7 kilograms less than the first person. The two remaining people lost the same amount. How many kilograms did each of the last two people lose?,gsm8k-train-73429d562982,÷ +,"Natalia sold clips to 48 of her friends in April, and then she sold half as many clips in May. How many clips did Natalia sell altogether in April and May?","Let $B$ be the daily average number of books Krystian borrows. We are given that $B = 40$ books.
+Every Friday, the number of books is 40% higher than the daily average. So, the number of books on Friday is $B + 0.40 \times B = B(1 + 0.40) = 1.40 \times B$.
+Since $B = 40$, the number of books on Friday is $1.40 \times 40 = 56$ books.
+The library is open from Monday to Friday. There are 5 days in a week.
+The number of books borrowed in a week is the number of books borrowed on Friday plus the number of books borrowed on each of the other 4 days.
+Total books borrowed in a week = 56 + (5 days $\times$ 40 books/day) = 56 + 200 = 256 books.
+FINAL_ANSWER: 256",,,,,wrong plan / misread question,Says other four days but multiplies 40 by five and adds Friday again.,high,pending Saad/Rayyan review
+Gemma 3 1B,similarity,U-U-U,gsm8k-train-111d72db39e6,"Hans booked a room in a hotel. The hotel has 10 floors with 10 identical rooms on each floor. Because of an accident, the last floor is unavailable for the guests. Considering there are no other guests, in how many different rooms could Hans be checked in?",90,10,ok,wrong_answer,stop,14,− ×,gsm8k-train-eb06c14679dc,− × ÷ × + × −,A concert ticket costs $40. Mr. Benson bought 12 tickets and received a 5% discount for every ticket bought that exceeds 10. How much did Mr. Benson pay in all?,gsm8k-train-86ba5b70f686,+ + ÷,"It is Roger’s turn to provide a snack for the baseball team after the game and he has decided to bring trail mix. The trail mix comes in packs of 6 individual pouches. Roger has 13 members on his baseball team, plus 3 coaches and 2 helpers. How many packs of trail mix does he need to buy?","FINAL_ANSWER: 10
+
+عدد: 10",,,,,other,Returns 10 without working. No defensible causal tag beyond wrong answer/no visible derivation.,low,pending Saad/Rayyan review
+Gemma 3 1B,similarity,U-U-U,gsm8k-train-19b0d3572fbe,James spends 40 years teaching. His partner has been teaching for 10 years less. How long is their combined experience?,70,40,ok,wrong_answer,stop,14,− +,gsm8k-train-cdcae5775716,− × ÷,Mr. Sanchez found out that 40% of his Grade 5 students got a final grade below B. How many of his students got a final grade of B and above if he has 60 students in Grade 5?,gsm8k-train-9d7481516507,+ + − × ÷,"James is a first-year student at a University in Chicago. He has a budget of $1000 per semester. He spends 30% of his money on food, 15% on accommodation, 25% on entertainment, and the rest on coursework materials. How much money does he spend on coursework materials?","FINAL_ANSWER: 40
+
+عدد: 40",,,,,other,"Returns 40 without working; may copy a quantity, but cause is not established.",low,pending Saad/Rayyan review
+Gemma 3 1B,similarity,U-U-E,gsm8k-train-111d72db39e6,"Hans booked a room in a hotel. The hotel has 10 floors with 10 identical rooms on each floor. Because of an accident, the last floor is unavailable for the guests. Considering there are no other guests, in how many different rooms could Hans be checked in?",90,,missing,cut_off,length,2048,− ×,gsm8k-train-eb06c14679dc,− × ÷ × + × −,A concert ticket costs $40. Mr. Benson bought 12 tickets and received a 5% discount for every ticket bought that exceeds 10. How much did Mr. Benson pay in all?,gsm8k-train-86ba5b70f686,+ + ÷,"It is Roger’s turn to provide a snack for the baseball team after the game and he has decided to bring trail mix. The trail mix comes in packs of 6 individual pouches. Roger has 13 members on his baseball team, plus 3 coaches and 2 helpers. How many packs of trail mix does he need to buy?","Let the total number of rooms in the hotel be $N = 10$.
+There are 10 rooms in the hotel, and each room has 10 guests.
+So, the total number of guests is $10 \times 10 = 100$.
+The number of rooms is 10.
+The number of guests is 100.
+The number of different rooms that can be rented is $100 \div 10 = 10$.
+However, we need to find the number of different rooms that can be rented.
+The total number of rooms is 10.
+Each room has 10 guests.
+The total number of guests is $10 \times 10 = 100$.
+The number of rooms is 10.
+The total number of guests is 100.
+The number of different rooms is $100/10 = 10$.
+The number of different rooms that can be rented is 10.
+The total number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of different rooms is $100/10 = 10$.
+The total number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of different rooms is $100/10 = 10$.
+The total number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of different rooms is $100/10 = 10$.
+The total number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of different rooms is $100/10 = 10$.
+The total number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of different rooms is $100/10 = 10$.
+The total number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of different rooms is $100/10 = 10$.
+The total number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of different rooms is $100/10 = 10$.
+The total number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of different rooms is $100/10 = 10$.
+The total number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of different rooms is $100/10 = 10$.
+The total number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of different rooms is $100/10 = 10$.
+The total number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of different rooms is $100/10 = 10$.
+The total number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of different rooms is $100/10 = 10$.
+The total number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of different rooms is $100/10 = 10$.
+The total number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of different rooms is $100/10 = 10$.
+The total number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of different rooms is $100/10 = 10$.
+The total number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of different rooms is $100/10 = 10$.
+The total number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of different rooms is $100/10 = 10$.
+The total number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of different rooms is $100/10 = 10$.
+The total number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of different rooms is $100/10 = 10$.
+The total number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of different rooms is $100/10 = 10$.
+The total number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of different rooms is $100/10 = 10$.
+The total number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of different rooms is $100/10 = 10$.
+The total number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of different rooms is $100/10 = 10$.
+The total number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of different rooms is $100/10 = 10$.
+The total number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of different rooms is $100/10 = 10$.
+The total number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of different rooms is $100/10 = 10$.
+The total number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of different rooms is $100/10 = 10$.
+The total number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of different rooms is $100/10 = 10$.
+The total number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of different rooms is $100/10 = 10$.
+The total number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of different rooms is $100/10 = 10$.
+The total number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of different rooms is $100/10 = 10$.
+The total number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of different rooms is $100/10 = 10$.
+The total number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of different rooms is $100/10 = 10$.
+The total number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of different rooms is $100/10 = 10$.
+The total number of guests is 100.
+The number of rooms is 10.
+The number of guests is 100.
+The number of different rooms is $100/10 = 10$.
+The total number of guests is ",,,,,repetition loop / cut off,"Confuses guests and rooms and repeats 100/10 until output cutoff, with no terminal marker.",high,pending Saad/Rayyan review
+Gemma 3 1B,similarity,U-U-E,gsm8k-train-1d58b8a27f49,"Krystian works in the library. He borrows an average of 40 books every day. Every Friday, his number of borrowed books is about 40% higher than the daily average. How many books does he borrow in a week if the library is open from Monday to Friday?",216,56,ok,wrong_answer,stop,127,× × ÷ + +,gsm8k-train-9d7481516507,+ + − × ÷,"James is a first-year student at a University in Chicago. He has a budget of $1000 per semester. He spends 30% of his money on food, 15% on accommodation, 25% on entertainment, and the rest on coursework materials. How much money does he spend on coursework materials?",gsm8k-train-3f23a7d4df7c,÷ ×,"Weng earns $12 an hour for babysitting. Yesterday, she just did 50 minutes of babysitting. How much did she earn?","Worked solution: کرسٹیان روزانہ 40 کتابیں ادھار لita کرتا ہے، اور ہر جمعے کو ادھار لی گئی کتابوں کی تعداد روزانہ اوسط سے 40% زیادہ ہوتی ہے۔
+40 * 0.4 = 16 کتابیں
+Total کتابیں = 40 + 16 = 56 کتابیں
+لائبریری پیر سے جمعے تک کھلی رہتی ہے، اس لیے ایک ہفتے میں 7 روزوں میں 56 کتابیں ادھار لita کر سکتا ہے۔
+FINAL_ANSWER: 56
+",,,,,wrong plan / misread question,Computes Friday 56 then treats it as the weekly total; also calls Monday-Friday seven days.,high,pending Saad/Rayyan review
+Gemma 3 1B,similarity,U-E-E,gsm8k-train-111d72db39e6,"Hans booked a room in a hotel. The hotel has 10 floors with 10 identical rooms on each floor. Because of an accident, the last floor is unavailable for the guests. Considering there are no other guests, in how many different rooms could Hans be checked in?",90,10,ok,wrong_answer,stop,127,− ×,gsm8k-train-eb06c14679dc,− × ÷ × + × −,A concert ticket costs $40. Mr. Benson bought 12 tickets and received a 5% discount for every ticket bought that exceeds 10. How much did Mr. Benson pay in all?,gsm8k-train-86ba5b70f686,+ + ÷,"It is Roger’s turn to provide a snack for the baseball team after the game and he has decided to bring trail mix. The trail mix comes in packs of 6 individual pouches. Roger has 13 members on his baseball team, plus 3 coaches and 2 helpers. How many packs of trail mix does he need to buy?","Question: ہانس نے ایک ہوٹل میں کمرہ بک کیا۔ ہوٹل کی 10 منزلیں ہیں اور ہر منزل پر 10 ایک جیسے کمرے ہیں۔ ایک حادثے کی وجہ سے آخری منزل مہمانوں کے لیے دستیاب نہیں۔ اگر کوئی اور مہمان نہیں تو ہانس کو کتنے مختلف کمروں میں ٹھہرایا جا سکتا ہے؟
+
+Worked solution: اگر ہوٹل کی 10 منزلیں ہیں اور ہر منزل پر 10 کمرے ہیں، تو ہانس کو 10 کمروں میں ٹھہرایا جا سکتا ہے.
+FINAL_ANSWER: 10",,,,,wrong plan / misread question,"States ten rooms as the available total, ignoring nine available floors.",high,pending Saad/Rayyan review
+Gemma 3 1B,similarity,U-E-E,gsm8k-train-19b0d3572fbe,James spends 40 years teaching. His partner has been teaching for 10 years less. How long is their combined experience?,70,50,ok,wrong_answer,stop,72,− +,gsm8k-train-cdcae5775716,− × ÷,Mr. Sanchez found out that 40% of his Grade 5 students got a final grade below B. How many of his students got a final grade of B and above if he has 60 students in Grade 5?,gsm8k-train-9d7481516507,+ + − × ÷,"James is a first-year student at a University in Chicago. He has a budget of $1000 per semester. He spends 30% of his money on food, 15% on accommodation, 25% on entertainment, and the rest on coursework materials. How much money does he spend on coursework materials?","Let A be the amount of time James spent teaching and B be the amount of time his partner spent teaching.
+
+A = 40 years
+B = 10 years
+
+The total time they spent teaching together is A + B = 40 + 10 = 50 years.
+
+FINAL_ANSWER: 50
+",,,,,wrong plan / misread question,Uses the ten-year difference as the partner experience and adds 40+10.,high,pending Saad/Rayyan review
+Gemma 3 1B,similarity,E-E-E,gsm8k-train-111d72db39e6,"Hans booked a room in a hotel. The hotel has 10 floors with 10 identical rooms on each floor. Because of an accident, the last floor is unavailable for the guests. Considering there are no other guests, in how many different rooms could Hans be checked in?",90,100,ok,wrong_answer,stop,33,− ×,gsm8k-train-eb06c14679dc,− × ÷ × + × −,A concert ticket costs $40. Mr. Benson bought 12 tickets and received a 5% discount for every ticket bought that exceeds 10. How much did Mr. Benson pay in all?,gsm8k-train-86ba5b70f686,+ + ÷,"It is Roger’s turn to provide a snack for the baseball team after the game and he has decided to bring trail mix. The trail mix comes in packs of 6 individual pouches. Roger has 13 members on his baseball team, plus 3 coaches and 2 helpers. How many packs of trail mix does he need to buy?","Worked solution: There are 10 floors * 10 rooms/floor = 100 rooms.
+FINAL_ANSWER: 100",,,,,wrong plan / misread question,Computes all 100 hotel rooms but ignores the unavailable floor.,high,pending Saad/Rayyan review
+Gemma 3 1B,similarity,E-E-E,gsm8k-train-1d58b8a27f49,"Krystian works in the library. He borrows an average of 40 books every day. Every Friday, his number of borrowed books is about 40% higher than the daily average. How many books does he borrow in a week if the library is open from Monday to Friday?",216,,missing,cut_off,length,2048,× × ÷ + +,gsm8k-train-9d7481516507,+ + − × ÷,"James is a first-year student at a University in Chicago. He has a budget of $1000 per semester. He spends 30% of his money on food, 15% on accommodation, 25% on entertainment, and the rest on coursework materials. How much money does he spend on coursework materials?",gsm8k-train-3f23a7d4df7c,÷ ×,"Weng earns $12 an hour for babysitting. Yesterday, she just did 50 minutes of babysitting. How much did she earn?","Let $B$ be the daily average number of books borrowed. We are given that $B = 40$ books.
+Let $F$ be the number of Fridays in a week. Since the library is open from Monday to Friday, there are 5 days a week. So, $F = 5$.
+The number of books borrowed on Fridays is 40% higher than the daily average, so the number of books borrowed on Fridays is $B + 0.40B = 1.40B = 1.40 \times 40 = 56$ books.
+The total number of books borrowed in a week is the daily average multiplied by the number of days in a week, which is $B \times 5 = 40 \times 5 = 200$ books.
+However, the library is open from Monday to Friday, so there are 5 days in a week. The number of books borrowed on Fridays is 40% higher than the daily average, so the number of books borrowed on Fridays is $40 + 0.40 \times 40 = 40 + 16 = 56$ books.
+The total number of books borrowed in a week is the number of books borrowed on Monday through Friday plus the number of books borrowed on Friday.
+Total books = (Books on Monday) + (Books on Tuesday) + (Books on Wednesday) + (Books on Thursday) + (Books on Friday)
+Total books = 200 books.
+We are given that the library is open from Monday to Friday.
+The number of books borrowed on Fridays is 40% higher than the daily average.
+Daily average = 40 books.
+Friday's books = 40 * 1.40 = 56 books.
+Total books in a week = 56 books/day * 5 days = 280 books.
+However, the question asks how many books he borrows in a week.
+The number of books borrowed on Monday through Friday is $5 \times 200 = 1000$ books.
+The number of books borrowed on Friday is $56$ books.
+So, the total number of books borrowed in a week is $1000 + 56 = 1056$ books.
+However, the question is asking how many books he borrows in a week.
+The number of books borrowed on Monday through Friday is $5 \times 200 = 1000$.
+The number of books borrowed on Friday is $56$.
+The total number of books borrowed in a week is $1000 + 56 = 1056$.
+The question is how many books does he borrow in a week if the library is open from Monday to Friday?
+The number of books borrowed on Monday through Friday is $5 \times 200 = 1000$.
+The number of books borrowed on Friday is $56$.
+The total number of books borrowed in a week is $1000 + 56 = 1056$.
+The question is how many books does he borrow in a week.
+The number of books borrowed on Monday through Friday is $5 \times 200 = 1000$.
+The number of books borrowed on Friday is $56$.
+The total number of books borrowed in a week is $1000 + 56 = 1056$.
+The question is how many books does he borrow in a week.
+The number of books borrowed on Monday through Friday is $5 \times 200 = 1000$.
+The number of books borrowed on Friday is $56$.
+The total number of books borrowed in a week is $1000 + 56 = 1056$.
+The question is how many books does he borrow in a week.
+The number of books borrowed on Monday through Friday is $5 \times 200 = 1000$.
+The number of books borrowed on Friday is $56$.
+The total number of books borrowed in a week is $1000 + 56 = 1056$.
+The question is how many books does he borrow in a week.
+The number of books borrowed on Monday through Friday is $5 \times 200 = 1000$.
+The number of books borrowed on Friday is $56$.
+The total number of books borrowed in a week is $1000 + 56 = 1056$.
+The question is how many books does he borrow in a week.
+The number of books borrowed on Monday through Friday is $5 \times 200 = 1000$.
+The number of books borrowed on Friday is $56$.
+The total number of books borrowed in a week is $1000 + 56 = 1056$.
+The question is how many books does he borrow in a week.
+The number of books borrowed on Monday through Friday is $5 \times 200 = 1000$.
+The number of books borrowed on Friday is $56$.
+The total number of books borrowed in a week is $1000 + 56 = 1056$.
+The question is how many books does he borrow in a week.
+The number of books borrowed on Monday through Friday is $5 \times 200 = 1000$.
+The number of books borrowed on Friday is $56$.
+The total number of books borrowed in a week is $1000 + 56 = 1056$.
+The question is how many books does he borrow in a week.
+The number of books borrowed on Monday through Friday is $5 \times 200 = 1000$.
+The number of books borrowed on Friday is $56$.
+The total number of books borrowed in a week is $1000 + 56 = 1056$.
+The question is how many books does he borrow in a week.
+The number of books borrowed on Monday through Friday is $5 \times 200 = 1000$.
+The number of books borrowed on Friday is $56$.
+The total number of books borrowed in a week is $1000 + 56 = 1056$.
+The question is how many books does he borrow in a week.
+The number of books borrowed on Monday through Friday is $5 \times 200 = 1000$.
+The number of books borrowed on Friday is $56$.
+The total number of books borrowed in a week is $1000 + 56 = 1056$.
+The question is how many books does he borrow in a week.
+The number of books borrowed on Monday through Friday is $5 \times 200 = 1000$.
+The number of books borrowed on Friday is $56$.
+The total number of books borrowed in a week is $1000 + 56 = 1056$.
+The question is how many books does he borrow in a week.
+The number of books borrowed on Monday through Friday is $5 \times 200 = 1000$.
+The number of books borrowed on Friday is $56$.
+The total number of books borrowed in a week is $1000 + 56 = 1056$.
+The question is how many books does he borrow in a week.
+The number of books borrowed on Monday through Friday is $5 \times 200 = 1000$.
+The number of books borrowed on Friday is $56$.
+The total number of books borrowed in a week is $1000 + 56 = 1056$.
+The question is how many books does he borrow in a week.
+The number of books borrowed on Monday through Friday is $5 \times 200 = 1000$.
+The number of books borrowed on Friday is $56$.
+The total number of books borrowed in a week is $1000 + 56 = 1056$.
+The question is how many books does he borrow in a week.
+The number of books borrowed on Monday through Friday is $5 \times 200 = 1000$.
+The number of books borrowed on Friday is $56$.
+The total number of books borrowed in a week is $1000 + 56 = 1056$.
+The question is how many books does he borrow in a week.
+The number of books borrowed on Monday through Friday is $5 \times 200 = 1000$.
+The number of books borrowed on Friday is $56$.
+The total number of books borrowed in a week is $1000 + 56 = 1056$.
+The question is how many books does he borrow in a week.
+The number of books borrowed on Monday through Friday is $5 \times 200 = 1000$.
+The number of books borrowed on Friday is $56$.
+The total number of books borrowed in a week is $1000 + 56 = 1056$.
+The question is how many books does he borrow in a week.
+",,,,,repetition loop / cut off,"Sets number of Fridays to five, repeats incompatible weekly formulas, then reaches the output cap.",high,pending Saad/Rayyan review

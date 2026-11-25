@@ -1,0 +1,17 @@
+| Strategy | Condition | n | Correct | Wrong answer | Cut off | No marker | Ambiguous | Format failures | Answer only | Off-language | Lenient correct |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| random | U-U-U | 10 | 6 | 4 | 0 | 0 | 0 | 0 | 0 | 0 | 6 |
+| random | U-U-E | 10 | 8 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 8 |
+| random | U-E-E | 10 | 8 | 2 | 0 | 0 | 0 | 0 | 0 | 5 | 8 |
+| random | E-E-E | 10 | 9 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 9 |
+| random | ALL | 40 | 31 | 9 | 0 | 0 | 0 | 0 | 0 | 5 | 31 |
+| similarity | U-U-U | 10 | 9 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 9 |
+| similarity | U-U-E | 10 | 7 | 2 | 1 | 0 | 0 | 1 | 0 | 0 | 7 |
+| similarity | U-E-E | 10 | 8 | 2 | 0 | 0 | 0 | 0 | 0 | 3 | 8 |
+| similarity | E-E-E | 10 | 9 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 9 |
+| similarity | ALL | 40 | 33 | 6 | 1 | 0 | 0 | 1 | 0 | 3 | 33 |
+| ALL | U-U-U | 20 | 15 | 5 | 0 | 0 | 0 | 0 | 0 | 0 | 15 |
+| ALL | U-U-E | 20 | 15 | 4 | 1 | 0 | 0 | 1 | 0 | 0 | 15 |
+| ALL | U-E-E | 20 | 16 | 4 | 0 | 0 | 0 | 0 | 0 | 8 | 16 |
+| ALL | E-E-E | 20 | 18 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 18 |
+| ALL | ALL | 80 | 64 | 15 | 1 | 0 | 0 | 1 | 0 | 8 | 64 |

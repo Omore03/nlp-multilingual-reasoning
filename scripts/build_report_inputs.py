@@ -19,6 +19,9 @@ def build(results_dir='results', report_dir='reports/intermediate', tests=229, r
     """Defaults rebuild the original Gemma 4 31B paper; other arms pass their own results/report folders."""
     res = ROOT / results_dir
     rec = json.loads((res / 'pilot_reconciliation.json').read_text())
+    manifest = json.loads((res / 'pilot_raw.manifest.json').read_text())
+    if manifest['identity']['configuration']['shot_count'] != 2 or manifest['expected_records'] != 80:
+        raise ValueError('This legacy report builder supports the original 80-record two-shot matrix only; use the consolidated baseline report for other arms')
     if not rec.get('research_eligible'):
         raise ValueError('Paper tables require manifest-checked real evaluation')
     for path, key in [(res / 'pilot_raw.jsonl', 'raw_sha256'),
@@ -26,6 +29,13 @@ def build(results_dir='results', report_dir='reports/intermediate', tests=229, r
         if hashlib.sha256(path.read_bytes()).hexdigest() != rec[key]:
             raise ValueError('Real outputs changed; evaluate them again before building the paper')
     scored = [json.loads(l) for l in (res / 'pilot_evaluated.jsonl').read_text().splitlines()]
+    expected = rec.get('evaluated_sha256')
+    if expected is None:
+        receipt = json.loads((ROOT / 'evidence/baseline_2026_11_25/source_receipt.json').read_text())
+        entry = next((e for e in receipt['runs'].values() if ROOT/e['repo_folder'] == res), None)
+        expected = entry['files'].get('pilot_evaluated.jsonl') if entry else None
+    if expected is None or hashlib.sha256((res/'pilot_evaluated.jsonl').read_bytes()).hexdigest() != expected:
+        raise ValueError('Scored outputs changed or lack a verified hash; evaluate before building the paper')
     raw = [json.loads(l) for l in (res / 'pilot_raw.jsonl').read_text().splitlines()]
     n = rec['unique_successful_scored']
     if len(scored) != n:

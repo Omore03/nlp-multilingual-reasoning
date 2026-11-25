@@ -1,0 +1,14 @@
+{
+  "date": "2026-11-25",
+  "status": "blocked_by_provider_capacity",
+  "completed_successes": 0,
+  "journal_failure_entries": 2,
+  "journal_attempts": 6,
+  "errors": {
+    "http_503": 2
+  },
+  "raw_sha256": "3c05a84bf172d8451f6f215fb8c931ed432b8d3728acfa3cee70da693a553a4e",
+  "stopped": "Interrupted after repeated terminal HTTP503 entries; the in-flight request was cancelled and has no returned output. Journal attempt count excludes that unfinished call. No automatic retry loop will be started.",
+  "free_policy": "Existing user-confirmed unbilled project; fixed free Gemma model, native API, no fallback or billing changes. Pricing checked 2026-11-25 at https://aistudio.google.com/docs/pricing#gemma-4.",
+  "local_smoke": "Not run: no Ollama binary or listening local server; no weights downloaded."
+}
