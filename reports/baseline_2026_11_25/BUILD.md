@@ -1,6 +1,6 @@
 # Consolidated baseline report
 
-Follow-up analysis dated 25 November 2026, prepared for team review. Two IEEE conference-format pages, including seven references. This is a proposed consolidated report; it has not been submitted or approved on behalf of the authors.
+Follow-up analysis dated 25 November 2026, prepared for the intermediate deliverable. Two IEEE conference-format pages, including seven references. This is the consolidated intermediate report; LMS submission has not been performed.
 
 From the repository root:
 

@@ -1,28 +1,30 @@
-# Baseline review checklist
+# Intermediate submission checklist
 
-Updated 25 November 2026. The latest fully visible TA notice gives 24 November, 11:59 PM; a newer message is partly obscured. Confirm the latest deadline, upload status and meeting slot with the team.
+Updated 25 November 2026. The project lead has removed additional internal approval requirements. The published branch is `intermediate-stage`; `main` is unchanged.
 
-## Completed locally
+## Complete
 
-- [x] Integrate Rayyan's 35-file patch on an isolated feature branch; preserve main and all unrelated files.
-- [x] Keep 18 approved demos, ten dev questions and two exclusions unchanged.
-- [x] Audit selection, prompts, seed handling, model metadata and inference controls.
-- [x] Independently reconcile all seven completed journals and 380 scored records.
-- [x] Reproduce both inherited parser versions; inspect all 15 numerical gains and seven newly parsed wrong answers.
-- [x] Record current parser provenance and preserve raw/pre-fix evidence.
-- [x] Run 285 tests, all 14 offline config previews, data validation and mock/resume.
-- [x] Prepare 32 draft error tags and a consolidated IEEE report for team review.
+- [x] Integrate the supplied baseline implementation and preserve the original work.
+- [x] Retain the fixed 18 approved demos, ten dev questions and two exclusions.
+- [x] Verify seven complete saved runs, 380 scored configurations, selection/prompt/model provenance and both inherited score versions.
+- [x] Adopt the audited parser policy and score completed local cutoff responses as returned; keep all raw/pre-fix evidence.
+- [x] Pass 285 tests, all 14 offline config previews, data validation and mock/resume checks.
+- [x] Provide results, descriptive paired statistics, uncertainty and limitations.
+- [x] Provide a two-page IEEE report with Abstract, Introduction, Methodology, Results and References.
+- [x] Publish code, evidence, contributions and report on `intermediate-stage`.
 
-## Remaining decisions/actions
+## Submission and meeting
 
-- [ ] D1: team agrees the primary model (4B recommended; 31B/1B reference arms retained).
-- [ ] D2: Saad/team ratify scoring completed cutoff outputs as returned.
-- [ ] D3: Saad/team approve the parser policy; draft numerical audit is not human sign-off.
-- [ ] D6: team approves the consolidated report/extra arms and each member understands their work.
-- [ ] Saad/Rayyan review the draft error tags; Hussain reviews language issues before any later data change.
-- [ ] Ammar approves any remote push, PR or main integration.
-- [ ] Team submits via the required channel, confirms pilot sufficiency, and attends the meeting.
+- [ ] Upload the consolidated report through LMS, using one group member.
+- [ ] Confirm the latest deadline/upload status and the announced meeting slot.
+- [ ] Each member prepares to explain their contribution and demonstrate the code.
 
-Optional reference: hosted 31B zero-shot is blocked by HTTP503 capacity (0/30 responses). Local smoke was not repeated on this Mac because Ollama is absent. Neither is represented as completed.
+The latest fully visible TA notice gives 24 November, 11:59 PM; a newer message was partly obscured. This repository does not establish upload or acceptance.
 
-Dataset expansion (D5), MGSM (D4), diversity/complexity selectors, four-shot and final held-out evaluation remain deferred. No submission, push or merge has occurred.
+## Recorded limitations and later work
+
+The ten-question development pilot is small and establishes no strategy improvement. The 32 error-tag rows remain draft annotations, not completed independent human review. All nominal Urdu demo solutions contain English unit words. The original two exclusions stay excluded.
+
+Hosted 31B zero-shot is optional reference work blocked by HTTP503 capacity (0/30 successful responses). No new local smoke was repeated on Ammar's Mac because Ollama is absent; the inherited local runs/receipts were independently checked. These facts are disclosed and do not leave the completed seven-run baseline unimplemented.
+
+Dataset expansion, MGSM, diversity/complexity, four-shot prompting and final held-out evaluation remain later-stage work.

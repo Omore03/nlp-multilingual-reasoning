@@ -62,5 +62,6 @@
   "live_local_smoke": "not run; Ollama absent",
   "report_pages": 2,
   "report_visual_review": "all two pages inspected; no clipping/overlap",
-  "report_sha256": "dc320c1a96052b320d2ca840c6516a0d516e61c69db40cdacf60d65ba2c9d513"
+  "report_sha256": "75df1df9dc2d8762a73aa8fb8a1d97aef6b199d457d2d3febbab7a4c84aa3ceb",
+  "submission_update": "2026-11-25: current lead adoption/published-branch wording; no scoring or inference code/data changes. Both updated PDF pages visually inspected; still two pages."
 }

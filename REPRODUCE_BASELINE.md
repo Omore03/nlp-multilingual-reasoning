@@ -71,6 +71,8 @@ tectonic --outdir ../../output/pdf main.tex
 
 Reviewed copy: `reports/baseline_2026_11_25/baseline_report.pdf`. IEEEtran conference class and complete source are included. `reports/intermediate/` remains unchanged; the legacy report builder reproduces its inputs. Completed inference is evaluated offline after source changes rather than bypassing fingerprints for resume.
 
-## Pending decisions
+## Submission status and later work
 
-D1 primary model (4B recommended); D2 completed cutoff policy; D3 parser policy; D6 consolidated report and extra arms. Human error-tag and translation review remain pending. Dataset expansion (D5), MGSM (D4), diversity/complexity and four-shot are deferred. No push, PR, merge, deployment or submission has occurred.
+The project lead has removed additional internal approval requirements. The intermediate baseline uses the audited parser and completed-output cutoff policy, focuses selection comparisons on 4B, and retains 31B/1B as references. It is published on `intermediate-stage`; `main` is unchanged. Upload and meeting preparation remain to be done.
+
+Error tags remain draft annotations, not independent human review. Dataset expansion, MGSM, diversity/complexity and four-shot are deferred. No LMS submission or main merge has occurred.

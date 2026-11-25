@@ -1,3 +1,9 @@
+# Current submission status: 25 November 2026
+
+Published on `intermediate-stage`. The project lead has removed additional internal approval requirements; the current baseline adopts the audited parser/cutoff policy and uses 4B for the main selection comparison, retaining all model arms. The report and scientific limitations are current. Error tags remain draft annotations, not signed independent human review. LMS upload and meeting preparation remain.
+
+The completion record below is the preserved earlier pre-publication snapshot. Its statements about pending authorization and no pushes describe that earlier checkpoint and are superseded by this status note.
+
 # Baseline completion report
 
 25 November 2026, Asia/Karachi. Prepared for Ammar and the team; no remote integration or submission performed.

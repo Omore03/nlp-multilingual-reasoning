@@ -1,7 +1,7 @@
-# Parser change proposal: version 2 (25 November 2026)
+# Parser policy and audit (25 November 2026)
 
-**Status: implemented on the local branch `local/ollama-gemma3-1b`, pending Saad's approval.** Proposed by Rayyan. The evaluation plan freezes the parser after the pilot and requires any change to be applied to
-every configuration, re-scored from the raw files and logged. This document is that log.
+**Current status: adopted for the intermediate baseline on `intermediate-stage`.** Rayyan proposed version 2; integration adds bounded literal-marker matching in version `2.1-bounded-final-answer-first`. The project lead has removed additional internal approval requirements. This records adoption, not a claim that Saad has separately signed a review. The evaluation plan's rescore-and-log rule was followed for every saved run.
+
 
 ## Problem
 
@@ -70,19 +70,11 @@ existing evaluation tests pass unchanged; the full suite is 273 tests.
   `docs/model_comparison.md` (with a before/after section), `results/error_tagging/` (now 32 rows), and the Gemma 3 4B and
   1B reports (method sentence updated; still 2 pages). The original 31B report is unchanged.
 
-## To approve
+## Adoption and historical comparison
 
-- [ ] Saad: review `src/evaluation/answer_parser.py` and the 12 new tests.
-- [ ] Saad: spot-check the 15 changed answers (list: `docs/model_comparison.md`, "Parser change" section; each run's
-      `scored_before_parser_fix/pilot_evaluated.jsonl` vs `pilot_evaluated.jsonl`, matched by `record_id`).
-- [ ] Team: agree that version 2 is the official parser for all later runs (40-question dev, MGSM).
-- [ ] Optional: record `PARSER_VERSION` in `pilot_reconciliation.json` (one line in `src/evaluation/report.py`; not done
-      here so the team's 31B files stay byte-identical).
+The intermediate submission uses `2.1-bounded-final-answer-first`. All 380 supplied v2 prediction/status/detail rows are unchanged. New reconciliation outputs record the parser version and hash; the 273-test count above describes Rayyan's earlier checkpoint, while the integrated suite passes 285 tests.
 
-## To reject
-
-Restore `src/evaluation/answer_parser.py` and `tests/test_evaluation.py` from `main`, then copy each run's
-`scored_before_parser_fix/*` files back into the run folder (or re-score with the README command). No raw data changes.
+The v1 parser and pre-fix scores remain preserved for audit. Reproduce v1 through the audit script rather than replacing current source or overwriting archived score files. The separate error-tag worksheet remains a draft, and no reviewer signature is invented.
 
 ## Independent integration audit, 25 November 2026
 
@@ -90,4 +82,4 @@ All 380 records were rescored and matched to both supplied score versions. Fifte
 
 Version `2.1-bounded-final-answer-first` adds word boundaries around the literal marker, preventing embedded identifiers such as `NOT_FINAL_ANSWER` from being treated as terminal markers. All 380 supplied v2 prediction/status/detail rows remain identical. Twelve additional integration regressions cover marker boundaries, signed Urdu decimals, echoed markers, trailing calculations and stale/mismatched analysis files; the full suite has 285 passing tests. New reconciliation outputs record parser version, parser hash, marker patterns and evaluated-file hash under `results/verified/`. Archived outputs are unchanged.
 
-Each of the 15 numerical gains was inspected. One soda response (`b297d57f...`, seed 44) gives the correct number while reversing money spent and money remaining in its prose. Numerical matching does not certify the full reasoning. Human approval remains pending; the draft review does not impersonate Saad.
+Each of the 15 numerical gains was inspected. One soda response (`b297d57f...`, seed 44) gives the correct number while reversing money spent and money remaining in its prose. Numerical matching does not certify the full reasoning. The response inspection is an integration audit; no separate human reviewer signature is claimed.

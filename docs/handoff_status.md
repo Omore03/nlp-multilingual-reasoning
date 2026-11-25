@@ -32,3 +32,7 @@ The 80-configuration real pilot is complete and scored: both selectors reach 40/
 ## Local baseline follow-up, 25 November 2026
 
 The isolated `codex/baseline-submission-2026-11-25` branch integrates Rayyan's supplied delta. Seven saved runs and 380 scored records have been independently reconciled; see the root README and completion report for the current status. This does not change or replace the original 31B journal/report. 4B/1B local inference is inherited evidence, not a new execution on Ammar's Mac. The Google zero-shot attempt has zero successful responses because of capacity failures. No remote write or submission occurred.
+
+## Publication update
+
+The current baseline is published on `intermediate-stage`. The project lead has removed further internal approval requirements. Use the current README, consolidated report and submission checklist. Earlier pre-publication status notes above are historical. The error-tag worksheet remains draft; no independent reviewer signature is asserted.

@@ -86,7 +86,7 @@ Wrong answer = a parsed but wrong number; this alone does not identify its cause
 | Gemma 3 1B zero-shot | U-U-E | 10 | 2 | 2 | 3 | 4 | 1 | 0 | 10 |
 | Gemma 3 1B zero-shot | E-E-E | 10 | 4 | 4 | 6 | 0 | 0 | 0 | 0 |
 
-## Parser change (version 2, pending approval): scores before and after
+## Adopted parser policy: scores before and after
 
 Same raw responses, re-scored. Version 2 reads the number after the last FINAL_ANSWER that has one (colon optional) and falls back to the earlier rule only when there is none. See `docs/parser_change_2026-11-25.md`.
 

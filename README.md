@@ -2,7 +2,7 @@
 
 University NLP project on solved-example selection and prompt language. In-context learning, without fine-tuning.
 
-**25 November 2026: local baseline follow-up for team review.** Seven saved runs, **380 scored configurations on ten distinct questions**, independently verified. **285 tests pass.** This branch has not been pushed, merged or submitted.
+**25 November 2026: intermediate baseline submission.** Seven saved runs, **380 scored configurations on ten distinct questions**, independently verified. **285 tests pass.** Published on `intermediate-stage`; `main` is unchanged. LMS submission has not been performed.
 
 ## Individual contributions
 
@@ -11,7 +11,7 @@ University NLP project on solved-example selection and prompt language. In-conte
 | **Ammar Anees** | Repository/model setup, bilingual prompts, inference/resume, team integration, provenance audit, independent rescoring and report assembly |
 | **Hussain Baqar** | Bilingual GSM8K data, arithmetic validator, source/license notes and review evidence; 18 approved demos, ten dev questions, two excluded demos |
 | **Rayyan Hasib** | Random/similarity selectors, pinned encoder/cache and tests; local Ollama backend, 1B/4B runs, zero-shot/seed checks, proposed parser correction and analysis |
-| **Saad ur Rehman** | Original numerical parser, exact-match metrics, reconciliation, summaries, tests and evaluation plan; parser-policy and error-tag review remain pending |
+| **Saad ur Rehman** | Original numerical parser, exact-match metrics, reconciliation, summaries, tests and evaluation plan; parser/metrics are integrated; the error-tag worksheet remains a draft |
 
 ## Results
 
@@ -23,7 +23,7 @@ University NLP project on solved-example selection and prompt language. In-conte
 
 4B random selection seeds 43/44 score 30/40 and 32/40; generation seed stays 42. The 4B U-U-U similarity result is 9/10 versus random seed 42's 6/10 (paired exact p=0.25); random seed 44 also reaches 9/10. **No strategy improvement is established.** Zero-shot and two-shot have different condition counts, so compare matched cells rather than aggregate percentages. [Full comparison](docs/model_comparison.md), [paired statistics](docs/baseline/statistics.md).
 
-The proposed parser policy recovers 15 correct answers and loses none; seven more answers become parsed wrong numbers. Bounded-marker hardening leaves all 380 bundled v2 scored rows unchanged. Raw responses and both inherited score versions are preserved. Saad/team approval remains pending.
+The adopted parser policy recovers 15 correct answers and loses none; seven more answers become parsed wrong numbers. Bounded-marker hardening leaves all 380 bundled v2 scored rows unchanged. Raw responses and both inherited score versions are preserved. The project lead has removed additional internal approval requirements. Draft tags are not presented as completed human review.
 
 ## Fixed experiment
 
@@ -55,7 +55,7 @@ The review package includes saved runs for these commands. No API key or model-w
 
 ## Reports and evidence
 
-- [Consolidated IEEE baseline report](reports/baseline_2026_11_25/baseline_report.pdf): current follow-up for team review.
+- [Consolidated IEEE baseline report](reports/baseline_2026_11_25/baseline_report.pdf): current intermediate report.
 - [Completion record](BASELINE_COMPLETION_REPORT.md): branch, commits, checks, discrepancies and remaining decisions.
 - [Audit receipt](evidence/baseline_2026_11_25/audit.json), [source checksums](evidence/baseline_2026_11_25/source_receipt.json), [parser changes](evidence/baseline_2026_11_25/parser_changes.csv), [draft error tags](evidence/baseline_2026_11_25/error_tagging_draft.csv).
 - [Original 31B report](reports/intermediate/intermediate_report.pdf) is preserved. The inherited `reports/gemma3_4b/` and `reports/gemma3_1b/` are earlier single-arm report snapshots; use the consolidated report for current review.

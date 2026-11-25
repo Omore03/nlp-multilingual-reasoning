@@ -28,14 +28,14 @@ def main():
              'base_sha':BASE,'final_sha':git('rev-parse','HEAD').decode().strip(),
              'local_main_sha':git('rev-parse','main').decode().strip(),
              'origin_main_sha':git('rev-parse','origin/main').decode().strip(),
-             'remote_writes':'none','submission':'not performed',
+             'remote_writes':'intermediate-stage published; no main merge','submission':'not performed',
              'scope':'18 approved demonstrations, 10 dev questions; seven completed saved runs, 380 scored records',
              'source_files':len(files)}
     release_bytes=(json.dumps(release,indent=2)+'\n').encode()
     (out/'REVIEW_RELEASE.json').write_bytes(release_bytes)
     patch=git('diff','--binary',BASE,'HEAD')
     (out/'baseline_vs_01f5247.patch').write_bytes(patch)
-    report=(ROOT/'BASELINE_COMPLETION_REPORT.md').read_text()+f"\n## Packaged branch head\n\nFinal local branch SHA: `{release['final_sha']}`. No remote write or submission occurred. This packaging note is appended after the final local commit.\n"
+    report=(ROOT/'BASELINE_COMPLETION_REPORT.md').read_text()+f"\n## Packaged branch head\n\nFinal branch SHA: `{release['final_sha']}`. Published on intermediate-stage; no main merge or LMS submission has occurred. This packaging note is appended after the local commit.\n"
     (out/'BASELINE_COMPLETION_REPORT.md').write_text(report)
     contents={name:(ROOT/name).read_bytes() for name in files}
     contents.update({'REVIEW_RELEASE.json':release_bytes,'BASELINE_COMPLETION_REPORT.md':report.encode(),

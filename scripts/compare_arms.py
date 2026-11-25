@@ -151,7 +151,7 @@ def build(arms):
         (f'Gemma 3 4B random, seed {k}', f'results/gemma3_4b_seed{k}') for k in (43, 44)]
     before_after = [(n, f) for n, f in before_after if (ROOT / f / 'scored_before_parser_fix/pilot_evaluated.jsonl').exists()]
     if before_after:
-        out += ['', '## Parser change (version 2, pending approval): scores before and after', '',
+        out += ['', '## Adopted parser policy: scores before and after', '',
                 'Same raw responses, re-scored. Version 2 reads the number after the last FINAL_ANSWER that has one '
                 '(colon optional) and falls back to the earlier rule only when there is none. '
                 'See `docs/parser_change_2026-11-25.md`.', '',
