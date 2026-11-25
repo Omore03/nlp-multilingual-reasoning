@@ -62,6 +62,6 @@
   "live_local_smoke": "not run; Ollama absent",
   "report_pages": 2,
   "report_visual_review": "Both final pages rendered and inspected; no clipping or overlap; future plan clearly visible.",
-  "report_sha256": "3e04d67d1552401e87062581042cbedf4d70a5ef383a5b075c9936c97e1b8445",
-  "submission_update": "2026-11-25: final report explicitly sequences better reviewed data, renewed baseline/error analysis, proposed novelty and held-out evaluation. Excluded demos are omitted from the report. No code, data, scores or inference changed. Both PDF pages visually inspected; still two pages."
+  "report_sha256": "eccdad528eca8f6902d9b1e9c08205e022f0ca1a36d4b56e2ce5d3f3a71aa039",
+  "submission_update": "2026-11-25: final report includes dataset-first future plan and clearer post-fix outcomes: extracted incorrect numbers, output-limit responses and answer-extraction failures. No code, data, scores or inference changed. Both final PDF pages rendered and visually inspected; still two pages."
 }
