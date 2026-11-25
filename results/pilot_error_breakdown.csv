@@ -1,0 +1,16 @@
+strategy,condition,n,correct,wrong_answer,cut_off,no_marker,ambiguous,format_failures,answer_only,off_language,lenient_correct
+random,U-U-U,10,10,0,0,0,0,0,0,0,10
+random,U-U-E,10,10,0,0,0,0,0,0,0,10
+random,U-E-E,10,10,0,0,0,0,0,0,0,10
+random,E-E-E,10,10,0,0,0,0,0,0,0,10
+random,ALL,40,40,0,0,0,0,0,0,0,40
+similarity,U-U-U,10,10,0,0,0,0,0,0,0,10
+similarity,U-U-E,10,10,0,0,0,0,0,0,0,10
+similarity,U-E-E,10,10,0,0,0,0,0,0,0,10
+similarity,E-E-E,10,10,0,0,0,0,0,0,0,10
+similarity,ALL,40,40,0,0,0,0,0,0,0,40
+ALL,U-U-U,20,20,0,0,0,0,0,0,0,20
+ALL,U-U-E,20,20,0,0,0,0,0,0,0,20
+ALL,U-E-E,20,20,0,0,0,0,0,0,0,20
+ALL,E-E-E,20,20,0,0,0,0,0,0,0,20
+ALL,ALL,80,80,0,0,0,0,0,0,0,80
