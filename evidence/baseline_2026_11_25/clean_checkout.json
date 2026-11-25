@@ -1,0 +1,26 @@
+{
+  "date": "2026-11-25",
+  "tested_code_commit": "d05d2a993b390d5e68680afd14cdb657d2cc23d5",
+  "method": "Clean local clone with a separate freshly installed Python 3.12 environment",
+  "pytest": {
+    "passed": 285,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "data_validation": "passed: 18 demos, 10 dev, 2 exclusions",
+  "audit": "380 scored; 15 gained, 0 lost, 7 newly parsed wrong",
+  "cli_previews": 14,
+  "real_receipts": 8,
+  "mock": {
+    "successes": 80,
+    "new_on_resume": 0,
+    "raw_hash_unchanged": true
+  },
+  "derived_outputs": "All seven breakdown CSV/Markdown tables and original 32-row blank worksheet reproduce byte-for-byte; comparison/statistics/report table and original report inputs regenerate without tracked diff.",
+  "initial_packaging_issue": "Clean clone caught two ignored root 31B breakdown files; both added in d05d2a993b390d5e68680afd14cdb657d2cc23d5 and the complete audit repeated successfully.",
+  "source_document_whitespace": "passed excluding preserved inherited CSV line endings/raw multiline fields and unmodified IEEE vendor files",
+  "live_local_smoke": "not repeated; Ollama unavailable",
+  "live_google_zero_shot": "blocked; repeated HTTP503, zero successful responses",
+  "pdf": "Consolidated IEEE report: 2 pages, all pages visually inspected; both inherited small-model report sources compile."
+}

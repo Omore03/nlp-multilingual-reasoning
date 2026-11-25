@@ -87,3 +87,9 @@ Sample up to 30 wrong or unparsed responses per method for U-U-U and E-E-E (2-sh
 - Final-answer marker and its language: confirm with Ammar; it must be identical in every condition, or the parser markers must cover each variant.
 - Whether the TA wants the larger 40-question dev run before the final MGSM run.
 - Whether the zero-shot baseline and the seed check fit the free quota.
+
+## Current baseline follow-up (25 November 2026)
+
+Seven completed runs reuse the frozen 18-demo/10-dev data: main two-shot arms for 31B/4B/1B, local zero-shot arms for 4B/1B and 4B random selection seeds 43/44 (generation seed 42 throughout). No larger dataset, MGSM or extra selector was introduced. Independent rescoring reproduces 380 records, 15 numerical gains and zero losses; seven additional records become parsed wrong numbers. Bounded literal-marker version `2.1-bounded-final-answer-first` preserves every bundled v2 prediction. Parser and cutoff policy are pending Saad/team approval, as are any changes to the final-stage plan above. New parser provenance is in `results/verified/`; original score versions remain unchanged.
+
+The attempted hosted zero-shot reference remains 0/30 successful responses after HTTP503 capacity errors; it is not a zero-accuracy result. Script/length flags are diagnostic heuristics, not certified output language or causal reasoning labels. Use matched question/condition comparisons and the descriptive uncertainty tables under `docs/baseline/`.

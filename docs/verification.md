@@ -1,3 +1,9 @@
+# Current baseline follow-up verification
+
+25 November 2026. The isolated baseline branch passes 285 tests, reproduces seven complete runs (380 scored configurations on ten questions), all 14 CLI previews and an 80-record mock/no-op resume. See [clean-checkout evidence](../evidence/baseline_2026_11_25/clean_checkout.json), [audit](../evidence/baseline_2026_11_25/audit.json) and [reproduction](../REPRODUCE_BASELINE.md). The 31B zero-shot reference is incomplete because of capacity failures; local-model inference was inherited and not repeated on this Mac. Human policy/report approvals remain pending.
+
+The following is the preserved earlier hosted-pilot verification record; its 229-test count describes that earlier implementation.
+
 # Verification
 
 Updated 25 November 2026 (PKT). Real results and engineering checks are separate.
